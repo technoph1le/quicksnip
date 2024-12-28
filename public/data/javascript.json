@@ -201,7 +201,7 @@
           "}"
         ],
         "tags": ["javascript", "utility", "url", "parameters"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Get Multiple URL Query Parameters",
@@ -221,7 +221,7 @@
           "}"
         ],
         "tags": ["javascript", "url", "queryparams", "utility", "multiple"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Build a Query String from an Object",
@@ -235,7 +235,7 @@
           "}"
         ],
         "tags": ["javascript", "url", "querystring", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Device Type Detection",
@@ -287,7 +287,7 @@
           "desktop",
           "utility"
         ],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Deep Clone an Object",
@@ -310,7 +310,7 @@
           "}"
         ],
         "tags": ["javascript", "object", "clone", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Get Base URL",
@@ -322,7 +322,7 @@
           "}"
         ],
         "tags": ["javascript", "url", "baseurl", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Email Validation with Disposable Domain Check",
@@ -388,7 +388,7 @@
           "}"
         ],
         "tags": ["javascript", "email", "validation", "disposable", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       }
     ]
   },
@@ -434,7 +434,7 @@
           "}"
         ],
         "tags": ["javascript", "dom", "class", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Remove Class from an Element",
@@ -445,7 +445,7 @@
           "}"
         ],
         "tags": ["javascript", "dom", "class", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Set Text Content of an Element",
@@ -456,7 +456,7 @@
           "}"
         ],
         "tags": ["javascript", "dom", "text", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Show Loading Spinner",
@@ -473,7 +473,7 @@
           "}"
         ],
         "tags": ["javascript", "loading", "spinner", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       },
       {
         "title": "Show/Hide Loading Spinner(with CSS)",
@@ -543,7 +543,7 @@
           "document.head.appendChild(style);"
         ],
         "tags": ["javascript", "spinner", "loading", "UI", "utility"],
-        "author": "Chirantan Patra"
+        "author": "cpatra11"
       }
     ]
   },
