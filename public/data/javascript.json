@@ -184,6 +184,192 @@
         ],
         "tags": ["javascript", "utility", "throttle", "performance"],
         "author": "technoph1le"
+      },
+      {
+        "title": "Get URL Parameters",
+        "description": "Extracts the parameters from the URL's query string and returns them as an object.",
+        "code": [
+          "function getURLParams() {",
+          "  const params = {};",
+          "  const queryString = window.location.search.substring(1);",
+          "  const pairs = queryString.split('&');",
+          "  pairs.forEach(function(pair) {",
+          "    const [key, value] = pair.split('=');",
+          "    params[key] = decodeURIComponent(value);",
+          "  });",
+          "  return params;",
+          "}"
+        ],
+        "tags": ["javascript", "utility", "url", "parameters"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Get Multiple URL Query Parameters",
+        "description": "Extracts specific query parameters from the URL's query string based on an array of parameter names.",
+        "code": [
+          "function getMultipleURLParams(paramNames) {",
+          "  const params = {};",
+          "  const queryString = window.location.search.substring(1);",
+          "  const pairs = queryString.split('&');",
+          "  pairs.forEach(function(pair) {",
+          "    const [key, value] = pair.split('=');",
+          "    if (paramNames.includes(key)) {",
+          "      params[key] = decodeURIComponent(value);",
+          "    }",
+          "  });",
+          "  return params;",
+          "}"
+        ],
+        "tags": ["javascript", "url", "queryparams", "utility", "multiple"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Build a Query String from an Object",
+        "description": "Converts an object of key-value pairs into a URL query string.",
+        "code": [
+          "function getQueryString(params) {",
+          "  const queryString = Object.keys(params)",
+          "    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))",
+          "    .join('&');",
+          "  return queryString;",
+          "}"
+        ],
+        "tags": ["javascript", "url", "querystring", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Detect Device Type",
+        "description": "Detects the device type (mobile, tablet, desktop) based on the user agent.",
+        "code": [
+          "function detectDeviceType() {",
+          "  const userAgent = navigator.userAgent.toLowerCase();",
+          "  if (/mobile/.test(userAgent)) {",
+          "    return 'mobile';",
+          "  } else if (/tablet/.test(userAgent)) {",
+          "    return 'tablet';",
+          "  } else {",
+          "    return 'desktop';",
+          "  }",
+          "}"
+        ],
+        "tags": ["javascript", "device", "mobile", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Deep Clone an Object",
+        "description": "Creates a deep clone of an object or array, recursively copying all properties and values.",
+        "code": [
+          "function deepClone(obj) {",
+          "  if (obj === null || typeof obj !== 'object') {",
+          "    return obj;",
+          "  }",
+          "  if (Array.isArray(obj)) {",
+          "    return obj.map(deepClone);",
+          "  }",
+          "  const clonedObj = {};",
+          "  for (const key in obj) {",
+          "    if (obj.hasOwnProperty(key)) {",
+          "      clonedObj[key] = deepClone(obj[key]);",
+          "    }",
+          "  }",
+          "  return clonedObj;",
+          "}"
+        ],
+        "tags": ["javascript", "object", "clone", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Get Base URL",
+        "description": "Extracts the base URL (protocol + hostname + port) from the current URL.",
+        "code": [
+          "function getURLBase() {",
+          "  const url = new URL(window.location.href);",
+          "  return url.origin;",
+          "}"
+        ],
+        "tags": ["javascript", "url", "baseurl", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Email Validation with Disposable Domain Check",
+        "description": "Validates an email address format and checks if the domain is from a disposable email provider by fetching the list of disposable domains from a remote GitHub repository.",
+        "code": [
+          "async function validateEmail(email) {",
+          "  // Trim leading/trailing spaces",
+          "  email = email.trim();",
+          "",
+          "  // Basic email regex pattern",
+          "  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;",
+          "",
+          "  // Fetch disposable domains list from GitHub",
+          "  const disposableDomainsUrl = 'https://raw.githubusercontent.com/disposable-email-domains/disposable-email-domains/refs/heads/main/disposable_email_blocklist.conf';",
+          "",
+          "  let disposableDomains = [];",
+          "  try {",
+          "    // Fetch the disposable domain list",
+          "    const response = await fetch(disposableDomainsUrl);",
+          "    const text = await response.text();",
+          "",
+          "    // Split text into lines, filter empty ones, and extract domains",
+          "    disposableDomains = text",
+          "      .split('\\n')",
+          "      .filter(line => line.trim() !== '' && !line.startsWith('#')) // Remove comments and empty lines",
+          "      .map(line => line.trim().toLowerCase()); // Convert each domain to lowercase",
+          "  } catch (error) {",
+          "    return { valid: false, message: 'Failed to fetch disposable domain list.' };",
+          "  }",
+          "",
+          "  // Regex validation check",
+          "  if (!emailRegex.test(email)) {",
+          "    return { valid: false, message: 'Invalid email format.' };",
+          "  }",
+          "",
+          "  // Split email into local and domain parts",
+          "  const [localPart, domainPart] = email.toLowerCase().split('@');",
+          "",
+          "  // Check for valid domain (must contain a dot)",
+          "  if (domainPart.indexOf('.') === -1) {",
+          "    return { valid: false, message: 'Domain must contain a dot.' };",
+          "  }",
+          "",
+          "  // Check if local part or domain part is too long",
+          "  if (localPart.length > 64 || domainPart.length > 253) {",
+          "    return { valid: false, message: 'Local part or domain part is too long.' };",
+          "  }",
+          "",
+          "  // Check for invalid characters in the local part",
+          "  const invalidChars = /[^w!#$%&'*+/=?^_`{|}~-]/;",
+          "  if (invalidChars.test(localPart)) {",
+          "    return { valid: false, message: 'Local part contains invalid characters.' };",
+          "  }",
+          "",
+          "  // Check for consecutive dots in the local or domain part",
+          "  if (/(..)/.test(localPart) || /(..)/.test(domainPart)) {",
+          "    return { valid: false, message: 'Consecutive dots are not allowed.' };",
+          "  }",
+          "",
+          "  // Check if local part starts or ends with a dot",
+          "  if (/^\\./.test(localPart) || /\\.$/.test(localPart)) {",
+          "    return { valid: false, message: 'Local part cannot start or end with a dot.' };",
+          "  }",
+          "",
+          "  // Check if domain part starts or ends with a hyphen",
+          "  if (/^-/.test(domainPart) || /-$/.test(domainPart)) {",
+          "    return { valid: false, message: 'Domain part cannot start or end with a hyphen.' };",
+          "  }",
+          "",
+          "  // Check for disposable email addresses (temporary mails)",
+          "  const domain = domainPart.toLowerCase();",
+          "  if (disposableDomains.includes(domain)) {",
+          "    return { valid: false, message: 'Temporary email addresses are not allowed.' };",
+          "  }",
+          "",
+          "  // If all checks pass, return valid",
+          "  return { valid: true, message: 'Valid email address.' };",
+          "}"
+        ],
+        "tags": ["javascript", "email", "validation", "disposable", "utility"],
+        "author": "Chirantan Patra"
       }
     ]
   },
@@ -219,6 +405,70 @@
         ],
         "tags": ["javascript", "dom", "scroll", "ui"],
         "author": "technoph1le"
+      },
+      {
+        "title": "Add Class to an Element",
+        "description": "Adds a specified class to an HTML element.",
+        "code": [
+          "function addClass(element, className) {",
+          "  element.classList.add(className);",
+          "}"
+        ],
+        "tags": ["javascript", "dom", "class", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Remove Class from an Element",
+        "description": "Removes a specified class from an HTML element.",
+        "code": [
+          "function removeClass(element, className) {",
+          "  element.classList.remove(className);",
+          "}"
+        ],
+        "tags": ["javascript", "dom", "class", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Set Text Content of an Element",
+        "description": "Sets the text content of an HTML element.",
+        "code": [
+          "function setTextContent(element, text) {",
+          "  element.textContent = text;",
+          "}"
+        ],
+        "tags": ["javascript", "dom", "text", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Show Loading Spinner",
+        "description": "Displays a loading spinner overlay on the page while an async operation is in progress.",
+        "code": [
+          "function showLoadingSpinner() {",
+          "  const spinner = document.createElement('div');",
+          "  spinner.className = 'spinner';",
+          "  document.body.appendChild(spinner);",
+          "}",
+          "function hideLoadingSpinner() {",
+          "  const spinner = document.querySelector('.spinner');",
+          "  if (spinner) spinner.remove();",
+          "}"
+        ],
+        "tags": ["javascript", "loading", "spinner", "utility"],
+        "author": "Chirantan Patra"
+      },
+      {
+        "title": "Smooth Scroll to an Element",
+        "description": "Scrolls smoothly to a specific element on the page.",
+        "code": [
+          "function smoothScroll(target) {",
+          "  document.querySelector(target).scrollIntoView({",
+          "    behavior: 'smooth',",
+          "    block: 'start'",
+          "  });",
+          "}"
+        ],
+        "tags": ["javascript", "scroll", "smooth", "utility"],
+        "author": "Chirantan Patra"
       }
     ]
   },
