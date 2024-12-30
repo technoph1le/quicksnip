@@ -657,3 +657,72 @@ body:has(.modal-overlay) {
   grid-area: content;
   max-width: 60ch;
 }
+
+/*------------------------------------*\
+  #DEVTOOLS
+\*------------------------------------*/
+
+.devtools-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.devtools-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+}
+
+.devtools-label {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--fs-500);
+  font-weight: 600;
+}
+
+.devtools-input {
+  border: none;
+  outline: none;
+  background: none;
+
+  border-bottom: 1px solid white;
+
+  max-width: 50%;
+}
+
+.devtools-textarea {
+  resize: none;
+  background: none;
+  outline: none;
+
+  height: 25vh;
+  border: 1px solid white;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+.devtools-generated-container {
+  margin-top: 1.5em;
+}
+
+.devtools-generated-title {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--fs-600);
+  font-weight: 600;
+}
+
+.devtools-generated {
+  max-width: 100%;
+  max-height: 20vh;
+
+  overflow-y: auto;
+  
+  margin: 0.5em;
+  padding: 0.5em;
+  border-left: 1px solid white;
+  
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
