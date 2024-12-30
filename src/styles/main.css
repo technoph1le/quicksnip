@@ -465,17 +465,17 @@ abbr {
   background-color: transparent;
   border: 0;
   color: inherit;
-  border-radius: 0;
   text-align: start;
   display: inline-block;
   padding: 0.75em 1em;
   width: 100%;
   font-size: var(--fs-500);
+  border-radius: var(--br-md);
+  border: 1px solid transparent;
+  border-right: 0;
 
   &:is(:hover, :focus-visible):not(.category__btn--active) {
-    /* color: var(--text-primary); */
     background-image: var(--gradient-secondary);
-    border-radius: var(--br-md);
   }
 }
 
@@ -484,7 +484,6 @@ abbr {
   border: 1px solid var(--border-color);
   font-weight: var(--fw-bold);
   color: var(--text-dark);
-  border-radius: var(--br-md);
 }
 
 /*------------------------------------*\
