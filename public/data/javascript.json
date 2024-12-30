@@ -27,6 +27,34 @@
         ],
         "tags": ["javascript", "array", "flatten", "utility"],
         "author": "dostonnabotov"
+      },
+      {
+        "title": "Duplicate Count",
+        "description": "Count the duplicate values of an array",
+        "code": [
+          " function countDuplicates(arr) {",
+          "   const counts = {};",
+          "   arr.forEach((item) => {",
+          "     counts[item] = (counts[item] || 0) + 1;",
+          "   });",
+          " const duplicates = {};",
+          " for (const [key, value] of Object.entries(counts)) {",
+          "  if (value > 1) {",
+          "    duplicates[key] = value;",
+          "  }",
+          " }",
+          "  return duplicates;",
+          "}",
+          "",
+          "// Example usage",
+          "const inputArray = [1, 2, 2, 3, 4, 4, 4, 5];",
+          "const result = countDuplicates(inputArray);",
+          "",
+          "console.log(result);",
+          "// Output: { '2': 2, '4': 3 }"
+        ],
+        "tags": ["javascript", "array", "flatten", "utility"],
+        "author": "JaberChowdhury"
       }
     ]
   },
