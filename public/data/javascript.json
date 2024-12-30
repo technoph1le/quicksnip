@@ -12,7 +12,12 @@
           "const numbers = [1, 2, 2, 3, 4, 4, 5];",
           "console.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]"
         ],
-        "tags": ["javascript", "array", "deduplicate", "utility"],
+        "tags": [
+          "javascript",
+          "array",
+          "deduplicate",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -25,7 +30,12 @@
           "const nestedArray = [1, [2, [3, [4]]]];",
           "console.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]"
         ],
-        "tags": ["javascript", "array", "flatten", "utility"],
+        "tags": [
+          "javascript",
+          "array",
+          "flatten",
+          "utility"
+        ],
         "author": "technoph1le"
       }
     ]
@@ -54,7 +64,12 @@
           "console.log(slugify(title)); // Output: 'hello-world-this-is-a-test'",
           "console.log(slugify(title, \"_\")); // Output: 'hello_world_this_is_a_test'"
         ],
-        "tags": ["javascript", "string", "slug", "utility"],
+        "tags": [
+          "javascript",
+          "string",
+          "slug",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -66,7 +81,12 @@
           "// Usage:",
           "console.log(capitalize('hello')); // Output: 'Hello'"
         ],
-        "tags": ["javascript", "string", "capitalize", "utility"],
+        "tags": [
+          "javascript",
+          "string",
+          "capitalize",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -78,7 +98,12 @@
           "// Usage:",
           "console.log(reverseString('hello')); // Output: 'olleh'"
         ],
-        "tags": ["javascript", "string", "reverse", "utility"],
+        "tags": [
+          "javascript",
+          "string",
+          "reverse",
+          "utility"
+        ],
         "author": "technoph1le"
       }
     ]
@@ -95,7 +120,12 @@
           "// Usage:",
           "console.log(formatDate(new Date())); // Output: '2024-12-10'"
         ],
-        "tags": ["javascript", "date", "format", "utility"],
+        "tags": [
+          "javascript",
+          "date",
+          "format",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -112,7 +142,12 @@
           "const date2 = new Date('2024-12-31');",
           "console.log(getTimeDifference(date1, date2)); // Output: 365"
         ],
-        "tags": ["javascript", "date", "time-difference", "utility"],
+        "tags": [
+          "javascript",
+          "date",
+          "time-difference",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -177,7 +212,12 @@
           "const randomFunction = () => console.log('Function called!');",
           "times(randomFunction, 3); // Logs 'Function called!' three times"
         ],
-        "tags": ["javascript", "function", "repeat", "utility"],
+        "tags": [
+          "javascript",
+          "function",
+          "repeat",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -195,7 +235,12 @@
           "// Usage:",
           "window.addEventListener('resize', debounce(() => console.log('Resized!'), 500));"
         ],
-        "tags": ["javascript", "utility", "debounce", "performance"],
+        "tags": [
+          "javascript",
+          "utility",
+          "debounce",
+          "performance"
+        ],
         "author": "technoph1le"
       },
       {
@@ -225,8 +270,38 @@
           "// Usage:",
           "document.addEventListener('scroll', throttle(() => console.log('Scrolled!'), 1000));"
         ],
-        "tags": ["javascript", "utility", "throttle", "performance"],
+        "tags": [
+          "javascript",
+          "utility",
+          "throttle",
+          "performance"
+        ],
         "author": "technoph1le"
+      },
+      {
+        "title": "Generate Random Color Hex Value",
+        "description": "Generates a random hexadecimal color value for use in web design or styling.",
+        "code": [
+          "const generateRandomHexColor = () => {",
+          "  const chars = '0123456789abcdef';",
+          "  let hex = '#';",
+          "  for (let i = 0; i < 6; i++) {",
+          "    hex += chars[Math.floor(Math.random() * chars.length)].toUpperCase();",
+          "  }",
+          "  return hex;",
+          "};",
+          "",
+          "// Usage:",
+          "console.log(generateRandomHexColor()); // Example output: '#1A2B3C'"
+        ],
+        "tags": [
+          "javascript",
+          "utility",
+          "random",
+          "hexadecimal",
+          "color"
+        ],
+        "author": "vnikolaew"
       }
     ]
   },
@@ -245,7 +320,12 @@
           "const element = document.querySelector('.my-element');",
           "toggleClass(element, 'active');"
         ],
-        "tags": ["javascript", "dom", "class", "utility"],
+        "tags": [
+          "javascript",
+          "dom",
+          "class",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -260,7 +340,12 @@
           "const target = document.querySelector('#target');",
           "smoothScroll(target);"
         ],
-        "tags": ["javascript", "dom", "scroll", "ui"],
+        "tags": [
+          "javascript",
+          "dom",
+          "scroll",
+          "ui"
+        ],
         "author": "technoph1le"
       }
     ]
@@ -279,7 +364,12 @@
           "// Usage:",
           "addToLocalStorage('user', { name: 'John', age: 30 });"
         ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
+        "tags": [
+          "javascript",
+          "localStorage",
+          "storage",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -295,7 +385,12 @@
           "const user = getFromLocalStorage('user');",
           "console.log(user); // Output: { name: 'John', age: 30 }"
         ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
+        "tags": [
+          "javascript",
+          "localStorage",
+          "storage",
+          "utility"
+        ],
         "author": "technoph1le"
       },
       {
@@ -309,7 +404,12 @@
           "// Usage:",
           "clearLocalStorage(); // Removes all items from localStorage"
         ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
+        "tags": [
+          "javascript",
+          "localStorage",
+          "storage",
+          "utility"
+        ],
         "author": "technoph1le"
       }
     ]
