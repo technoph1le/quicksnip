@@ -644,6 +644,21 @@ body:has(.modal-overlay) {
   }
 }
 
+.styled-button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+
+  &:is(:hover, :focus-visible) {
+    color: var(--clr-accent);
+  }
+}
+
 .footer__nav:first-child {
   grid-area: nav1;
   width: 100%;

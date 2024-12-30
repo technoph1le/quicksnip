@@ -1,4 +1,9 @@
+import { useState } from 'react';
+import { DevTools } from '../components/devtools/DevTools';
+
 const Footer = () => {
+  const [ devToolsOpenned, setDevToolsOpenned ] = useState(false);
+
   return (
     <>
       <hr className="divider" />
@@ -36,6 +41,21 @@ const Footer = () => {
               >
                 Add your own snippet
               </a>
+            </li>
+            <li>
+              <button
+                onClick={() => setDevToolsOpenned((c) => !c)}
+                className="styled-button"
+              >
+                Open the snippet DevTools
+              </button>
+              {
+                devToolsOpenned ? (
+                  <DevTools
+                    closeModal={() => setDevToolsOpenned(false)}
+                  />
+                ) : null
+              }
             </li>
             <li>
               <a
