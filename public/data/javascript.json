@@ -425,6 +425,34 @@
         ],
         "tags": ["javascript", "localStorage", "storage", "utility"],
         "author": "dostonnabotov"
+      },
+      {
+        "title": "Local Storage Utility",
+        "description": "A class with static methods to interact with localStorage. (set, get, remove). It also supports encoding and decoding values.",
+        "code": [
+          "export class LocalStore {",
+          "  static set(key: string, value: any, encode = false) {",
+          "    if(!value) return;",
+          "    localStorage.setItem(key, encode ? btoa(JSON.stringify(value)) : JSON.stringify(value));",
+          "  }",
+          "",
+          "  static get(key: string, decode = false) {",
+          "    const value = localStorage.getItem(key);",
+          "    return value ? (decode ? JSON.parse(atob(value)) : JSON.parse(value)) : null;",
+          "  }",
+          "",
+          "  static remove(key: string) {",
+          "    localStorage.removeItem(key);",
+          "  }",
+          "}",
+          "",
+          "// Usage:",
+          "LocalStore.set('user', { name: 'John', age: 30 }, true);",
+          "const user = LocalStore.get('user', true);",
+          " console.log(user); // Output: { name: 'John', age: 30 }"
+        ],
+        "tags": ["javascript", "localStorage", "storage", "utility"],
+        "author": "marville001"
       }
     ]
   },
