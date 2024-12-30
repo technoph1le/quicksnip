@@ -16,5 +16,90 @@
         "author": "Vaibhav-kesarwani"
       }
     ]
+  },
+  {
+    "categoryName": "Array Manipulation",
+    "snippets": [
+      {
+        "title": "Find Minimum and Maximum Values in an Array",
+        "description": "Finds the minimum and maximum values in an array using only a single loop.",
+        "code": [
+          "void findMinMax(const int arr[], int size, int& min, int& max) {",
+          "    min = arr[0];",
+          "    max = arr[0];",
+          "    for (int i = 1; i < size; i++) {",
+          "        if (arr[i] < min) {",
+          "            min = arr[i];",
+          "        } else if (arr[i] > max) {",
+          "            max = arr[i];",
+          "        }",
+          "    }",
+          "}"
+        ],
+        "tags": ["cpp", "array", "loop", "min-max", "min", "max"],
+        "author": "shovan04"
+      },
+      {
+        "title": "Find Second Largest Element in an Array",
+        "description": "Finds the second largest element in an array using only a single loop.",
+        "code": [
+          "int findSecondLargest(const int arr[], int size) {",
+          "    int largest = INT_MIN;",
+          "    int secondLargest = INT_MIN;",
+          "    for (int i = 0; i < size; i++) {",
+          "        if (arr[i] > largest) {",
+          "            secondLargest = largest;",
+          "            largest = arr[i];",
+          "        } else if (arr[i] < largest && arr[i] > secondLargest) {",
+          "            secondLargest = arr[i];",
+          "        }",
+          "    }",
+          "    return secondLargest;",
+          "}"
+        ],
+        "tags": ["cpp", "array", "loop", "Largest", "Second Largest"],
+        "author": "shovan04"
+      },
+      {
+        "title": "Sort Array in Descending Order",
+        "description": "Sorts an array in descending order using the Bubble Sort algorithm.",
+        "code": [
+          "void bubbleSortDescending(int arr[], int size) {",
+          "    for (int i = 0; i < size - 1; i++) {",
+          "        for (int j = 0; j < size - i - 1; j++) {",
+          "            if (arr[j] < arr[j + 1]) {",
+          "                std::swap(arr[j], arr[j + 1]);",
+          "            }",
+          "        }",
+          "    }",
+          "}"
+        ],
+        "tags": ["cpp", "array", "bubble-sort", "descending", "swap"],
+        "author": "shovan04"
+      },
+      {
+        "title": "Find Common Elements in Two Arrays",
+        "description": "Finds the common elements in two arrays using a single loop and without using any additional data structures.",
+        "code": [
+          "#include <climits>",
+          "",
+          "",
+          "void findCommonElements(const int arr1[], int size1, int arr2[], int size2, int& commonCount) {",
+              "commonCount = 0; // Initialize the count of common elements",
+              "for (int i = 0; i < size1; i++) {",
+                "for (int j = 0; j < size2; j++) {",
+                    "if (arr1[i] == arr2[j]) { // Compare elements from both arrays",
+                      "commonCount++;",
+                      "arr2[j] = INT_MAX; // Mark the element in arr2 as found",
+                      "break; // Stop checking once a match is found",
+                    "}",
+                " }",
+              "}",
+          "}"
+          ],
+        "tags": ["cpp", "array", "common", "loop", "mark-found"],
+        "author": "shovan04"
+      }
+    ]
   }
 ]
