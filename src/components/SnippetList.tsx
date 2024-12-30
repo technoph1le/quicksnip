@@ -45,9 +45,7 @@ const SnippetList = ({ query }: { query?: string | null }) => {
                 <img src={language.icon} alt={language.lang} />
               </div>
               <h3 className="snippet__title">{snippet.title}</h3>
-              {query && (
-                <p className="snippet__description">{snippet.description}</p>
-              )}
+              <p className="snippet__description">{snippet.description}</p>
             </button>
           </li>
         ))}
