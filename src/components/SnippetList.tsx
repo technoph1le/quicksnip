@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { SnippetType } from "../types";
 import { useAppContext } from "../contexts/AppContext";
 import { useSnippets } from "../hooks/useSnippets";
 
 import SnippetModal from "./SnippetModal";
-import { LeftAngleArrowIcon } from "./Icons";
 
-const SnippetList = () => {
+const SnippetList = ({ query }: { query?: string | null }) => {
   const { language, snippet, setSnippet } = useAppContext();
-  const { fetchedSnippets } = useSnippets();
+  const { fetchedSnippets, loading } = useSnippets();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  if (!fetchedSnippets)
-    return (
-      <div>
-        <LeftAngleArrowIcon />
-      </div>
+  const filteredSnippets = useMemo(() => {
+    if (!query) return fetchedSnippets;
+    return fetchedSnippets.filter((snippet) =>
+      snippet.title.toLowerCase().includes(query.toLowerCase())
     );
+  }, [fetchedSnippets, query]);
+
+  if (loading) return <div>Loading...</div>;
+  if (!filteredSnippets || filteredSnippets.length === 0)
+    return <div>No results found for "{query}"</div>;
 
   const handleOpenModal = (activeSnippet: SnippetType) => {
     setIsModalOpen(true);
@@ -31,7 +34,7 @@ const SnippetList = () => {
   return (
     <>
       <ul role="list" className="snippets">
-        {fetchedSnippets.map((snippet, idx) => (
+        {filteredSnippets.map((snippet, idx) => (
           <li key={idx}>
             <button
               className="snippet | flow"
@@ -41,8 +44,10 @@ const SnippetList = () => {
               <div className="snippet__preview">
                 <img src={language.icon} alt={language.lang} />
               </div>
-
               <h3 className="snippet__title">{snippet.title}</h3>
+              {query && (
+                <p className="snippet__description">{snippet.description}</p>
+              )}
             </button>
           </li>
         ))}

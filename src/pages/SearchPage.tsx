@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import SearchSnippetList from "../components/SearchSnippetList";
+import SnippetList from "../components/SnippetList";
 import Sidebar from "../layouts/Sidebar";
 
 const SearchPage = () => {
@@ -11,7 +11,7 @@ const SearchPage = () => {
       <Sidebar />
       <section className="flow">
         <h2 className="section-title">Search Results for: {query}</h2>
-        <SearchSnippetList query={query} />
+        <SnippetList query={query} />
       </section>
     </>
   );
