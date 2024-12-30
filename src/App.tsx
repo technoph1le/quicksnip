@@ -1,27 +1,20 @@
-import { useAppContext } from "./contexts/AppContext";
-
+import { Routes, Route } from "react-router-dom";
 import Header from "./layouts/Header";
 import Banner from "./layouts/Banner";
-import Sidebar from "./layouts/Sidebar";
 import Footer from "./layouts/Footer";
-
-import SnippetList from "./components/SnippetList";
+import HomePage from "./pages/HomePage.tsx";
+import SearchPage from "./pages/SearchPage.tsx";
 
 const App = () => {
-  const { category } = useAppContext();
-
   return (
     <div className="container flow">
       <Header />
       <Banner />
       <main className="main">
-        <Sidebar />
-        <section className="flow">
-          <h2 className="section-title">
-            {category ? category : "Select a category"}
-          </h2>
-          <SnippetList />
-        </section>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+        </Routes>
       </main>
       <Footer />
     </div>

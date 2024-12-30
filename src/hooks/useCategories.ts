@@ -16,7 +16,8 @@ export const useCategories = () => {
   );
 
   const fetchedCategories = useMemo(() => {
-    return data ? data.map((item) => item.categoryName) : [];
+    const categories = data ? data.map((item) => item.categoryName) : [];
+    return ["All snippets", ...categories];
   }, [data]);
 
   return { fetchedCategories, loading, error };

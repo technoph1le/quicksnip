@@ -14,8 +14,10 @@ export const useSnippets = () => {
     `/data/${slugify(language.lang)}.json`
   );
 
-  const fetchedSnippets = data
-    ? data.find((item) => item.categoryName === category)?.snippets
+  const fetchedSnippets: SnippetType[] = data
+    ? category === "All snippets"
+      ? data.flatMap((item) => item.snippets)
+      : (data.find((item) => item.categoryName === category)?.snippets ?? [])
     : [];
 
   return { fetchedSnippets, loading, error };
