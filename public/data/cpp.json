@@ -39,6 +39,86 @@
         ],
         "tags": ["cpp", "string", "split", "utility"],
         "author": "saminjay"
+      },
+      {
+        "title": "Convert to Uppercase",
+        "description": "Converts all characters in a string to uppercase.",
+        "code": [
+          "#include <string>",
+          "#include <algorithm>",
+          "",
+          "std::string toUpperCase(const std::string& input) {",
+          "    std::string result = input;",
+          "    std::transform(result.begin(), result.end(), result.begin(), ::toupper);",
+          "    return result;",
+          "}"
+        ],
+        "tags": ["cpp", "string", "uppercase", "utility"],
+        "author": "tashifkhan"
+      },
+      {
+        "title": "Check Palindrome",
+        "description": "Checks if a string is a palindrome.",
+        "code": [
+          "#include <string>",
+          "#include <algorithm>",
+          "",
+          "bool isPalindrome(const std::string& input) {",
+          "    std::string reversed = input;",
+          "    std::reverse(reversed.begin(), reversed.end());",
+          "    return input == reversed;",
+          "}"
+        ],
+        "tags": ["cpp", "string", "palindrome", "utility"],
+        "author": "tashifkhan"
+      },
+      {
+        "title": "Find Substring",
+        "description": "Finds the first occurrence of a substring in a string.",
+        "code": [
+          "#include <string>",
+          "",
+          "int findSubstring(const std::string& str, const std::string& substr) {",
+          "    return str.find(substr);",
+          "}"
+        ],
+        "tags": ["cpp", "string", "find", "utility"],
+        "author": "tashifkhan"
+      },
+      {
+        "title": "Trim Whitespace",
+        "description": "Trims leading and trailing whitespace from a string.",
+        "code": [
+          "#include <string>",
+          "#include <algorithm>",
+          "",
+          "std::string trimWhitespace(const std::string& input) {",
+          "    size_t start = input.find_first_not_of(\" \\t\\n\");",
+          "    size_t end = input.find_last_not_of(\" \\t\\n\");",
+          "    return (start == std::string::npos || end == std::string::npos)",
+          "               ? \"\" : input.substr(start, end - start + 1);",
+          "}"
+        ],
+        "tags": ["cpp", "string", "trim", "utility"],
+        "author": "tashifkhan"
+      },
+      {
+        "title": "Replace Substring",
+        "description": "Replaces all occurrences of a substring in a string.",
+        "code": [
+          "#include <string>",
+          "",
+          "std::string replaceSubstring(std::string str, const std::string& from, const std::string& to) {",
+          "    size_t start_pos = 0;",
+          "    while ((start_pos = str.find(from, start_pos)) != std::string::npos) {",
+          "        str.replace(start_pos, from.length(), to);",
+          "        start_pos += to.length();",
+          "    }",
+          "    return str;",
+          "}"
+        ],
+        "tags": ["cpp", "string", "replace", "utility"],
+        "author": "tashifkhan"
       }
     ]
   }
