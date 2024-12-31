@@ -5,9 +5,10 @@ import CopyToClipboard from "./CopyToClipboard";
 type Props = {
   language: string;
   code: string[];
+  height?: string;
 };
 
-const CodePreview = ({ language = "markdown", code }: Props) => {
+const CodePreview = ({ language = "markdown", code, height }: Props) => {
   const codeString = code.join("\n");
 
   return (
@@ -17,7 +18,7 @@ const CodePreview = ({ language = "markdown", code }: Props) => {
         language={language}
         style={oneDark}
         wrapLines={true}
-        customStyle={{ margin: "0", maxHeight: "20rem" }}
+        customStyle={{ margin: "0", maxHeight: height ? height : "20rem" }}
       >
         {codeString}
       </SyntaxHighlighter>

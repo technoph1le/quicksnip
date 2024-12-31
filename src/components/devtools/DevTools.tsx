@@ -54,50 +54,53 @@ export const DevTools = ({ closeModal }: DevToolsProps) => {
             } }
         >
             <div className='modal devtools-container'>
-                <div className='devtools-sub-container'>
-                <DevToolsField
-                    key='title'
-                    name='Title'
-                    value={title}
-                    placeholder='e.g., Hello World!'
-                    setValue={(value) => setTitle(value)}
-                />
-                <DevToolsField
-                    key='author'
-                    name='Author'
-                    value={author}
-                    placeholder='e.g., dostonnabotov'
-                    setValue={(value) => setAuthor(value)}
-                />
-                </div>
-                <DevToolsField
-                    key='description'
-                    name='Description'
-                    value={description}
-                    placeholder='e.g., A simple program that prints "Hello, World!" to the console.'
-                    setValue={(value) => setDescription(value)}
-                />
-                <DevToolsField
-                    key='tags'
-                    name='Tags (separated by commas)'
-                    value={tags}
-                    placeholder='e.g., hello, world, program'
-                    setValue={(value) => setTags(value)}
-                />
-                <div className='devtools-field'>
-                    <label htmlFor="code" className='devtools-label'>Code</label>
-                    <textarea
-                        name='code'
-                        id='code'
-                        className='devtools-textarea'
-                        value={code}
-                        placeholder='Paste your code here...'
-                        onChange={(e) => setCode(e.target.value)}
-                    ></textarea>
+                <div className='devtools-form-container'>
+                    <div className='devtools-sub-container'>
+                        <DevToolsField
+                            key='title'
+                            name='Title'
+                            value={title}
+                            placeholder='e.g., Hello World!'
+                            setValue={(value) => setTitle(value)}
+                        />
+                        <DevToolsField
+                            key='author'
+                            name='Author'
+                            value={author}
+                            placeholder='e.g., dostonnabotov'
+                            setValue={(value) => setAuthor(value)}
+                        />
+                    </div>
+                    <DevToolsField
+                        key='description'
+                        name='Description'
+                        value={description}
+                        placeholder='e.g., A simple program that prints "Hello, World!" to the console.'
+                        setValue={(value) => setDescription(value)}
+                    />
+                    <DevToolsField
+                        key='tags'
+                        name='Tags (separated by commas)'
+                        value={tags}
+                        placeholder='e.g., hello, world, program'
+                        setValue={(value) => setTags(value)}
+                    />
+                    <div className='devtools-field'>
+                        <label htmlFor="code" className='devtools-label'>Code</label>
+                        <textarea
+                            name='code'
+                            id='code'
+                            className='devtools-textarea'
+                            value={code}
+                            placeholder='Paste your code here...'
+                            spellCheck={false}
+                            onChange={(e) => setCode(e.target.value)}
+                        ></textarea>
+                    </div>
                 </div>
                 <div className='devtools-generated-container'>
                     <h3 className='devtools-generated-title'>Your generated snippet:</h3>
-                    <CodePreview language='plaintext' code={[generated]} />
+                    <CodePreview language='json' code={[generated]} height='80vh' />
                 </div>
             </div>
         </div>,

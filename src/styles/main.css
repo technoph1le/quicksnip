@@ -679,6 +679,17 @@ body:has(.modal-overlay) {
 
 .devtools-container {
   display: flex;
+  flex-direction: row;
+  background-color: var(--bg-primary);
+  gap: 1em;
+  max-height: 95vh;
+  max-width: 95vw;
+  overflow-y: auto;
+}
+
+.devtools-form-container {
+  width: 50%;
+  display: flex;
   flex-direction: column;
   background-color: var(--bg-primary);
   gap: 1em;
@@ -690,13 +701,6 @@ body:has(.modal-overlay) {
   flex-direction: row;
   justify-content: space-between;
   gap: 1em;
-}
-
-@media screen and (max-width: 768px) {
-  .devtools-sub-container {
-    flex-direction: column;
-  }
-  
 }
 
 .devtools-field {
@@ -728,20 +732,22 @@ body:has(.modal-overlay) {
   resize: none;
   background: none;
   outline: none;
-
+  font-family: var(--ff-mono);
+  color: var(--text-secondary);
   height: 25vh;
   border: 1px solid var(--clr-neutral-500);
   border-radius: 0.5em;
   padding: 0.5em;
+  resize: vertical;
 }
 
 .devtools-generated-container {
-  margin-top: 1.5em;
+  width: 50%;
 }
 
 .devtools-generated-title {
   color: var(--text-primary);
-  margin-bottom: 0.1em;
+  margin-bottom: 0.2em;
   text-decoration: none;
   font-size: var(--fs-600);
   font-weight: 600;
@@ -759,4 +765,19 @@ body:has(.modal-overlay) {
   
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+@media screen and (max-width: 1024px) {
+  .devtools-container {
+    flex-direction: column;
+  }
+  .devtools-sub-container {
+    flex-direction: column;
+  }
+  .devtools-form-container {
+    width: 100%;
+  }
+  .devtools-generated-container {
+    width: 100%;
+  }
 }
