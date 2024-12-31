@@ -948,6 +948,36 @@
         ],
         "tags": ["javascript", "number", "format", "utility"],
         "author": "realvishalrana"
+      },
+      {
+        "title": "Roman to Integer",
+        "description": "Converts roman numeric system into integers.",
+        "code": [
+          "const romanToInt = function(roman) {",
+          "    let symbols = { 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000 };",
+          "    roman = Array.from(roman);",
+          "    let output = 0, toMiss = [];",
+          "    for(let i = 0; i < roman.length; i++) {",
+          "        let curr = symbols[roman[i]];",
+          "        let next = symbols[roman[i+1]];",
+          "",
+          "        if(!toMiss.includes(i)) {",
+          "            if(next > curr) {",
+          "                output+=(next-curr);",
+          "                toMiss.push(i+1);",
+          "            } else {",
+          "                output+=curr;",
+          "            }",
+          "        }",
+          "    }",
+          "    return output;",
+          "};",
+          "",
+          "// Usage:",
+          "console.log(romanToInt(\"IXV\")); // Output: '14'"
+        ],
+        "tags": ["javascript", "date", "format", "roman", "utility"],
+        "author": "r3medy"
       }
     ]
   }
