@@ -60,5 +60,51 @@
         "author": "saminjay"
       }
     ]
+  },
+  {
+    "categoryName": "Vector Manipulation",
+    "snippets": [
+      {
+        "title": "Remove duplicates",
+        "description": "Removes duplicates from an vector of ints",
+        "code": [
+            "#include <algorithm>",
+            "#include <vector>",
+            "",
+            "void removeDublicates(std::vector<int> &input) {",
+            "    std::sort(input.begin(), input.end()); // sort the vector",
+            "    auto last = std::unique(input.begin(), input.end());  // remove duplicates",
+            "    input.erase(last, input.end());  // resize vector and delete the undefined elements",
+            "}"
+        ],
+        "tags": ["cpp", "vector", "deduplicate", "utility"],
+        "author": "AnkushRoy-code"
+      },
+      {
+        "title": "Remove duplicates",
+        "description": "Remove elements that occur n number of times in a vector",
+        "code": [
+            "#include <vector>",
+            "#include <unordered_map>",
+            "#include <algorithm>",
+            "",
+            "void removeOccurrences(std::vector<int>& vec, int n) {",
+            "   std::unordered_map<int, int> frequency; // count frequencies",
+            "   for (int num : vec) {",
+            "       frequency[num]++;",
+            "   }",
+            "",
+            "   vec.erase( // remove elements with n number of occurrences",
+            "       std::remove_if(vec.begin(), vec.end(), [&](int x) {",
+            "           return frequency[x] == n;",
+            "       }),",
+            "       vec.end()",
+            "   );",
+            "}"
+        ],
+        "tags": ["cpp", "vector", "utility"],
+        "author": "AnkushRoy-code"
+      }
+    ]
   }
 ]
