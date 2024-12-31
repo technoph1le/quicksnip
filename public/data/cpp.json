@@ -60,5 +60,45 @@
         "author": "saminjay"
       }
     ]
+  },
+  { 
+    "categoryName": "Array Manipulation", 
+    "snippets": [ 
+      { 
+        "title": "Transform Vector", 
+        "description": "Transforms a vector using a function", 
+        "code": [ 
+          "#include <ranges>", 
+          "#include <vector>", 
+          "", 
+          "template <typename T, typename F>", 
+          "auto transform(const std::vector<T>& vec, F&& transformer) {", 
+          "    using U = std::invoke_result_t<F, T>;", 
+          "    return vec", 
+          "        | std::views::transform(std::forward<F>(transformer))", 
+          "        | std::ranges::to<std::vector<U>>();", 
+          "}" 
+        ], 
+        "tags": ["cpp", "array", "transform", "utility"], 
+        "author": "majvax" 
+      }, 
+      { 
+        "title": "Filter Vector", 
+        "description": "Filters a vector using a predicate function", 
+        "code": [ 
+          "#include <ranges>", 
+          "#include <vector>", 
+          "", 
+          "template <typename T, typename P>", 
+          "auto filter(const std::vector<T>& vec, P&& predicate) {", 
+          "    return vec", 
+          "        | std::views::filter(std::forward<P>(predicate))", 
+          "        | std::ranges::to<std::vector<T>>();", 
+          "}" 
+        ], 
+        "tags": ["cpp", "array", "filter", "utility"], 
+        "author": "majvax" 
+      } 
+    ] 
   }
 ]
