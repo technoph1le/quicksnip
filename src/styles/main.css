@@ -680,10 +680,27 @@ body:has(.modal-overlay) {
 .devtools-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
+  background-color: var(--bg-primary);
+  gap: 1em;
+}
+
+.devtools-sub-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .devtools-sub-container {
+    flex-direction: column;
+  }
+  
 }
 
 .devtools-field {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.1em;
@@ -694,16 +711,17 @@ body:has(.modal-overlay) {
   text-decoration: none;
   font-size: var(--fs-500);
   font-weight: 600;
+  margin-bottom: 0.1em;
 }
 
 .devtools-input {
   border: none;
   outline: none;
   background: none;
-
-  border-bottom: 1px solid white;
-
-  max-width: 50%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid var(--clr-neutral-500);
+  flex-grow: 1;
 }
 
 .devtools-textarea {
@@ -712,7 +730,7 @@ body:has(.modal-overlay) {
   outline: none;
 
   height: 25vh;
-  border: 1px solid white;
+  border: 1px solid var(--clr-neutral-500);
   border-radius: 0.5em;
   padding: 0.5em;
 }
@@ -723,6 +741,7 @@ body:has(.modal-overlay) {
 
 .devtools-generated-title {
   color: var(--text-primary);
+  margin-bottom: 0.1em;
   text-decoration: none;
   font-size: var(--fs-600);
   font-weight: 600;
@@ -731,12 +750,12 @@ body:has(.modal-overlay) {
 .devtools-generated {
   max-width: 100%;
   max-height: 20vh;
-
+  background-color: var(--bg-secondary);
+  border-radius: 0.5em;
   overflow-y: auto;
   
   margin: 0.5em;
   padding: 0.5em;
-  border-left: 1px solid white;
   
   white-space: pre-wrap;
   word-wrap: break-word;
