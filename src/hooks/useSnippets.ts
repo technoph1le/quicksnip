@@ -8,17 +8,28 @@ type CategoryData = {
   snippets: SnippetType[];
 };
 
+const getSnippetsFromData = (
+  data: CategoryData[] | null,
+  category: string
+): SnippetType[] => {
+  if (!data?.length) {
+    return [];
+  }
+
+  if (category === "All snippets") {
+    return data.flatMap((item) => item.snippets);
+  }
+
+  const categoryData = data.find((item) => item.categoryName === category);
+  return categoryData?.snippets ?? [];
+};
+
 export const useSnippets = () => {
   const { language, category } = useAppContext();
-  const { data, loading, error } = useFetch<CategoryData[]>(
-    `/data/${slugify(language.lang)}.json`
-  );
+  const endpoint = `/data/${slugify(language.lang)}.json`;
+  const { data, loading, error } = useFetch<CategoryData[]>(endpoint);
 
-  const fetchedSnippets: SnippetType[] = data
-    ? category === "All snippets"
-      ? data.flatMap((item) => item.snippets)
-      : (data.find((item) => item.categoryName === category)?.snippets ?? [])
-    : [];
+  const fetchedSnippets = getSnippetsFromData(data, category);
 
   return { fetchedSnippets, loading, error };
 };
