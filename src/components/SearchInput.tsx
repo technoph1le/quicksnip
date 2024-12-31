@@ -1,33 +1,46 @@
 import { SearchIcon } from "./Icons";
 import { useState, useCallback } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 
 const SearchInput = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchValue, setSearchValue] = useState(searchParams.get("q") || "");
 
-  const debouncedSearch = useCallback(
-    debounce((query: string) => {
-      if (query) {
-        setSearchParams({ q: query });
-        navigate(`/search?q=${encodeURIComponent(query.trim().toLowerCase())}`);
-      } else {
+  const navigateToSearch = useCallback(
+    (query: string, isCompletedSearch = false) => {
+      const trimmedQuery = query.trim().toLowerCase();
+
+      if (!trimmedQuery) {
+        // Remove search params and navigate to home if query is empty
         setSearchParams({});
-        navigate("/");
+        navigate("/", { replace: true });
+        return;
       }
-    }, 200),
-    [setSearchParams, navigate]
+
+      // Set the search params with the query
+      // Use replace: true for keypresses (when isCompletedSearch is false)
+      setSearchParams({ q: trimmedQuery }, { replace: !isCompletedSearch });
+
+      // Only navigate if we're not already on the search page
+      if (location.pathname !== "/search") {
+        navigate("/search", {
+          replace: isCompletedSearch || location.pathname === "/search",
+        });
+      }
+    },
+    [navigate, location.pathname, setSearchParams]
   );
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    debouncedSearch(value);
-  };
-
   return (
-    <div className="search-field">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        navigateToSearch(searchValue, true);
+      }}
+      className="search-field"
+    >
       <label htmlFor="search">
         <SearchIcon />
       </label>
@@ -35,24 +48,17 @@ const SearchInput = () => {
         type="search"
         id="search"
         value={searchValue}
-        onChange={handleSearch}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          setSearchValue(newValue);
+          navigateToSearch(newValue, false);
+        }}
+        onBlur={() => navigateToSearch(searchValue, true)}
         placeholder="Search here..."
         autoComplete="off"
       />
-    </div>
+    </form>
   );
 };
-
-// Debounce utility function
-function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: ReturnType<typeof setTimeout>;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-}
 
 export default SearchInput;
