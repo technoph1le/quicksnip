@@ -1,0 +1,133 @@
+[
+  {
+    "categoryName": "Basics",
+    "snippets": [
+      {
+        "title": "Hello, World! in Java",
+        "description": "Prints Hello, World! to the console in Java.",
+        "code": [
+          "public class HelloWorld {",
+          "    public static void main(String[] args) {",
+          "        System.out.println(\"Hello, World!\");",
+          "    }",
+          "}"
+        ],
+        "tags": ["java", "printing", "hello-world", "utility"],
+        "author": "0xRasla"
+      }
+    ]
+  },
+  {
+    "categoryName": "Concurrency",
+    "snippets": [
+      {
+        "title": "Basic Multithreading",
+        "description": "Creates a thread and runs a task concurrently in Java.",
+        "code": [
+          "public class MultithreadingDemo {",
+          "    public static void main(String[] args) {",
+          "        Thread thread = new Thread(() -> System.out.println(\"Running in a separate thread!\"));",
+          "        thread.start();",
+          "        System.out.println(\"Main thread continues...\");",
+          "    }",
+          "}"
+        ],
+        "tags": ["java", "concurrency", "threading"],
+        "author": "0xRasla"
+      }
+    ]
+  },
+  {
+    "categoryName": "Advanced File Handling",
+    "snippets": [
+      {
+        "title": "Calculate Directory Size",
+        "description": "Recursively calculates the size of a directory in bytes.",
+        "code": [
+          "import java.io.File;",
+          "",
+          "public class DirectoryUtils {",
+          "    public static long calculateDirectorySize(File directory) {",
+          "        if (directory.isFile()) {",
+          "            return directory.length();",
+          "        }",
+          "        long size = 0;",
+          "        File[] files = directory.listFiles();",
+          "        if (files != null) {",
+          "            for (File file : files) {",
+          "                size += calculateDirectorySize(file);",
+          "            }",
+          "        }",
+          "        return size;",
+          "    }",
+          "}",
+          "",
+          "// Usage:",
+          "File dir = new File(\"/path/to/directory\");",
+          "System.out.println(\"Directory size: \" + DirectoryUtils.calculateDirectorySize(dir) + \" bytes\");"
+        ],
+        "tags": ["java", "file", "utility"],
+        "author": "0xRasla"
+      }
+    ]
+  },
+  {
+    "categoryName": "JSON Handling",
+    "snippets": [
+      {
+        "title": "Parse JSON Using Jackson",
+        "description": "Parses a JSON string into a Java object using the Jackson library.",
+        "code": [
+          "import com.fasterxml.jackson.databind.ObjectMapper;",
+          "import java.io.IOException;",
+          "",
+          "public class JsonParser {",
+          "    public static class User {",
+          "        public String name;",
+          "        public int age;",
+          "    }",
+          "",
+          "    public static User parseJson(String json) throws IOException {",
+          "        ObjectMapper mapper = new ObjectMapper();",
+          "        return mapper.readValue(json, User.class);",
+          "    }",
+          "}",
+          "",
+          "// Usage:",
+          "String json = \"{\\\"name\\\":\\\"Alice\\\",\\\"age\\\":30}\";",
+          "try {",
+          "    JsonParser.User user = JsonParser.parseJson(json);",
+          "    System.out.println(user.name + \" is \" + user.age + \" years old.\");",
+          "} catch (IOException e) {",
+          "    e.printStackTrace();",
+          "}"
+        ],
+        "tags": ["java", "json", "parsing"],
+        "author": "0xRasla"
+      }
+    ]
+  },
+  {
+    "categoryName": "Stream Operations",
+    "snippets": [
+      {
+        "title": "Find Max with Streams",
+        "description": "Finds the maximum value in a list using Java Streams.",
+        "code": [
+          "import java.util.Arrays;",
+          "import java.util.List;",
+          "",
+          "public class StreamUtils {",
+          "    public static void main(String[] args) {",
+          "        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);",
+          "        int max = numbers.stream().max(Integer::compare).orElse(-1);",
+          "        System.out.println(\"Max value: \" + max);",
+          "    }",
+          "}"
+        ],
+        "tags": ["java", "streams", "utility"],
+        "author": "0xRasla"
+      }
+    ]
+  }
+]
