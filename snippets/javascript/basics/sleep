@@ -1,0 +1,19 @@
+---
+title: Sleep Function
+description: Delays execution for a specified number of milliseconds.
+author: 1010Jan1010
+tags: javascript,sleep,utility
+---
+
+```js
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Usage:
+sleep(2000).then(() => console.log('Executed after 2 seconds'));
+
+// Or:
+async function example() {
+  await sleep(2000);
+  console.log('Executed after 2 seconds');
+};
+```
