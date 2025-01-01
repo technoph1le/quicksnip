@@ -1,0 +1,34 @@
+[
+    {
+        "lang": "C",
+        "icon": "/icons/c.svg"
+    },
+    {
+        "lang": "CPP",
+        "icon": "/icons/cpp.svg"
+    },
+    {
+        "lang": "CSS",
+        "icon": "/icons/css.svg"
+    },
+    {
+        "lang": "HTML",
+        "icon": "/icons/html.svg"
+    },
+    {
+        "lang": "JAVASCRIPT",
+        "icon": "/icons/javascript.svg"
+    },
+    {
+        "lang": "PYTHON",
+        "icon": "/icons/python.svg"
+    },
+    {
+        "lang": "RUST",
+        "icon": "/icons/rust.svg"
+    },
+    {
+        "lang": "SCSS",
+        "icon": "/icons/scss.svg"
+    }
+]

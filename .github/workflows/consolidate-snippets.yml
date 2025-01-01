@@ -3,7 +3,7 @@ name: Consolidate JSON Files
 on:
   push:
     paths:
-      - "public/data/**"
+      - "snippets/**"
 
 permissions:
   contents: write
@@ -25,14 +25,14 @@ jobs:
         run: |
           npm install
 
-      - name: Consolidate JSON files
+      - name: Consolidate Snippets
         run: |
-          node utils/consolidate.js  # Run the script located in the utils/ folder
+          node utils/consolidateSnippets.js  # Run the script located in the utils/ folder
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add public/consolidated/all_snippets.json
+          git add public/consolidated/*
           git commit -m "Update consolidated snippets"
           git push

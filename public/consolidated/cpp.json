@@ -1,0 +1,51 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "James-Beans",
+                "tags": [
+                    "cpp",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Reverse String",
+                "description": "Reverses the characters in a string.",
+                "author": "Vaibhav-kesarwani",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "reverse",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <algorithm>\n\nstd::string reverseString(const std::string& input) {\n    std::string reversed = input;\n    std::reverse(reversed.begin(), reversed.end());\n    return reversed;\n}\n"
+            },
+            {
+                "title": "Split String",
+                "description": "Splits a string by a delimiter",
+                "author": "saminjay",
+                "tags": [
+                    "cpp",
+                    "string",
+                    "split",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n"
+            }
+        ]
+    }
+]

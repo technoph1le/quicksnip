@@ -1,0 +1,23 @@
+name: Checks snippets syntax
+
+on:
+  pull_request:
+    paths:
+      - 'snippets/**'
+
+jobs:
+  check-snippets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Check if snippets are formated correctly
+        run: |
+          node utils/checkSnippetFormatting.js # Run the script located in the utils/ folder

@@ -14,7 +14,7 @@ type CategoryData = {
 export const useCategories = () => {
   const { language } = useAppContext();
   const { data, loading, error } = useFetch<CategoryData[]>(
-    `/data/${slugify(language.lang)}.json`
+    `/consolidated/${slugify(language.lang)}.json`
   );
 
   const fetchedCategories = useMemo(() => {

@@ -12,7 +12,7 @@ type CategoryData = {
 export const useSnippets = () => {
   const { language, category } = useAppContext();
   const { data, loading, error } = useFetch<CategoryData[]>(
-    `/data/${slugify(language.lang)}.json`
+    `/consolidated/${slugify(language.lang)}.json`
   );
 
   const fetchedSnippets = data

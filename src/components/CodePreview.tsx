@@ -6,7 +6,7 @@ import CopyToClipboard from "./CopyToClipboard";
 
 type Props = {
   language: string;
-  code: string[];
+  code: string;
 };
 
 const CodePreview = ({ language = "markdown", code }: Props) => {
@@ -14,7 +14,7 @@ const CodePreview = ({ language = "markdown", code }: Props) => {
 
   return (
     <div className="code-preview">
-      <CopyToClipboard text={code.join("\n")} className="modal__copy" />
+      <CopyToClipboard text={code} className="modal__copy" />
       <SyntaxHighlighter
         language={language}
         style={highlighterStyle.style}
@@ -27,7 +27,7 @@ const CodePreview = ({ language = "markdown", code }: Props) => {
           padding: "1rem",
         }}
       >
-        {code.join("\n")}
+        {code}
       </SyntaxHighlighter>
     </div>
   );
