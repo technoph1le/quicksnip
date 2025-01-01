@@ -246,7 +246,7 @@
         "tags": ["string", "case", "camelCase"],
         "author": "aumirza"
       },
-            {
+      {
         "title": "Convert String to Title Case",
         "description": "Converts a given string into Title Case.",
         "code": [
@@ -260,7 +260,7 @@
         "tags": ["string", "case", "titleCase"],
         "author": "aumirza"
       },
-            {
+      {
         "title": "Convert String to Pascal Case",
         "description": "Converts a given string into Pascal Case.",
         "code": [
@@ -274,7 +274,7 @@
         "tags": ["string", "case", "pascalCase"],
         "author": "aumirza"
       },
-            {
+      {
         "title": "Convert String to Param Case",
         "description": "Converts a given string into param-case.",
         "code": [
@@ -786,6 +786,51 @@
         ],
         "tags": ["javascript", "date", "day-of-year", "utility"],
         "author": "axorax"
+      },
+      {
+        "title": "Convert to Unix Timestamp",
+        "description": "Converts a date to a Unix timestamp in seconds.",
+        "code": [
+          "/**",
+          " * Converts a date string or Date object to Unix timestamp in seconds.",
+          " *",
+          " * @param {string|Date} input - A valid date string or Date object.",
+          " * @returns {number} - The Unix timestamp in seconds.",
+          " * @throws {Error} - Throws an error if the input is invalid.",
+          " */",
+          "function convertToUnixSeconds(input) {",
+          "  if (typeof input === 'string') {",
+          "    if (!input.trim()) {",
+          "      throw new Error('Date string cannot be empty or whitespace');",
+          "    }",
+          "  } else if (!input) {",
+          "    throw new Error('Input is required');",
+          "  }",
+          "",
+          "  let date;",
+          "",
+          "  if (typeof input === 'string') {",
+          "    date = new Date(input);",
+          "  } else if (input instanceof Date) {",
+          "    date = input;",
+          "  } else {",
+          "    throw new Error('Input must be a valid date string or Date object');",
+          "  }",
+          "",
+          "  if (isNaN(date.getTime())) {",
+          "    throw new Error('Invalid date provided');",
+          "  }",
+          "",
+          "  return Math.floor(date.getTime() / 1000);",
+          "}",
+          "",
+          "// Usage",
+          "console.log(convertToUnixSeconds('2025-01-01T12:00:00Z')); // 1735732800",
+          "console.log(convertToUnixSeconds(new Date('2025-01-01T12:00:00Z'))); // 1735732800",
+          "console.log(convertToUnixSeconds(new Date())); //Current Unix timestamp in seconds (varies depending on execution time)"
+        ],
+        "tags": ["javascript", "date", "unix", "timestamp", "utility"],
+        "author": "Yugveer06"
       }
     ]
   },
@@ -1315,7 +1360,7 @@
       }
     ]
   },
-    {
+  {
     "categoryName": "Regular expression",
     "snippets": [
       {
@@ -1353,7 +1398,7 @@
           "  });",
           "}"
         ],
-        "tags": ["javascript","regex"],
+        "tags": ["javascript", "regex"],
         "author": "aumirza"
       }
     ]
