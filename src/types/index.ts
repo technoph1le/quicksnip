@@ -16,6 +16,11 @@ export type SnippetType = {
   author: string;
 };
 
+export type HighlighterStyleType = {
+  name: string;
+  style: { [key: string]: React.CSSProperties };
+};
+
 export type AppState = {
   language: LanguageType;
   setLanguage: React.Dispatch<React.SetStateAction<LanguageType>>;
@@ -23,4 +28,10 @@ export type AppState = {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   snippet: SnippetType | null;
   setSnippet: React.Dispatch<React.SetStateAction<SnippetType | null>>;
+  theme: "dark" | "light";
+  toggleTheme: () => void;
+  highlighterStyle: HighlighterStyleType;
+  setHighlighterStyle: React.Dispatch<
+    React.SetStateAction<HighlighterStyleType>
+  >;
 };

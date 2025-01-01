@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  oneDark,
-  oneLight,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+
+import { useAppContext } from "@contexts/AppContext";
 
 import CopyToClipboard from "./CopyToClipboard";
 
@@ -13,34 +10,22 @@ type Props = {
 };
 
 const CodePreview = ({ language = "markdown", code }: Props) => {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    const handleThemeChange = () => {
-      const newTheme = document.documentElement.getAttribute("data-theme") as
-        | "dark"
-        | "light";
-      setTheme(newTheme || "dark");
-    };
-
-    handleThemeChange();
-    const observer = new MutationObserver(handleThemeChange);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const { highlighterStyle } = useAppContext();
 
   return (
     <div className="code-preview">
       <CopyToClipboard text={code.join("\n")} className="modal__copy" />
       <SyntaxHighlighter
         language={language}
-        style={theme === "dark" ? oneDark : oneLight}
+        style={highlighterStyle.style}
         wrapLines={true}
-        customStyle={{ margin: "0", maxHeight: "20rem" }}
+        customStyle={{
+          margin: "0",
+          maxHeight: "20rem",
+          fontSize: "0.875rem",
+          lineHeight: "1.5",
+          padding: "1rem",
+        }}
       >
         {code.join("\n")}
       </SyntaxHighlighter>

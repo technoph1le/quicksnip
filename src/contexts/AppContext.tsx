@@ -1,4 +1,12 @@
-import { createContext, FC, useContext, useState } from "react";
+import {
+  createContext,
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { AppState, LanguageType, SnippetType } from "@types";
 
@@ -8,6 +16,8 @@ const defaultLanguage: LanguageType = {
   icon: "/icons/javascript.svg",
 };
 
+const defaultHighlighterStyle = { name: "oneDark", style: oneDark };
+
 // TODO: add custom loading and error handling
 const defaultState: AppState = {
   language: defaultLanguage,
@@ -16,6 +26,10 @@ const defaultState: AppState = {
   setCategory: () => {},
   snippet: null,
   setSnippet: () => {},
+  theme: "dark",
+  toggleTheme: () => {},
+  highlighterStyle: defaultHighlighterStyle,
+  setHighlighterStyle: () => {},
 };
 
 const AppContext = createContext<AppState>(defaultState);
@@ -26,6 +40,30 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
   const [language, setLanguage] = useState<LanguageType>(defaultLanguage);
   const [category, setCategory] = useState<string>("");
   const [snippet, setSnippet] = useState<SnippetType | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">(
+    (localStorage.getItem("theme") as "dark" | "light" | null) ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+  );
+  const [highlighterStyle, setHighlighterStyle] = useState<
+    AppState["highlighterStyle"]
+  >(defaultHighlighterStyle);
+
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  }, [theme]);
+
+  /**
+   * set the theme on initial load
+   */
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppContext.Provider
@@ -36,6 +74,10 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
         setCategory,
         snippet,
         setSnippet,
+        theme,
+        toggleTheme,
+        highlighterStyle,
+        setHighlighterStyle,
       }}
     >
       {children}

@@ -1,20 +1,19 @@
 import { useState } from "react";
 
-import { LanguageType } from "@types";
-
-interface UseKeyboardNavigationProps {
-  items: LanguageType[];
+interface UseKeyboardNavigationProps<T> {
+  // items: LanguageType[];
+  items: Array<T>;
   isOpen: boolean;
-  onSelect: (item: LanguageType) => void;
+  onSelect: (item: T) => void;
   onClose: () => void;
 }
 
-export const useKeyboardNavigation = ({
+export const useKeyboardNavigation = <T>({
   items,
   isOpen,
   onSelect,
   onClose,
-}: UseKeyboardNavigationProps) => {
+}: UseKeyboardNavigationProps<T>) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {

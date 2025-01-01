@@ -1,3 +1,4 @@
+import HighlighterStyleSelector from "@components/HighlighterStyleSelector";
 import { GitHubIcon } from "@components/Icons";
 import LinkButton from "@components/LinkButton";
 import Logo from "@components/Logo";
@@ -11,6 +12,9 @@ const Header = () => {
       <nav className="primary-nav">
         <SearchInput />
         <ThemeToggle />
+        <div className="header__highlighter-style-selector">
+          <HighlighterStyleSelector />
+        </div>
         <LinkButton
           href="https://github.com/dostonnabotov/quicksnip/blob/main/CONTRIBUTING.md"
           target="_blank"
