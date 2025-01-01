@@ -15,6 +15,25 @@
         "code": ["p {", "  letter-spacing: 0.05em;", "}"],
         "tags": ["css", "typography", "spacing"],
         "author": "dostonnabotov"
+      },
+      {
+        "title": "Text Transformation",
+        "description": "It can be used to turn text into uppercase or lowercase letters, or capitalize the first letter of each word",
+        "code": [
+          "p.uppercase {",
+          "  text-transform: uppercase;",
+          "}",
+          "",
+          "p.lowercase {",
+          "  text-transform: lowercase;",
+          "}",
+          "",
+          "p.capitalize {",
+          "  text-transform: capitalize;",
+          "}"
+        ],
+        "tags": ["css", "typography", "text"],
+        "author": "Haider-Mukhtar"
       }
     ]
   },
