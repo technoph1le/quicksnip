@@ -1,19 +1,20 @@
 import { useState } from "react";
 
-interface UseKeyboardNavigationProps<T> {
-  // items: LanguageType[];
-  items: Array<T>;
+import { SelectorOption } from "@types";
+
+interface UseKeyboardNavigationProps {
+  options: Array<SelectorOption>;
   isOpen: boolean;
-  onSelect: (item: T) => void;
+  onSelect: (item: SelectorOption) => void;
   onClose: () => void;
 }
 
-export const useKeyboardNavigation = <T>({
-  items,
+export const useKeyboardNavigation = ({
+  options,
   isOpen,
   onSelect,
   onClose,
-}: UseKeyboardNavigationProps<T>) => {
+}: UseKeyboardNavigationProps) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(-1);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -22,16 +23,16 @@ export const useKeyboardNavigation = <T>({
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
-        setFocusedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+        setFocusedIndex((prev) => (prev < options.length - 1 ? prev + 1 : 0));
         break;
       case "ArrowUp":
         event.preventDefault();
-        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
+        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : options.length - 1));
         break;
       case "Enter":
         event.preventDefault();
         if (focusedIndex >= 0) {
-          onSelect(items[focusedIndex]);
+          onSelect(options[focusedIndex]);
         }
         break;
       case "Escape":

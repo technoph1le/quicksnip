@@ -35,3 +35,8 @@ export type AppState = {
     React.SetStateAction<HighlighterStyleType>
   >;
 };
+
+export interface SelectorOption {
+  name: string;
+  icon?: string;
+}
