@@ -7,7 +7,7 @@ import { SelectorOption } from "@types";
 import Selector from "./Selector";
 
 const LanguageSelector = () => {
-  const { language, setLanguage } = useAppContext();
+  const { language, toggleLanguage } = useAppContext();
   const { fetchedLanguages, loading, error } = useLanguages();
 
   const options = useMemo(
@@ -24,7 +24,7 @@ const LanguageSelector = () => {
     if (!selected) {
       return;
     }
-    setLanguage(selected);
+    toggleLanguage(selected);
   };
 
   if (loading) {

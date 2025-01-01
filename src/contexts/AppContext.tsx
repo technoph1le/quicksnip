@@ -9,6 +9,7 @@ import {
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { highlighterStyles } from "@consts/highlighter-styles";
+import { useLanguages } from "@hooks/useLanguages";
 import {
   AppState,
   HighlighterStyleType,
@@ -30,7 +31,7 @@ const defaultHighlighterStyle: HighlighterStyleType = {
 // TODO: add custom loading and error handling
 const defaultState: AppState = {
   language: defaultLanguage,
-  setLanguage: () => {},
+  toggleLanguage: () => {},
   category: "",
   setCategory: () => {},
   snippet: null,
@@ -46,6 +47,8 @@ const AppContext = createContext<AppState>(defaultState);
 export const AppProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { fetchedLanguages } = useLanguages();
+
   const [language, setLanguage] = useState<LanguageType>(defaultLanguage);
   const [category, setCategory] = useState<string>("");
   const [snippet, setSnippet] = useState<SnippetType | null>(null);
@@ -65,6 +68,11 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
       : defaultHighlighterStyle
   );
 
+  const toggleLanguage = (newLanguage: LanguageType) => {
+    setLanguage(newLanguage);
+    localStorage.setItem("languageName", newLanguage.lang);
+  };
+
   const toggleTheme = useCallback(() => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
@@ -80,6 +88,29 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
   };
 
   /**
+   * check if the language is saved in local storage
+   */
+  useEffect(() => {
+    if (fetchedLanguages.length === 0) {
+      return;
+    }
+
+    const languageName = localStorage.getItem("languageName");
+    if (!languageName) {
+      return;
+    }
+
+    const selected = fetchedLanguages.find(
+      (lang) => lang.lang === languageName
+    );
+    if (!selected) {
+      return;
+    }
+
+    setLanguage(selected);
+  }, [fetchedLanguages]);
+
+  /**
    * set the theme on initial load
    */
   useEffect(() => {
@@ -91,7 +122,7 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
     <AppContext.Provider
       value={{
         language,
-        setLanguage,
+        toggleLanguage,
         category,
         setCategory,
         snippet,

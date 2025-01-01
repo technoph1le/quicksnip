@@ -23,7 +23,7 @@ export type HighlighterStyleType = {
 
 export type AppState = {
   language: LanguageType;
-  setLanguage: React.Dispatch<React.SetStateAction<LanguageType>>;
+  toggleLanguage: (_: LanguageType) => void;
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   snippet: SnippetType | null;
