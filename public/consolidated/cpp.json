@@ -1,5 +1,36 @@
 [
     {
+        "categoryName": "Array Manipulation",
+        "snippets": [
+            {
+                "title": "Filter Vector",
+                "description": "Filters a vector using a predicate function.",
+                "author": "majvax",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "filter",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <ranges>\n#include <vector>\n\ntemplate <typename T, typename P>\nauto filter(const std::vector<T>& vec, P&& predicate) {\n    return vec\n        | std::views::filter(std::forward<P>(predicate))\n        | std::ranges::to<std::vector<T>>();\n}\n"
+            },
+            {
+                "title": "Transform Vector",
+                "description": "Transforms a vector using a function.",
+                "author": "majvax",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "transform",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <ranges>\n#include <vector>\n\ntemplate <typename T, typename F>\nauto transform(const std::vector<T>& vec, F&& transformer) {\n    using U = std::invoke_result_t<F, T>;\n    return vec\n        | std::views::transform(std::forward<F>(transformer))\n        | std::ranges::to<std::vector<U>>();\n}\n"
+            }
+        ]
+    },
+    {
         "categoryName": "Basics",
         "snippets": [
             {
@@ -8,12 +39,55 @@
                 "author": "James-Beans",
                 "tags": [
                     "cpp",
-                    "printing",
-                    "hello-world",
-                    "utility"
+                    "hello-world"
                 ],
                 "contributors": [],
                 "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "File Handling",
+        "snippets": [
+            {
+                "title": "Find files",
+                "description": "Find all the files in a directory and subdirectories using a predicate function.",
+                "author": "majvax",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "filesystem",
+                    "file_search",
+                    "recursive_search"
+                ],
+                "contributors": [],
+                "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\ntemplate <typename P>\nstd::vector<std::filesystem::path> find_files_recursive(const std::string& path, P&& predicate) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::recursive_directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (!std::filesystem::is_directory(entry) && predicate(entry.path()))\n            files.push_back(entry.path());\n\n    return files;\n}\n\n\n// usage: \n// Find all files with size greater than 10MB\nauto files = find_files_recursive(\"Path\", [](const auto& p) {\n    return std::filesystem::file_size(p) > 10 * 1024 * 1024;\n});\n\n// Find all files with \".pdf\" as extension\nauto files = find_files_recursive(\"Path\", [](const auto& p) {\n    return p.extension() == \".pdf\";\n});\n\n// Find all files writed after The New Year\nauto jan_1_2025 = std::filesystem::file_time_type::clock::from_sys(\n    std::chrono::sys_days{std::chrono::year{2025}/std::chrono::month{1}/std::chrono::day{1}}\n);\nauto files = find_files_recursive(\"Path\", [jan_1_2025](const auto& p) {\n    return std::filesystem::last_write_time(p) > jan_1_2025;\n}),\n"
+            },
+            {
+                "title": "Find files",
+                "description": "Find all the files in a directory using a predicate function.",
+                "author": "majvax",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "filesystem",
+                    "file_search"
+                ],
+                "contributors": [],
+                "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\ntemplate <typename P>\nstd::vector<std::filesystem::path> find_files(const std::string& path, P&& predicate) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (!std::filesystem::is_directory(entry) && predicate(entry.path()))\n            files.push_back(entry.path());\n\n    return files;\n}\n\n\n// usage: \n// Find all files with size greater than 10MB\nauto files = find_files(\"Path\", [](const auto& p) {\n    return std::filesystem::file_size(p) > 10 * 1024 * 1024;\n});\n\n// Find all files with \".pdf\" as extension\nauto files = find_files(\"Path\", [](const auto& p) {\n    return p.extension() == \".pdf\";\n});\n\n// Find all files writed after The New Year\nauto jan_1_2025 = std::filesystem::file_time_type::clock::from_sys(\n    std::chrono::sys_days{std::chrono::year{2025}/std::chrono::month{1}/std::chrono::day{1}}\n);\nauto files = find_files(\"Path\", [jan_1_2025](const auto& p) {\n    return std::filesystem::last_write_time(p) > jan_1_2025;\n}),\n"
+            },
+            {
+                "title": "List Directories",
+                "description": "Lists all the directories in a path.",
+                "author": "majvax",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "filesystem",
+                    "directories"
+                ],
+                "contributors": [],
+                "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\nstd::vector<std::filesystem::path> list_directories(const std::string& path) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (std::filesystem::is_directory(entry))\n            files.push_back(entry.path());\n\n    return files;\n}\n"
             }
         ]
     },
