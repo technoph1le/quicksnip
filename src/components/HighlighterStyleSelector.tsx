@@ -5,7 +5,7 @@ import { SelectorOption } from "@types";
 import Selector from "./Selector";
 
 const HighlighterStyleSelector = () => {
-  const { highlighterStyle, setHighlighterStyle } = useAppContext();
+  const { highlighterStyle, toggleHighlighterStyle } = useAppContext();
 
   const options = highlighterStyles.map((style) => ({
     name: style.name,
@@ -18,7 +18,7 @@ const HighlighterStyleSelector = () => {
     if (!selected) {
       return;
     }
-    setHighlighterStyle(selected);
+    toggleHighlighterStyle(selected);
   };
 
   return (

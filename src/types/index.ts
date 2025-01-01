@@ -31,9 +31,7 @@ export type AppState = {
   theme: "dark" | "light";
   toggleTheme: () => void;
   highlighterStyle: HighlighterStyleType;
-  setHighlighterStyle: React.Dispatch<
-    React.SetStateAction<HighlighterStyleType>
-  >;
+  toggleHighlighterStyle: (_: HighlighterStyleType) => void;
 };
 
 export interface SelectorOption {

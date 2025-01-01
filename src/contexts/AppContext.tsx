@@ -8,7 +8,13 @@ import {
 } from "react";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import { AppState, LanguageType, SnippetType } from "@types";
+import { highlighterStyles } from "@consts/highlighter-styles";
+import {
+  AppState,
+  HighlighterStyleType,
+  LanguageType,
+  SnippetType,
+} from "@types";
 
 // tokens
 const defaultLanguage: LanguageType = {
@@ -16,7 +22,10 @@ const defaultLanguage: LanguageType = {
   icon: "/icons/javascript.svg",
 };
 
-const defaultHighlighterStyle = { name: "oneDark", style: oneDark };
+const defaultHighlighterStyle: HighlighterStyleType = {
+  name: "oneDark",
+  style: oneDark,
+};
 
 // TODO: add custom loading and error handling
 const defaultState: AppState = {
@@ -29,7 +38,7 @@ const defaultState: AppState = {
   theme: "dark",
   toggleTheme: () => {},
   highlighterStyle: defaultHighlighterStyle,
-  setHighlighterStyle: () => {},
+  toggleHighlighterStyle: () => {},
 };
 
 const AppContext = createContext<AppState>(defaultState);
@@ -48,7 +57,13 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
   );
   const [highlighterStyle, setHighlighterStyle] = useState<
     AppState["highlighterStyle"]
-  >(defaultHighlighterStyle);
+  >(
+    localStorage.getItem("highlighterStyleName")
+      ? highlighterStyles.find(
+          (style) => style.name === localStorage.getItem("highlighterStyleName")
+        ) || defaultHighlighterStyle
+      : defaultHighlighterStyle
+  );
 
   const toggleTheme = useCallback(() => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -56,6 +71,13 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
   }, [theme]);
+
+  const toggleHighlighterStyle = (
+    newHighlighterStyle: HighlighterStyleType
+  ) => {
+    setHighlighterStyle(newHighlighterStyle);
+    localStorage.setItem("highlighterStyleName", newHighlighterStyle.name);
+  };
 
   /**
    * set the theme on initial load
@@ -77,7 +99,7 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
         theme,
         toggleTheme,
         highlighterStyle,
-        setHighlighterStyle,
+        toggleHighlighterStyle,
       }}
     >
       {children}
