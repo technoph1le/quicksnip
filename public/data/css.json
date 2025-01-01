@@ -245,8 +245,8 @@
         "author": "dostonnabotov"
       },
       {
-        "title": "Hover Grayscale Effect", 
-        "description": "Applies a grayscale effect to the image on hover.",
+        "title": "Hover to Reveal Color", 
+        "description": "A card with an image that transitions from grayscale to full color on hover.",
         "code": [
           ".card {",
           "  height: 300px;",
