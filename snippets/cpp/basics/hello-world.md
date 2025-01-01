@@ -1,8 +1,8 @@
 ---
-title: Hello, World!
-description: Prints Hello, World! to the terminal.
+Tags: cpp,hello-world
 author: James-Beans
-tags: cpp,printing,hello-world,utility
+description: Prints Hello, World! to the terminal.
+title: Hello, World!
 ---
 
 ```cpp
