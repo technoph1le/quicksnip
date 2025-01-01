@@ -4,6 +4,15 @@
     "categoryName": "Basic Layouts",
     "snippets": [
       {
+        "title": "One-Liner Ad-Free Fullscreen Iframe",
+        "description": "An iframe that takes up the whole screen and blocks ads, you can change some if the tags to change the size or sandbox properties.",
+        "code": [
+         "<iframe sandbox='allow-forms allow-scripts allow-same-origin allow-top-navigation allow-presentation' scrolling='yes' allowfullscreen='true' src='https://example.com'></iframe>"
+        ],
+        "tags": ["html", "one-liner", "iframe"],
+        "author": "SamJ2104"
+      }
+      {
         "title": "Sticky Header-Footer Layout",
         "description": "Full-height layout with sticky header and footer, using modern viewport units and flexbox.",
         "code": [
