@@ -13,8 +13,8 @@ You can contribute in two main ways:
 
 If you have a feature request or want to fix a bug, feel free to:
 
-- [Open an Issue](https://github.com/dostonnabotov/sass-template/issues) to let me know what’s up.
-- [Send a pull request](https://github.com/dostonnabotov/sass-template/pulls) with your changes.
+- [Open an Issue](https://github.com/dostonnabotov/quicksnip/issues) to let me know what’s up.
+- [Send a pull request](https://github.com/dostonnabotov/quicksnip/pulls) with your changes.
 
 ---
 

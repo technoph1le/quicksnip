@@ -22,8 +22,8 @@ Want to help make QuickSnip even better? You can contribute by:
 
 Got a feature idea or bug fix? Here's how you can contribute:
 
-- [Open an issue](https://github.com/dostonnabotov/sass-template/issues) to share your ideas or report a bug.
-- [Send a pull request](https://github.com/dostonnabotov/sass-template/pulls) with your changes.
+- [Open an issue](https://github.com/dostonnabotov/quicksnip/issues) to share your ideas or report a bug.
+- [Send a pull request](https://github.com/dostonnabotov/quicksnip/pulls) with your changes.
 
 ### Adding a Snippet
 

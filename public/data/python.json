@@ -1,455 +1,915 @@
 [
-  {
-    "categoryName": "Basics",
-    "snippets": [
-      {
-        "title": "Hello, World!",
-        "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "print(\"Hello, World!\") # Prints Hello, World! to the terminal."
-        ],
-        "tags": ["python", "printing", "hello-world", "utility"],
-        "author": "James-Beans"
-      }
-    ]
-  },  
-  {
-    "categoryName": "String Manipulation",
-    "snippets": [
-      {
-        "title": "Reverse String",
-        "description": "Reverses the characters in a string.",
-        "code": [
-          "def reverse_string(s):",
-          "    return s[::-1]",
-          "",
-          "# Usage:",
-          "print(reverse_string('hello'))  # Output: 'olleh'"
-        ],
-        "tags": ["python", "string", "reverse", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Check Palindrome",
-        "description": "Checks if a string is a palindrome.",
-        "code": [
-          "def is_palindrome(s):",
-          "    s = s.lower().replace(' ', '')",
-          "    return s == s[::-1]",
-          "",
-          "# Usage:",
-          "print(is_palindrome('A man a plan a canal Panama'))  # Output: True"
-        ],
-        "tags": ["python", "string", "palindrome", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Count Vowels",
-        "description": "Counts the number of vowels in a string.",
-        "code": [
-          "def count_vowels(s):",
-          "    vowels = 'aeiou'",
-          "    return len([char for char in s.lower() if char in vowels])",
-          "",
-          "# Usage:",
-          "print(count_vowels('hello'))  # Output: 2"
-        ],
-        "tags": ["python", "string", "vowels", "count", "utility"],
-        "author": "SteliosGee"
-      },
-      {
-        "title": "Check Anagram",
-        "description": "Checks if two strings are anagrams of each other.",
-        "code": [
-          "def is_anagram(s1, s2):",
-          "    return sorted(s1) == sorted(s2)",
-          "",
-          "# Usage:",
-          "print(is_anagram('listen', 'silent'))  # Output: True"
-        ],
-        "tags": ["python", "string", "anagram", "check", "utility"],
-        "author": "SteliosGee"
-      },
-      {
-        "title": "Remove Punctuation",
-        "description": "Removes punctuation from a string.",
-        "code": [
-          "import string",
-          "",
-          "def remove_punctuation(s):",
-          "    return s.translate(str.maketrans('', '', string.punctuation))",
-          "",
-          "# Usage:",
-          "print(remove_punctuation('Hello, World!'))  # Output: 'Hello World'"
-        ],
-        "tags": ["python", "string", "punctuation", "remove", "utility"],
-        "author": "SteliosGee"
-      }
-    ]
-  },
-  {
-    "categoryName": "List Manipulation",
-    "snippets": [
-      {
-        "title": "Flatten Nested List",
-        "description": "Flattens a multi-dimensional list into a single list.",
-        "code": [
-          "def flatten_list(lst):",
-          "    return [item for sublist in lst for item in sublist]",
-          "",
-          "# Usage:",
-          "nested_list = [[1, 2], [3, 4], [5]]",
-          "print(flatten_list(nested_list))  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": ["python", "list", "flatten", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Flatten Unevenly Nested Lists",
-        "description": "Converts unevenly nested lists of any depth into a single flat list.",
-        "code": [
-          "def flatten(nested_list):",
-          "    \"\"\"",
-          "    Flattens unevenly nested lists of any depth into a single flat list.",
-          "    \"\"\"",
-          "    for item in nested_list:",
-          "        if isinstance(item, list):",
-          "            yield from flatten(item)",
-          "        else:",
-          "            yield item",
-          "",
-          "# Usage:",
-          "nested_list = [1, [2, [3, 4]], 5]",
-          "flattened = list(flatten(nested_list))",
-          "print(flattened)  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": [
-          "python",
-          "list",
-          "flattening",
-          "nested-lists",
-          "depth",
-          "utilities"
-        ],
-        "author": "agilarasu"
-      },
-      {
-        "title": "Remove Duplicates",
-        "description": "Removes duplicate elements from a list while maintaining order.",
-        "code": [
-          "def remove_duplicates(lst):",
-          "    return list(dict.fromkeys(lst))",
-          "",
-          "# Usage:",
-          "print(remove_duplicates([1, 2, 2, 3, 4, 4, 5]))  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": ["python", "list", "duplicates", "utility"],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "categoryName": "File Handling",
-    "snippets": [
-      {
-        "title": "Read File Lines",
-        "description": "Reads all lines from a file and returns them as a list.",
-        "code": [
-          "def read_file_lines(filepath):",
-          "    with open(filepath, 'r') as file:",
-          "        return file.readlines()",
-          "",
-          "# Usage:",
-          "lines = read_file_lines('example.txt')",
-          "print(lines)"
-        ],
-        "tags": ["python", "file", "read", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Write to File",
-        "description": "Writes content to a file.",
-        "code": [
-          "def write_to_file(filepath, content):",
-          "    with open(filepath, 'w') as file:",
-          "        file.write(content)",
-          "",
-          "# Usage:",
-          "write_to_file('example.txt', 'Hello, World!')"
-        ],
-        "tags": ["python", "file", "write", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Find Files",
-        "description": "Finds all files of the specified type within a given directory.",
-        "code": [
-          "import os",
-          "",
-          "def find_files(directory, file_type):",
-          "  file_type = file_type.lower()  # Convert file_type to lowercase",
-          "  found_files = []",
-          "",
-          "  for root, _, files in os.walk(directory):",
-          "    for file in files:",
-          "      file_ext = os.path.splitext(file)[1].lower()",
-          "      if file_ext == file_type:",
-          "        full_path = os.path.join(root, file)",
-          "        found_files.append(full_path)",
-          "",
-          "  return found_files",
-          "",
-          "# Example Usage:",
-          "pdf_files = find_files('/path/to/your/directory', '.pdf')",
-          "print(pdf_files)"
-        ],
-        "tags": ["python", "os", "filesystem", "file_search"],
-        "author": "Jackeastern"
-      }
-    ]
-  },
-  {
-    "categoryName": "Math and Numbers",
-    "snippets": [
-      {
-        "title": "Find Factorial",
-        "description": "Calculates the factorial of a number.",
-        "code": [
-          "def factorial(n):",
-          "    if n == 0:",
-          "        return 1",
-          "    return n * factorial(n - 1)",
-          "",
-          "# Usage:",
-          "print(factorial(5))  # Output: 120"
-        ],
-        "tags": ["python", "math", "factorial", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Check Prime Number",
-        "description": "Checks if a number is a prime number.",
-        "code": [
-          "def is_prime(n):",
-          "    if n <= 1:",
-          "        return False",
-          "    for i in range(2, int(n**0.5) + 1):",
-          "        if n % i == 0:",
-          "            return False",
-          "    return True",
-          "",
-          "# Usage:",
-          "print(is_prime(17))  # Output: True"
-        ],
-        "tags": ["python", "math", "prime", "check"],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "categoryName": "Utilities",
-    "snippets": [
-      {
-        "title": "Measure Execution Time",
-        "description": "Measures the execution time of a code block.",
-        "code": [
-          "import time",
-          "",
-          "def measure_time(func, *args):",
-          "    start = time.time()",
-          "    result = func(*args)",
-          "    end = time.time()",
-          "    print(f'Execution time: {end - start:.6f} seconds')",
-          "    return result",
-          "",
-          "# Usage:",
-          "def slow_function():",
-          "    time.sleep(2)",
-          "",
-          "measure_time(slow_function)"
-        ],
-        "tags": ["python", "time", "execution", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Generate Random String",
-        "description": "Generates a random alphanumeric string.",
-        "code": [
-          "import random",
-          "import string",
-          "",
-          "def random_string(length):",
-          "    letters_and_digits = string.ascii_letters + string.digits",
-          "    return ''.join(random.choice(letters_and_digits) for _ in range(length))",
-          "",
-          "# Usage:",
-          "print(random_string(10))  # Output: Random 10-character string"
-        ],
-        "tags": ["python", "random", "string", "utility"],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "categoryName": "JSON Manipulation",
-    "snippets": [
-      {
-        "title": "Read JSON File",
-        "description": "Reads a JSON file and parses its content.",
-        "code": [
-          "import json",
-          "",
-          "def read_json(filepath):",
-          "    with open(filepath, 'r') as file:",
-          "        return json.load(file)",
-          "",
-          "# Usage:",
-          "data = read_json('data.json')",
-          "print(data)"
-        ],
-        "tags": ["python", "json", "file", "read"],
-        "author": "e3nviction"
-      },
-      {
-        "title": "Write JSON File",
-        "description": "Writes a dictionary to a JSON file.",
-        "code": [
-          "import json",
-          "",
-          "def write_json(filepath, data):",
-          "    with open(filepath, 'w') as file:",
-          "        json.dump(data, file, indent=4)",
-          "",
-          "# Usage:",
-          "data = {'name': 'John', 'age': 30}",
-          "write_json('data.json', data)"
-        ],
-        "tags": ["python", "json", "file", "write"],
-        "author": "e3nviction"
-      }
-    ]
-  },
-  {
-    "categoryName": "SQLite Database",
-    "snippets": [
-      {
-        "title": "Create SQLite Database Table",
-        "description": "Creates a table in an SQLite database with a dynamic schema.",
-        "code": [
-          "import sqlite3",
-          "",
-          "def create_table(db_name, table_name, schema):",
-          "    conn = sqlite3.connect(db_name)",
-          "    cursor = conn.cursor()",
-          "    schema_string = ', '.join([f'{col} {dtype}' for col, dtype in schema.items()])",
-          "    cursor.execute(f'''",
-          "        CREATE TABLE IF NOT EXISTS {table_name} (",
-          "            {schema_string}",
-          "        )''')",
-          "    conn.commit()",
-          "    conn.close()",
-          "",
-          "# Usage:",
-          "db_name = 'example.db'",
-          "table_name = 'users'",
-          "schema = {",
-          "    'id': 'INTEGER PRIMARY KEY',",
-          "    'name': 'TEXT',",
-          "    'age': 'INTEGER',",
-          "    'email': 'TEXT'",
-          "}",
-          "create_table(db_name, table_name, schema)"
-        ],
-        "tags": ["python", "sqlite", "database", "table"],
-        "author": "e3nviction"
-      },
-      {
-        "title": "Insert Data into Sqlite Table",
-        "description": "Inserts a row into a specified SQLite table using a dictionary of fields and values.",
-        "code": [
-          "import sqlite3",
-          "",
-          "def insert_into_table(db_path, table_name, data):",
-          "    with sqlite3.connect(db_path) as conn:",
-          "        columns = ', '.join(data.keys())",
-          "        placeholders = ', '.join(['?'] * len(data))",
-          "        sql = f\"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})\"",
-          "        conn.execute(sql, tuple(data.values()))",
-          "        conn.commit()",
-          "",
-          "# Usage:",
-          "db_path = 'example.db'",
-          "table_name = 'users'",
-          "data = {",
-          "    'name': 'John Doe',",
-          "    'email': 'john@example.com',",
-          "    'age': 30",
-          "}",
-          "insert_into_table(db_path, table_name, data)"
-        ],
-        "tags": ["python", "sqlite", "database", "utility"],
-        "author": "e3nviction"
-      }
-    ]
-  },
-  {
-    "categoryName": "Error Handling",
-    "snippets": [
-      {
-        "title": "Safe Division",
-        "description": "Performs division with error handling.",
-        "code": [
-          "def safe_divide(a, b):",
-          "    try:",
-          "        return a / b",
-          "    except ZeroDivisionError:",
-          "        return 'Cannot divide by zero!'",
-          "",
-          "# Usage:",
-          "print(safe_divide(10, 2))  # Output: 5.0",
-          "print(safe_divide(10, 0))  # Output: 'Cannot divide by zero!'"
-        ],
-        "tags": ["python", "error-handling", "division", "utility"],
-        "author": "e3nviction"
-      }
-    ]
-  },
-  {
-    "categoryName": "Datetime Utilities",
-    "snippets": [
-      {
-        "title": "Get Current Date and Time String",
-        "description": "Fetches the current date and time as a formatted string.",
-        "code": [
-          "from datetime import datetime",
-          "",
-          "def get_current_datetime_string():",
-          "    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')",
-          "",
-          "# Usage:",
-          "print(get_current_datetime_string())  # Output: '2023-01-01 12:00:00'"
-        ],
-        "tags": ["python", "datetime", "utility"],
-        "author": "e3nviction"
-      },
-      {
-        "title": "Calculate Date Difference in Milliseconds",
-        "description": "Calculates the difference between two dates in milliseconds.",
-        "code": [
-          "from datetime import datetime",
-          "",
-          "def date_difference_in_millis(date1, date2):",
-          "    delta = date2 - date1",
-          "    return delta.total_seconds() * 1000",
-          "",
-          "# Usage:",
-          "d1 = datetime(2023, 1, 1, 12, 0, 0)",
-          "d2 = datetime(2023, 1, 1, 12, 1, 0)",
-          "print(date_difference_in_millis(d1, d2))"
-        ],
-        "tags": ["python", "datetime", "utility"],
-        "author": "e3nviction"
-      }
-    ]
-  }
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "James-Beans",
+                "tags": [
+                    "python",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "print(\"Hello, World!\") # Prints Hello, World! to the terminal.\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Datetime Utilities",
+        "snippets": [
+            {
+                "title": "Calculate Date Difference in Milliseconds",
+                "description": "Calculates the difference between two dates in milliseconds.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from datetime import datetime\n\ndef date_difference_in_millis(date1, date2):\n    delta = date2 - date1\n    return delta.total_seconds() * 1000\n\n# Usage:\nd1 = datetime(2023, 1, 1, 12, 0, 0)\nd2 = datetime(2023, 1, 1, 12, 1, 0)\nprint(date_difference_in_millis(d1, d2))\n"
+            },
+            {
+                "title": "Check if Date is a Weekend",
+                "description": "Checks whether a given date falls on a weekend.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "weekend",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from datetime import datetime\n\ndef is_weekend(date):\n    try:\n        return date.weekday() >= 5  # Saturday = 5, Sunday = 6\n    except AttributeError:\n        raise TypeError(\"Input must be a datetime object\")\n\n# Usage:\ndate = datetime(2023, 1, 1)\nweekend = is_weekend(date)\nprint(weekend)  # Output: True (Sunday)\n"
+            },
+            {
+                "title": "Determine Day of the Week",
+                "description": "Calculates the day of the week for a given date.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "weekday",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from datetime import datetime\n\ndef get_day_of_week(date):\n    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n    try:\n        return days[date.weekday()]\n    except IndexError:\n        raise ValueError(\"Invalid date\")\n\n# Usage:\ndate = datetime(2023, 1, 1)\nday = get_day_of_week(date)\nprint(day)  # Output: 'Sunday'\n"
+            },
+            {
+                "title": "Generate Date Range List",
+                "description": "Generates a list of dates between two given dates.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "range",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from datetime import datetime, timedelta\n\ndef generate_date_range(start_date, end_date):\n    if start_date > end_date:\n        raise ValueError(\"start_date must be before end_date\")\n\n    current_date = start_date\n    date_list = []\n    while current_date <= end_date:\n        date_list.append(current_date)\n        current_date += timedelta(days=1)\n\n    return date_list\n\n# Usage:\nstart = datetime(2023, 1, 1)\nend = datetime(2023, 1, 5)\ndates = generate_date_range(start, end)\nfor d in dates:\n    print(d.strftime('%Y-%m-%d'))\n# Output: '2023-01-01', '2023-01-02', '2023-01-03', '2023-01-04', '2023-01-05'\n"
+            },
+            {
+                "title": "Get Current Date and Time String",
+                "description": "Fetches the current date and time as a formatted string.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from datetime import datetime\n\ndef get_current_datetime_string():\n    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n\n# Usage:\nprint(get_current_datetime_string())  # Output: '2023-01-01 12:00:00'\n"
+            },
+            {
+                "title": "Get Number of Days in a Month",
+                "description": "Determines the number of days in a specific month and year.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "datetime",
+                    "calendar",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from calendar import monthrange\nfrom datetime import datetime\n\ndef get_days_in_month(year, month):\n    try:\n        return monthrange(year, month)[1]\n    except ValueError as e:\n        raise ValueError(f\"Invalid month or year: {e}\")\n\n# Usage:\ndays = get_days_in_month(2023, 2)\nprint(days)  # Output: 28 (for non-leap year February)\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Error Handling",
+        "snippets": [
+            {
+                "title": "Handle File Not Found Error",
+                "description": "Attempts to open a file and handles the case where the file does not exist.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "error-handling",
+                    "file",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def read_file_safe(filepath):\n    try:\n        with open(filepath, 'r') as file:\n            return file.read()\n    except FileNotFoundError:\n        return \"File not found!\"\n\n# Usage:\nprint(read_file_safe('nonexistent.txt'))  # Output: 'File not found!'\n"
+            },
+            {
+                "title": "Retry Function Execution on Exception",
+                "description": "Retries a function execution a specified number of times if it raises an exception.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "error-handling",
+                    "retry",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import time\n\ndef retry(func, retries=3, delay=1):\n    for attempt in range(retries):\n        try:\n            return func()\n        except Exception as e:\n            print(f\"Attempt {attempt + 1} failed: {e}\")\n            time.sleep(delay)\n    raise Exception(\"All retry attempts failed\")\n\n# Usage:\ndef unstable_function():\n    raise ValueError(\"Simulated failure\")\n\n# Retry 3 times with 2 seconds delay:\ntry:\n    retry(unstable_function, retries=3, delay=2)\nexcept Exception as e:\n    print(e)  # Output: All retry attempts failed\n"
+            },
+            {
+                "title": "Safe Division",
+                "description": "Performs division with error handling.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "error-handling",
+                    "division",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 'Cannot divide by zero!'\n\n# Usage:\nprint(safe_divide(10, 2))  # Output: 5.0\nprint(safe_divide(10, 0))  # Output: 'Cannot divide by zero!'\n"
+            },
+            {
+                "title": "Validate Input with Exception Handling",
+                "description": "Validates user input and handles invalid input gracefully.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "error-handling",
+                    "validation",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def validate_positive_integer(input_value):\n    try:\n        value = int(input_value)\n        if value < 0:\n            raise ValueError(\"The number must be positive\")\n        return value\n    except ValueError as e:\n        return f\"Invalid input: {e}\"\n\n# Usage:\nprint(validate_positive_integer('10'))  # Output: 10\nprint(validate_positive_integer('-5'))  # Output: Invalid input: The number must be positive\nprint(validate_positive_integer('abc'))  # Output: Invalid input: invalid literal for int() with base 10: 'abc'\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "File Handling",
+        "snippets": [
+            {
+                "title": "Append to File",
+                "description": "Appends content to the end of a file.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "append",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def append_to_file(filepath, content):\n    with open(filepath, 'a') as file:\n        file.write(content + '\\n')\n\n# Usage:\nappend_to_file('example.txt', 'This is an appended line.')\n"
+            },
+            {
+                "title": "Check if File Exists",
+                "description": "Checks if a file exists at the specified path.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "exists",
+                    "check",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import os\n\ndef file_exists(filepath):\n    return os.path.isfile(filepath)\n\n# Usage:\nprint(file_exists('example.txt'))  # Output: True or False\n"
+            },
+            {
+                "title": "Copy File",
+                "description": "Copies a file from source to destination.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "copy",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import shutil\n\ndef copy_file(src, dest):\n    shutil.copy(src, dest)\n\n# Usage:\ncopy_file('example.txt', 'copy_of_example.txt')\n"
+            },
+            {
+                "title": "Delete File",
+                "description": "Deletes a file at the specified path.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "delete",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import os\n\ndef delete_file(filepath):\n    if os.path.exists(filepath):\n        os.remove(filepath)\n        print(f'File {filepath} deleted.')\n    else:\n        print(f'File {filepath} does not exist.')\n\n# Usage:\ndelete_file('example.txt')\n"
+            },
+            {
+                "title": "Find Files",
+                "description": "Finds all files of the specified type within a given directory.",
+                "author": "Jackeastern",
+                "tags": [
+                    "python",
+                    "os",
+                    "filesystem",
+                    "file_search"
+                ],
+                "contributors": [],
+                "code": "import os\n\ndef find_files(directory, file_type):\n  file_type = file_type.lower()  # Convert file_type to lowercase\n  found_files = []\n\n  for root, _, files in os.walk(directory):\n    for file in files:\n      file_ext = os.path.splitext(file)[1].lower()\n      if file_ext == file_type:\n        full_path = os.path.join(root, file)\n        found_files.append(full_path)\n\n  return found_files\n\n# Example Usage:\npdf_files = find_files('/path/to/your/directory', '.pdf')\nprint(pdf_files)\n"
+            },
+            {
+                "title": "Get File Extension",
+                "description": "Gets the extension of a file.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "extension",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import os\n\ndef get_file_extension(filepath):\n    return os.path.splitext(filepath)[1]\n\n# Usage:\nprint(get_file_extension('example.txt'))  # Output: '.txt'\n"
+            },
+            {
+                "title": "List Files in Directory",
+                "description": "Lists all files in a specified directory.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "list",
+                    "directory",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import os\n\ndef list_files(directory):\n    return [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]\n\n# Usage:\nfiles = list_files('/path/to/directory')\nprint(files)\n"
+            },
+            {
+                "title": "Read File in Chunks",
+                "description": "Reads a file in chunks of a specified size.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "file",
+                    "read",
+                    "chunks",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def read_file_in_chunks(filepath, chunk_size):\n    with open(filepath, 'r') as file:\n        while chunk := file.read(chunk_size):\n            yield chunk\n\n# Usage:\nfor chunk in read_file_in_chunks('example.txt', 1024):\n    print(chunk)\n"
+            },
+            {
+                "title": "Read File Lines",
+                "description": "Reads all lines from a file and returns them as a list.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "file",
+                    "read",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def read_file_lines(filepath):\n    with open(filepath, 'r') as file:\n        return file.readlines()\n\n# Usage:\nlines = read_file_lines('example.txt')\nprint(lines)\n"
+            },
+            {
+                "title": "Write to File",
+                "description": "Writes content to a file.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "file",
+                    "write",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def write_to_file(filepath, content):\n    with open(filepath, 'w') as file:\n        file.write(content)\n\n# Usage:\nwrite_to_file('example.txt', 'Hello, World!')\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Json Manipulation",
+        "snippets": [
+            {
+                "title": "Filter JSON Data",
+                "description": "Filters a JSON object based on a condition and returns the filtered data.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "json",
+                    "filter",
+                    "data"
+                ],
+                "contributors": [],
+                "code": "import json\n\ndef filter_json_data(filepath, condition):\n    with open(filepath, 'r') as file:\n        data = json.load(file)\n\n    # Filter data based on the provided condition\n    filtered_data = [item for item in data if condition(item)]\n\n    return filtered_data\n\n# Usage:\ncondition = lambda x: x['age'] > 25\nfiltered = filter_json_data('data.json', condition)\nprint(filtered)\n"
+            },
+            {
+                "title": "Flatten Nested JSON",
+                "description": "Flattens a nested JSON object into a flat dictionary.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "json",
+                    "flatten",
+                    "nested"
+                ],
+                "contributors": [],
+                "code": "def flatten_json(nested_json, prefix=''):\n    flat_dict = {}\n    for key, value in nested_json.items():\n        if isinstance(value, dict):\n            flat_dict.update(flatten_json(value, prefix + key + '.'))\n        else:\n            flat_dict[prefix + key] = value\n    return flat_dict\n\n# Usage:\nnested_json = {'name': 'John', 'address': {'city': 'New York', 'zip': '10001'}}\nflattened = flatten_json(nested_json)\nprint(flattened)  # Output: {'name': 'John', 'address.city': 'New York', 'address.zip': '10001'}\n"
+            },
+            {
+                "title": "Merge Multiple JSON Files",
+                "description": "Merges multiple JSON files into one and writes the merged data into a new file.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "json",
+                    "merge",
+                    "file"
+                ],
+                "contributors": [],
+                "code": "import json\n\ndef merge_json_files(filepaths, output_filepath):\n    merged_data = []\n\n    # Read each JSON file and merge their data\n    for filepath in filepaths:\n        with open(filepath, 'r') as file:\n            data = json.load(file)\n            merged_data.extend(data)\n\n    # Write the merged data into a new file\n    with open(output_filepath, 'w') as file:\n        json.dump(merged_data, file, indent=4)\n\n# Usage:\nfiles_to_merge = ['file1.json', 'file2.json']\nmerge_json_files(files_to_merge, 'merged.json')\n"
+            },
+            {
+                "title": "Read JSON File",
+                "description": "Reads a JSON file and parses its content.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "json",
+                    "file",
+                    "read"
+                ],
+                "contributors": [],
+                "code": "import json\n\ndef read_json(filepath):\n    with open(filepath, 'r') as file:\n        return json.load(file)\n\n# Usage:\ndata = read_json('data.json')\nprint(data)\n"
+            },
+            {
+                "title": "Update JSON File",
+                "description": "Updates an existing JSON file with new data or modifies the existing values.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "json",
+                    "update",
+                    "file"
+                ],
+                "contributors": [],
+                "code": "import json\n\ndef update_json(filepath, new_data):\n    # Read the existing JSON data\n    with open(filepath, 'r') as file:\n        data = json.load(file)\n\n    # Update the data with the new content\n    data.update(new_data)\n\n    # Write the updated data back to the JSON file\n    with open(filepath, 'w') as file:\n        json.dump(data, file, indent=4)\n\n# Usage:\nnew_data = {'age': 31}\nupdate_json('data.json', new_data)\n"
+            },
+            {
+                "title": "Validate JSON Schema",
+                "description": "Validates a JSON object against a predefined schema.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "json",
+                    "validation",
+                    "schema"
+                ],
+                "contributors": [],
+                "code": "import jsonschema\nfrom jsonschema import validate\n\ndef validate_json_schema(data, schema):\n    try:\n        validate(instance=data, schema=schema)\n        return True  # Data is valid\n    except jsonschema.exceptions.ValidationError as err:\n        return False  # Data is invalid\n\n# Usage:\nschema = {\n    'type': 'object',\n    'properties': {\n        'name': {'type': 'string'},\n        'age': {'type': 'integer'}\n    },\n    'required': ['name', 'age']\n}\ndata = {'name': 'John', 'age': 30}\nis_valid = validate_json_schema(data, schema)\nprint(is_valid)  # Output: True\n"
+            },
+            {
+                "title": "Write JSON File",
+                "description": "Writes a dictionary to a JSON file.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "json",
+                    "file",
+                    "write"
+                ],
+                "contributors": [],
+                "code": "import json\n\ndef write_json(filepath, data):\n    with open(filepath, 'w') as file:\n        json.dump(data, file, indent=4)\n\n# Usage:\ndata = {'name': 'John', 'age': 30}\nwrite_json('data.json', data)\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "List Manipulation",
+        "snippets": [
+            {
+                "title": "Find Duplicates in a List",
+                "description": "Identifies duplicate elements in a list.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "list",
+                    "duplicates",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def find_duplicates(lst):\n    seen = set()\n    duplicates = set()\n    for item in lst:\n        if item in seen:\n            duplicates.add(item)\n        else:\n            seen.add(item)\n    return list(duplicates)\n\n# Usage:\ndata = [1, 2, 3, 2, 4, 5, 1]\nprint(find_duplicates(data))  # Output: [1, 2]\n"
+            },
+            {
+                "title": "Find Intersection of Two Lists",
+                "description": "Finds the common elements between two lists.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "list",
+                    "intersection",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def list_intersection(lst1, lst2):\n    return [item for item in lst1 if item in lst2]\n\n# Usage:\nlist_a = [1, 2, 3, 4]\nlist_b = [3, 4, 5, 6]\nprint(list_intersection(list_a, list_b))  # Output: [3, 4]\n"
+            },
+            {
+                "title": "Find Maximum Difference in List",
+                "description": "Finds the maximum difference between any two elements in a list.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "list",
+                    "difference",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def max_difference(lst):\n    if not lst or len(lst) < 2:\n        return 0\n    return max(lst) - min(lst)\n\n# Usage:\ndata = [10, 3, 5, 20, 7]\nprint(max_difference(data))  # Output: 17\n"
+            },
+            {
+                "title": "Flatten Nested List",
+                "description": "Flattens a multi-dimensional list into a single list.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "list",
+                    "flatten",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def flatten_list(lst):\n    return [item for sublist in lst for item in sublist]\n\n# Usage:\nnested_list = [[1, 2], [3, 4], [5]]\nprint(flatten_list(nested_list))  # Output: [1, 2, 3, 4, 5]\n"
+            },
+            {
+                "title": "Flatten Unevenly Nested Lists",
+                "description": "Converts unevenly nested lists of any depth into a single flat list.",
+                "author": "agilarasu",
+                "tags": [
+                    "python",
+                    "list",
+                    "flattening",
+                    "nested-lists",
+                    "depth",
+                    "utilities"
+                ],
+                "contributors": [],
+                "code": "def flatten(nested_list):\n    \"\"\"\n    Flattens unevenly nested lists of any depth into a single flat list.\n    \"\"\"\n    for item in nested_list:\n        if isinstance(item, list):\n            yield from flatten(item)\n        else:\n            yield item\n\n# Usage:\nnested_list = [1, [2, [3, 4]], 5]\nflattened = list(flatten(nested_list))\nprint(flattened)  # Output: [1, 2, 3, 4, 5]\n"
+            },
+            {
+                "title": "Partition List",
+                "description": "Partitions a list into sublists of a given size.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "list",
+                    "partition",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def partition_list(lst, size):\n    for i in range(0, len(lst), size):\n        yield lst[i:i + size]\n\n# Usage:\ndata = [1, 2, 3, 4, 5, 6, 7]\npartitions = list(partition_list(data, 3))\nprint(partitions)  # Output: [[1, 2, 3], [4, 5, 6], [7]]\n"
+            },
+            {
+                "title": "Remove Duplicates",
+                "description": "Removes duplicate elements from a list while maintaining order.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "list",
+                    "duplicates",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def remove_duplicates(lst):\n    return list(dict.fromkeys(lst))\n\n# Usage:\nprint(remove_duplicates([1, 2, 2, 3, 4, 4, 5]))  # Output: [1, 2, 3, 4, 5]\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Math And Numbers",
+        "snippets": [
+            {
+                "title": "Calculate Compound Interest",
+                "description": "Calculates compound interest for a given principal amount, rate, and time period.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "math",
+                    "compound interest",
+                    "finance"
+                ],
+                "contributors": [],
+                "code": "def compound_interest(principal, rate, time, n=1):\n    return principal * (1 + rate / n) ** (n * time)\n\n# Usage:\nprint(compound_interest(1000, 0.05, 5))   # Output: 1276.2815625000003\nprint(compound_interest(1000, 0.05, 5, 12)) # Output: 1283.68\n"
+            },
+            {
+                "title": "Check Perfect Square",
+                "description": "Checks if a number is a perfect square.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "math",
+                    "perfect square",
+                    "check"
+                ],
+                "contributors": [],
+                "code": "def is_perfect_square(n):\n    if n < 0:\n        return False\n    root = int(n**0.5)\n    return root * root == n\n\n# Usage:\nprint(is_perfect_square(16))  # Output: True\nprint(is_perfect_square(20))  # Output: False\n"
+            },
+            {
+                "title": "Check Prime Number",
+                "description": "Checks if a number is a prime number.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "math",
+                    "prime",
+                    "check"
+                ],
+                "contributors": [],
+                "code": "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\n# Usage:\nprint(is_prime(17))  # Output: True\n"
+            },
+            {
+                "title": "Convert Binary to Decimal",
+                "description": "Converts a binary string to its decimal equivalent.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "math",
+                    "binary",
+                    "decimal",
+                    "conversion"
+                ],
+                "contributors": [],
+                "code": "def binary_to_decimal(binary_str):\n    return int(binary_str, 2)\n\n# Usage:\nprint(binary_to_decimal('1010'))  # Output: 10\nprint(binary_to_decimal('1101'))  # Output: 13\n"
+            },
+            {
+                "title": "Find Factorial",
+                "description": "Calculates the factorial of a number.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "math",
+                    "factorial",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n - 1)\n\n# Usage:\nprint(factorial(5))  # Output: 120\n"
+            },
+            {
+                "title": "Find LCM (Least Common Multiple)",
+                "description": "Calculates the least common multiple (LCM) of two numbers.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "math",
+                    "lcm",
+                    "gcd",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def lcm(a, b):\n    return abs(a * b) // gcd(a, b)\n\n# Usage:\nprint(lcm(12, 15))  # Output: 60\nprint(lcm(7, 5))    # Output: 35\n"
+            },
+            {
+                "title": "Solve Quadratic Equation",
+                "description": "Solves a quadratic equation ax^2 + bx + c = 0 and returns the roots.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "math",
+                    "quadratic",
+                    "equation",
+                    "solver"
+                ],
+                "contributors": [],
+                "code": "import cmath\n\ndef solve_quadratic(a, b, c):\n    discriminant = cmath.sqrt(b**2 - 4 * a * c)\n    root1 = (-b + discriminant) / (2 * a)\n    root2 = (-b - discriminant) / (2 * a)\n    return root1, root2\n\n# Usage:\nprint(solve_quadratic(1, -3, 2))  # Output: ((2+0j), (1+0j))\nprint(solve_quadratic(1, 2, 5))   # Output: ((-1+2j), (-1-2j))\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Sqlite Database",
+        "snippets": [
+            {
+                "title": "Create SQLite Database Table",
+                "description": "Creates a table in an SQLite database with a dynamic schema.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "sqlite",
+                    "database",
+                    "table"
+                ],
+                "contributors": [],
+                "code": "import sqlite3\n\ndef create_table(db_name, table_name, schema):\n    conn = sqlite3.connect(db_name)\n    cursor = conn.cursor()\n    schema_string = ', '.join([f'{col} {dtype}' for col, dtype in schema.items()])\n    cursor.execute(f'''\n        CREATE TABLE IF NOT EXISTS {table_name} (\n            {schema_string}\n        )''')\n    conn.commit()\n    conn.close()\n\n# Usage:\ndb_name = 'example.db'\ntable_name = 'users'\nschema = {\n    'id': 'INTEGER PRIMARY KEY',\n    'name': 'TEXT',\n    'age': 'INTEGER',\n    'email': 'TEXT'\n}\ncreate_table(db_name, table_name, schema)\n"
+            },
+            {
+                "title": "Insert Data into Sqlite Table",
+                "description": "Inserts a row into a specified SQLite table using a dictionary of fields and values.",
+                "author": "e3nviction",
+                "tags": [
+                    "python",
+                    "sqlite",
+                    "database",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import sqlite3\n\ndef insert_into_table(db_path, table_name, data):\n    with sqlite3.connect(db_path) as conn:\n        columns = ', '.join(data.keys())\n        placeholders = ', '.join(['?'] * len(data))\n        sql = f\"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})\"\n        conn.execute(sql, tuple(data.values()))\n        conn.commit()\n\n# Usage:\ndb_path = 'example.db'\ntable_name = 'users'\ndata = {\n    'name': 'John Doe',\n    'email': 'john@example.com',\n    'age': 30\n}\ninsert_into_table(db_path, table_name, data)\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Capitalize Words",
+                "description": "Capitalizes the first letter of each word in a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "capitalize",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def capitalize_words(s):\n    return ' '.join(word.capitalize() for word in s.split())\n\n# Usage:\nprint(capitalize_words('hello world'))  # Output: 'Hello World'\n"
+            },
+            {
+                "title": "Check Anagram",
+                "description": "Checks if two strings are anagrams of each other.",
+                "author": "SteliosGee",
+                "tags": [
+                    "python",
+                    "string",
+                    "anagram",
+                    "check",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def is_anagram(s1, s2):\n    return sorted(s1) == sorted(s2)\n\n# Usage:\nprint(is_anagram('listen', 'silent'))  # Output: True\n"
+            },
+            {
+                "title": "Check Palindrome",
+                "description": "Checks if a string is a palindrome.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "string",
+                    "palindrome",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]\n\n# Usage:\nprint(is_palindrome('A man a plan a canal Panama'))  # Output: True\n"
+            },
+            {
+                "title": "Convert Snake Case to Camel Case",
+                "description": "Converts a snake_case string to camelCase.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "snake-case",
+                    "camel-case",
+                    "convert",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def snake_to_camel(s):\n    parts = s.split('_')\n    return parts[0] + ''.join(word.capitalize() for word in parts[1:])\n\n# Usage:\nprint(snake_to_camel('hello_world'))  # Output: 'helloWorld'\n"
+            },
+            {
+                "title": "Convert String to ASCII",
+                "description": "Converts a string into its ASCII representation.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "ascii",
+                    "convert",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def string_to_ascii(s):\n    return [ord(char) for char in s]\n\n# Usage:\nprint(string_to_ascii('hello'))  # Output: [104, 101, 108, 108, 111]\n"
+            },
+            {
+                "title": "Count Character Frequency",
+                "description": "Counts the frequency of each character in a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "character-frequency",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "from collections import Counter\n\ndef char_frequency(s):\n    return dict(Counter(s))\n\n# Usage:\nprint(char_frequency('hello'))  # Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}\n"
+            },
+            {
+                "title": "Count Vowels",
+                "description": "Counts the number of vowels in a string.",
+                "author": "SteliosGee",
+                "tags": [
+                    "python",
+                    "string",
+                    "vowels",
+                    "count",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def count_vowels(s):\n    vowels = 'aeiou'\n    return len([char for char in s.lower() if char in vowels])\n\n# Usage:\nprint(count_vowels('hello'))  # Output: 2\n"
+            },
+            {
+                "title": "Count Words",
+                "description": "Counts the number of words in a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "word-count",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def count_words(s):\n    return len(s.split())\n\n# Usage:\nprint(count_words('The quick brown fox'))  # Output: 4\n"
+            },
+            {
+                "title": "Find All Substrings",
+                "description": "Finds all substrings of a given string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "substring",
+                    "find",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def find_substrings(s):\n    substrings = []\n    for i in range(len(s)):\n        for j in range(i + 1, len(s) + 1):\n            substrings.append(s[i:j])\n    return substrings\n\n# Usage:\nprint(find_substrings('abc'))  # Output: ['a', 'ab', 'abc', 'b', 'bc', 'c']\n"
+            },
+            {
+                "title": "Find Longest Word",
+                "description": "Finds the longest word in a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "longest-word",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def find_longest_word(s):\n    words = s.split()\n    return max(words, key=len) if words else ''\n\n# Usage:\nprint(find_longest_word('The quick brown fox'))  # Output: 'quick'\n"
+            },
+            {
+                "title": "Find Unique Characters",
+                "description": "Finds all unique characters in a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "unique",
+                    "characters",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def find_unique_chars(s):\n    return ''.join(sorted(set(s)))\n\n# Usage:\nprint(find_unique_chars('banana'))  # Output: 'abn'\n"
+            },
+            {
+                "title": "Remove Duplicate Characters",
+                "description": "Removes duplicate characters from a string while maintaining the order.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "duplicates",
+                    "remove",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def remove_duplicate_chars(s):\n    seen = set()\n    return ''.join(char for char in s if not (char in seen or seen.add(char)))\n\n# Usage:\nprint(remove_duplicate_chars('programming'))  # Output: 'progamin'\n"
+            },
+            {
+                "title": "Remove Punctuation",
+                "description": "Removes punctuation from a string.",
+                "author": "SteliosGee",
+                "tags": [
+                    "python",
+                    "string",
+                    "punctuation",
+                    "remove",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import string\n\ndef remove_punctuation(s):\n    return s.translate(str.maketrans('', '', string.punctuation))\n\n# Usage:\nprint(remove_punctuation('Hello, World!'))  # Output: 'Hello World'\n"
+            },
+            {
+                "title": "Remove Specific Characters",
+                "description": "Removes specific characters from a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "remove",
+                    "characters",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def remove_chars(s, chars):\n    return ''.join(c for c in s if c not in chars)\n\n# Usage:\nprint(remove_chars('hello world', 'eo'))  # Output: 'hll wrld'\n"
+            },
+            {
+                "title": "Remove Whitespace",
+                "description": "Removes all whitespace from a string.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "whitespace",
+                    "remove",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def remove_whitespace(s):\n    return ''.join(s.split())\n\n# Usage:\nprint(remove_whitespace('hello world'))  # Output: 'helloworld'\n"
+            },
+            {
+                "title": "Reverse String",
+                "description": "Reverses the characters in a string.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "string",
+                    "reverse",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def reverse_string(s):\n    return s[::-1]\n\n# Usage:\nprint(reverse_string('hello'))  # Output: 'olleh'\n"
+            },
+            {
+                "title": "Split Camel Case",
+                "description": "Splits a camel case string into separate words.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "camel-case",
+                    "split",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import re\n\ndef split_camel_case(s):\n    return ' '.join(re.findall(r'[A-Z][a-z]*|[a-z]+', s))\n\n# Usage:\nprint(split_camel_case('camelCaseString'))  # Output: 'camel Case String'\n"
+            },
+            {
+                "title": "Truncate String",
+                "description": "Truncates a string to a specified length and adds an ellipsis.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "string",
+                    "truncate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def truncate_string(s, length):\n    return s[:length] + '...' if len(s) > length else s\n\n# Usage:\nprint(truncate_string('This is a long string', 10))  # Output: 'This is a ...'\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Utilities",
+        "snippets": [
+            {
+                "title": "Convert Bytes to Human-Readable Format",
+                "description": "Converts a size in bytes to a human-readable format.",
+                "author": "axorax",
+                "tags": [
+                    "python",
+                    "bytes",
+                    "format",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "def bytes_to_human_readable(num):\n    for unit in ['B', 'KB', 'MB', 'GB', 'TB', 'PB']:\n        if num < 1024:\n            return f\"{num:.2f} {unit}\"\n        num /= 1024\n\n# Usage:\nprint(bytes_to_human_readable(123456789))  # Output: '117.74 MB'\n"
+            },
+            {
+                "title": "Generate Random String",
+                "description": "Generates a random alphanumeric string.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "random",
+                    "string",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import random\nimport string\n\ndef random_string(length):\n    letters_and_digits = string.ascii_letters + string.digits\n    return ''.join(random.choice(letters_and_digits) for _ in range(length))\n\n# Usage:\nprint(random_string(10))  # Output: Random 10-character string\n"
+            },
+            {
+                "title": "Measure Execution Time",
+                "description": "Measures the execution time of a code block.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "python",
+                    "time",
+                    "execution",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import time\n\ndef measure_time(func, *args):\n    start = time.time()\n    result = func(*args)\n    end = time.time()\n    print(f'Execution time: {end - start:.6f} seconds')\n    return result\n\n# Usage:\ndef slow_function():\n    time.sleep(2)\n\nmeasure_time(slow_function)\n"
+            }
+        ]
+    }
 ]

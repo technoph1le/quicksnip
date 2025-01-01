@@ -1,542 +1,1008 @@
 [
-  {
-    "categoryName": "Basics",
-    "snippets": [
-      {
-        "title": "Hello, World!",
-        "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "console.log(\"Hello, World!\"); // Prints Hello, World! to the console"
-        ],
-        "tags": ["javascript", "printing", "hello-world", "utility"],
-        "author": "James-Beans"
-      }
-    ]
-  },   
-  {
-    "categoryName": "Array Manipulation",
-    "snippets": [
-      {
-        "title": "Remove Duplicates",
-        "description": "Removes duplicate values from an array.",
-        "code": [
-          "const removeDuplicates = (arr) => [...new Set(arr)];",
-          "",
-          "// Usage:",
-          "const numbers = [1, 2, 2, 3, 4, 4, 5];",
-          "console.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": ["javascript", "array", "deduplicate", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Flatten Array",
-        "description": "Flattens a multi-dimensional array.",
-        "code": [
-          "const flattenArray = (arr) => arr.flat(Infinity);",
-          "",
-          "// Usage:",
-          "const nestedArray = [1, [2, [3, [4]]]];",
-          "console.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]"
-        ],
-        "tags": ["javascript", "array", "flatten", "utility"],
-        "author": "dostonnabotov"
-      }, 
-      {
-        "title": "Shuffle Array",
-        "description": "Shuffles an Array.",
-        "code": [
-          "function shuffleArray(array) {",
-          "    for (let i = array.length - 1; i >= 0; i--) {",
-          "        const j = Math.floor(Math.random() * (i + 1));",
-          "        [array[i], array[j]] = [array[j], array[i]];",
-          "    }",
-          "}"
-        ],
-        "tags": ["javascript", "array", "shuffle", "utility"],
-        "author": "loxt-nixo"
-      }
-    ]
-  },
-  {
-    "categoryName": "String Manipulation",
-    "snippets": [
-      {
-        "title": "Slugify String",
-        "description": "Converts a string into a URL-friendly slug format.",
-        "code": [
-          "const slugify = (string, separator = \"-\") => {",
-          "  return string",
-          "    .toString() // Cast to string (optional)",
-          "    .toLowerCase() // Convert the string to lowercase letters",
-          "    .trim() // Remove whitespace from both sides of a string (optional)",
-          "    .replace(/\\s+/g, separator) // Replace spaces with {separator}",
-          "    .replace(/[^\\w\\-]+/g, \"\") // Remove all non-word chars",
-          "    .replace(/\\_/g, separator) // Replace _ with {separator}",
-          "    .replace(/\\-\\-+/g, separator) // Replace multiple - with single {separator}",
-          "    .replace(/\\-$/g, \"\"); // Remove trailing -",
-          "};",
-          "",
-          "// Usage:",
-          "const title = \"Hello, World! This is a Test.\";",
-          "console.log(slugify(title)); // Output: 'hello-world-this-is-a-test'",
-          "console.log(slugify(title, \"_\")); // Output: 'hello_world_this_is_a_test'"
-        ],
-        "tags": ["javascript", "string", "slug", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Capitalize String",
-        "description": "Capitalizes the first letter of a string.",
-        "code": [
-          "const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);",
-          "",
-          "// Usage:",
-          "console.log(capitalize('hello')); // Output: 'Hello'"
-        ],
-        "tags": ["javascript", "string", "capitalize", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Reverse String",
-        "description": "Reverses the characters in a string.",
-        "code": [
-          "const reverseString = (str) => str.split('').reverse().join('');",
-          "",
-          "// Usage:",
-          "console.log(reverseString('hello')); // Output: 'olleh'"
-        ],
-        "tags": ["javascript", "string", "reverse", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Truncate Text",
-        "description": "Truncates the text to a maximum length and appends '...' if the text exceeds the maximum length.",
-        "code": [
-          "const truncateText = (text = '', maxLength = 50) => {",
-          "  return `${text.slice(0, maxLength)}${text.length >= maxLength ? '...' : ''}`;",
-          "};",
-          "",
-          "// Usage:",
-          "const title = \"Hello, World! This is a Test.\";",
-          "console.log(truncateText(title)); // Output: 'Hello, World! This is a Test.'",
-          "console.log(truncateText(title, 10)); // Output: 'Hello, Wor...'"
-        ],
-        "tags": ["javascript", "string", "truncate", "utility", "text"],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Data with Prefix",
-        "description": "Adds a prefix and postfix to data, with a fallback value.",
-        "code": [
-          "const dataWithPrefix = (data, fallback = '-', prefix = '', postfix = '') => {",
-          "  return data ? `${prefix}${data}${postfix}` : fallback;",
-          "};",
-          "",
-          "// Usage:",
-          "console.log(dataWithPrefix('123', '-', '(', ')')); // Output: '(123)'",
-          "console.log(dataWithPrefix('', '-', '(', ')')); // Output: '-'",
-          "console.log(dataWithPrefix('Hello', 'N/A', 'Mr. ', '')); // Output: 'Mr. Hello'",
-          "console.log(dataWithPrefix(null, 'N/A', 'Mr. ', '')); // Output: 'N/A'"
-        ],
-        "tags": ["javascript", "data", "utility"],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Check if String is a Palindrome",
-        "description": "Checks whether a given string is a palindrome.",
-        "code": [
-          "function isPalindrome(str) {",
-          "  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();",
-          "  return cleanStr === cleanStr.split('').reverse().join('');",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(isPalindrome('A man, a plan, a canal, Panama')); // Output: true"
-        ],
-        "tags": ["javascript", "check", "palindrome", "string"],
-        "author": "axorax"
-      },
-      {
-        "title": "Count Words in a String",
-        "description": "Counts the number of words in a string.",
-        "code": [
-          "function countWords(str) {",
-          "  return str.trim().split(/\\s+/).length;",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(countWords('Hello world! This is a test.')); // Output: 6"
-        ],
-        "tags": ["string", "manipulation", "word count", "count"],
-        "author": "axorax"
-      },
-      {
-        "title": "Remove All Whitespace",
-        "description": "Removes all whitespace from a string.",
-        "code": [
-          "function removeWhitespace(str) {",
-          "  return str.replace(/\\s+/g, '');",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(removeWhitespace('Hello world!')); // Output: 'Helloworld!'"
-        ],
-        "tags": ["string", "whitespace"],
-        "author": "axorax"
-      }
-    ]
-  },
-  {
-    "categoryName": "Object Manipulation",
-    "snippets": [
-      {
-        "title": "Filter Object",
-        "description": "Filter out entries in an object where the value is falsy, including empty strings, empty objects, null, and undefined.",
-        "code": [
-          "export const filterObject = (object = {}) =>",
-          "  Object.fromEntries(",
-          "    Object.entries(object)",
-          "      .filter(([key, value]) => value !== null && value !== undefined && value !== '' && (typeof value !== 'object' || Object.keys(value).length > 0))",
-          "  );",
-          "",
-          "// Usage:",
-          "const obj1 = { a: 1, b: null, c: undefined, d: 4, e: '', f: {} };",
-          "console.log(filterObject(obj1)); // Output: { a: 1, d: 4 }",
-          "",
-          "const obj2 = { x: 0, y: false, z: 'Hello', w: [] };",
-          "console.log(filterObject(obj2)); // Output: { z: 'Hello' }",
-          "",
-          "const obj3 = { name: 'John', age: null, address: { city: 'New York' }, phone: '' };",
-          "console.log(filterObject(obj3)); // Output: { name: 'John', address: { city: 'New York' } }",
-          "",
-          "const obj4 = { a: 0, b: '', c: false, d: {}, e: 'Valid' };",
-          "console.log(filterObject(obj4)); // Output: { e: 'Valid' }"
-        ],
-        "tags": ["javascript", "object", "filter", "utility"],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Get Nested Value",
-        "description": "Retrieves the value at a given path in a nested object.",
-        "code": [
-          "const getNestedValue = (obj, path) => {",
-          "  const keys = path.split('.');",
-          "  return keys.reduce((currentObject, key) => {",
-          "    return currentObject && typeof currentObject === 'object' ? currentObject[key] : undefined;",
-          "  }, obj);",
-          "};",
-          "",
-          "// Usage:",
-          "const obj = { a: { b: { c: 42 } } };",
-          "console.log(getNestedValue(obj, 'a.b.c')); // Output: 42"
-        ],
-        "tags": ["javascript", "object", "nested", "utility"],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Unique By Key",
-        "description": "Filters an array of objects to only include unique objects by a specified key.",
-        "code": [
-          "const uniqueByKey = (key, arr) =>",
-          "  arr.filter((obj, index, self) => index === self.findIndex((t) => t?.[key] === obj?.[key]));",
-          "",
-          "// Usage:",
-          "const arr = [",
-          "  { id: 1, name: 'John' },",
-          "  { id: 2, name: 'Jane' },",
-          "  { id: 1, name: 'John' }",
-          "];",
-          "console.log(uniqueByKey('id', arr)); // Output: [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]"
-        ],
-        "tags": ["javascript", "array", "unique", "utility"],
-        "author": "realvishalrana"
-      }
-    ]
-  },
-  {
-    "categoryName": "Date and Time",
-    "snippets": [
-      {
-        "title": "Format Date",
-        "description": "Formats a date in 'YYYY-MM-DD' format.",
-        "code": [
-          "const formatDate = (date) => date.toISOString().split('T')[0];",
-          "",
-          "// Usage:",
-          "console.log(formatDate(new Date())); // Output: '2024-12-10'"
-        ],
-        "tags": ["javascript", "date", "format", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Get Time Difference",
-        "description": "Calculates the time difference in days between two dates.",
-        "code": [
-          "const getTimeDifference = (date1, date2) => {",
-          "  const diff = Math.abs(date2 - date1);",
-          "  return Math.ceil(diff / (1000 * 60 * 60 * 24));",
-          "};",
-          "",
-          "// Usage:",
-          "const date1 = new Date('2024-01-01');",
-          "const date2 = new Date('2024-12-31');",
-          "console.log(getTimeDifference(date1, date2)); // Output: 365"
-        ],
-        "tags": ["javascript", "date", "time-difference", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Relative Time Formatter",
-        "description": "Displays how long ago a date occurred or how far in the future a date is.",
-        "code": [
-          "const getRelativeTime = (date) => {",
-          "  const now = Date.now();",
-          "  const diff = date.getTime() - now;",
-          "  const seconds = Math.abs(Math.floor(diff / 1000));",
-          "  const minutes = Math.abs(Math.floor(seconds / 60));",
-          "  const hours = Math.abs(Math.floor(minutes / 60));",
-          "  const days = Math.abs(Math.floor(hours / 24));",
-          "  const years = Math.abs(Math.floor(days / 365));",
-          "",
-          "  if (Math.abs(diff) < 1000) return 'just now';",
-          "",
-          "  const isFuture = diff > 0;",
-          "",
-          "  if (years > 0) return `${isFuture ? 'in ' : ''}${years} ${years === 1 ? 'year' : 'years'}${isFuture ? '' : ' ago'}`;",
-          "  if (days > 0) return `${isFuture ? 'in ' : ''}${days} ${days === 1 ? 'day' : 'days'}${isFuture ? '' : ' ago'}`;",
-          "  if (hours > 0) return `${isFuture ? 'in ' : ''}${hours} ${hours === 1 ? 'hour' : 'hours'}${isFuture ? '' : ' ago'}`;",
-          "  if (minutes > 0) return `${isFuture ? 'in ' : ''}${minutes} ${minutes === 1 ? 'minute' : 'minutes'}${isFuture ? '' : ' ago'}`;",
-          "",
-          "  return `${isFuture ? 'in ' : ''}${seconds} ${seconds === 1 ? 'second' : 'seconds'}${isFuture ? '' : ' ago'}`;",
-          "}",
-          "",
-          "// usage",
-          "const pastDate = new Date('2021-12-29 13:00:00');",
-          "const futureDate = new Date('2026-12-29 13:00:00');",
-          "console.log(timeAgoOrAhead(pastDate)); // x years ago",
-          "console.log(timeAgoOrAhead(new Date())); // just now",
-          "console.log(timeAgoOrAhead(futureDate)); // in x years"
-        ],
-        "tags": [
-          "javascript",
-          "date",
-          "time",
-          "relative",
-          "future",
-          "past",
-          "utility"
-        ],
-        "author": "Yugveer06"
-      }
-    ]
-  },
-  {
-    "categoryName": "Function Utilities",
-    "snippets": [
-      {
-        "title": "Repeat Function Invocation",
-        "description": "Invokes a function a specified number of times.",
-        "code": [
-          "const times = (func, n) => {",
-          "  Array.from(Array(n)).forEach(() => {",
-          "    func();",
-          "  });",
-          "};",
-          "",
-          "// Usage:",
-          "const randomFunction = () => console.log('Function called!');",
-          "times(randomFunction, 3); // Logs 'Function called!' three times"
-        ],
-        "tags": ["javascript", "function", "repeat", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Debounce Function",
-        "description": "Delays a function execution until after a specified time.",
-        "code": [
-          "const debounce = (func, delay) => {",
-          "  let timeout;",
-          "  return (...args) => {",
-          "    clearTimeout(timeout);",
-          "    timeout = setTimeout(() => func(...args), delay);",
-          "  };",
-          "};",
-          "",
-          "// Usage:",
-          "window.addEventListener('resize', debounce(() => console.log('Resized!'), 500));"
-        ],
-        "tags": ["javascript", "utility", "debounce", "performance"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Throttle Function",
-        "description": "Limits a function execution to once every specified time interval.",
-        "code": [
-          "const throttle = (func, limit) => {",
-          "  let lastFunc;",
-          "  let lastRan;",
-          "  return (...args) => {",
-          "    const context = this;",
-          "    if (!lastRan) {",
-          "      func.apply(context, args);",
-          "      lastRan = Date.now();",
-          "    } else {",
-          "      clearTimeout(lastFunc);",
-          "      lastFunc = setTimeout(() => {",
-          "        if (Date.now() - lastRan >= limit) {",
-          "          func.apply(context, args);",
-          "          lastRan = Date.now();",
-          "        }",
-          "      }, limit - (Date.now() - lastRan));",
-          "    }",
-          "  };",
-          "};",
-          "",
-          "// Usage:",
-          "document.addEventListener('scroll', throttle(() => console.log('Scrolled!'), 1000));"
-        ],
-        "tags": ["javascript", "utility", "throttle", "performance"],
-        "author": "dostonnabotov"
-      },
-     {
-  "title": "Get Contrast Color",
-  "description": "Returns either black or white text color based on the brightness of the provided hex color.",
-  "code": [
-    "const getContrastColor = (hexColor) => {",
-    "  // Expand short hex color to full format",
-    "  if (hexColor.length === 4) {",
-    "    hexColor = `#${hexColor[1]}${hexColor[1]}${hexColor[2]}${hexColor[2]}${hexColor[3]}${hexColor[3]}`;",
-    "  }",
-    "  const r = parseInt(hexColor.slice(1, 3), 16);",
-    "  const g = parseInt(hexColor.slice(3, 5), 16);",
-    "  const b = parseInt(hexColor.slice(5, 7), 16);",
-    "  const brightness = (r * 299 + g * 587 + b * 114) / 1000;",
-    "  return brightness >= 128 ? \"#000000\" : \"#FFFFFF\";",
-    "};",
-    "",
-    "// Usage:",
-    "console.log(getContrastColor('#fff')); // Output: #000000 (black)",
-    "console.log(getContrastColor('#123456')); // Output: #FFFFFF (white)",
-    "console.log(getContrastColor('#ff6347')); // Output: #000000 (black)",
-    "console.log(getContrastColor('#f4f')); // Output: #000000 (black)"
-  ],
-  "tags": ["color", "hex", "contrast", "brightness", "utility"],
-  "author": "yaya12085"
-}
-
-    ]
-  },
-  {
-    "categoryName": "DOM Manipulation",
-    "snippets": [
-      {
-        "title": "Toggle Class",
-        "description": "Toggles a class on an element.",
-        "code": [
-          "const toggleClass = (element, className) => {",
-          "  element.classList.toggle(className);",
-          "};",
-          "",
-          "// Usage:",
-          "const element = document.querySelector('.my-element');",
-          "toggleClass(element, 'active');"
-        ],
-        "tags": ["javascript", "dom", "class", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Smooth Scroll to Element",
-        "description": "Scrolls smoothly to a specified element.",
-        "code": [
-          "const smoothScroll = (element) => {",
-          "  element.scrollIntoView({ behavior: 'smooth' });",
-          "};",
-          "",
-          "// Usage:",
-          "const target = document.querySelector('#target');",
-          "smoothScroll(target);"
-        ],
-        "tags": ["javascript", "dom", "scroll", "ui"],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "categoryName": "Local Storage",
-    "snippets": [
-      {
-        "title": "Add Item to localStorage",
-        "description": "Stores a value in localStorage under the given key.",
-        "code": [
-          "const addToLocalStorage = (key, value) => {",
-          "  localStorage.setItem(key, JSON.stringify(value));",
-          "};",
-          "",
-          "// Usage:",
-          "addToLocalStorage('user', { name: 'John', age: 30 });"
-        ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Retrieve Item from localStorage",
-        "description": "Retrieves a value from localStorage by key and parses it.",
-        "code": [
-          "const getFromLocalStorage = (key) => {",
-          "  const item = localStorage.getItem(key);",
-          "  return item ? JSON.parse(item) : null;",
-          "};",
-          "",
-          "// Usage:",
-          "const user = getFromLocalStorage('user');",
-          "console.log(user); // Output: { name: 'John', age: 30 }"
-        ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Clear All localStorage",
-        "description": "Clears all data from localStorage.",
-        "code": [
-          "const clearLocalStorage = () => {",
-          "  localStorage.clear();",
-          "};",
-          "",
-          "// Usage:",
-          "clearLocalStorage(); // Removes all items from localStorage"
-        ],
-        "tags": ["javascript", "localStorage", "storage", "utility"],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-{
-  "categoryName": "Number Formatting",
-  "snippets": [
     {
-      "title": "Number Formatter",
-      "description": "Formats a number with suffixes (K, M, B, etc.).",
-      "code": [
-        "const nFormatter = (num) => {",
-        "  if (!num) return;",
-        "  num = parseFloat(num.toString().replace(/[^0-9.]/g, ''));",
-        "  const suffixes = ['', 'K', 'M', 'B', 'T', 'P', 'E'];",
-        "  let index = 0;",
-        "  while (num >= 1000 && index < suffixes.length - 1) {",
-        "    num /= 1000;",
-        "    index++;",
-        "  }",
-        "  return num.toFixed(2).replace(/\\.0+$|(\\.[0-9]*[1-9])0+$/, '$1') + suffixes[index];",
-        "};",
-        "",
-        "// Usage:",
-        "console.log(nFormatter(1234567)); // Output: '1.23M'"
-      ],
-      "tags": ["javascript", "number", "format", "utility"],
-      "author": "realvishalrana"
+        "categoryName": "Array Manipulation",
+        "snippets": [
+            {
+                "title": "Flatten Array",
+                "description": "Flattens a multi-dimensional array.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "flatten",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const flattenArray = (arr) => arr.flat(Infinity);\n\n// Usage:\nconst nestedArray = [1, [2, [3, [4]]]];\nconsole.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]\n"
+            },
+            {
+                "title": "Remove Duplicates",
+                "description": "Removes duplicate values from an array.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "deduplicate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const removeDuplicates = (arr) => [...new Set(arr)];\n\n// Usage:\nconst numbers = [1, 2, 2, 3, 4, 4, 5];\nconsole.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]\n"
+            },
+            {
+                "title": "Shuffle Array",
+                "description": "Shuffles an Array.",
+                "author": "loxt-nixo",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "shuffle",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "function shuffleArray(array) {\n    for (let i = array.length - 1; i >= 0; i--) {\n        const j = Math.floor(Math.random() * (i + 1));\n        [array[i], array[j]] = [array[j], array[i]];\n    }\n}\n"
+            },
+            {
+                "title": "Zip Arrays",
+                "description": "Combines two arrays by pairing corresponding elements from each array.",
+                "author": "Swaraj-Singh-30",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "utility",
+                    "map"
+                ],
+                "contributors": [],
+                "code": "const zip = (arr1, arr2) => arr1.map((value, index) => [value, arr2[index]]);\n\n// Usage:\nconst arr1 = ['a', 'b', 'c'];\nconst arr2 = [1, 2, 3];\nconsole.log(zip(arr1, arr2)); // Output: [['a', 1], ['b', 2], ['c', 3]]\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "James-Beans",
+                "tags": [
+                    "javascript",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "console.log(\"Hello, World!\"); // Prints Hello, World! to the console\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Date And Time",
+        "snippets": [
+            {
+                "title": "Add Days to a Date",
+                "description": "Adds a specified number of days to a given date.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "add-days",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const addDays = (date, days) => {\n  const result = new Date(date);\n  result.setDate(result.getDate() + days);\n  return result;\n};\n\n// Usage:\nconst today = new Date();\nconsole.log(addDays(today, 10)); // Output: Date object 10 days ahead\n"
+            },
+            {
+                "title": "Check Leap Year",
+                "description": "Determines if a given year is a leap year.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "leap-year",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const isLeapYear = (year) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n\n// Usage:\nconsole.log(isLeapYear(2024)); // Output: true\nconsole.log(isLeapYear(2023)); // Output: false\n"
+            },
+            {
+                "title": "Convert to Unix Timestamp",
+                "description": "Converts a date to a Unix timestamp in seconds.",
+                "author": "Yugveer06",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "unix",
+                    "timestamp",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "/**\n * Converts a date string or Date object to Unix timestamp in seconds.\n *\n * @param {string|Date} input - A valid date string or Date object.\n * @returns {number} - The Unix timestamp in seconds.\n * @throws {Error} - Throws an error if the input is invalid.\n */\nfunction convertToUnixSeconds(input) {\n  if (typeof input === 'string') {\n    if (!input.trim()) {\n      throw new Error('Date string cannot be empty or whitespace');\n    }\n  } else if (!input) {\n    throw new Error('Input is required');\n  }\n\n  let date;\n\n  if (typeof input === 'string') {\n    date = new Date(input);\n  } else if (input instanceof Date) {\n    date = input;\n  } else {\n    throw new Error('Input must be a valid date string or Date object');\n  }\n\n  if (isNaN(date.getTime())) {\n    throw new Error('Invalid date provided');\n  }\n\n  return Math.floor(date.getTime() / 1000);\n}\n\n// Usage\nconsole.log(convertToUnixSeconds('2025-01-01T12:00:00Z')); // 1735732800\nconsole.log(convertToUnixSeconds(new Date('2025-01-01T12:00:00Z'))); // 1735732800\nconsole.log(convertToUnixSeconds(new Date())); //Current Unix timestamp in seconds (varies depending on execution time)\n"
+            },
+            {
+                "title": "Format Date",
+                "description": "Formats a date in 'YYYY-MM-DD' format.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "format",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const formatDate = (date) => date.toISOString().split('T')[0];\n\n// Usage:\nconsole.log(formatDate(new Date())); // Output: '2024-12-10'\n"
+            },
+            {
+                "title": "Get Current Timestamp",
+                "description": "Retrieves the current timestamp in milliseconds since January 1, 1970.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "timestamp",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getCurrentTimestamp = () => Date.now();\n\n// Usage:\nconsole.log(getCurrentTimestamp()); // Output: 1691825935839 (example)\n"
+            },
+            {
+                "title": "Get Day of the Year",
+                "description": "Calculates the day of the year (1-365 or 1-366 for leap years) for a given date.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "day-of-year",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getDayOfYear = (date) => {\n  const startOfYear = new Date(date.getFullYear(), 0, 0);\n  const diff = date - startOfYear + (startOfYear.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000;\n  return Math.floor(diff / (1000 * 60 * 60 * 24));\n};\n\n// Usage:\nconst today = new Date('2024-12-31');\nconsole.log(getDayOfYear(today)); // Output: 366 (in a leap year)\n"
+            },
+            {
+                "title": "Get Days in Month",
+                "description": "Calculates the number of days in a specific month of a given year.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "days-in-month",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();\n\n// Usage:\nconsole.log(getDaysInMonth(2024, 1)); // Output: 29 (February in a leap year)\nconsole.log(getDaysInMonth(2023, 1)); // Output: 28\n"
+            },
+            {
+                "title": "Get Time Difference",
+                "description": "Calculates the time difference in days between two dates.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "time-difference",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getTimeDifference = (date1, date2) => {\n  const diff = Math.abs(date2 - date1);\n  return Math.ceil(diff / (1000 * 60 * 60 * 24));\n};\n\n// Usage:\nconst date1 = new Date('2024-01-01');\nconst date2 = new Date('2024-12-31');\nconsole.log(getTimeDifference(date1, date2)); // Output: 365\n"
+            },
+            {
+                "title": "Relative Time Formatter",
+                "description": "Displays how long ago a date occurred or how far in the future a date is.",
+                "author": "Yugveer06",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "time",
+                    "relative",
+                    "future",
+                    "past",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getRelativeTime = (date) => {\n  const now = Date.now();\n  const diff = date.getTime() - now;\n  const seconds = Math.abs(Math.floor(diff / 1000));\n  const minutes = Math.abs(Math.floor(seconds / 60));\n  const hours = Math.abs(Math.floor(minutes / 60));\n  const days = Math.abs(Math.floor(hours / 24));\n  const years = Math.abs(Math.floor(days / 365));\n\n  if (Math.abs(diff) < 1000) return 'just now';\n\n  const isFuture = diff > 0;\n\n  if (years > 0) return `${isFuture ? 'in ' : ''}${years} ${years === 1 ? 'year' : 'years'}${isFuture ? '' : ' ago'}`;\n  if (days > 0) return `${isFuture ? 'in ' : ''}${days} ${days === 1 ? 'day' : 'days'}${isFuture ? '' : ' ago'}`;\n  if (hours > 0) return `${isFuture ? 'in ' : ''}${hours} ${hours === 1 ? 'hour' : 'hours'}${isFuture ? '' : ' ago'}`;\n  if (minutes > 0) return `${isFuture ? 'in ' : ''}${minutes} ${minutes === 1 ? 'minute' : 'minutes'}${isFuture ? '' : ' ago'}`;\n\n  return `${isFuture ? 'in ' : ''}${seconds} ${seconds === 1 ? 'second' : 'seconds'}${isFuture ? '' : ' ago'}`;\n}\n\n// usage\nconst pastDate = new Date('2021-12-29 13:00:00');\nconst futureDate = new Date('2026-12-29 13:00:00');\nconsole.log(getRelativeTime(pastDate)); // x years ago\nconsole.log(getRelativeTime(new Date())); // just now\nconsole.log(getRelativeTime(futureDate)); // in x years\n"
+            },
+            {
+                "title": "Start of the Day",
+                "description": "Returns the start of the day (midnight) for a given date.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "date",
+                    "start-of-day",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const startOfDay = (date) => new Date(date.setHours(0, 0, 0, 0));\n\n// Usage:\nconst today = new Date();\nconsole.log(startOfDay(today)); // Output: Date object for midnight\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Dom Manipulation",
+        "snippets": [
+            {
+                "title": "Change Element Style",
+                "description": "Changes the inline style of an element.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "dom",
+                    "style",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const changeElementStyle = (element, styleObj) => {\n  Object.entries(styleObj).forEach(([property, value]) => {\n    element.style[property] = value;\n  });\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nchangeElementStyle(element, { color: 'red', backgroundColor: 'yellow' });\n"
+            },
+            {
+                "title": "Get Element Position",
+                "description": "Gets the position of an element relative to the viewport.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "dom",
+                    "position",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getElementPosition = (element) => {\n  const rect = element.getBoundingClientRect();\n  return { x: rect.left, y: rect.top };\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nconst position = getElementPosition(element);\nconsole.log(position); // { x: 100, y: 150 }\n"
+            },
+            {
+                "title": "Remove Element",
+                "description": "Removes a specified element from the DOM.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "dom",
+                    "remove",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const removeElement = (element) => {\n  if (element && element.parentNode) {\n    element.parentNode.removeChild(element);\n  }\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nremoveElement(element);\n"
+            },
+            {
+                "title": "Smooth Scroll to Element",
+                "description": "Scrolls smoothly to a specified element.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "dom",
+                    "scroll",
+                    "ui"
+                ],
+                "contributors": [],
+                "code": "const smoothScroll = (element) => {\n  element.scrollIntoView({ behavior: 'smooth' });\n};\n\n// Usage:\nconst target = document.querySelector('#target');\nsmoothScroll(target);\n"
+            },
+            {
+                "title": "Toggle Class",
+                "description": "Toggles a class on an element.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "dom",
+                    "class",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const toggleClass = (element, className) => {\n  element.classList.toggle(className);\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\ntoggleClass(element, 'active');\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Function Utilities",
+        "snippets": [
+            {
+                "title": "Compose Functions",
+                "description": "Composes multiple functions into a single function, where the output of one function becomes the input of the next.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "compose",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const compose = (...funcs) => (initialValue) => {\n  return funcs.reduce((acc, func) => func(acc), initialValue);\n};\n\n// Usage:\nconst add2 = (x) => x + 2;\nconst multiply3 = (x) => x * 3;\nconst composed = compose(multiply3, add2);\nconsole.log(composed(5)); // Output: 21 ((5 + 2) * 3)\n"
+            },
+            {
+                "title": "Curry Function",
+                "description": "Transforms a function into its curried form.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "curry",
+                    "function",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const curry = (func) => {\n  const curried = (...args) => {\n    if (args.length >= func.length) {\n      return func(...args);\n    }\n    return (...nextArgs) => curried(...args, ...nextArgs);\n  };\n  return curried;\n};\n\n// Usage:\nconst add = (a, b, c) => a + b + c;\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3)); // Output: 6\nconsole.log(curriedAdd(1, 2)(3)); // Output: 6\n"
+            },
+            {
+                "title": "Debounce Function",
+                "description": "Delays a function execution until after a specified time.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "utility",
+                    "debounce",
+                    "performance"
+                ],
+                "contributors": [],
+                "code": "const debounce = (func, delay) => {\n  let timeout;\n\n  return (...args) => {\n    clearTimeout(timeout);\n    timeout = setTimeout(() => func(...args), delay);\n  };\n};\n\n// Usage:\nwindow.addEventListener('resize', debounce(() => console.log('Resized!'), 500));\n"
+            },
+            {
+                "title": "Get Contrast Color",
+                "description": "Returns either black or white text color based on the brightness of the provided hex color.",
+                "author": "yaya12085",
+                "tags": [
+                    "javascript",
+                    "color",
+                    "hex",
+                    "contrast",
+                    "brightness",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getContrastColor = (hexColor) => {\n  // Expand short hex color to full format\n  if (hexColor.length === 4) {\n    hexColor = `#${hexColor[1]}${hexColor[1]}${hexColor[2]}${hexColor[2]}${hexColor[3]}${hexColor[3]}`;\n  }\n  const r = parseInt(hexColor.slice(1, 3), 16);\n  const g = parseInt(hexColor.slice(3, 5), 16);\n  const b = parseInt(hexColor.slice(5, 7), 16);\n  const brightness = (r * 299 + g * 587 + b * 114) / 1000;\n  return brightness >= 128 ? \"#000000\" : \"#FFFFFF\";\n};\n\n// Usage:\nconsole.log(getContrastColor('#fff')); // Output: #000000 (black)\nconsole.log(getContrastColor('#123456')); // Output: #FFFFFF (white)\nconsole.log(getContrastColor('#ff6347')); // Output: #000000 (black)\nconsole.log(getContrastColor('#f4f')); // Output: #000000 (black)\n"
+            },
+            {
+                "title": "Memoize Function",
+                "description": "Caches the result of a function based on its arguments to improve performance.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "memoization",
+                    "optimization",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const memoize = (func) => {\n  const cache = new Map();\n  return (...args) => {\n    const key = JSON.stringify(args);\n    if (cache.has(key)) {\n      return cache.get(key);\n    }\n    const result = func(...args);\n    cache.set(key, result);\n    return result;\n  };\n};\n\n// Usage:\nconst factorial = memoize((n) => (n <= 1 ? 1 : n * factorial(n - 1)));\nconsole.log(factorial(5)); // Output: 120\nconsole.log(factorial(5)); // Output: 120 (retrieved from cache)\n"
+            },
+            {
+                "title": "Once Function",
+                "description": "Ensures a function is only called once.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "once",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const once = (func) => {\n  let called = false;\n  return (...args) => {\n    if (!called) {\n      called = true;\n      return func(...args);\n    }\n  };\n};\n\n// Usage:\nconst initialize = once(() => console.log('Initialized!'));\ninitialize(); // Output: Initialized!\ninitialize(); // No output\n"
+            },
+            {
+                "title": "Rate Limit Function",
+                "description": "Limits how often a function can be executed within a given time window.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "rate-limiting",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const rateLimit = (func, limit, timeWindow) => {\n  let queue = [];\n  setInterval(() => {\n    if (queue.length) {\n      const next = queue.shift();\n      func(...next.args);\n    }\n  }, timeWindow);\n  return (...args) => {\n    if (queue.length < limit) {\n      queue.push({ args });\n    }\n  };\n};\n\n// Usage:\nconst fetchData = () => console.log('Fetching data...');\nconst rateLimitedFetch = rateLimit(fetchData, 2, 1000);\nsetInterval(() => rateLimitedFetch(), 200); // Only calls fetchData twice every second\n"
+            },
+            {
+                "title": "Repeat Function Invocation",
+                "description": "Invokes a function a specified number of times.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "repeat",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const times = (func, n) => {\n  Array.from(Array(n)).forEach(() => {\n    func();\n  });\n};\n\n// Usage:\nconst randomFunction = () => console.log('Function called!');\ntimes(randomFunction, 3); // Logs 'Function called!' three times\n"
+            },
+            {
+                "title": "Sleep Function",
+                "description": "Waits for a specified amount of milliseconds before resolving.",
+                "author": "0xHouss",
+                "tags": [
+                    "javascript",
+                    "sleep",
+                    "delay",
+                    "utility",
+                    "promises"
+                ],
+                "contributors": [],
+                "code": "const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\n\n// Usage:\nasync function main() {\n  console.log('Hello');\n  await sleep(2000); // Waits for 2 seconds\n  console.log('World!');\n}\n\nmain();\n"
+            },
+            {
+                "title": "Throttle Function",
+                "description": "Limits a function execution to once every specified time interval.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "utility",
+                    "throttle",
+                    "performance"
+                ],
+                "contributors": [],
+                "code": "const throttle = (func, limit) => {\n  let lastFunc;\n  let lastRan;\n  return (...args) => {\n    const context = this;\n    if (!lastRan) {\n      func.apply(context, args);\n      lastRan = Date.now();\n    } else {\n      clearTimeout(lastFunc);\n      lastFunc = setTimeout(() => {\n        if (Date.now() - lastRan >= limit) {\n          func.apply(context, args);\n          lastRan = Date.now();\n        }\n      }, limit - (Date.now() - lastRan));\n    }\n  };\n};\n\n// Usage:\ndocument.addEventListener('scroll', throttle(() => console.log('Scrolled!'), 1000));\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Local Storage",
+        "snippets": [
+            {
+                "title": "Add Item to localStorage",
+                "description": "Stores a value in localStorage under the given key.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "localStorage",
+                    "storage",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const addToLocalStorage = (key, value) => {\n  localStorage.setItem(key, JSON.stringify(value));\n};\n\n// Usage:\naddToLocalStorage('user', { name: 'John', age: 30 });\n"
+            },
+            {
+                "title": "Check if Item Exists in localStorage",
+                "description": "Checks if a specific item exists in localStorage.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "localStorage",
+                    "storage",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const isItemInLocalStorage = (key) => {\n  return localStorage.getItem(key) !== null;\n};\n\n// Usage:\nconsole.log(isItemInLocalStorage('user')); // Output: true or false\n"
+            },
+            {
+                "title": "Clear All localStorage",
+                "description": "Clears all data from localStorage.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "localStorage",
+                    "storage",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const clearLocalStorage = () => {\n  localStorage.clear();\n};\n\n// Usage:\nclearLocalStorage(); // Removes all items from localStorage\n"
+            },
+            {
+                "title": "Retrieve Item from localStorage",
+                "description": "Retrieves a value from localStorage by key and parses it.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "localStorage",
+                    "storage",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getFromLocalStorage = (key) => {\n  const item = localStorage.getItem(key);\n  return item ? JSON.parse(item) : null;\n};\n\n// Usage:\nconst user = getFromLocalStorage('user');\nconsole.log(user); // Output: { name: 'John', age: 30 }\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Number Formatting",
+        "snippets": [
+            {
+                "title": "Convert Number to Currency",
+                "description": "Converts a number to a currency format with a specific locale.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "currency",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const convertToCurrency = (num, locale = 'en-US', currency = 'USD') => {\n  return new Intl.NumberFormat(locale, {\n    style: 'currency',\n    currency: currency\n  }).format(num);\n};\n\n// Usage:\nconsole.log(convertToCurrency(1234567.89)); // Output: '$1,234,567.89'\nconsole.log(convertToCurrency(987654.32, 'de-DE', 'EUR')); // Output: '987.654,32 €'\n"
+            },
+            {
+                "title": "Convert Number to Roman Numerals",
+                "description": "Converts a number to Roman numeral representation.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "roman",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const numberToRoman = (num) => {\n  const romanNumerals = {\n    1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L',\n    90: 'XC', 100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'\n  };\n  let result = '';\n  Object.keys(romanNumerals).reverse().forEach(value => {\n    while (num >= value) {\n      result += romanNumerals[value];\n      num -= value;\n    }\n  });\n  return result;\n};\n\n// Usage:\nconsole.log(numberToRoman(1994)); // Output: 'MCMXCIV'\nconsole.log(numberToRoman(58)); // Output: 'LVIII'\n"
+            },
+            {
+                "title": "Convert to Scientific Notation",
+                "description": "Converts a number to scientific notation.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "scientific",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const toScientificNotation = (num) => {\n  if (isNaN(num)) {\n    throw new Error('Input must be a number');\n  }\n  if (num === 0) {\n    return '0e+0';\n  }\n  const exponent = Math.floor(Math.log10(Math.abs(num)));\n  const mantissa = num / Math.pow(10, exponent);\n  return `${mantissa.toFixed(2)}e${exponent >= 0 ? '+' : ''}${exponent}`;\n};\n\n// Usage:\nconsole.log(toScientificNotation(12345)); // Output: '1.23e+4'\nconsole.log(toScientificNotation(0.0005678)); // Output: '5.68e-4'\nconsole.log(toScientificNotation(1000)); // Output: '1.00e+3'\nconsole.log(toScientificNotation(0)); // Output: '0e+0'\nconsole.log(toScientificNotation(-54321)); // Output: '-5.43e+4'\n"
+            },
+            {
+                "title": "Format Number with Commas",
+                "description": "Formats a number with commas for better readability (e.g., 1000 -> 1,000).",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "format",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const formatNumberWithCommas = (num) => {\n  return num.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',');\n};\n\n// Usage:\nconsole.log(formatNumberWithCommas(1000)); // Output: '1,000'\nconsole.log(formatNumberWithCommas(1234567)); // Output: '1,234,567'\nconsole.log(formatNumberWithCommas(987654321)); // Output: '987,654,321'\n"
+            },
+            {
+                "title": "Number Formatter",
+                "description": "Formats a number with suffixes (K, M, B, etc.).",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "format",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const nFormatter = (num) => {\n  if (!num) return;\n  num = parseFloat(num.toString().replace(/[^0-9.]/g, ''));\n  const suffixes = ['', 'K', 'M', 'B', 'T', 'P', 'E'];\n  let index = 0;\n  while (num >= 1000 && index < suffixes.length - 1) {\n    num /= 1000;\n    index++;\n  }\n  return num.toFixed(2).replace(/\\.0+$|(\\.[0-9]*[1-9])0+$/, '$1') + suffixes[index];\n};\n\n// Usage:\nconsole.log(nFormatter(1234567)); // Output: '1.23M'\n"
+            },
+            {
+                "title": "Number to Words Converter",
+                "description": "Converts a number to its word representation in English.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "number",
+                    "words",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const numberToWords = (num) => {\n  const below20 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];\n  const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];\n  const above1000 = ['Hundred', 'Thousand', 'Million', 'Billion'];\n  if (num < 20) return below20[num];\n  let words = '';\n  for (let i = 0; num > 0; i++) {\n    if (i > 0 && num % 1000 !== 0) words = above1000[i] + ' ' + words;\n    if (num % 100 >= 20) {\n      words = tens[Math.floor(num / 10)] + ' ' + words;\n      num %= 10;\n    }\n    if (num < 20) words = below20[num] + ' ' + words;\n    num = Math.floor(num / 100);\n  }\n  return words.trim();\n};\n\n// Usage:\nconsole.log(numberToWords(123)); // Output: 'One Hundred Twenty Three'\nconsole.log(numberToWords(2045)); // Output: 'Two Thousand Forty Five'\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Object Manipulation",
+        "snippets": [
+            {
+                "title": "Check if Object is Empty",
+                "description": "Checks whether an object has no own enumerable properties.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "check",
+                    "empty"
+                ],
+                "contributors": [],
+                "code": "function isEmptyObject(obj) {\n  return Object.keys(obj).length === 0;\n}\n\n// Usage:\nconsole.log(isEmptyObject({})); // Output: true\nconsole.log(isEmptyObject({ a: 1 })); // Output: false\n"
+            },
+            {
+                "title": "Clone Object Shallowly",
+                "description": "Creates a shallow copy of an object.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "clone",
+                    "shallow"
+                ],
+                "contributors": [],
+                "code": "function shallowClone(obj) {\n  return { ...obj };\n}\n\n// Usage:\nconst obj = { a: 1, b: 2 };\nconst clone = shallowClone(obj);\nconsole.log(clone); // Output: { a: 1, b: 2 }\n"
+            },
+            {
+                "title": "Compare Two Objects Shallowly",
+                "description": "Compares two objects shallowly and returns whether they are equal.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "compare",
+                    "shallow"
+                ],
+                "contributors": [],
+                "code": "function shallowEqual(obj1, obj2) {\n  const keys1 = Object.keys(obj1);\n  const keys2 = Object.keys(obj2);\n  if (keys1.length !== keys2.length) return false;\n  return keys1.every(key => obj1[key] === obj2[key]);\n}\n\n// Usage:\nconst obj1 = { a: 1, b: 2 };\nconst obj2 = { a: 1, b: 2 };\nconst obj3 = { a: 1, b: 3 };\nconsole.log(shallowEqual(obj1, obj2)); // Output: true\nconsole.log(shallowEqual(obj1, obj3)); // Output: false\n"
+            },
+            {
+                "title": "Convert Object to Query String",
+                "description": "Converts an object to a query string for use in URLs.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "query string",
+                    "url"
+                ],
+                "contributors": [],
+                "code": "function toQueryString(obj) {\n  return Object.entries(obj)\n    .map(([key, value]) => encodeURIComponent(key) + '=' + encodeURIComponent(value))\n    .join('&');\n}\n\n// Usage:\nconst params = { search: 'test', page: 1 };\nconsole.log(toQueryString(params)); // Output: 'search=test&page=1'\n"
+            },
+            {
+                "title": "Count Properties in Object",
+                "description": "Counts the number of own properties in an object.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "count",
+                    "properties"
+                ],
+                "contributors": [],
+                "code": "function countProperties(obj) {\n  return Object.keys(obj).length;\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(countProperties(obj)); // Output: 3\n"
+            },
+            {
+                "title": "Filter Object",
+                "description": "Filter out entries in an object where the value is falsy, including empty strings, empty objects, null, and undefined.",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "filter",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "export const filterObject = (object = {}) =>\n  Object.fromEntries(\n    Object.entries(object)\n      .filter(([key, value]) => value !== null && value !== undefined && value !== '' && (typeof value !== 'object' || Object.keys(value).length > 0))\n  );\n\n// Usage:\nconst obj1 = { a: 1, b: null, c: undefined, d: 4, e: '', f: {} };\nconsole.log(filterObject(obj1)); // Output: { a: 1, d: 4 }\n\nconst obj2 = { x: 0, y: false, z: 'Hello', w: [] };\nconsole.log(filterObject(obj2)); // Output: { z: 'Hello' }\n\nconst obj3 = { name: 'John', age: null, address: { city: 'New York' }, phone: '' };\nconsole.log(filterObject(obj3)); // Output: { name: 'John', address: { city: 'New York' } }\n\nconst obj4 = { a: 0, b: '', c: false, d: {}, e: 'Valid' };\nconsole.log(filterObject(obj4)); // Output: { e: 'Valid' }\n"
+            },
+            {
+                "title": "Flatten Nested Object",
+                "description": "Flattens a nested object into a single-level object with dot notation for keys.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "flatten",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "function flattenObject(obj, prefix = '') {\n  return Object.keys(obj).reduce((acc, key) => {\n    const fullPath = prefix ? `${prefix}.${key}` : key;\n    if (typeof obj[key] === 'object' && obj[key] !== null) {\n      Object.assign(acc, flattenObject(obj[key], fullPath));\n    } else {\n      acc[fullPath] = obj[key];\n    }\n    return acc;\n  }, {});\n}\n\n// Usage:\nconst nestedObj = { a: { b: { c: 1 }, d: 2 }, e: 3 };\nconsole.log(flattenObject(nestedObj)); // Output: { 'a.b.c': 1, 'a.d': 2, e: 3 }\n"
+            },
+            {
+                "title": "Freeze Object",
+                "description": "Freezes an object to make it immutable.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "freeze",
+                    "immutable"
+                ],
+                "contributors": [],
+                "code": "function freezeObject(obj) {\n  return Object.freeze(obj);\n}\n\n// Usage:\nconst obj = { a: 1, b: 2 };\nconst frozenObj = freezeObject(obj);\nfrozenObj.a = 42;         // This will fail silently in strict mode.\nconsole.log(frozenObj.a); // Output: 1\n"
+            },
+            {
+                "title": "Get Nested Value",
+                "description": "Retrieves the value at a given path in a nested object.",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "nested",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const getNestedValue = (obj, path) => {\n  const keys = path.split('.');\n  return keys.reduce((currentObject, key) => {\n    return currentObject && typeof currentObject === 'object' ? currentObject[key] : undefined;\n  }, obj);\n};\n\n// Usage:\nconst obj = { a: { b: { c: 42 } } };\nconsole.log(getNestedValue(obj, 'a.b.c')); // Output: 42\n"
+            },
+            {
+                "title": "Invert Object Keys and Values",
+                "description": "Creates a new object by swapping keys and values of the given object.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "invert",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "function invertObject(obj) {\n  return Object.fromEntries(\n    Object.entries(obj).map(([key, value]) => [value, key])\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(invertObject(obj)); // Output: { '1': 'a', '2': 'b', '3': 'c' }\n"
+            },
+            {
+                "title": "Merge Objects Deeply",
+                "description": "Deeply merges two or more objects, including nested properties.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "merge",
+                    "deep"
+                ],
+                "contributors": [],
+                "code": "function deepMerge(...objects) {\n  return objects.reduce((acc, obj) => {\n    Object.keys(obj).forEach(key => {\n      if (typeof obj[key] === 'object' && obj[key] !== null) {\n        acc[key] = deepMerge(acc[key] || {}, obj[key]);\n      } else {\n        acc[key] = obj[key];\n      }\n    });\n    return acc;\n  }, {});\n}\n\n// Usage:\nconst obj1 = { a: 1, b: { c: 2 } };\nconst obj2 = { b: { d: 3 }, e: 4 };\nconsole.log(deepMerge(obj1, obj2)); // Output: { a: 1, b: { c: 2, d: 3 }, e: 4 }\n"
+            },
+            {
+                "title": "Omit Keys from Object",
+                "description": "Creates a new object with specific keys omitted.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "omit",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "function omitKeys(obj, keys) {\n  return Object.fromEntries(\n    Object.entries(obj).filter(([key]) => !keys.includes(key))\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(omitKeys(obj, ['b', 'c'])); // Output: { a: 1 }\n"
+            },
+            {
+                "title": "Pick Keys from Object",
+                "description": "Creates a new object with only the specified keys.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "object",
+                    "pick",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "function pickKeys(obj, keys) {\n  return Object.fromEntries(\n    Object.entries(obj).filter(([key]) => keys.includes(key))\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(pickKeys(obj, ['a', 'c'])); // Output: { a: 1, c: 3 }\n"
+            },
+            {
+                "title": "Unique By Key",
+                "description": "Filters an array of objects to only include unique objects by a specified key.",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "unique",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const uniqueByKey = (key, arr) =>\n  arr.filter((obj, index, self) => index === self.findIndex((t) => t?.[key] === obj?.[key]));\n\n// Usage:\nconst arr = [\n  { id: 1, name: 'John' },\n  { id: 2, name: 'Jane' },\n  { id: 1, name: 'John' }\n];\nconsole.log(uniqueByKey('id', arr)); // Output: [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Regular Expression",
+        "snippets": [
+            {
+                "title": "Regex Match Utility Function",
+                "description": "Enhanced regular expression matching utility.",
+                "author": "aumirza",
+                "tags": [
+                    "javascript",
+                    "regex"
+                ],
+                "contributors": [],
+                "code": "/**\n* @param {string | number} input\n*          The input string to match\n* @param {regex | string}  expression\n*          Regular expression\n* @param {string} flags\n*          Optional Flags\n*\n* @returns {array}\n* [{\n* match: '...',\n* matchAtIndex: 0,\n* capturedGroups: [ '...', '...' ]\n* }]\n*/\nfunction regexMatch(input, expression, flags = 'g') {\n  let regex =\n    expression instanceof RegExp\n      ? expression\n      : new RegExp(expression, flags);\n  let matches = input.matchAll(regex);\n  matches = [...matches];\n  return matches.map((item) => {\n    return {\n      match: item[0],\n      matchAtIndex: item.index,\n      capturedGroups: item.length > 1 ? item.slice(1) : undefined,\n    };\n  });\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Capitalize String",
+                "description": "Capitalizes the first letter of a string.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "capitalize",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);\n\n// Usage:\nconsole.log(capitalize('hello')); // Output: 'Hello'\n"
+            },
+            {
+                "title": "Check if String is a Palindrome",
+                "description": "Checks whether a given string is a palindrome.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "check",
+                    "palindrome",
+                    "string"
+                ],
+                "contributors": [],
+                "code": "function isPalindrome(str) {\n  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();\n  return cleanStr === cleanStr.split('').reverse().join('');\n}\n\n// Example usage:\nconsole.log(isPalindrome('A man, a plan, a canal, Panama')); // Output: true\n"
+            },
+            {
+                "title": "Convert String to Camel Case",
+                "description": "Converts a given string into camelCase.",
+                "author": "aumirza",
+                "tags": [
+                    "string",
+                    "case",
+                    "camelCase"
+                ],
+                "contributors": [],
+                "code": "function toCamelCase(str) {\n  return str.replace(/\\W+(.)/g, (match, chr) => chr.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toCamelCase('hello world test')); // Output: 'helloWorldTest'\n"
+            },
+            {
+                "title": "Convert String to Param Case",
+                "description": "Converts a given string into param-case.",
+                "author": "aumirza",
+                "tags": [
+                    "string",
+                    "case",
+                    "paramCase"
+                ],
+                "contributors": [],
+                "code": "function toParamCase(str) {\n  return str.toLowerCase().replace(/\\s+/g, '-');\n}\n\n// Example usage:\nconsole.log(toParamCase('Hello World Test')); // Output: 'hello-world-test'\n"
+            },
+            {
+                "title": "Convert String to Pascal Case",
+                "description": "Converts a given string into Pascal Case.",
+                "author": "aumirza",
+                "tags": [
+                    "string",
+                    "case",
+                    "pascalCase"
+                ],
+                "contributors": [],
+                "code": "function toPascalCase(str) {\n  return str.replace(/\\b\\w/g, (s) => s.toUpperCase()).replace(/\\W+(.)/g, (match, chr) => chr.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toPascalCase('hello world test')); // Output: 'HelloWorldTest'\n"
+            },
+            {
+                "title": "Convert String to Snake Case",
+                "description": "Converts a given string into snake_case.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "case",
+                    "snake_case"
+                ],
+                "contributors": [],
+                "code": "function toSnakeCase(str) {\n  return str.replace(/([a-z])([A-Z])/g, '$1_$2')\n            .replace(/\\s+/g, '_')\n            .toLowerCase();\n}\n\n// Example usage:\nconsole.log(toSnakeCase('Hello World Test')); // Output: 'hello_world_test'\n"
+            },
+            {
+                "title": "Convert String to Title Case",
+                "description": "Converts a given string into Title Case.",
+                "author": "aumirza",
+                "tags": [
+                    "string",
+                    "case",
+                    "titleCase"
+                ],
+                "contributors": [],
+                "code": "function toTitleCase(str) {\n  return str.toLowerCase().replace(/\\b\\w/g, (s) => s.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toTitleCase('hello world test')); // Output: 'Hello World Test'\n"
+            },
+            {
+                "title": "Convert Tabs to Spaces",
+                "description": "Converts all tab characters in a string to spaces.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "tabs",
+                    "spaces"
+                ],
+                "contributors": [],
+                "code": "function tabsToSpaces(str, spacesPerTab = 4) {\n  return str.replace(/\\t/g, ' '.repeat(spacesPerTab));\n}\n\n// Example usage:\nconsole.log(tabsToSpaces('Hello\\tWorld', 2)); // Output: 'Hello  World'\n"
+            },
+            {
+                "title": "Count Words in a String",
+                "description": "Counts the number of words in a string.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "manipulation",
+                    "word count",
+                    "count"
+                ],
+                "contributors": [],
+                "code": "function countWords(str) {\n  return str.trim().split(/\\s+/).length;\n}\n\n// Example usage:\nconsole.log(countWords('Hello world! This is a test.')); // Output: 6\n"
+            },
+            {
+                "title": "Data with Prefix",
+                "description": "Adds a prefix and postfix to data, with a fallback value.",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "data",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const dataWithPrefix = (data, fallback = '-', prefix = '', postfix = '') => {\n  return data ? `${prefix}${data}${postfix}` : fallback;\n};\n\n// Usage:\nconsole.log(dataWithPrefix('123', '-', '(', ')')); // Output: '(123)'\nconsole.log(dataWithPrefix('', '-', '(', ')')); // Output: '-'\nconsole.log(dataWithPrefix('Hello', 'N/A', 'Mr. ', '')); // Output: 'Mr. Hello'\nconsole.log(dataWithPrefix(null, 'N/A', 'Mr. ', '')); // Output: 'N/A'\n"
+            },
+            {
+                "title": "Extract Initials from Name",
+                "description": "Extracts and returns the initials from a full name.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "initials",
+                    "name"
+                ],
+                "contributors": [],
+                "code": "function getInitials(name) {\n  return name.split(' ').map(part => part.charAt(0).toUpperCase()).join('');\n}\n\n// Example usage:\nconsole.log(getInitials('John Doe')); // Output: 'JD'\n"
+            },
+            {
+                "title": "Mask Sensitive Information",
+                "description": "Masks parts of a sensitive string, like a credit card or email address.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "mask",
+                    "sensitive"
+                ],
+                "contributors": [],
+                "code": "function maskSensitiveInfo(str, visibleCount = 4, maskChar = '*') {\n  return str.slice(0, visibleCount) + maskChar.repeat(Math.max(0, str.length - visibleCount));\n}\n\n// Example usage:\nconsole.log(maskSensitiveInfo('123456789', 4)); // Output: '1234*****'\nconsole.log(maskSensitiveInfo('example@mail.com', 2, '#')); // Output: 'ex#############'\n"
+            },
+            {
+                "title": "Pad String on Both Sides",
+                "description": "Pads a string on both sides with a specified character until it reaches the desired length.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "pad",
+                    "manipulation"
+                ],
+                "contributors": [],
+                "code": "function padString(str, length, char = ' ') {\n  const totalPad = length - str.length;\n  const padStart = Math.floor(totalPad / 2);\n  const padEnd = totalPad - padStart;\n  return char.repeat(padStart) + str + char.repeat(padEnd);\n}\n\n// Example usage:\nconsole.log(padString('hello', 10, '*')); // Output: '**hello***'\n"
+            },
+            {
+                "title": "Random string",
+                "description": "Generates a random string of characters of a certain length",
+                "author": "kruimol",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "random"
+                ],
+                "contributors": [],
+                "code": "function makeid(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {\n  return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');\n}\n\nconsole.log(makeid(5, \"1234\" /* (optional) */));\n"
+            },
+            {
+                "title": "Remove All Whitespace",
+                "description": "Removes all whitespace from a string.",
+                "author": "axorax",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "whitespace"
+                ],
+                "contributors": [],
+                "code": "function removeWhitespace(str) {\n  return str.replace(/\\s+/g, '');\n}\n\n// Example usage:\nconsole.log(removeWhitespace('Hello world!')); // Output: 'Helloworld!'\n"
+            },
+            {
+                "title": "Remove Vowels from a String",
+                "description": "Removes all vowels from a given string.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "remove",
+                    "vowels"
+                ],
+                "contributors": [],
+                "code": "function removeVowels(str) {\n  return str.replace(/[aeiouAEIOU]/g, '');\n}\n\n// Example usage:\nconsole.log(removeVowels('Hello World')); // Output: 'Hll Wrld'\n"
+            },
+            {
+                "title": "Reverse String",
+                "description": "Reverses the characters in a string.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "reverse",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const reverseString = (str) => str.split('').reverse().join('');\n\n// Usage:\nconsole.log(reverseString('hello')); // Output: 'olleh'\n"
+            },
+            {
+                "title": "Slugify String",
+                "description": "Converts a string into a URL-friendly slug format.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "slug",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const slugify = (string, separator = \"-\") => {\n  return string\n    .toString() // Cast to string (optional)\n    .toLowerCase() // Convert the string to lowercase letters\n    .trim() // Remove whitespace from both sides of a string (optional)\n    .replace(/\\s+/g, separator) // Replace spaces with {separator}\n    .replace(/[^\\w\\-]+/g, \"\") // Remove all non-word chars\n    .replace(/\\_/g, separator) // Replace _ with {separator}\n    .replace(/\\-\\-+/g, separator) // Replace multiple - with single {separator}\n    .replace(/\\-$/g, \"\"); // Remove trailing -\n};\n\n// Usage:\nconst title = \"Hello, World! This is a Test.\";\nconsole.log(slugify(title)); // Output: 'hello-world-this-is-a-test'\nconsole.log(slugify(title, \"_\")); // Output: 'hello_world_this_is_a_test'\n"
+            },
+            {
+                "title": "Truncate Text",
+                "description": "Truncates the text to a maximum length and appends '...' if the text exceeds the maximum length.",
+                "author": "realvishalrana",
+                "tags": [
+                    "javascript",
+                    "string",
+                    "truncate",
+                    "utility",
+                    "text"
+                ],
+                "contributors": [],
+                "code": "const truncateText = (text = '', maxLength = 50) => {\n  return `${text.slice(0, maxLength)}${text.length >= maxLength ? '...' : ''}`;\n};\n\n// Usage:\nconst title = \"Hello, World! This is a Test.\";\nconsole.log(truncateText(title)); // Output: 'Hello, World! This is a Test.'\nconsole.log(truncateText(title, 10)); // Output: 'Hello, Wor...'\n"
+            }
+        ]
     }
-  ]
-}
-  
 ]

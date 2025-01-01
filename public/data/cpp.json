@@ -1,104 +1,51 @@
 [
-  {
-    "categoryName": "Basics",
-    "snippets": [
-      {
-        "title": "Hello, World!",
-        "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "#include <iostream> // Includes the input/output stream library",
-          "",
-          "int main() { // Defines the main function",
-          "    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline",
-          "    return 0; // indicate the program executed successfully",
-          "}"
-        ],
-        "tags": ["cpp", "printing", "hello-world", "utility"],
-        "author": "James-Beans"
-      }
-    ]
-  },
-  {
-    "categoryName": "String Manipulation",
-    "snippets": [
-      {
-        "title": "Reverse String",
-        "description": "Reverses the characters in a string.",
-        "code": [
-          "#include <string>",
-          "#include <algorithm>",
-          "",
-          "std::string reverseString(const std::string& input) {",
-          "    std::string reversed = input;",
-          "    std::reverse(reversed.begin(), reversed.end());",
-          "    return reversed;",
-          "}"
-        ],
-        "tags": ["cpp", "array", "reverse", "utility"],
-        "author": "Vaibhav-kesarwani"
-      },
-      {
-        "title": "Split String",
-        "description": "Splits a string by a delimiter",
-        "code": [
-          "#include <string>",
-          "#include <vector>",
-          "",
-          "std::vector<std::string> split_string(std::string str, std::string delim) {",
-          "    std::vector<std::string> splits;",
-          "    int i = 0, j;",
-          "    int inc = delim.length();",
-          "    while (j != std::string::npos) {",
-          "        j = str.find(delim, i);",
-          "        splits.push_back(str.substr(i, j - i));",
-          "        i = j + inc;",
-          "    }",
-          "    return splits;",
-          "}"
-        ],
-        "tags": ["cpp", "string", "split", "utility"],
-        "author": "saminjay"
-      }
-    ]
-  },
-  { 
-    "categoryName": "Array Manipulation", 
-    "snippets": [ 
-      { 
-        "title": "Transform Vector", 
-        "description": "Transforms a vector using a function", 
-        "code": [ 
-          "#include <ranges>", 
-          "#include <vector>", 
-          "", 
-          "template <typename T, typename F>", 
-          "auto transform(const std::vector<T>& vec, F&& transformer) {", 
-          "    using U = std::invoke_result_t<F, T>;", 
-          "    return vec", 
-          "        | std::views::transform(std::forward<F>(transformer))", 
-          "        | std::ranges::to<std::vector<U>>();", 
-          "}" 
-        ], 
-        "tags": ["cpp", "array", "transform", "utility"], 
-        "author": "majvax" 
-      }, 
-      { 
-        "title": "Filter Vector", 
-        "description": "Filters a vector using a predicate function", 
-        "code": [ 
-          "#include <ranges>", 
-          "#include <vector>", 
-          "", 
-          "template <typename T, typename P>", 
-          "auto filter(const std::vector<T>& vec, P&& predicate) {", 
-          "    return vec", 
-          "        | std::views::filter(std::forward<P>(predicate))", 
-          "        | std::ranges::to<std::vector<T>>();", 
-          "}" 
-        ], 
-        "tags": ["cpp", "array", "filter", "utility"], 
-        "author": "majvax" 
-      } 
-    ] 
-  }
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "James-Beans",
+                "tags": [
+                    "cpp",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Reverse String",
+                "description": "Reverses the characters in a string.",
+                "author": "Vaibhav-kesarwani",
+                "tags": [
+                    "cpp",
+                    "array",
+                    "reverse",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <algorithm>\n\nstd::string reverseString(const std::string& input) {\n    std::string reversed = input;\n    std::reverse(reversed.begin(), reversed.end());\n    return reversed;\n}\n"
+            },
+            {
+                "title": "Split String",
+                "description": "Splits a string by a delimiter",
+                "author": "saminjay",
+                "tags": [
+                    "cpp",
+                    "string",
+                    "split",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n"
+            }
+        ]
+    }
 ]

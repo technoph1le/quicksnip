@@ -11,7 +11,7 @@ export type CategoryType = {
 export type SnippetType = {
   title: string;
   description: string;
-  code: string[];
+  code: string;
   tags: string[];
   author: string;
 };

@@ -1,4 +1,4 @@
-const DEFAULT_ICON_COLOR = "var(--clr-neutral-200)";
+const DEFAULT_ICON_COLOR = "var(--clr-icon-primary)";
 const ACCENT_ICON_COLOR = "var(--clr-accent)";
 
 export const LogoIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (

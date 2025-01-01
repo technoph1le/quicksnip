@@ -1,0 +1,51 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "0xHouss",
+                "tags": [
+                    "c",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "#include <stdio.h> // Includes the input/output library\n\nint main() { // Defines the main function\n  printf(\"Hello, World!\\n\") // Outputs Hello, World! and a newline\n\n  return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Mathematical Functions",
+        "snippets": [
+            {
+                "title": "Factorial Function",
+                "description": "Calculates the factorial of a number.",
+                "author": "0xHouss",
+                "tags": [
+                    "c",
+                    "math",
+                    "factorial",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n"
+            },
+            {
+                "title": "Power Function",
+                "description": "Calculates the power of a number.",
+                "author": "0xHouss",
+                "tags": [
+                    "c",
+                    "math",
+                    "power",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "int power(int x, int n) {\n  int y = 1;\n\n  for (int i = 0; i < n; i++)\n    y *= x;\n\n  return y;\n}\n"
+            }
+        ]
+    }
+]

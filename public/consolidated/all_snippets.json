@@ -1,26 +1,71 @@
 [
   {
+    "language": "c",
+    "categoryName": "Basics",
+    "snippets": [
+      {
+        "title": "Hello, World!",
+        "description": "Prints Hello, World! to the terminal.",
+        "author": "0xHouss",
+        "tags": [
+          "c",
+          "printing",
+          "hello-world",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "#include <stdio.h> // Includes the input/output library\n\nint main() { // Defines the main function\n  printf(\"Hello, World!\\n\") // Outputs Hello, World! and a newline\n\n  return 0; // indicate the program executed successfully\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "c",
+    "categoryName": "Mathematical Functions",
+    "snippets": [
+      {
+        "title": "Factorial Function",
+        "description": "Calculates the factorial of a number.",
+        "author": "0xHouss",
+        "tags": [
+          "c",
+          "math",
+          "factorial",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n"
+      },
+      {
+        "title": "Power Function",
+        "description": "Calculates the power of a number.",
+        "author": "0xHouss",
+        "tags": [
+          "c",
+          "math",
+          "power",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "int power(int x, int n) {\n  int y = 1;\n\n  for (int i = 0; i < n; i++)\n    y *= x;\n\n  return y;\n}\n"
+      }
+    ]
+  },
+  {
     "language": "cpp",
     "categoryName": "Basics",
     "snippets": [
       {
         "title": "Hello, World!",
         "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "#include <iostream> // Includes the input/output stream library",
-          "",
-          "int main() { // Defines the main function",
-          "    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline",
-          "    return 0; // indicate the program executed successfully",
-          "}"
-        ],
+        "author": "James-Beans",
         "tags": [
           "cpp",
           "printing",
           "hello-world",
           "utility"
         ],
-        "author": "James-Beans"
+        "contributors": [],
+        "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n"
       }
     ]
   },
@@ -31,205 +76,28 @@
       {
         "title": "Reverse String",
         "description": "Reverses the characters in a string.",
-        "code": [
-          "#include <string>",
-          "#include <algorithm>",
-          "",
-          "std::string reverseString(const std::string& input) {",
-          "    std::string reversed = input;",
-          "    std::reverse(reversed.begin(), reversed.end());",
-          "    return reversed;",
-          "}"
-        ],
+        "author": "Vaibhav-kesarwani",
         "tags": [
           "cpp",
           "array",
           "reverse",
           "utility"
         ],
-        "author": "Vaibhav-kesarwani"
+        "contributors": [],
+        "code": "#include <string>\n#include <algorithm>\n\nstd::string reverseString(const std::string& input) {\n    std::string reversed = input;\n    std::reverse(reversed.begin(), reversed.end());\n    return reversed;\n}\n"
       },
       {
         "title": "Split String",
         "description": "Splits a string by a delimiter",
-        "code": [
-          "#include <string>",
-          "#include <vector>",
-          "",
-          "std::vector<std::string> split_string(std::string str, std::string delim) {",
-          "    std::vector<std::string> splits;",
-          "    int i = 0, j;",
-          "    int inc = delim.length();",
-          "    while (j != std::string::npos) {",
-          "        j = str.find(delim, i);",
-          "        splits.push_back(str.substr(i, j - i));",
-          "        i = j + inc;",
-          "    }",
-          "    return splits;",
-          "}"
-        ],
+        "author": "saminjay",
         "tags": [
           "cpp",
           "string",
           "split",
           "utility"
         ],
-        "author": "saminjay"
-      }
-    ]
-  },
-  {
-    "language": "css",
-    "categoryName": "Typography",
-    "snippets": [
-      {
-        "title": "Responsive Font Sizing",
-        "description": "Adjusts font size based on viewport width.",
-        "code": [
-          "h1 {",
-          "  font-size: calc(1.5rem + 2vw);",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "font",
-          "responsive",
-          "typography"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Letter Spacing",
-        "description": "Adds space between letters for better readability.",
-        "code": [
-          "p {",
-          "  letter-spacing: 0.05em;",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "typography",
-          "spacing"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "css",
-    "categoryName": "Layouts",
-    "snippets": [
-      {
-        "title": "Sticky Footer",
-        "description": "Ensures the footer always stays at the bottom of the page.",
-        "code": [
-          "body {",
-          "  display: flex;",
-          "  flex-direction: column;",
-          "  min-height: 100vh;",
-          "}",
-          "",
-          "footer {",
-          "  margin-top: auto;",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "layout",
-          "footer",
-          "sticky"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Equal-Width Columns",
-        "description": "Creates columns with equal widths using flexbox.",
-        "code": [
-          ".columns {",
-          "  display: flex;",
-          "  justify-content: space-between;",
-          "}",
-          "",
-          ".column {",
-          "  flex: 1;",
-          "  margin: 0 10px;",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "flexbox",
-          "columns",
-          "layout"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "CSS Reset",
-        "description": "Resets some default browser styles, ensuring consistency across browsers.",
-        "code": [
-          "* {",
-          "  margin: 0;",
-          "  padding: 0;",
-          "  box-sizing: border-box",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "reset",
-          "browser",
-          "layout"
-        ],
-        "author": "AmeerMoustafa"
-      },
-      {
-        "title": "Responsive Design",
-        "description": "The different responsive breakpoints.",
-        "code": [
-          "/* Phone */",
-          ".element {",
-          "  margin: 0 10%",
-          "}",
-          "",
-          "/* Tablet */",
-          "@media (min-width: 640px) {",
-          "  .element {",
-          "    margin: 0 20%",
-          "  }",
-          "}",
-          "",
-          "/* Desktop base */",
-          "@media (min-width: 768px) {",
-          "  .element {",
-          "    margin: 0 30%",
-          "  }",
-          "}",
-          "",
-          "/* Desktop large */",
-          "@media (min-width: 1024px) {",
-          "  .element {",
-          "    margin: 0 40%",
-          "  }",
-          "}",
-          "",
-          "/* Desktop extra large */",
-          "@media (min-width: 1280px) {",
-          "  .element {",
-          "    margin: 0 60%",
-          "  }",
-          "}",
-          "",
-          "/* Desktop bige */",
-          "@media (min-width: 1536px) {",
-          "  .element {",
-          "    margin: 0 80%",
-          "  }",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "responsive"
-        ],
-        "author": "kruimol"
+        "contributors": [],
+        "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n"
       }
     ]
   },
@@ -238,84 +106,35 @@
     "categoryName": "Buttons",
     "snippets": [
       {
-        "title": "Button Hover Effect",
-        "description": "Creates a hover effect with a color transition.",
-        "code": [
-          ".button {",
-          "  background-color: #007bff;",
-          "  color: white;",
-          "  padding: 10px 20px;",
-          "  border: none;",
-          "  border-radius: 5px;",
-          "  cursor: pointer;",
-          "  transition: background-color 0.3s ease;",
-          "}",
-          "",
-          ".button:hover {",
-          "  background-color: #0056b3;",
-          "}"
-        ],
-        "tags": [
-          "css",
-          "button",
-          "hover",
-          "transition"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
         "title": "3D Button Effect",
         "description": "Adds a 3D effect to a button when clicked.",
-        "code": [
-          ".button {",
-          "  background-color: #28a745;",
-          "  color: white;",
-          "  padding: 10px 20px;",
-          "  border: none;",
-          "  border-radius: 5px;",
-          "  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);",
-          "  transition: transform 0.1s;",
-          "}",
-          "",
-          ".button:active {",
-          "  transform: translateY(2px);",
-          "  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "css",
           "button",
           "3D",
           "effect"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": ".button {\n  background-color: #28a745;\n  color: white;\n  padding: 10px 20px;\n  border: none;\n  border-radius: 5px;\n  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);\n  transition: transform 0.1s;\n}\n\n.button:active {\n  transform: translateY(2px);\n  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);\n}\n"
+      },
+      {
+        "title": "Button Hover Effect",
+        "description": "Creates a hover effect with a color transition.",
+        "author": "dostonnabotov",
+        "tags": [
+          "css",
+          "button",
+          "hover",
+          "transition"
+        ],
+        "contributors": [],
+        "code": ".button {\n  background-color: #007bff;\n  color: white;\n  padding: 10px 20px;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  transition: background-color 0.3s ease;\n}\n\n.button:hover {\n  background-color: #0056b3;\n}\n"
       },
       {
         "title": "MacOS Button",
         "description": "A macOS-like button style, with hover and shading effects.",
-        "code": [
-          ".button {",
-          " font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,;",
-          " background: #0a85ff;",
-          " color: #fff;",
-          " padding: 8px 12px;",
-          " border: none;",
-          " margin: 4px;",
-          " border-radius: 10px;",
-          " cursor: pointer;",
-          " box-shadow: inset 0 1px 1px #fff2, 0px 2px 3px -2px rgba(0, 0, 0, 0.3) !important; /*This is really performance heavy*/",
-          " font-size: 14px;",
-          " display: flex;",
-          " align-items: center;",
-          " justify-content: center;",
-          " text-decoration: none;",
-          " transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);",
-          "}",
-          ".button:hover {",
-          " background: #0974ee;",
-          " color: #fff",
-          "}"
-        ],
+        "author": "e3nviction",
         "tags": [
           "css",
           "button",
@@ -323,7 +142,8 @@
           "hover",
           "transition"
         ],
-        "author": "e3nviction"
+        "contributors": [],
+        "code": ".button {\n font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,;\n background: #0a85ff;\n color: #fff;\n padding: 8px 12px;\n border: none;\n margin: 4px;\n border-radius: 10px;\n cursor: pointer;\n box-shadow: inset 0 1px 1px #fff2, 0px 2px 3px -2px rgba(0, 0, 0, 0.3) !important; /*This is really performance heavy*/\n font-size: 14px;\n display: flex;\n align-items: center;\n justify-content: center;\n text-decoration: none;\n transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n.button:hover {\n background: #0974ee;\n color: #fff\n}\n"
       }
     ]
   },
@@ -334,42 +154,234 @@
       {
         "title": "Blur Background",
         "description": "Applies a blur effect to the background of an element.",
-        "code": [
-          ".blur-background {",
-          "  backdrop-filter: blur(10px);",
-          "  background: rgba(255, 255, 255, 0.5);",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "css",
           "blur",
           "background",
           "effects"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": ".blur-background {\n  backdrop-filter: blur(10px);\n  background: rgba(255, 255, 255, 0.5);\n}\n"
       },
       {
         "title": "Hover Glow Effect",
         "description": "Adds a glowing effect on hover.",
-        "code": [
-          ".glow {",
-          "  background-color: #f39c12;",
-          "  padding: 10px 20px;",
-          "  border-radius: 5px;",
-          "  transition: box-shadow 0.3s ease;",
-          "}",
-          "",
-          ".glow:hover {",
-          "  box-shadow: 0 0 15px rgba(243, 156, 18, 0.8);",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "css",
           "hover",
           "glow",
           "effects"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": ".glow {\n  background-color: #f39c12;\n  padding: 10px 20px;\n  border-radius: 5px;\n  transition: box-shadow 0.3s ease;\n}\n\n.glow:hover {\n  box-shadow: 0 0 15px rgba(243, 156, 18, 0.8);\n}\n"
+      },
+      {
+        "title": "Hover to Reveal Color",
+        "description": "A card with an image that transitions from grayscale to full color on hover.",
+        "author": "Haider-Mukhtar",
+        "tags": [
+          "css",
+          "hover",
+          "image",
+          "effects"
+        ],
+        "contributors": [],
+        "code": ".card {\n  height: 300px;\n  width: 200px;\n  border-radius: 5px;\n  overflow: hidden;\n}\n\n.card img{\n  height: 100%;\n  width: 100%;\n  object-fit: cover;\n  filter: grayscale(100%);\n  transition: all 0.3s;\n  transition-duration: 200ms;\n  cursor: pointer;\n}\n\n.card:hover img {\n  filter: grayscale(0%);\n  scale: 1.05;\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "css",
+    "categoryName": "Layouts",
+    "snippets": [
+      {
+        "title": "CSS Reset",
+        "description": "Resets some default browser styles, ensuring consistency across browsers.",
+        "author": "AmeerMoustafa",
+        "tags": [
+          "css",
+          "reset",
+          "browser",
+          "layout"
+        ],
+        "contributors": [],
+        "code": "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box\n}\n"
+      },
+      {
+        "title": "Equal-Width Columns",
+        "description": "Creates columns with equal widths using flexbox.",
+        "author": "dostonnabotov",
+        "tags": [
+          "css",
+          "flexbox",
+          "columns",
+          "layout"
+        ],
+        "contributors": [],
+        "code": ".columns {\n  display: flex;\n  justify-content: space-between;\n}\n\n.column {\n  flex: 1;\n  margin: 0 10px;\n}\n"
+      },
+      {
+        "title": "Grid layout",
+        "description": "Equal sized items in a responsive grid",
+        "author": "xshubhamg",
+        "tags": [
+          "css",
+          "layout",
+          "grid"
+        ],
+        "contributors": [],
+        "code": ".grid-container {\n  display: grid\n  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n/* Explanation:\n- `auto-fit`: Automatically fits as many columns as possible within the container.\n- `minmax(250px, 1fr)`: Defines a minimum column size of 250px and a maximum size of 1fr (fraction of available space).\n*/\n}\n"
+      },
+      {
+        "title": "Responsive Design",
+        "description": "The different responsive breakpoints.",
+        "author": "kruimol",
+        "tags": [
+          "css",
+          "responsive"
+        ],
+        "contributors": [],
+        "code": "/* Phone */\n.element {\n  margin: 0 10%\n}\n\n/* Tablet */\n@media (min-width: 640px) {\n  .element {\n    margin: 0 20%\n  }\n}\n\n/* Desktop base */\n@media (min-width: 768px) {\n  .element {\n    margin: 0 30%\n  }\n}\n\n/* Desktop large */\n@media (min-width: 1024px) {\n  .element {\n    margin: 0 40%\n  }\n}\n\n/* Desktop extra large */\n@media (min-width: 1280px) {\n  .element {\n    margin: 0 60%\n  }\n}\n\n/* Desktop bige */\n@media (min-width: 1536px) {\n  .element {\n    margin: 0 80%\n  }\n}\n"
+      },
+      {
+        "title": "Sticky Footer",
+        "description": "Ensures the footer always stays at the bottom of the page.",
+        "author": "dostonnabotov",
+        "tags": [
+          "css",
+          "layout",
+          "footer",
+          "sticky"
+        ],
+        "contributors": [],
+        "code": "body {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n}\n\nfooter {\n  margin-top: auto;\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "css",
+    "categoryName": "Typography",
+    "snippets": [
+      {
+        "title": "Letter Spacing",
+        "description": "Adds space between letters for better readability.",
+        "author": "dostonnabotov",
+        "tags": [
+          "css",
+          "typography",
+          "spacing"
+        ],
+        "contributors": [],
+        "code": "p {\n  letter-spacing: 0.05em;\n}\n"
+      },
+      {
+        "title": "Responsive Font Sizing",
+        "description": "Adjusts font size based on viewport width.",
+        "author": "dostonnabotov",
+        "tags": [
+          "css",
+          "font",
+          "responsive",
+          "typography"
+        ],
+        "contributors": [],
+        "code": "h1 {\n  font-size: calc(1.5rem + 2vw);\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "html",
+    "categoryName": "Basic Layouts",
+    "snippets": [
+      {
+        "title": "Grid Layout with Navigation",
+        "description": "Full-height grid layout with header navigation using nesting syntax.",
+        "author": "GreenMan36",
+        "tags": [
+          "html",
+          "css",
+          "layout",
+          "sticky",
+          "grid",
+          "full-height"
+        ],
+        "contributors": [],
+        "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <style>\n      body {\n        margin: 0;\n        min-height: 100vh;\n        display: grid;\n        grid-template-rows: auto 1fr auto;\n        background: red; /* Shouldn't be visible */\n      }\n\n      .header {\n        background: #3b82f6;\n        padding: 1rem;\n        display: flex;\n        & .menu {\n          margin-left: auto;\n        }\n        & .menu ul {\n          margin-left: auto;\n          display: flex;\n          gap: 1rem;\n        }\n      }\n\n      .main {\n        background: #f3f4f6;\n        padding: 1rem;\n      }\n\n      .footer {\n        background: #1f2937;\n        padding: 1rem;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"header\">\n      Header\n      <nav class=\"menu\">\n        <ul>\n          <li><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About</a></li>\n          <li><a href=\"#\">Contact</a></li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"main\">Main Content</div>\n    <div class=\"footer\">Footer</div>\n  </body>\n</html>\n"
+      },
+      {
+        "title": "Sticky Header-Footer Layout",
+        "description": "Full-height layout with sticky header and footer, using modern viewport units and flexbox.",
+        "author": "GreenMan36",
+        "tags": [
+          "html",
+          "css",
+          "layout",
+          "sticky",
+          "flexbox",
+          "viewport"
+        ],
+        "contributors": [],
+        "code": "<!DOCTYPE html>\n<html style=\"margin: 0\">\n  <head>\n    <style type=\"text/css\">\n      body {\n        margin: 0;\n        display: flex;\n        flex-direction: column;\n        min-height: 100svh; /* Smallest viewport height */\n        min-height: 100vh;  /* Standard viewport height */\n        min-height: 100dvh; /* Dynamic viewport height */\n        min-height: 100lvh; /* Largest viewport height */\n        background-color: red;\n      }\n\n      .header {\n        position: sticky;\n        top: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n\n      .body {\n        flex-grow: 1;\n        background-color: whitesmoke;\n      }\n\n      .footer {\n        position: sticky;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n    </style>\n  <head>\n  <body>\n    <div class=\"header\">header</div>\n    <div class=\"body\">body/content</div>\n    <div class=\"footer\">footer</div>\n  </body>\n</html>\n"
+      }
+    ]
+  },
+  {
+    "language": "javascript",
+    "categoryName": "Array Manipulation",
+    "snippets": [
+      {
+        "title": "Flatten Array",
+        "description": "Flattens a multi-dimensional array.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "array",
+          "flatten",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const flattenArray = (arr) => arr.flat(Infinity);\n\n// Usage:\nconst nestedArray = [1, [2, [3, [4]]]];\nconsole.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]\n"
+      },
+      {
+        "title": "Remove Duplicates",
+        "description": "Removes duplicate values from an array.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "array",
+          "deduplicate",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const removeDuplicates = (arr) => [...new Set(arr)];\n\n// Usage:\nconst numbers = [1, 2, 2, 3, 4, 4, 5];\nconsole.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]\n"
+      },
+      {
+        "title": "Shuffle Array",
+        "description": "Shuffles an Array.",
+        "author": "loxt-nixo",
+        "tags": [
+          "javascript",
+          "array",
+          "shuffle",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "function shuffleArray(array) {\n    for (let i = array.length - 1; i >= 0; i--) {\n        const j = Math.floor(Math.random() * (i + 1));\n        [array[i], array[j]] = [array[j], array[i]];\n    }\n}\n"
+      },
+      {
+        "title": "Zip Arrays",
+        "description": "Combines two arrays by pairing corresponding elements from each array.",
+        "author": "Swaraj-Singh-30",
+        "tags": [
+          "javascript",
+          "array",
+          "utility",
+          "map"
+        ],
+        "contributors": [],
+        "code": "const zip = (arr1, arr2) => arr1.map((value, index) => [value, arr2[index]]);\n\n// Usage:\nconst arr1 = ['a', 'b', 'c'];\nconst arr2 = [1, 2, 3];\nconsole.log(zip(arr1, arr2)); // Output: [['a', 1], ['b', 2], ['c', 3]]\n"
       }
     ]
   },
@@ -380,406 +392,131 @@
       {
         "title": "Hello, World!",
         "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "console.log(\"Hello, World!\"); // Prints Hello, World! to the console"
-        ],
+        "author": "James-Beans",
         "tags": [
           "javascript",
           "printing",
           "hello-world",
           "utility"
         ],
-        "author": "James-Beans"
+        "contributors": [],
+        "code": "console.log(\"Hello, World!\"); // Prints Hello, World! to the console\n"
       }
     ]
   },
   {
     "language": "javascript",
-    "categoryName": "Array Manipulation",
+    "categoryName": "Date And Time",
     "snippets": [
       {
-        "title": "Remove Duplicates",
-        "description": "Removes duplicate values from an array.",
-        "code": [
-          "const removeDuplicates = (arr) => [...new Set(arr)];",
-          "",
-          "// Usage:",
-          "const numbers = [1, 2, 2, 3, 4, 4, 5];",
-          "console.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]"
-        ],
+        "title": "Add Days to a Date",
+        "description": "Adds a specified number of days to a given date.",
+        "author": "axorax",
         "tags": [
           "javascript",
-          "array",
-          "deduplicate",
+          "date",
+          "add-days",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const addDays = (date, days) => {\n  const result = new Date(date);\n  result.setDate(result.getDate() + days);\n  return result;\n};\n\n// Usage:\nconst today = new Date();\nconsole.log(addDays(today, 10)); // Output: Date object 10 days ahead\n"
       },
       {
-        "title": "Flatten Array",
-        "description": "Flattens a multi-dimensional array.",
-        "code": [
-          "const flattenArray = (arr) => arr.flat(Infinity);",
-          "",
-          "// Usage:",
-          "const nestedArray = [1, [2, [3, [4]]]];",
-          "console.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]"
-        ],
+        "title": "Check Leap Year",
+        "description": "Determines if a given year is a leap year.",
+        "author": "axorax",
         "tags": [
           "javascript",
-          "array",
-          "flatten",
+          "date",
+          "leap-year",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const isLeapYear = (year) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;\n\n// Usage:\nconsole.log(isLeapYear(2024)); // Output: true\nconsole.log(isLeapYear(2023)); // Output: false\n"
       },
       {
-        "title": "Shuffle Array",
-        "description": "Shuffles an Array.",
-        "code": [
-          "function shuffleArray(array) {",
-          "    for (let i = array.length - 1; i >= 0; i--) {",
-          "        const j = Math.floor(Math.random() * (i + 1));",
-          "        [array[i], array[j]] = [array[j], array[i]];",
-          "    }",
-          "}"
-        ],
+        "title": "Convert to Unix Timestamp",
+        "description": "Converts a date to a Unix timestamp in seconds.",
+        "author": "Yugveer06",
         "tags": [
           "javascript",
-          "array",
-          "shuffle",
+          "date",
+          "unix",
+          "timestamp",
           "utility"
         ],
-        "author": "loxt-nixo"
-      }
-    ]
-  },
-  {
-    "language": "javascript",
-    "categoryName": "String Manipulation",
-    "snippets": [
-      {
-        "title": "Slugify String",
-        "description": "Converts a string into a URL-friendly slug format.",
-        "code": [
-          "const slugify = (string, separator = \"-\") => {",
-          "  return string",
-          "    .toString() // Cast to string (optional)",
-          "    .toLowerCase() // Convert the string to lowercase letters",
-          "    .trim() // Remove whitespace from both sides of a string (optional)",
-          "    .replace(/\\s+/g, separator) // Replace spaces with {separator}",
-          "    .replace(/[^\\w\\-]+/g, \"\") // Remove all non-word chars",
-          "    .replace(/\\_/g, separator) // Replace _ with {separator}",
-          "    .replace(/\\-\\-+/g, separator) // Replace multiple - with single {separator}",
-          "    .replace(/\\-$/g, \"\"); // Remove trailing -",
-          "};",
-          "",
-          "// Usage:",
-          "const title = \"Hello, World! This is a Test.\";",
-          "console.log(slugify(title)); // Output: 'hello-world-this-is-a-test'",
-          "console.log(slugify(title, \"_\")); // Output: 'hello_world_this_is_a_test'"
-        ],
-        "tags": [
-          "javascript",
-          "string",
-          "slug",
-          "utility"
-        ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "/**\n * Converts a date string or Date object to Unix timestamp in seconds.\n *\n * @param {string|Date} input - A valid date string or Date object.\n * @returns {number} - The Unix timestamp in seconds.\n * @throws {Error} - Throws an error if the input is invalid.\n */\nfunction convertToUnixSeconds(input) {\n  if (typeof input === 'string') {\n    if (!input.trim()) {\n      throw new Error('Date string cannot be empty or whitespace');\n    }\n  } else if (!input) {\n    throw new Error('Input is required');\n  }\n\n  let date;\n\n  if (typeof input === 'string') {\n    date = new Date(input);\n  } else if (input instanceof Date) {\n    date = input;\n  } else {\n    throw new Error('Input must be a valid date string or Date object');\n  }\n\n  if (isNaN(date.getTime())) {\n    throw new Error('Invalid date provided');\n  }\n\n  return Math.floor(date.getTime() / 1000);\n}\n\n// Usage\nconsole.log(convertToUnixSeconds('2025-01-01T12:00:00Z')); // 1735732800\nconsole.log(convertToUnixSeconds(new Date('2025-01-01T12:00:00Z'))); // 1735732800\nconsole.log(convertToUnixSeconds(new Date())); //Current Unix timestamp in seconds (varies depending on execution time)\n"
       },
-      {
-        "title": "Capitalize String",
-        "description": "Capitalizes the first letter of a string.",
-        "code": [
-          "const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);",
-          "",
-          "// Usage:",
-          "console.log(capitalize('hello')); // Output: 'Hello'"
-        ],
-        "tags": [
-          "javascript",
-          "string",
-          "capitalize",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Reverse String",
-        "description": "Reverses the characters in a string.",
-        "code": [
-          "const reverseString = (str) => str.split('').reverse().join('');",
-          "",
-          "// Usage:",
-          "console.log(reverseString('hello')); // Output: 'olleh'"
-        ],
-        "tags": [
-          "javascript",
-          "string",
-          "reverse",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Truncate Text",
-        "description": "Truncates the text to a maximum length and appends '...' if the text exceeds the maximum length.",
-        "code": [
-          "const truncateText = (text = '', maxLength = 50) => {",
-          "  return `${text.slice(0, maxLength)}${text.length >= maxLength ? '...' : ''}`;",
-          "};",
-          "",
-          "// Usage:",
-          "const title = \"Hello, World! This is a Test.\";",
-          "console.log(truncateText(title)); // Output: 'Hello, World! This is a Test.'",
-          "console.log(truncateText(title, 10)); // Output: 'Hello, Wor...'"
-        ],
-        "tags": [
-          "javascript",
-          "string",
-          "truncate",
-          "utility",
-          "text"
-        ],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Data with Prefix",
-        "description": "Adds a prefix and postfix to data, with a fallback value.",
-        "code": [
-          "const dataWithPrefix = (data, fallback = '-', prefix = '', postfix = '') => {",
-          "  return data ? `${prefix}${data}${postfix}` : fallback;",
-          "};",
-          "",
-          "// Usage:",
-          "console.log(dataWithPrefix('123', '-', '(', ')')); // Output: '(123)'",
-          "console.log(dataWithPrefix('', '-', '(', ')')); // Output: '-'",
-          "console.log(dataWithPrefix('Hello', 'N/A', 'Mr. ', '')); // Output: 'Mr. Hello'",
-          "console.log(dataWithPrefix(null, 'N/A', 'Mr. ', '')); // Output: 'N/A'"
-        ],
-        "tags": [
-          "javascript",
-          "data",
-          "utility"
-        ],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Check if String is a Palindrome",
-        "description": "Checks whether a given string is a palindrome.",
-        "code": [
-          "function isPalindrome(str) {",
-          "  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();",
-          "  return cleanStr === cleanStr.split('').reverse().join('');",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(isPalindrome('A man, a plan, a canal, Panama')); // Output: true"
-        ],
-        "tags": [
-          "javascript",
-          "check",
-          "palindrome",
-          "string"
-        ],
-        "author": "axorax"
-      },
-      {
-        "title": "Count Words in a String",
-        "description": "Counts the number of words in a string.",
-        "code": [
-          "function countWords(str) {",
-          "  return str.trim().split(/\\s+/).length;",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(countWords('Hello world! This is a test.')); // Output: 6"
-        ],
-        "tags": [
-          "string",
-          "manipulation",
-          "word count",
-          "count"
-        ],
-        "author": "axorax"
-      },
-      {
-        "title": "Remove All Whitespace",
-        "description": "Removes all whitespace from a string.",
-        "code": [
-          "function removeWhitespace(str) {",
-          "  return str.replace(/\\s+/g, '');",
-          "}",
-          "",
-          "// Example usage:",
-          "console.log(removeWhitespace('Hello world!')); // Output: 'Helloworld!'"
-        ],
-        "tags": [
-          "string",
-          "whitespace"
-        ],
-        "author": "axorax"
-      }
-    ]
-  },
-  {
-    "language": "javascript",
-    "categoryName": "Object Manipulation",
-    "snippets": [
-      {
-        "title": "Filter Object",
-        "description": "Filter out entries in an object where the value is falsy, including empty strings, empty objects, null, and undefined.",
-        "code": [
-          "export const filterObject = (object = {}) =>",
-          "  Object.fromEntries(",
-          "    Object.entries(object)",
-          "      .filter(([key, value]) => value !== null && value !== undefined && value !== '' && (typeof value !== 'object' || Object.keys(value).length > 0))",
-          "  );",
-          "",
-          "// Usage:",
-          "const obj1 = { a: 1, b: null, c: undefined, d: 4, e: '', f: {} };",
-          "console.log(filterObject(obj1)); // Output: { a: 1, d: 4 }",
-          "",
-          "const obj2 = { x: 0, y: false, z: 'Hello', w: [] };",
-          "console.log(filterObject(obj2)); // Output: { z: 'Hello' }",
-          "",
-          "const obj3 = { name: 'John', age: null, address: { city: 'New York' }, phone: '' };",
-          "console.log(filterObject(obj3)); // Output: { name: 'John', address: { city: 'New York' } }",
-          "",
-          "const obj4 = { a: 0, b: '', c: false, d: {}, e: 'Valid' };",
-          "console.log(filterObject(obj4)); // Output: { e: 'Valid' }"
-        ],
-        "tags": [
-          "javascript",
-          "object",
-          "filter",
-          "utility"
-        ],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Get Nested Value",
-        "description": "Retrieves the value at a given path in a nested object.",
-        "code": [
-          "const getNestedValue = (obj, path) => {",
-          "  const keys = path.split('.');",
-          "  return keys.reduce((currentObject, key) => {",
-          "    return currentObject && typeof currentObject === 'object' ? currentObject[key] : undefined;",
-          "  }, obj);",
-          "};",
-          "",
-          "// Usage:",
-          "const obj = { a: { b: { c: 42 } } };",
-          "console.log(getNestedValue(obj, 'a.b.c')); // Output: 42"
-        ],
-        "tags": [
-          "javascript",
-          "object",
-          "nested",
-          "utility"
-        ],
-        "author": "realvishalrana"
-      },
-      {
-        "title": "Unique By Key",
-        "description": "Filters an array of objects to only include unique objects by a specified key.",
-        "code": [
-          "const uniqueByKey = (key, arr) =>",
-          "  arr.filter((obj, index, self) => index === self.findIndex((t) => t?.[key] === obj?.[key]));",
-          "",
-          "// Usage:",
-          "const arr = [",
-          "  { id: 1, name: 'John' },",
-          "  { id: 2, name: 'Jane' },",
-          "  { id: 1, name: 'John' }",
-          "];",
-          "console.log(uniqueByKey('id', arr)); // Output: [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]"
-        ],
-        "tags": [
-          "javascript",
-          "array",
-          "unique",
-          "utility"
-        ],
-        "author": "realvishalrana"
-      }
-    ]
-  },
-  {
-    "language": "javascript",
-    "categoryName": "Date and Time",
-    "snippets": [
       {
         "title": "Format Date",
         "description": "Formats a date in 'YYYY-MM-DD' format.",
-        "code": [
-          "const formatDate = (date) => date.toISOString().split('T')[0];",
-          "",
-          "// Usage:",
-          "console.log(formatDate(new Date())); // Output: '2024-12-10'"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "javascript",
           "date",
           "format",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const formatDate = (date) => date.toISOString().split('T')[0];\n\n// Usage:\nconsole.log(formatDate(new Date())); // Output: '2024-12-10'\n"
+      },
+      {
+        "title": "Get Current Timestamp",
+        "description": "Retrieves the current timestamp in milliseconds since January 1, 1970.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "date",
+          "timestamp",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getCurrentTimestamp = () => Date.now();\n\n// Usage:\nconsole.log(getCurrentTimestamp()); // Output: 1691825935839 (example)\n"
+      },
+      {
+        "title": "Get Day of the Year",
+        "description": "Calculates the day of the year (1-365 or 1-366 for leap years) for a given date.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "date",
+          "day-of-year",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getDayOfYear = (date) => {\n  const startOfYear = new Date(date.getFullYear(), 0, 0);\n  const diff = date - startOfYear + (startOfYear.getTimezoneOffset() - date.getTimezoneOffset()) * 60 * 1000;\n  return Math.floor(diff / (1000 * 60 * 60 * 24));\n};\n\n// Usage:\nconst today = new Date('2024-12-31');\nconsole.log(getDayOfYear(today)); // Output: 366 (in a leap year)\n"
+      },
+      {
+        "title": "Get Days in Month",
+        "description": "Calculates the number of days in a specific month of a given year.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "date",
+          "days-in-month",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();\n\n// Usage:\nconsole.log(getDaysInMonth(2024, 1)); // Output: 29 (February in a leap year)\nconsole.log(getDaysInMonth(2023, 1)); // Output: 28\n"
       },
       {
         "title": "Get Time Difference",
         "description": "Calculates the time difference in days between two dates.",
-        "code": [
-          "const getTimeDifference = (date1, date2) => {",
-          "  const diff = Math.abs(date2 - date1);",
-          "  return Math.ceil(diff / (1000 * 60 * 60 * 24));",
-          "};",
-          "",
-          "// Usage:",
-          "const date1 = new Date('2024-01-01');",
-          "const date2 = new Date('2024-12-31');",
-          "console.log(getTimeDifference(date1, date2)); // Output: 365"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "javascript",
           "date",
           "time-difference",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const getTimeDifference = (date1, date2) => {\n  const diff = Math.abs(date2 - date1);\n  return Math.ceil(diff / (1000 * 60 * 60 * 24));\n};\n\n// Usage:\nconst date1 = new Date('2024-01-01');\nconst date2 = new Date('2024-12-31');\nconsole.log(getTimeDifference(date1, date2)); // Output: 365\n"
       },
       {
         "title": "Relative Time Formatter",
         "description": "Displays how long ago a date occurred or how far in the future a date is.",
-        "code": [
-          "const getRelativeTime = (date) => {",
-          "  const now = Date.now();",
-          "  const diff = date.getTime() - now;",
-          "  const seconds = Math.abs(Math.floor(diff / 1000));",
-          "  const minutes = Math.abs(Math.floor(seconds / 60));",
-          "  const hours = Math.abs(Math.floor(minutes / 60));",
-          "  const days = Math.abs(Math.floor(hours / 24));",
-          "  const years = Math.abs(Math.floor(days / 365));",
-          "",
-          "  if (Math.abs(diff) < 1000) return 'just now';",
-          "",
-          "  const isFuture = diff > 0;",
-          "",
-          "  if (years > 0) return `${isFuture ? 'in ' : ''}${years} ${years === 1 ? 'year' : 'years'}${isFuture ? '' : ' ago'}`;",
-          "  if (days > 0) return `${isFuture ? 'in ' : ''}${days} ${days === 1 ? 'day' : 'days'}${isFuture ? '' : ' ago'}`;",
-          "  if (hours > 0) return `${isFuture ? 'in ' : ''}${hours} ${hours === 1 ? 'hour' : 'hours'}${isFuture ? '' : ' ago'}`;",
-          "  if (minutes > 0) return `${isFuture ? 'in ' : ''}${minutes} ${minutes === 1 ? 'minute' : 'minutes'}${isFuture ? '' : ' ago'}`;",
-          "",
-          "  return `${isFuture ? 'in ' : ''}${seconds} ${seconds === 1 ? 'second' : 'seconds'}${isFuture ? '' : ' ago'}`;",
-          "}",
-          "",
-          "// usage",
-          "const pastDate = new Date('2021-12-29 13:00:00');",
-          "const futureDate = new Date('2026-12-29 13:00:00');",
-          "console.log(timeAgoOrAhead(pastDate)); // x years ago",
-          "console.log(timeAgoOrAhead(new Date())); // just now",
-          "console.log(timeAgoOrAhead(futureDate)); // in x years"
-        ],
+        "author": "Yugveer06",
         "tags": [
           "javascript",
           "date",
@@ -789,7 +526,92 @@
           "past",
           "utility"
         ],
-        "author": "Yugveer06"
+        "contributors": [],
+        "code": "const getRelativeTime = (date) => {\n  const now = Date.now();\n  const diff = date.getTime() - now;\n  const seconds = Math.abs(Math.floor(diff / 1000));\n  const minutes = Math.abs(Math.floor(seconds / 60));\n  const hours = Math.abs(Math.floor(minutes / 60));\n  const days = Math.abs(Math.floor(hours / 24));\n  const years = Math.abs(Math.floor(days / 365));\n\n  if (Math.abs(diff) < 1000) return 'just now';\n\n  const isFuture = diff > 0;\n\n  if (years > 0) return `${isFuture ? 'in ' : ''}${years} ${years === 1 ? 'year' : 'years'}${isFuture ? '' : ' ago'}`;\n  if (days > 0) return `${isFuture ? 'in ' : ''}${days} ${days === 1 ? 'day' : 'days'}${isFuture ? '' : ' ago'}`;\n  if (hours > 0) return `${isFuture ? 'in ' : ''}${hours} ${hours === 1 ? 'hour' : 'hours'}${isFuture ? '' : ' ago'}`;\n  if (minutes > 0) return `${isFuture ? 'in ' : ''}${minutes} ${minutes === 1 ? 'minute' : 'minutes'}${isFuture ? '' : ' ago'}`;\n\n  return `${isFuture ? 'in ' : ''}${seconds} ${seconds === 1 ? 'second' : 'seconds'}${isFuture ? '' : ' ago'}`;\n}\n\n// usage\nconst pastDate = new Date('2021-12-29 13:00:00');\nconst futureDate = new Date('2026-12-29 13:00:00');\nconsole.log(getRelativeTime(pastDate)); // x years ago\nconsole.log(getRelativeTime(new Date())); // just now\nconsole.log(getRelativeTime(futureDate)); // in x years\n"
+      },
+      {
+        "title": "Start of the Day",
+        "description": "Returns the start of the day (midnight) for a given date.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "date",
+          "start-of-day",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const startOfDay = (date) => new Date(date.setHours(0, 0, 0, 0));\n\n// Usage:\nconst today = new Date();\nconsole.log(startOfDay(today)); // Output: Date object for midnight\n"
+      }
+    ]
+  },
+  {
+    "language": "javascript",
+    "categoryName": "Dom Manipulation",
+    "snippets": [
+      {
+        "title": "Change Element Style",
+        "description": "Changes the inline style of an element.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "dom",
+          "style",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const changeElementStyle = (element, styleObj) => {\n  Object.entries(styleObj).forEach(([property, value]) => {\n    element.style[property] = value;\n  });\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nchangeElementStyle(element, { color: 'red', backgroundColor: 'yellow' });\n"
+      },
+      {
+        "title": "Get Element Position",
+        "description": "Gets the position of an element relative to the viewport.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "dom",
+          "position",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getElementPosition = (element) => {\n  const rect = element.getBoundingClientRect();\n  return { x: rect.left, y: rect.top };\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nconst position = getElementPosition(element);\nconsole.log(position); // { x: 100, y: 150 }\n"
+      },
+      {
+        "title": "Remove Element",
+        "description": "Removes a specified element from the DOM.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "dom",
+          "remove",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const removeElement = (element) => {\n  if (element && element.parentNode) {\n    element.parentNode.removeChild(element);\n  }\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\nremoveElement(element);\n"
+      },
+      {
+        "title": "Smooth Scroll to Element",
+        "description": "Scrolls smoothly to a specified element.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "dom",
+          "scroll",
+          "ui"
+        ],
+        "contributors": [],
+        "code": "const smoothScroll = (element) => {\n  element.scrollIntoView({ behavior: 'smooth' });\n};\n\n// Usage:\nconst target = document.querySelector('#target');\nsmoothScroll(target);\n"
+      },
+      {
+        "title": "Toggle Class",
+        "description": "Toggles a class on an element.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "dom",
+          "class",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const toggleClass = (element, className) => {\n  element.classList.toggle(className);\n};\n\n// Usage:\nconst element = document.querySelector('.my-element');\ntoggleClass(element, 'active');\n"
       }
     ]
   },
@@ -798,161 +620,137 @@
     "categoryName": "Function Utilities",
     "snippets": [
       {
-        "title": "Repeat Function Invocation",
-        "description": "Invokes a function a specified number of times.",
-        "code": [
-          "const times = (func, n) => {",
-          "  Array.from(Array(n)).forEach(() => {",
-          "    func();",
-          "  });",
-          "};",
-          "",
-          "// Usage:",
-          "const randomFunction = () => console.log('Function called!');",
-          "times(randomFunction, 3); // Logs 'Function called!' three times"
-        ],
+        "title": "Compose Functions",
+        "description": "Composes multiple functions into a single function, where the output of one function becomes the input of the next.",
+        "author": "axorax",
         "tags": [
           "javascript",
           "function",
-          "repeat",
+          "compose",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const compose = (...funcs) => (initialValue) => {\n  return funcs.reduce((acc, func) => func(acc), initialValue);\n};\n\n// Usage:\nconst add2 = (x) => x + 2;\nconst multiply3 = (x) => x * 3;\nconst composed = compose(multiply3, add2);\nconsole.log(composed(5)); // Output: 21 ((5 + 2) * 3)\n"
+      },
+      {
+        "title": "Curry Function",
+        "description": "Transforms a function into its curried form.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "curry",
+          "function",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const curry = (func) => {\n  const curried = (...args) => {\n    if (args.length >= func.length) {\n      return func(...args);\n    }\n    return (...nextArgs) => curried(...args, ...nextArgs);\n  };\n  return curried;\n};\n\n// Usage:\nconst add = (a, b, c) => a + b + c;\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3)); // Output: 6\nconsole.log(curriedAdd(1, 2)(3)); // Output: 6\n"
       },
       {
         "title": "Debounce Function",
         "description": "Delays a function execution until after a specified time.",
-        "code": [
-          "const debounce = (func, delay) => {",
-          "  let timeout;",
-          "  return (...args) => {",
-          "    clearTimeout(timeout);",
-          "    timeout = setTimeout(() => func(...args), delay);",
-          "  };",
-          "};",
-          "",
-          "// Usage:",
-          "window.addEventListener('resize', debounce(() => console.log('Resized!'), 500));"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "javascript",
           "utility",
           "debounce",
           "performance"
         ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Throttle Function",
-        "description": "Limits a function execution to once every specified time interval.",
-        "code": [
-          "const throttle = (func, limit) => {",
-          "  let lastFunc;",
-          "  let lastRan;",
-          "  return (...args) => {",
-          "    const context = this;",
-          "    if (!lastRan) {",
-          "      func.apply(context, args);",
-          "      lastRan = Date.now();",
-          "    } else {",
-          "      clearTimeout(lastFunc);",
-          "      lastFunc = setTimeout(() => {",
-          "        if (Date.now() - lastRan >= limit) {",
-          "          func.apply(context, args);",
-          "          lastRan = Date.now();",
-          "        }",
-          "      }, limit - (Date.now() - lastRan));",
-          "    }",
-          "  };",
-          "};",
-          "",
-          "// Usage:",
-          "document.addEventListener('scroll', throttle(() => console.log('Scrolled!'), 1000));"
-        ],
-        "tags": [
-          "javascript",
-          "utility",
-          "throttle",
-          "performance"
-        ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const debounce = (func, delay) => {\n  let timeout;\n\n  return (...args) => {\n    clearTimeout(timeout);\n    timeout = setTimeout(() => func(...args), delay);\n  };\n};\n\n// Usage:\nwindow.addEventListener('resize', debounce(() => console.log('Resized!'), 500));\n"
       },
       {
         "title": "Get Contrast Color",
         "description": "Returns either black or white text color based on the brightness of the provided hex color.",
-        "code": [
-          "const getContrastColor = (hexColor) => {",
-          "  // Expand short hex color to full format",
-          "  if (hexColor.length === 4) {",
-          "    hexColor = `#${hexColor[1]}${hexColor[1]}${hexColor[2]}${hexColor[2]}${hexColor[3]}${hexColor[3]}`;",
-          "  }",
-          "  const r = parseInt(hexColor.slice(1, 3), 16);",
-          "  const g = parseInt(hexColor.slice(3, 5), 16);",
-          "  const b = parseInt(hexColor.slice(5, 7), 16);",
-          "  const brightness = (r * 299 + g * 587 + b * 114) / 1000;",
-          "  return brightness >= 128 ? \"#000000\" : \"#FFFFFF\";",
-          "};",
-          "",
-          "// Usage:",
-          "console.log(getContrastColor('#fff')); // Output: #000000 (black)",
-          "console.log(getContrastColor('#123456')); // Output: #FFFFFF (white)",
-          "console.log(getContrastColor('#ff6347')); // Output: #000000 (black)",
-          "console.log(getContrastColor('#f4f')); // Output: #000000 (black)"
-        ],
+        "author": "yaya12085",
         "tags": [
+          "javascript",
           "color",
           "hex",
           "contrast",
           "brightness",
           "utility"
         ],
-        "author": "yaya12085"
-      }
-    ]
-  },
-  {
-    "language": "javascript",
-    "categoryName": "DOM Manipulation",
-    "snippets": [
-      {
-        "title": "Toggle Class",
-        "description": "Toggles a class on an element.",
-        "code": [
-          "const toggleClass = (element, className) => {",
-          "  element.classList.toggle(className);",
-          "};",
-          "",
-          "// Usage:",
-          "const element = document.querySelector('.my-element');",
-          "toggleClass(element, 'active');"
-        ],
-        "tags": [
-          "javascript",
-          "dom",
-          "class",
-          "utility"
-        ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const getContrastColor = (hexColor) => {\n  // Expand short hex color to full format\n  if (hexColor.length === 4) {\n    hexColor = `#${hexColor[1]}${hexColor[1]}${hexColor[2]}${hexColor[2]}${hexColor[3]}${hexColor[3]}`;\n  }\n  const r = parseInt(hexColor.slice(1, 3), 16);\n  const g = parseInt(hexColor.slice(3, 5), 16);\n  const b = parseInt(hexColor.slice(5, 7), 16);\n  const brightness = (r * 299 + g * 587 + b * 114) / 1000;\n  return brightness >= 128 ? \"#000000\" : \"#FFFFFF\";\n};\n\n// Usage:\nconsole.log(getContrastColor('#fff')); // Output: #000000 (black)\nconsole.log(getContrastColor('#123456')); // Output: #FFFFFF (white)\nconsole.log(getContrastColor('#ff6347')); // Output: #000000 (black)\nconsole.log(getContrastColor('#f4f')); // Output: #000000 (black)\n"
       },
       {
-        "title": "Smooth Scroll to Element",
-        "description": "Scrolls smoothly to a specified element.",
-        "code": [
-          "const smoothScroll = (element) => {",
-          "  element.scrollIntoView({ behavior: 'smooth' });",
-          "};",
-          "",
-          "// Usage:",
-          "const target = document.querySelector('#target');",
-          "smoothScroll(target);"
-        ],
+        "title": "Memoize Function",
+        "description": "Caches the result of a function based on its arguments to improve performance.",
+        "author": "axorax",
         "tags": [
           "javascript",
-          "dom",
-          "scroll",
-          "ui"
+          "memoization",
+          "optimization",
+          "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const memoize = (func) => {\n  const cache = new Map();\n  return (...args) => {\n    const key = JSON.stringify(args);\n    if (cache.has(key)) {\n      return cache.get(key);\n    }\n    const result = func(...args);\n    cache.set(key, result);\n    return result;\n  };\n};\n\n// Usage:\nconst factorial = memoize((n) => (n <= 1 ? 1 : n * factorial(n - 1)));\nconsole.log(factorial(5)); // Output: 120\nconsole.log(factorial(5)); // Output: 120 (retrieved from cache)\n"
+      },
+      {
+        "title": "Once Function",
+        "description": "Ensures a function is only called once.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "function",
+          "once",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const once = (func) => {\n  let called = false;\n  return (...args) => {\n    if (!called) {\n      called = true;\n      return func(...args);\n    }\n  };\n};\n\n// Usage:\nconst initialize = once(() => console.log('Initialized!'));\ninitialize(); // Output: Initialized!\ninitialize(); // No output\n"
+      },
+      {
+        "title": "Rate Limit Function",
+        "description": "Limits how often a function can be executed within a given time window.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "function",
+          "rate-limiting",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const rateLimit = (func, limit, timeWindow) => {\n  let queue = [];\n  setInterval(() => {\n    if (queue.length) {\n      const next = queue.shift();\n      func(...next.args);\n    }\n  }, timeWindow);\n  return (...args) => {\n    if (queue.length < limit) {\n      queue.push({ args });\n    }\n  };\n};\n\n// Usage:\nconst fetchData = () => console.log('Fetching data...');\nconst rateLimitedFetch = rateLimit(fetchData, 2, 1000);\nsetInterval(() => rateLimitedFetch(), 200); // Only calls fetchData twice every second\n"
+      },
+      {
+        "title": "Repeat Function Invocation",
+        "description": "Invokes a function a specified number of times.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "function",
+          "repeat",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const times = (func, n) => {\n  Array.from(Array(n)).forEach(() => {\n    func();\n  });\n};\n\n// Usage:\nconst randomFunction = () => console.log('Function called!');\ntimes(randomFunction, 3); // Logs 'Function called!' three times\n"
+      },
+      {
+        "title": "Sleep Function",
+        "description": "Waits for a specified amount of milliseconds before resolving.",
+        "author": "0xHouss",
+        "tags": [
+          "javascript",
+          "sleep",
+          "delay",
+          "utility",
+          "promises"
+        ],
+        "contributors": [],
+        "code": "const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));\n\n// Usage:\nasync function main() {\n  console.log('Hello');\n  await sleep(2000); // Waits for 2 seconds\n  console.log('World!');\n}\n\nmain();\n"
+      },
+      {
+        "title": "Throttle Function",
+        "description": "Limits a function execution to once every specified time interval.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "utility",
+          "throttle",
+          "performance"
+        ],
+        "contributors": [],
+        "code": "const throttle = (func, limit) => {\n  let lastFunc;\n  let lastRan;\n  return (...args) => {\n    const context = this;\n    if (!lastRan) {\n      func.apply(context, args);\n      lastRan = Date.now();\n    } else {\n      clearTimeout(lastFunc);\n      lastFunc = setTimeout(() => {\n        if (Date.now() - lastRan >= limit) {\n          func.apply(context, args);\n          lastRan = Date.now();\n        }\n      }, limit - (Date.now() - lastRan));\n    }\n  };\n};\n\n// Usage:\ndocument.addEventListener('scroll', throttle(() => console.log('Scrolled!'), 1000));\n"
       }
     ]
   },
@@ -963,61 +761,54 @@
       {
         "title": "Add Item to localStorage",
         "description": "Stores a value in localStorage under the given key.",
-        "code": [
-          "const addToLocalStorage = (key, value) => {",
-          "  localStorage.setItem(key, JSON.stringify(value));",
-          "};",
-          "",
-          "// Usage:",
-          "addToLocalStorage('user', { name: 'John', age: 30 });"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "javascript",
           "localStorage",
           "storage",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const addToLocalStorage = (key, value) => {\n  localStorage.setItem(key, JSON.stringify(value));\n};\n\n// Usage:\naddToLocalStorage('user', { name: 'John', age: 30 });\n"
       },
       {
-        "title": "Retrieve Item from localStorage",
-        "description": "Retrieves a value from localStorage by key and parses it.",
-        "code": [
-          "const getFromLocalStorage = (key) => {",
-          "  const item = localStorage.getItem(key);",
-          "  return item ? JSON.parse(item) : null;",
-          "};",
-          "",
-          "// Usage:",
-          "const user = getFromLocalStorage('user');",
-          "console.log(user); // Output: { name: 'John', age: 30 }"
-        ],
+        "title": "Check if Item Exists in localStorage",
+        "description": "Checks if a specific item exists in localStorage.",
+        "author": "axorax",
         "tags": [
           "javascript",
           "localStorage",
           "storage",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const isItemInLocalStorage = (key) => {\n  return localStorage.getItem(key) !== null;\n};\n\n// Usage:\nconsole.log(isItemInLocalStorage('user')); // Output: true or false\n"
       },
       {
         "title": "Clear All localStorage",
         "description": "Clears all data from localStorage.",
-        "code": [
-          "const clearLocalStorage = () => {",
-          "  localStorage.clear();",
-          "};",
-          "",
-          "// Usage:",
-          "clearLocalStorage(); // Removes all items from localStorage"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "javascript",
           "localStorage",
           "storage",
           "utility"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "const clearLocalStorage = () => {\n  localStorage.clear();\n};\n\n// Usage:\nclearLocalStorage(); // Removes all items from localStorage\n"
+      },
+      {
+        "title": "Retrieve Item from localStorage",
+        "description": "Retrieves a value from localStorage by key and parses it.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "localStorage",
+          "storage",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getFromLocalStorage = (key) => {\n  const item = localStorage.getItem(key);\n  return item ? JSON.parse(item) : null;\n};\n\n// Usage:\nconst user = getFromLocalStorage('user');\nconsole.log(user); // Output: { name: 'John', age: 30 }\n"
       }
     ]
   },
@@ -1026,31 +817,529 @@
     "categoryName": "Number Formatting",
     "snippets": [
       {
-        "title": "Number Formatter",
-        "description": "Formats a number with suffixes (K, M, B, etc.).",
-        "code": [
-          "const nFormatter = (num) => {",
-          "  if (!num) return;",
-          "  num = parseFloat(num.toString().replace(/[^0-9.]/g, ''));",
-          "  const suffixes = ['', 'K', 'M', 'B', 'T', 'P', 'E'];",
-          "  let index = 0;",
-          "  while (num >= 1000 && index < suffixes.length - 1) {",
-          "    num /= 1000;",
-          "    index++;",
-          "  }",
-          "  return num.toFixed(2).replace(/\\.0+$|(\\.[0-9]*[1-9])0+$/, '$1') + suffixes[index];",
-          "};",
-          "",
-          "// Usage:",
-          "console.log(nFormatter(1234567)); // Output: '1.23M'"
+        "title": "Convert Number to Currency",
+        "description": "Converts a number to a currency format with a specific locale.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "number",
+          "currency",
+          "utility"
         ],
+        "contributors": [],
+        "code": "const convertToCurrency = (num, locale = 'en-US', currency = 'USD') => {\n  return new Intl.NumberFormat(locale, {\n    style: 'currency',\n    currency: currency\n  }).format(num);\n};\n\n// Usage:\nconsole.log(convertToCurrency(1234567.89)); // Output: '$1,234,567.89'\nconsole.log(convertToCurrency(987654.32, 'de-DE', 'EUR')); // Output: '987.654,32 €'\n"
+      },
+      {
+        "title": "Convert Number to Roman Numerals",
+        "description": "Converts a number to Roman numeral representation.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "number",
+          "roman",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const numberToRoman = (num) => {\n  const romanNumerals = {\n    1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L',\n    90: 'XC', 100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'\n  };\n  let result = '';\n  Object.keys(romanNumerals).reverse().forEach(value => {\n    while (num >= value) {\n      result += romanNumerals[value];\n      num -= value;\n    }\n  });\n  return result;\n};\n\n// Usage:\nconsole.log(numberToRoman(1994)); // Output: 'MCMXCIV'\nconsole.log(numberToRoman(58)); // Output: 'LVIII'\n"
+      },
+      {
+        "title": "Convert to Scientific Notation",
+        "description": "Converts a number to scientific notation.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "number",
+          "scientific",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const toScientificNotation = (num) => {\n  if (isNaN(num)) {\n    throw new Error('Input must be a number');\n  }\n  if (num === 0) {\n    return '0e+0';\n  }\n  const exponent = Math.floor(Math.log10(Math.abs(num)));\n  const mantissa = num / Math.pow(10, exponent);\n  return `${mantissa.toFixed(2)}e${exponent >= 0 ? '+' : ''}${exponent}`;\n};\n\n// Usage:\nconsole.log(toScientificNotation(12345)); // Output: '1.23e+4'\nconsole.log(toScientificNotation(0.0005678)); // Output: '5.68e-4'\nconsole.log(toScientificNotation(1000)); // Output: '1.00e+3'\nconsole.log(toScientificNotation(0)); // Output: '0e+0'\nconsole.log(toScientificNotation(-54321)); // Output: '-5.43e+4'\n"
+      },
+      {
+        "title": "Format Number with Commas",
+        "description": "Formats a number with commas for better readability (e.g., 1000 -> 1,000).",
+        "author": "axorax",
         "tags": [
           "javascript",
           "number",
           "format",
           "utility"
         ],
-        "author": "realvishalrana"
+        "contributors": [],
+        "code": "const formatNumberWithCommas = (num) => {\n  return num.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, ',');\n};\n\n// Usage:\nconsole.log(formatNumberWithCommas(1000)); // Output: '1,000'\nconsole.log(formatNumberWithCommas(1234567)); // Output: '1,234,567'\nconsole.log(formatNumberWithCommas(987654321)); // Output: '987,654,321'\n"
+      },
+      {
+        "title": "Number Formatter",
+        "description": "Formats a number with suffixes (K, M, B, etc.).",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "number",
+          "format",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const nFormatter = (num) => {\n  if (!num) return;\n  num = parseFloat(num.toString().replace(/[^0-9.]/g, ''));\n  const suffixes = ['', 'K', 'M', 'B', 'T', 'P', 'E'];\n  let index = 0;\n  while (num >= 1000 && index < suffixes.length - 1) {\n    num /= 1000;\n    index++;\n  }\n  return num.toFixed(2).replace(/\\.0+$|(\\.[0-9]*[1-9])0+$/, '$1') + suffixes[index];\n};\n\n// Usage:\nconsole.log(nFormatter(1234567)); // Output: '1.23M'\n"
+      },
+      {
+        "title": "Number to Words Converter",
+        "description": "Converts a number to its word representation in English.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "number",
+          "words",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const numberToWords = (num) => {\n  const below20 = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];\n  const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];\n  const above1000 = ['Hundred', 'Thousand', 'Million', 'Billion'];\n  if (num < 20) return below20[num];\n  let words = '';\n  for (let i = 0; num > 0; i++) {\n    if (i > 0 && num % 1000 !== 0) words = above1000[i] + ' ' + words;\n    if (num % 100 >= 20) {\n      words = tens[Math.floor(num / 10)] + ' ' + words;\n      num %= 10;\n    }\n    if (num < 20) words = below20[num] + ' ' + words;\n    num = Math.floor(num / 100);\n  }\n  return words.trim();\n};\n\n// Usage:\nconsole.log(numberToWords(123)); // Output: 'One Hundred Twenty Three'\nconsole.log(numberToWords(2045)); // Output: 'Two Thousand Forty Five'\n"
+      }
+    ]
+  },
+  {
+    "language": "javascript",
+    "categoryName": "Object Manipulation",
+    "snippets": [
+      {
+        "title": "Check if Object is Empty",
+        "description": "Checks whether an object has no own enumerable properties.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "check",
+          "empty"
+        ],
+        "contributors": [],
+        "code": "function isEmptyObject(obj) {\n  return Object.keys(obj).length === 0;\n}\n\n// Usage:\nconsole.log(isEmptyObject({})); // Output: true\nconsole.log(isEmptyObject({ a: 1 })); // Output: false\n"
+      },
+      {
+        "title": "Clone Object Shallowly",
+        "description": "Creates a shallow copy of an object.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "clone",
+          "shallow"
+        ],
+        "contributors": [],
+        "code": "function shallowClone(obj) {\n  return { ...obj };\n}\n\n// Usage:\nconst obj = { a: 1, b: 2 };\nconst clone = shallowClone(obj);\nconsole.log(clone); // Output: { a: 1, b: 2 }\n"
+      },
+      {
+        "title": "Compare Two Objects Shallowly",
+        "description": "Compares two objects shallowly and returns whether they are equal.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "compare",
+          "shallow"
+        ],
+        "contributors": [],
+        "code": "function shallowEqual(obj1, obj2) {\n  const keys1 = Object.keys(obj1);\n  const keys2 = Object.keys(obj2);\n  if (keys1.length !== keys2.length) return false;\n  return keys1.every(key => obj1[key] === obj2[key]);\n}\n\n// Usage:\nconst obj1 = { a: 1, b: 2 };\nconst obj2 = { a: 1, b: 2 };\nconst obj3 = { a: 1, b: 3 };\nconsole.log(shallowEqual(obj1, obj2)); // Output: true\nconsole.log(shallowEqual(obj1, obj3)); // Output: false\n"
+      },
+      {
+        "title": "Convert Object to Query String",
+        "description": "Converts an object to a query string for use in URLs.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "query string",
+          "url"
+        ],
+        "contributors": [],
+        "code": "function toQueryString(obj) {\n  return Object.entries(obj)\n    .map(([key, value]) => encodeURIComponent(key) + '=' + encodeURIComponent(value))\n    .join('&');\n}\n\n// Usage:\nconst params = { search: 'test', page: 1 };\nconsole.log(toQueryString(params)); // Output: 'search=test&page=1'\n"
+      },
+      {
+        "title": "Count Properties in Object",
+        "description": "Counts the number of own properties in an object.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "count",
+          "properties"
+        ],
+        "contributors": [],
+        "code": "function countProperties(obj) {\n  return Object.keys(obj).length;\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(countProperties(obj)); // Output: 3\n"
+      },
+      {
+        "title": "Filter Object",
+        "description": "Filter out entries in an object where the value is falsy, including empty strings, empty objects, null, and undefined.",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "object",
+          "filter",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "export const filterObject = (object = {}) =>\n  Object.fromEntries(\n    Object.entries(object)\n      .filter(([key, value]) => value !== null && value !== undefined && value !== '' && (typeof value !== 'object' || Object.keys(value).length > 0))\n  );\n\n// Usage:\nconst obj1 = { a: 1, b: null, c: undefined, d: 4, e: '', f: {} };\nconsole.log(filterObject(obj1)); // Output: { a: 1, d: 4 }\n\nconst obj2 = { x: 0, y: false, z: 'Hello', w: [] };\nconsole.log(filterObject(obj2)); // Output: { z: 'Hello' }\n\nconst obj3 = { name: 'John', age: null, address: { city: 'New York' }, phone: '' };\nconsole.log(filterObject(obj3)); // Output: { name: 'John', address: { city: 'New York' } }\n\nconst obj4 = { a: 0, b: '', c: false, d: {}, e: 'Valid' };\nconsole.log(filterObject(obj4)); // Output: { e: 'Valid' }\n"
+      },
+      {
+        "title": "Flatten Nested Object",
+        "description": "Flattens a nested object into a single-level object with dot notation for keys.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "flatten",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "function flattenObject(obj, prefix = '') {\n  return Object.keys(obj).reduce((acc, key) => {\n    const fullPath = prefix ? `${prefix}.${key}` : key;\n    if (typeof obj[key] === 'object' && obj[key] !== null) {\n      Object.assign(acc, flattenObject(obj[key], fullPath));\n    } else {\n      acc[fullPath] = obj[key];\n    }\n    return acc;\n  }, {});\n}\n\n// Usage:\nconst nestedObj = { a: { b: { c: 1 }, d: 2 }, e: 3 };\nconsole.log(flattenObject(nestedObj)); // Output: { 'a.b.c': 1, 'a.d': 2, e: 3 }\n"
+      },
+      {
+        "title": "Freeze Object",
+        "description": "Freezes an object to make it immutable.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "freeze",
+          "immutable"
+        ],
+        "contributors": [],
+        "code": "function freezeObject(obj) {\n  return Object.freeze(obj);\n}\n\n// Usage:\nconst obj = { a: 1, b: 2 };\nconst frozenObj = freezeObject(obj);\nfrozenObj.a = 42;         // This will fail silently in strict mode.\nconsole.log(frozenObj.a); // Output: 1\n"
+      },
+      {
+        "title": "Get Nested Value",
+        "description": "Retrieves the value at a given path in a nested object.",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "object",
+          "nested",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const getNestedValue = (obj, path) => {\n  const keys = path.split('.');\n  return keys.reduce((currentObject, key) => {\n    return currentObject && typeof currentObject === 'object' ? currentObject[key] : undefined;\n  }, obj);\n};\n\n// Usage:\nconst obj = { a: { b: { c: 42 } } };\nconsole.log(getNestedValue(obj, 'a.b.c')); // Output: 42\n"
+      },
+      {
+        "title": "Invert Object Keys and Values",
+        "description": "Creates a new object by swapping keys and values of the given object.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "invert",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "function invertObject(obj) {\n  return Object.fromEntries(\n    Object.entries(obj).map(([key, value]) => [value, key])\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(invertObject(obj)); // Output: { '1': 'a', '2': 'b', '3': 'c' }\n"
+      },
+      {
+        "title": "Merge Objects Deeply",
+        "description": "Deeply merges two or more objects, including nested properties.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "merge",
+          "deep"
+        ],
+        "contributors": [],
+        "code": "function deepMerge(...objects) {\n  return objects.reduce((acc, obj) => {\n    Object.keys(obj).forEach(key => {\n      if (typeof obj[key] === 'object' && obj[key] !== null) {\n        acc[key] = deepMerge(acc[key] || {}, obj[key]);\n      } else {\n        acc[key] = obj[key];\n      }\n    });\n    return acc;\n  }, {});\n}\n\n// Usage:\nconst obj1 = { a: 1, b: { c: 2 } };\nconst obj2 = { b: { d: 3 }, e: 4 };\nconsole.log(deepMerge(obj1, obj2)); // Output: { a: 1, b: { c: 2, d: 3 }, e: 4 }\n"
+      },
+      {
+        "title": "Omit Keys from Object",
+        "description": "Creates a new object with specific keys omitted.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "omit",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "function omitKeys(obj, keys) {\n  return Object.fromEntries(\n    Object.entries(obj).filter(([key]) => !keys.includes(key))\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(omitKeys(obj, ['b', 'c'])); // Output: { a: 1 }\n"
+      },
+      {
+        "title": "Pick Keys from Object",
+        "description": "Creates a new object with only the specified keys.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "object",
+          "pick",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "function pickKeys(obj, keys) {\n  return Object.fromEntries(\n    Object.entries(obj).filter(([key]) => keys.includes(key))\n  );\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\nconsole.log(pickKeys(obj, ['a', 'c'])); // Output: { a: 1, c: 3 }\n"
+      },
+      {
+        "title": "Unique By Key",
+        "description": "Filters an array of objects to only include unique objects by a specified key.",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "array",
+          "unique",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const uniqueByKey = (key, arr) =>\n  arr.filter((obj, index, self) => index === self.findIndex((t) => t?.[key] === obj?.[key]));\n\n// Usage:\nconst arr = [\n  { id: 1, name: 'John' },\n  { id: 2, name: 'Jane' },\n  { id: 1, name: 'John' }\n];\nconsole.log(uniqueByKey('id', arr)); // Output: [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]\n"
+      }
+    ]
+  },
+  {
+    "language": "javascript",
+    "categoryName": "Regular Expression",
+    "snippets": [
+      {
+        "title": "Regex Match Utility Function",
+        "description": "Enhanced regular expression matching utility.",
+        "author": "aumirza",
+        "tags": [
+          "javascript",
+          "regex"
+        ],
+        "contributors": [],
+        "code": "/**\n* @param {string | number} input\n*          The input string to match\n* @param {regex | string}  expression\n*          Regular expression\n* @param {string} flags\n*          Optional Flags\n*\n* @returns {array}\n* [{\n* match: '...',\n* matchAtIndex: 0,\n* capturedGroups: [ '...', '...' ]\n* }]\n*/\nfunction regexMatch(input, expression, flags = 'g') {\n  let regex =\n    expression instanceof RegExp\n      ? expression\n      : new RegExp(expression, flags);\n  let matches = input.matchAll(regex);\n  matches = [...matches];\n  return matches.map((item) => {\n    return {\n      match: item[0],\n      matchAtIndex: item.index,\n      capturedGroups: item.length > 1 ? item.slice(1) : undefined,\n    };\n  });\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "javascript",
+    "categoryName": "String Manipulation",
+    "snippets": [
+      {
+        "title": "Capitalize String",
+        "description": "Capitalizes the first letter of a string.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "string",
+          "capitalize",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);\n\n// Usage:\nconsole.log(capitalize('hello')); // Output: 'Hello'\n"
+      },
+      {
+        "title": "Check if String is a Palindrome",
+        "description": "Checks whether a given string is a palindrome.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "check",
+          "palindrome",
+          "string"
+        ],
+        "contributors": [],
+        "code": "function isPalindrome(str) {\n  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();\n  return cleanStr === cleanStr.split('').reverse().join('');\n}\n\n// Example usage:\nconsole.log(isPalindrome('A man, a plan, a canal, Panama')); // Output: true\n"
+      },
+      {
+        "title": "Convert String to Camel Case",
+        "description": "Converts a given string into camelCase.",
+        "author": "aumirza",
+        "tags": [
+          "string",
+          "case",
+          "camelCase"
+        ],
+        "contributors": [],
+        "code": "function toCamelCase(str) {\n  return str.replace(/\\W+(.)/g, (match, chr) => chr.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toCamelCase('hello world test')); // Output: 'helloWorldTest'\n"
+      },
+      {
+        "title": "Convert String to Param Case",
+        "description": "Converts a given string into param-case.",
+        "author": "aumirza",
+        "tags": [
+          "string",
+          "case",
+          "paramCase"
+        ],
+        "contributors": [],
+        "code": "function toParamCase(str) {\n  return str.toLowerCase().replace(/\\s+/g, '-');\n}\n\n// Example usage:\nconsole.log(toParamCase('Hello World Test')); // Output: 'hello-world-test'\n"
+      },
+      {
+        "title": "Convert String to Pascal Case",
+        "description": "Converts a given string into Pascal Case.",
+        "author": "aumirza",
+        "tags": [
+          "string",
+          "case",
+          "pascalCase"
+        ],
+        "contributors": [],
+        "code": "function toPascalCase(str) {\n  return str.replace(/\\b\\w/g, (s) => s.toUpperCase()).replace(/\\W+(.)/g, (match, chr) => chr.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toPascalCase('hello world test')); // Output: 'HelloWorldTest'\n"
+      },
+      {
+        "title": "Convert String to Snake Case",
+        "description": "Converts a given string into snake_case.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "case",
+          "snake_case"
+        ],
+        "contributors": [],
+        "code": "function toSnakeCase(str) {\n  return str.replace(/([a-z])([A-Z])/g, '$1_$2')\n            .replace(/\\s+/g, '_')\n            .toLowerCase();\n}\n\n// Example usage:\nconsole.log(toSnakeCase('Hello World Test')); // Output: 'hello_world_test'\n"
+      },
+      {
+        "title": "Convert String to Title Case",
+        "description": "Converts a given string into Title Case.",
+        "author": "aumirza",
+        "tags": [
+          "string",
+          "case",
+          "titleCase"
+        ],
+        "contributors": [],
+        "code": "function toTitleCase(str) {\n  return str.toLowerCase().replace(/\\b\\w/g, (s) => s.toUpperCase());\n}\n\n// Example usage:\nconsole.log(toTitleCase('hello world test')); // Output: 'Hello World Test'\n"
+      },
+      {
+        "title": "Convert Tabs to Spaces",
+        "description": "Converts all tab characters in a string to spaces.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "tabs",
+          "spaces"
+        ],
+        "contributors": [],
+        "code": "function tabsToSpaces(str, spacesPerTab = 4) {\n  return str.replace(/\\t/g, ' '.repeat(spacesPerTab));\n}\n\n// Example usage:\nconsole.log(tabsToSpaces('Hello\\tWorld', 2)); // Output: 'Hello  World'\n"
+      },
+      {
+        "title": "Count Words in a String",
+        "description": "Counts the number of words in a string.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "string",
+          "manipulation",
+          "word count",
+          "count"
+        ],
+        "contributors": [],
+        "code": "function countWords(str) {\n  return str.trim().split(/\\s+/).length;\n}\n\n// Example usage:\nconsole.log(countWords('Hello world! This is a test.')); // Output: 6\n"
+      },
+      {
+        "title": "Data with Prefix",
+        "description": "Adds a prefix and postfix to data, with a fallback value.",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "data",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const dataWithPrefix = (data, fallback = '-', prefix = '', postfix = '') => {\n  return data ? `${prefix}${data}${postfix}` : fallback;\n};\n\n// Usage:\nconsole.log(dataWithPrefix('123', '-', '(', ')')); // Output: '(123)'\nconsole.log(dataWithPrefix('', '-', '(', ')')); // Output: '-'\nconsole.log(dataWithPrefix('Hello', 'N/A', 'Mr. ', '')); // Output: 'Mr. Hello'\nconsole.log(dataWithPrefix(null, 'N/A', 'Mr. ', '')); // Output: 'N/A'\n"
+      },
+      {
+        "title": "Extract Initials from Name",
+        "description": "Extracts and returns the initials from a full name.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "initials",
+          "name"
+        ],
+        "contributors": [],
+        "code": "function getInitials(name) {\n  return name.split(' ').map(part => part.charAt(0).toUpperCase()).join('');\n}\n\n// Example usage:\nconsole.log(getInitials('John Doe')); // Output: 'JD'\n"
+      },
+      {
+        "title": "Mask Sensitive Information",
+        "description": "Masks parts of a sensitive string, like a credit card or email address.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "mask",
+          "sensitive"
+        ],
+        "contributors": [],
+        "code": "function maskSensitiveInfo(str, visibleCount = 4, maskChar = '*') {\n  return str.slice(0, visibleCount) + maskChar.repeat(Math.max(0, str.length - visibleCount));\n}\n\n// Example usage:\nconsole.log(maskSensitiveInfo('123456789', 4)); // Output: '1234*****'\nconsole.log(maskSensitiveInfo('example@mail.com', 2, '#')); // Output: 'ex#############'\n"
+      },
+      {
+        "title": "Pad String on Both Sides",
+        "description": "Pads a string on both sides with a specified character until it reaches the desired length.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "pad",
+          "manipulation"
+        ],
+        "contributors": [],
+        "code": "function padString(str, length, char = ' ') {\n  const totalPad = length - str.length;\n  const padStart = Math.floor(totalPad / 2);\n  const padEnd = totalPad - padStart;\n  return char.repeat(padStart) + str + char.repeat(padEnd);\n}\n\n// Example usage:\nconsole.log(padString('hello', 10, '*')); // Output: '**hello***'\n"
+      },
+      {
+        "title": "Random string",
+        "description": "Generates a random string of characters of a certain length",
+        "author": "kruimol",
+        "tags": [
+          "javascript",
+          "function",
+          "random"
+        ],
+        "contributors": [],
+        "code": "function makeid(length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {\n  return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');\n}\n\nconsole.log(makeid(5, \"1234\" /* (optional) */));\n"
+      },
+      {
+        "title": "Remove All Whitespace",
+        "description": "Removes all whitespace from a string.",
+        "author": "axorax",
+        "tags": [
+          "javascript",
+          "string",
+          "whitespace"
+        ],
+        "contributors": [],
+        "code": "function removeWhitespace(str) {\n  return str.replace(/\\s+/g, '');\n}\n\n// Example usage:\nconsole.log(removeWhitespace('Hello world!')); // Output: 'Helloworld!'\n"
+      },
+      {
+        "title": "Remove Vowels from a String",
+        "description": "Removes all vowels from a given string.",
+        "author": "axorax",
+        "tags": [
+          "string",
+          "remove",
+          "vowels"
+        ],
+        "contributors": [],
+        "code": "function removeVowels(str) {\n  return str.replace(/[aeiouAEIOU]/g, '');\n}\n\n// Example usage:\nconsole.log(removeVowels('Hello World')); // Output: 'Hll Wrld'\n"
+      },
+      {
+        "title": "Reverse String",
+        "description": "Reverses the characters in a string.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "string",
+          "reverse",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const reverseString = (str) => str.split('').reverse().join('');\n\n// Usage:\nconsole.log(reverseString('hello')); // Output: 'olleh'\n"
+      },
+      {
+        "title": "Slugify String",
+        "description": "Converts a string into a URL-friendly slug format.",
+        "author": "dostonnabotov",
+        "tags": [
+          "javascript",
+          "string",
+          "slug",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "const slugify = (string, separator = \"-\") => {\n  return string\n    .toString() // Cast to string (optional)\n    .toLowerCase() // Convert the string to lowercase letters\n    .trim() // Remove whitespace from both sides of a string (optional)\n    .replace(/\\s+/g, separator) // Replace spaces with {separator}\n    .replace(/[^\\w\\-]+/g, \"\") // Remove all non-word chars\n    .replace(/\\_/g, separator) // Replace _ with {separator}\n    .replace(/\\-\\-+/g, separator) // Replace multiple - with single {separator}\n    .replace(/\\-$/g, \"\"); // Remove trailing -\n};\n\n// Usage:\nconst title = \"Hello, World! This is a Test.\";\nconsole.log(slugify(title)); // Output: 'hello-world-this-is-a-test'\nconsole.log(slugify(title, \"_\")); // Output: 'hello_world_this_is_a_test'\n"
+      },
+      {
+        "title": "Truncate Text",
+        "description": "Truncates the text to a maximum length and appends '...' if the text exceeds the maximum length.",
+        "author": "realvishalrana",
+        "tags": [
+          "javascript",
+          "string",
+          "truncate",
+          "utility",
+          "text"
+        ],
+        "contributors": [],
+        "code": "const truncateText = (text = '', maxLength = 50) => {\n  return `${text.slice(0, maxLength)}${text.length >= maxLength ? '...' : ''}`;\n};\n\n// Usage:\nconst title = \"Hello, World! This is a Test.\";\nconsole.log(truncateText(title)); // Output: 'Hello, World! This is a Test.'\nconsole.log(truncateText(title, 10)); // Output: 'Hello, Wor...'\n"
       }
     ]
   },
@@ -1061,523 +1350,15 @@
       {
         "title": "Hello, World!",
         "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "print(\"Hello, World!\") # Prints Hello, World! to the terminal."
-        ],
+        "author": "James-Beans",
         "tags": [
           "python",
           "printing",
           "hello-world",
           "utility"
         ],
-        "author": "James-Beans"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "String Manipulation",
-    "snippets": [
-      {
-        "title": "Reverse String",
-        "description": "Reverses the characters in a string.",
-        "code": [
-          "def reverse_string(s):",
-          "    return s[::-1]",
-          "",
-          "# Usage:",
-          "print(reverse_string('hello'))  # Output: 'olleh'"
-        ],
-        "tags": [
-          "python",
-          "string",
-          "reverse",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Check Palindrome",
-        "description": "Checks if a string is a palindrome.",
-        "code": [
-          "def is_palindrome(s):",
-          "    s = s.lower().replace(' ', '')",
-          "    return s == s[::-1]",
-          "",
-          "# Usage:",
-          "print(is_palindrome('A man a plan a canal Panama'))  # Output: True"
-        ],
-        "tags": [
-          "python",
-          "string",
-          "palindrome",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Count Vowels",
-        "description": "Counts the number of vowels in a string.",
-        "code": [
-          "def count_vowels(s):",
-          "    vowels = 'aeiou'",
-          "    return len([char for char in s.lower() if char in vowels])",
-          "",
-          "# Usage:",
-          "print(count_vowels('hello'))  # Output: 2"
-        ],
-        "tags": [
-          "python",
-          "string",
-          "vowels",
-          "count",
-          "utility"
-        ],
-        "author": "SteliosGee"
-      },
-      {
-        "title": "Check Anagram",
-        "description": "Checks if two strings are anagrams of each other.",
-        "code": [
-          "def is_anagram(s1, s2):",
-          "    return sorted(s1) == sorted(s2)",
-          "",
-          "# Usage:",
-          "print(is_anagram('listen', 'silent'))  # Output: True"
-        ],
-        "tags": [
-          "python",
-          "string",
-          "anagram",
-          "check",
-          "utility"
-        ],
-        "author": "SteliosGee"
-      },
-      {
-        "title": "Remove Punctuation",
-        "description": "Removes punctuation from a string.",
-        "code": [
-          "import string",
-          "",
-          "def remove_punctuation(s):",
-          "    return s.translate(str.maketrans('', '', string.punctuation))",
-          "",
-          "# Usage:",
-          "print(remove_punctuation('Hello, World!'))  # Output: 'Hello World'"
-        ],
-        "tags": [
-          "python",
-          "string",
-          "punctuation",
-          "remove",
-          "utility"
-        ],
-        "author": "SteliosGee"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "List Manipulation",
-    "snippets": [
-      {
-        "title": "Flatten Nested List",
-        "description": "Flattens a multi-dimensional list into a single list.",
-        "code": [
-          "def flatten_list(lst):",
-          "    return [item for sublist in lst for item in sublist]",
-          "",
-          "# Usage:",
-          "nested_list = [[1, 2], [3, 4], [5]]",
-          "print(flatten_list(nested_list))  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": [
-          "python",
-          "list",
-          "flatten",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Flatten Unevenly Nested Lists",
-        "description": "Converts unevenly nested lists of any depth into a single flat list.",
-        "code": [
-          "def flatten(nested_list):",
-          "    \"\"\"",
-          "    Flattens unevenly nested lists of any depth into a single flat list.",
-          "    \"\"\"",
-          "    for item in nested_list:",
-          "        if isinstance(item, list):",
-          "            yield from flatten(item)",
-          "        else:",
-          "            yield item",
-          "",
-          "# Usage:",
-          "nested_list = [1, [2, [3, 4]], 5]",
-          "flattened = list(flatten(nested_list))",
-          "print(flattened)  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": [
-          "python",
-          "list",
-          "flattening",
-          "nested-lists",
-          "depth",
-          "utilities"
-        ],
-        "author": "agilarasu"
-      },
-      {
-        "title": "Remove Duplicates",
-        "description": "Removes duplicate elements from a list while maintaining order.",
-        "code": [
-          "def remove_duplicates(lst):",
-          "    return list(dict.fromkeys(lst))",
-          "",
-          "# Usage:",
-          "print(remove_duplicates([1, 2, 2, 3, 4, 4, 5]))  # Output: [1, 2, 3, 4, 5]"
-        ],
-        "tags": [
-          "python",
-          "list",
-          "duplicates",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "File Handling",
-    "snippets": [
-      {
-        "title": "Read File Lines",
-        "description": "Reads all lines from a file and returns them as a list.",
-        "code": [
-          "def read_file_lines(filepath):",
-          "    with open(filepath, 'r') as file:",
-          "        return file.readlines()",
-          "",
-          "# Usage:",
-          "lines = read_file_lines('example.txt')",
-          "print(lines)"
-        ],
-        "tags": [
-          "python",
-          "file",
-          "read",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Write to File",
-        "description": "Writes content to a file.",
-        "code": [
-          "def write_to_file(filepath, content):",
-          "    with open(filepath, 'w') as file:",
-          "        file.write(content)",
-          "",
-          "# Usage:",
-          "write_to_file('example.txt', 'Hello, World!')"
-        ],
-        "tags": [
-          "python",
-          "file",
-          "write",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Find Files",
-        "description": "Finds all files of the specified type within a given directory.",
-        "code": [
-          "import os",
-          "",
-          "def find_files(directory, file_type):",
-          "  file_type = file_type.lower()  # Convert file_type to lowercase",
-          "  found_files = []",
-          "",
-          "  for root, _, files in os.walk(directory):",
-          "    for file in files:",
-          "      file_ext = os.path.splitext(file)[1].lower()",
-          "      if file_ext == file_type:",
-          "        full_path = os.path.join(root, file)",
-          "        found_files.append(full_path)",
-          "",
-          "  return found_files",
-          "",
-          "# Example Usage:",
-          "pdf_files = find_files('/path/to/your/directory', '.pdf')",
-          "print(pdf_files)"
-        ],
-        "tags": [
-          "python",
-          "os",
-          "filesystem",
-          "file_search"
-        ],
-        "author": "Jackeastern"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "Math and Numbers",
-    "snippets": [
-      {
-        "title": "Find Factorial",
-        "description": "Calculates the factorial of a number.",
-        "code": [
-          "def factorial(n):",
-          "    if n == 0:",
-          "        return 1",
-          "    return n * factorial(n - 1)",
-          "",
-          "# Usage:",
-          "print(factorial(5))  # Output: 120"
-        ],
-        "tags": [
-          "python",
-          "math",
-          "factorial",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Check Prime Number",
-        "description": "Checks if a number is a prime number.",
-        "code": [
-          "def is_prime(n):",
-          "    if n <= 1:",
-          "        return False",
-          "    for i in range(2, int(n**0.5) + 1):",
-          "        if n % i == 0:",
-          "            return False",
-          "    return True",
-          "",
-          "# Usage:",
-          "print(is_prime(17))  # Output: True"
-        ],
-        "tags": [
-          "python",
-          "math",
-          "prime",
-          "check"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "Utilities",
-    "snippets": [
-      {
-        "title": "Measure Execution Time",
-        "description": "Measures the execution time of a code block.",
-        "code": [
-          "import time",
-          "",
-          "def measure_time(func, *args):",
-          "    start = time.time()",
-          "    result = func(*args)",
-          "    end = time.time()",
-          "    print(f'Execution time: {end - start:.6f} seconds')",
-          "    return result",
-          "",
-          "# Usage:",
-          "def slow_function():",
-          "    time.sleep(2)",
-          "",
-          "measure_time(slow_function)"
-        ],
-        "tags": [
-          "python",
-          "time",
-          "execution",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Generate Random String",
-        "description": "Generates a random alphanumeric string.",
-        "code": [
-          "import random",
-          "import string",
-          "",
-          "def random_string(length):",
-          "    letters_and_digits = string.ascii_letters + string.digits",
-          "    return ''.join(random.choice(letters_and_digits) for _ in range(length))",
-          "",
-          "# Usage:",
-          "print(random_string(10))  # Output: Random 10-character string"
-        ],
-        "tags": [
-          "python",
-          "random",
-          "string",
-          "utility"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "JSON Manipulation",
-    "snippets": [
-      {
-        "title": "Read JSON File",
-        "description": "Reads a JSON file and parses its content.",
-        "code": [
-          "import json",
-          "",
-          "def read_json(filepath):",
-          "    with open(filepath, 'r') as file:",
-          "        return json.load(file)",
-          "",
-          "# Usage:",
-          "data = read_json('data.json')",
-          "print(data)"
-        ],
-        "tags": [
-          "python",
-          "json",
-          "file",
-          "read"
-        ],
-        "author": "e3nviction"
-      },
-      {
-        "title": "Write JSON File",
-        "description": "Writes a dictionary to a JSON file.",
-        "code": [
-          "import json",
-          "",
-          "def write_json(filepath, data):",
-          "    with open(filepath, 'w') as file:",
-          "        json.dump(data, file, indent=4)",
-          "",
-          "# Usage:",
-          "data = {'name': 'John', 'age': 30}",
-          "write_json('data.json', data)"
-        ],
-        "tags": [
-          "python",
-          "json",
-          "file",
-          "write"
-        ],
-        "author": "e3nviction"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "SQLite Database",
-    "snippets": [
-      {
-        "title": "Create SQLite Database Table",
-        "description": "Creates a table in an SQLite database with a dynamic schema.",
-        "code": [
-          "import sqlite3",
-          "",
-          "def create_table(db_name, table_name, schema):",
-          "    conn = sqlite3.connect(db_name)",
-          "    cursor = conn.cursor()",
-          "    schema_string = ', '.join([f'{col} {dtype}' for col, dtype in schema.items()])",
-          "    cursor.execute(f'''",
-          "        CREATE TABLE IF NOT EXISTS {table_name} (",
-          "            {schema_string}",
-          "        )''')",
-          "    conn.commit()",
-          "    conn.close()",
-          "",
-          "# Usage:",
-          "db_name = 'example.db'",
-          "table_name = 'users'",
-          "schema = {",
-          "    'id': 'INTEGER PRIMARY KEY',",
-          "    'name': 'TEXT',",
-          "    'age': 'INTEGER',",
-          "    'email': 'TEXT'",
-          "}",
-          "create_table(db_name, table_name, schema)"
-        ],
-        "tags": [
-          "python",
-          "sqlite",
-          "database",
-          "table"
-        ],
-        "author": "e3nviction"
-      },
-      {
-        "title": "Insert Data into Sqlite Table",
-        "description": "Inserts a row into a specified SQLite table using a dictionary of fields and values.",
-        "code": [
-          "import sqlite3",
-          "",
-          "def insert_into_table(db_path, table_name, data):",
-          "    with sqlite3.connect(db_path) as conn:",
-          "        columns = ', '.join(data.keys())",
-          "        placeholders = ', '.join(['?'] * len(data))",
-          "        sql = f\"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})\"",
-          "        conn.execute(sql, tuple(data.values()))",
-          "        conn.commit()",
-          "",
-          "# Usage:",
-          "db_path = 'example.db'",
-          "table_name = 'users'",
-          "data = {",
-          "    'name': 'John Doe',",
-          "    'email': 'john@example.com',",
-          "    'age': 30",
-          "}",
-          "insert_into_table(db_path, table_name, data)"
-        ],
-        "tags": [
-          "python",
-          "sqlite",
-          "database",
-          "utility"
-        ],
-        "author": "e3nviction"
-      }
-    ]
-  },
-  {
-    "language": "python",
-    "categoryName": "Error Handling",
-    "snippets": [
-      {
-        "title": "Safe Division",
-        "description": "Performs division with error handling.",
-        "code": [
-          "def safe_divide(a, b):",
-          "    try:",
-          "        return a / b",
-          "    except ZeroDivisionError:",
-          "        return 'Cannot divide by zero!'",
-          "",
-          "# Usage:",
-          "print(safe_divide(10, 2))  # Output: 5.0",
-          "print(safe_divide(10, 0))  # Output: 'Cannot divide by zero!'"
-        ],
-        "tags": [
-          "python",
-          "error-handling",
-          "division",
-          "utility"
-        ],
-        "author": "e3nviction"
+        "contributors": [],
+        "code": "print(\"Hello, World!\") # Prints Hello, World! to the terminal.\n"
       }
     ]
   },
@@ -1586,45 +1367,902 @@
     "categoryName": "Datetime Utilities",
     "snippets": [
       {
-        "title": "Get Current Date and Time String",
-        "description": "Fetches the current date and time as a formatted string.",
-        "code": [
-          "from datetime import datetime",
-          "",
-          "def get_current_datetime_string():",
-          "    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')",
-          "",
-          "# Usage:",
-          "print(get_current_datetime_string())  # Output: '2023-01-01 12:00:00'"
-        ],
-        "tags": [
-          "python",
-          "datetime",
-          "utility"
-        ],
-        "author": "e3nviction"
-      },
-      {
         "title": "Calculate Date Difference in Milliseconds",
         "description": "Calculates the difference between two dates in milliseconds.",
-        "code": [
-          "from datetime import datetime",
-          "",
-          "def date_difference_in_millis(date1, date2):",
-          "    delta = date2 - date1",
-          "    return delta.total_seconds() * 1000",
-          "",
-          "# Usage:",
-          "d1 = datetime(2023, 1, 1, 12, 0, 0)",
-          "d2 = datetime(2023, 1, 1, 12, 1, 0)",
-          "print(date_difference_in_millis(d1, d2))"
-        ],
+        "author": "e3nviction",
         "tags": [
           "python",
           "datetime",
           "utility"
         ],
-        "author": "e3nviction"
+        "contributors": [],
+        "code": "from datetime import datetime\n\ndef date_difference_in_millis(date1, date2):\n    delta = date2 - date1\n    return delta.total_seconds() * 1000\n\n# Usage:\nd1 = datetime(2023, 1, 1, 12, 0, 0)\nd2 = datetime(2023, 1, 1, 12, 1, 0)\nprint(date_difference_in_millis(d1, d2))\n"
+      },
+      {
+        "title": "Check if Date is a Weekend",
+        "description": "Checks whether a given date falls on a weekend.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "datetime",
+          "weekend",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from datetime import datetime\n\ndef is_weekend(date):\n    try:\n        return date.weekday() >= 5  # Saturday = 5, Sunday = 6\n    except AttributeError:\n        raise TypeError(\"Input must be a datetime object\")\n\n# Usage:\ndate = datetime(2023, 1, 1)\nweekend = is_weekend(date)\nprint(weekend)  # Output: True (Sunday)\n"
+      },
+      {
+        "title": "Determine Day of the Week",
+        "description": "Calculates the day of the week for a given date.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "datetime",
+          "weekday",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from datetime import datetime\n\ndef get_day_of_week(date):\n    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']\n    try:\n        return days[date.weekday()]\n    except IndexError:\n        raise ValueError(\"Invalid date\")\n\n# Usage:\ndate = datetime(2023, 1, 1)\nday = get_day_of_week(date)\nprint(day)  # Output: 'Sunday'\n"
+      },
+      {
+        "title": "Generate Date Range List",
+        "description": "Generates a list of dates between two given dates.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "datetime",
+          "range",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from datetime import datetime, timedelta\n\ndef generate_date_range(start_date, end_date):\n    if start_date > end_date:\n        raise ValueError(\"start_date must be before end_date\")\n\n    current_date = start_date\n    date_list = []\n    while current_date <= end_date:\n        date_list.append(current_date)\n        current_date += timedelta(days=1)\n\n    return date_list\n\n# Usage:\nstart = datetime(2023, 1, 1)\nend = datetime(2023, 1, 5)\ndates = generate_date_range(start, end)\nfor d in dates:\n    print(d.strftime('%Y-%m-%d'))\n# Output: '2023-01-01', '2023-01-02', '2023-01-03', '2023-01-04', '2023-01-05'\n"
+      },
+      {
+        "title": "Get Current Date and Time String",
+        "description": "Fetches the current date and time as a formatted string.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "datetime",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from datetime import datetime\n\ndef get_current_datetime_string():\n    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n\n# Usage:\nprint(get_current_datetime_string())  # Output: '2023-01-01 12:00:00'\n"
+      },
+      {
+        "title": "Get Number of Days in a Month",
+        "description": "Determines the number of days in a specific month and year.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "datetime",
+          "calendar",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from calendar import monthrange\nfrom datetime import datetime\n\ndef get_days_in_month(year, month):\n    try:\n        return monthrange(year, month)[1]\n    except ValueError as e:\n        raise ValueError(f\"Invalid month or year: {e}\")\n\n# Usage:\ndays = get_days_in_month(2023, 2)\nprint(days)  # Output: 28 (for non-leap year February)\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "Error Handling",
+    "snippets": [
+      {
+        "title": "Handle File Not Found Error",
+        "description": "Attempts to open a file and handles the case where the file does not exist.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "error-handling",
+          "file",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def read_file_safe(filepath):\n    try:\n        with open(filepath, 'r') as file:\n            return file.read()\n    except FileNotFoundError:\n        return \"File not found!\"\n\n# Usage:\nprint(read_file_safe('nonexistent.txt'))  # Output: 'File not found!'\n"
+      },
+      {
+        "title": "Retry Function Execution on Exception",
+        "description": "Retries a function execution a specified number of times if it raises an exception.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "error-handling",
+          "retry",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import time\n\ndef retry(func, retries=3, delay=1):\n    for attempt in range(retries):\n        try:\n            return func()\n        except Exception as e:\n            print(f\"Attempt {attempt + 1} failed: {e}\")\n            time.sleep(delay)\n    raise Exception(\"All retry attempts failed\")\n\n# Usage:\ndef unstable_function():\n    raise ValueError(\"Simulated failure\")\n\n# Retry 3 times with 2 seconds delay:\ntry:\n    retry(unstable_function, retries=3, delay=2)\nexcept Exception as e:\n    print(e)  # Output: All retry attempts failed\n"
+      },
+      {
+        "title": "Safe Division",
+        "description": "Performs division with error handling.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "error-handling",
+          "division",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 'Cannot divide by zero!'\n\n# Usage:\nprint(safe_divide(10, 2))  # Output: 5.0\nprint(safe_divide(10, 0))  # Output: 'Cannot divide by zero!'\n"
+      },
+      {
+        "title": "Validate Input with Exception Handling",
+        "description": "Validates user input and handles invalid input gracefully.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "error-handling",
+          "validation",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def validate_positive_integer(input_value):\n    try:\n        value = int(input_value)\n        if value < 0:\n            raise ValueError(\"The number must be positive\")\n        return value\n    except ValueError as e:\n        return f\"Invalid input: {e}\"\n\n# Usage:\nprint(validate_positive_integer('10'))  # Output: 10\nprint(validate_positive_integer('-5'))  # Output: Invalid input: The number must be positive\nprint(validate_positive_integer('abc'))  # Output: Invalid input: invalid literal for int() with base 10: 'abc'\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "File Handling",
+    "snippets": [
+      {
+        "title": "Append to File",
+        "description": "Appends content to the end of a file.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "append",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def append_to_file(filepath, content):\n    with open(filepath, 'a') as file:\n        file.write(content + '\\n')\n\n# Usage:\nappend_to_file('example.txt', 'This is an appended line.')\n"
+      },
+      {
+        "title": "Check if File Exists",
+        "description": "Checks if a file exists at the specified path.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "exists",
+          "check",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import os\n\ndef file_exists(filepath):\n    return os.path.isfile(filepath)\n\n# Usage:\nprint(file_exists('example.txt'))  # Output: True or False\n"
+      },
+      {
+        "title": "Copy File",
+        "description": "Copies a file from source to destination.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "copy",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import shutil\n\ndef copy_file(src, dest):\n    shutil.copy(src, dest)\n\n# Usage:\ncopy_file('example.txt', 'copy_of_example.txt')\n"
+      },
+      {
+        "title": "Delete File",
+        "description": "Deletes a file at the specified path.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "delete",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import os\n\ndef delete_file(filepath):\n    if os.path.exists(filepath):\n        os.remove(filepath)\n        print(f'File {filepath} deleted.')\n    else:\n        print(f'File {filepath} does not exist.')\n\n# Usage:\ndelete_file('example.txt')\n"
+      },
+      {
+        "title": "Find Files",
+        "description": "Finds all files of the specified type within a given directory.",
+        "author": "Jackeastern",
+        "tags": [
+          "python",
+          "os",
+          "filesystem",
+          "file_search"
+        ],
+        "contributors": [],
+        "code": "import os\n\ndef find_files(directory, file_type):\n  file_type = file_type.lower()  # Convert file_type to lowercase\n  found_files = []\n\n  for root, _, files in os.walk(directory):\n    for file in files:\n      file_ext = os.path.splitext(file)[1].lower()\n      if file_ext == file_type:\n        full_path = os.path.join(root, file)\n        found_files.append(full_path)\n\n  return found_files\n\n# Example Usage:\npdf_files = find_files('/path/to/your/directory', '.pdf')\nprint(pdf_files)\n"
+      },
+      {
+        "title": "Get File Extension",
+        "description": "Gets the extension of a file.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "extension",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import os\n\ndef get_file_extension(filepath):\n    return os.path.splitext(filepath)[1]\n\n# Usage:\nprint(get_file_extension('example.txt'))  # Output: '.txt'\n"
+      },
+      {
+        "title": "List Files in Directory",
+        "description": "Lists all files in a specified directory.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "list",
+          "directory",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import os\n\ndef list_files(directory):\n    return [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]\n\n# Usage:\nfiles = list_files('/path/to/directory')\nprint(files)\n"
+      },
+      {
+        "title": "Read File in Chunks",
+        "description": "Reads a file in chunks of a specified size.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "file",
+          "read",
+          "chunks",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def read_file_in_chunks(filepath, chunk_size):\n    with open(filepath, 'r') as file:\n        while chunk := file.read(chunk_size):\n            yield chunk\n\n# Usage:\nfor chunk in read_file_in_chunks('example.txt', 1024):\n    print(chunk)\n"
+      },
+      {
+        "title": "Read File Lines",
+        "description": "Reads all lines from a file and returns them as a list.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "file",
+          "read",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def read_file_lines(filepath):\n    with open(filepath, 'r') as file:\n        return file.readlines()\n\n# Usage:\nlines = read_file_lines('example.txt')\nprint(lines)\n"
+      },
+      {
+        "title": "Write to File",
+        "description": "Writes content to a file.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "file",
+          "write",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def write_to_file(filepath, content):\n    with open(filepath, 'w') as file:\n        file.write(content)\n\n# Usage:\nwrite_to_file('example.txt', 'Hello, World!')\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "Json Manipulation",
+    "snippets": [
+      {
+        "title": "Filter JSON Data",
+        "description": "Filters a JSON object based on a condition and returns the filtered data.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "json",
+          "filter",
+          "data"
+        ],
+        "contributors": [],
+        "code": "import json\n\ndef filter_json_data(filepath, condition):\n    with open(filepath, 'r') as file:\n        data = json.load(file)\n\n    # Filter data based on the provided condition\n    filtered_data = [item for item in data if condition(item)]\n\n    return filtered_data\n\n# Usage:\ncondition = lambda x: x['age'] > 25\nfiltered = filter_json_data('data.json', condition)\nprint(filtered)\n"
+      },
+      {
+        "title": "Flatten Nested JSON",
+        "description": "Flattens a nested JSON object into a flat dictionary.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "json",
+          "flatten",
+          "nested"
+        ],
+        "contributors": [],
+        "code": "def flatten_json(nested_json, prefix=''):\n    flat_dict = {}\n    for key, value in nested_json.items():\n        if isinstance(value, dict):\n            flat_dict.update(flatten_json(value, prefix + key + '.'))\n        else:\n            flat_dict[prefix + key] = value\n    return flat_dict\n\n# Usage:\nnested_json = {'name': 'John', 'address': {'city': 'New York', 'zip': '10001'}}\nflattened = flatten_json(nested_json)\nprint(flattened)  # Output: {'name': 'John', 'address.city': 'New York', 'address.zip': '10001'}\n"
+      },
+      {
+        "title": "Merge Multiple JSON Files",
+        "description": "Merges multiple JSON files into one and writes the merged data into a new file.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "json",
+          "merge",
+          "file"
+        ],
+        "contributors": [],
+        "code": "import json\n\ndef merge_json_files(filepaths, output_filepath):\n    merged_data = []\n\n    # Read each JSON file and merge their data\n    for filepath in filepaths:\n        with open(filepath, 'r') as file:\n            data = json.load(file)\n            merged_data.extend(data)\n\n    # Write the merged data into a new file\n    with open(output_filepath, 'w') as file:\n        json.dump(merged_data, file, indent=4)\n\n# Usage:\nfiles_to_merge = ['file1.json', 'file2.json']\nmerge_json_files(files_to_merge, 'merged.json')\n"
+      },
+      {
+        "title": "Read JSON File",
+        "description": "Reads a JSON file and parses its content.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "json",
+          "file",
+          "read"
+        ],
+        "contributors": [],
+        "code": "import json\n\ndef read_json(filepath):\n    with open(filepath, 'r') as file:\n        return json.load(file)\n\n# Usage:\ndata = read_json('data.json')\nprint(data)\n"
+      },
+      {
+        "title": "Update JSON File",
+        "description": "Updates an existing JSON file with new data or modifies the existing values.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "json",
+          "update",
+          "file"
+        ],
+        "contributors": [],
+        "code": "import json\n\ndef update_json(filepath, new_data):\n    # Read the existing JSON data\n    with open(filepath, 'r') as file:\n        data = json.load(file)\n\n    # Update the data with the new content\n    data.update(new_data)\n\n    # Write the updated data back to the JSON file\n    with open(filepath, 'w') as file:\n        json.dump(data, file, indent=4)\n\n# Usage:\nnew_data = {'age': 31}\nupdate_json('data.json', new_data)\n"
+      },
+      {
+        "title": "Validate JSON Schema",
+        "description": "Validates a JSON object against a predefined schema.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "json",
+          "validation",
+          "schema"
+        ],
+        "contributors": [],
+        "code": "import jsonschema\nfrom jsonschema import validate\n\ndef validate_json_schema(data, schema):\n    try:\n        validate(instance=data, schema=schema)\n        return True  # Data is valid\n    except jsonschema.exceptions.ValidationError as err:\n        return False  # Data is invalid\n\n# Usage:\nschema = {\n    'type': 'object',\n    'properties': {\n        'name': {'type': 'string'},\n        'age': {'type': 'integer'}\n    },\n    'required': ['name', 'age']\n}\ndata = {'name': 'John', 'age': 30}\nis_valid = validate_json_schema(data, schema)\nprint(is_valid)  # Output: True\n"
+      },
+      {
+        "title": "Write JSON File",
+        "description": "Writes a dictionary to a JSON file.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "json",
+          "file",
+          "write"
+        ],
+        "contributors": [],
+        "code": "import json\n\ndef write_json(filepath, data):\n    with open(filepath, 'w') as file:\n        json.dump(data, file, indent=4)\n\n# Usage:\ndata = {'name': 'John', 'age': 30}\nwrite_json('data.json', data)\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "List Manipulation",
+    "snippets": [
+      {
+        "title": "Find Duplicates in a List",
+        "description": "Identifies duplicate elements in a list.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "list",
+          "duplicates",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def find_duplicates(lst):\n    seen = set()\n    duplicates = set()\n    for item in lst:\n        if item in seen:\n            duplicates.add(item)\n        else:\n            seen.add(item)\n    return list(duplicates)\n\n# Usage:\ndata = [1, 2, 3, 2, 4, 5, 1]\nprint(find_duplicates(data))  # Output: [1, 2]\n"
+      },
+      {
+        "title": "Find Intersection of Two Lists",
+        "description": "Finds the common elements between two lists.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "list",
+          "intersection",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def list_intersection(lst1, lst2):\n    return [item for item in lst1 if item in lst2]\n\n# Usage:\nlist_a = [1, 2, 3, 4]\nlist_b = [3, 4, 5, 6]\nprint(list_intersection(list_a, list_b))  # Output: [3, 4]\n"
+      },
+      {
+        "title": "Find Maximum Difference in List",
+        "description": "Finds the maximum difference between any two elements in a list.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "list",
+          "difference",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def max_difference(lst):\n    if not lst or len(lst) < 2:\n        return 0\n    return max(lst) - min(lst)\n\n# Usage:\ndata = [10, 3, 5, 20, 7]\nprint(max_difference(data))  # Output: 17\n"
+      },
+      {
+        "title": "Flatten Nested List",
+        "description": "Flattens a multi-dimensional list into a single list.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "list",
+          "flatten",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def flatten_list(lst):\n    return [item for sublist in lst for item in sublist]\n\n# Usage:\nnested_list = [[1, 2], [3, 4], [5]]\nprint(flatten_list(nested_list))  # Output: [1, 2, 3, 4, 5]\n"
+      },
+      {
+        "title": "Flatten Unevenly Nested Lists",
+        "description": "Converts unevenly nested lists of any depth into a single flat list.",
+        "author": "agilarasu",
+        "tags": [
+          "python",
+          "list",
+          "flattening",
+          "nested-lists",
+          "depth",
+          "utilities"
+        ],
+        "contributors": [],
+        "code": "def flatten(nested_list):\n    \"\"\"\n    Flattens unevenly nested lists of any depth into a single flat list.\n    \"\"\"\n    for item in nested_list:\n        if isinstance(item, list):\n            yield from flatten(item)\n        else:\n            yield item\n\n# Usage:\nnested_list = [1, [2, [3, 4]], 5]\nflattened = list(flatten(nested_list))\nprint(flattened)  # Output: [1, 2, 3, 4, 5]\n"
+      },
+      {
+        "title": "Partition List",
+        "description": "Partitions a list into sublists of a given size.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "list",
+          "partition",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def partition_list(lst, size):\n    for i in range(0, len(lst), size):\n        yield lst[i:i + size]\n\n# Usage:\ndata = [1, 2, 3, 4, 5, 6, 7]\npartitions = list(partition_list(data, 3))\nprint(partitions)  # Output: [[1, 2, 3], [4, 5, 6], [7]]\n"
+      },
+      {
+        "title": "Remove Duplicates",
+        "description": "Removes duplicate elements from a list while maintaining order.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "list",
+          "duplicates",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def remove_duplicates(lst):\n    return list(dict.fromkeys(lst))\n\n# Usage:\nprint(remove_duplicates([1, 2, 2, 3, 4, 4, 5]))  # Output: [1, 2, 3, 4, 5]\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "Math And Numbers",
+    "snippets": [
+      {
+        "title": "Calculate Compound Interest",
+        "description": "Calculates compound interest for a given principal amount, rate, and time period.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "math",
+          "compound interest",
+          "finance"
+        ],
+        "contributors": [],
+        "code": "def compound_interest(principal, rate, time, n=1):\n    return principal * (1 + rate / n) ** (n * time)\n\n# Usage:\nprint(compound_interest(1000, 0.05, 5))   # Output: 1276.2815625000003\nprint(compound_interest(1000, 0.05, 5, 12)) # Output: 1283.68\n"
+      },
+      {
+        "title": "Check Perfect Square",
+        "description": "Checks if a number is a perfect square.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "math",
+          "perfect square",
+          "check"
+        ],
+        "contributors": [],
+        "code": "def is_perfect_square(n):\n    if n < 0:\n        return False\n    root = int(n**0.5)\n    return root * root == n\n\n# Usage:\nprint(is_perfect_square(16))  # Output: True\nprint(is_perfect_square(20))  # Output: False\n"
+      },
+      {
+        "title": "Check Prime Number",
+        "description": "Checks if a number is a prime number.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "math",
+          "prime",
+          "check"
+        ],
+        "contributors": [],
+        "code": "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\n# Usage:\nprint(is_prime(17))  # Output: True\n"
+      },
+      {
+        "title": "Convert Binary to Decimal",
+        "description": "Converts a binary string to its decimal equivalent.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "math",
+          "binary",
+          "decimal",
+          "conversion"
+        ],
+        "contributors": [],
+        "code": "def binary_to_decimal(binary_str):\n    return int(binary_str, 2)\n\n# Usage:\nprint(binary_to_decimal('1010'))  # Output: 10\nprint(binary_to_decimal('1101'))  # Output: 13\n"
+      },
+      {
+        "title": "Find Factorial",
+        "description": "Calculates the factorial of a number.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "math",
+          "factorial",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n - 1)\n\n# Usage:\nprint(factorial(5))  # Output: 120\n"
+      },
+      {
+        "title": "Find LCM (Least Common Multiple)",
+        "description": "Calculates the least common multiple (LCM) of two numbers.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "math",
+          "lcm",
+          "gcd",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def lcm(a, b):\n    return abs(a * b) // gcd(a, b)\n\n# Usage:\nprint(lcm(12, 15))  # Output: 60\nprint(lcm(7, 5))    # Output: 35\n"
+      },
+      {
+        "title": "Solve Quadratic Equation",
+        "description": "Solves a quadratic equation ax^2 + bx + c = 0 and returns the roots.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "math",
+          "quadratic",
+          "equation",
+          "solver"
+        ],
+        "contributors": [],
+        "code": "import cmath\n\ndef solve_quadratic(a, b, c):\n    discriminant = cmath.sqrt(b**2 - 4 * a * c)\n    root1 = (-b + discriminant) / (2 * a)\n    root2 = (-b - discriminant) / (2 * a)\n    return root1, root2\n\n# Usage:\nprint(solve_quadratic(1, -3, 2))  # Output: ((2+0j), (1+0j))\nprint(solve_quadratic(1, 2, 5))   # Output: ((-1+2j), (-1-2j))\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "Sqlite Database",
+    "snippets": [
+      {
+        "title": "Create SQLite Database Table",
+        "description": "Creates a table in an SQLite database with a dynamic schema.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "sqlite",
+          "database",
+          "table"
+        ],
+        "contributors": [],
+        "code": "import sqlite3\n\ndef create_table(db_name, table_name, schema):\n    conn = sqlite3.connect(db_name)\n    cursor = conn.cursor()\n    schema_string = ', '.join([f'{col} {dtype}' for col, dtype in schema.items()])\n    cursor.execute(f'''\n        CREATE TABLE IF NOT EXISTS {table_name} (\n            {schema_string}\n        )''')\n    conn.commit()\n    conn.close()\n\n# Usage:\ndb_name = 'example.db'\ntable_name = 'users'\nschema = {\n    'id': 'INTEGER PRIMARY KEY',\n    'name': 'TEXT',\n    'age': 'INTEGER',\n    'email': 'TEXT'\n}\ncreate_table(db_name, table_name, schema)\n"
+      },
+      {
+        "title": "Insert Data into Sqlite Table",
+        "description": "Inserts a row into a specified SQLite table using a dictionary of fields and values.",
+        "author": "e3nviction",
+        "tags": [
+          "python",
+          "sqlite",
+          "database",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import sqlite3\n\ndef insert_into_table(db_path, table_name, data):\n    with sqlite3.connect(db_path) as conn:\n        columns = ', '.join(data.keys())\n        placeholders = ', '.join(['?'] * len(data))\n        sql = f\"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})\"\n        conn.execute(sql, tuple(data.values()))\n        conn.commit()\n\n# Usage:\ndb_path = 'example.db'\ntable_name = 'users'\ndata = {\n    'name': 'John Doe',\n    'email': 'john@example.com',\n    'age': 30\n}\ninsert_into_table(db_path, table_name, data)\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "String Manipulation",
+    "snippets": [
+      {
+        "title": "Capitalize Words",
+        "description": "Capitalizes the first letter of each word in a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "capitalize",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def capitalize_words(s):\n    return ' '.join(word.capitalize() for word in s.split())\n\n# Usage:\nprint(capitalize_words('hello world'))  # Output: 'Hello World'\n"
+      },
+      {
+        "title": "Check Anagram",
+        "description": "Checks if two strings are anagrams of each other.",
+        "author": "SteliosGee",
+        "tags": [
+          "python",
+          "string",
+          "anagram",
+          "check",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def is_anagram(s1, s2):\n    return sorted(s1) == sorted(s2)\n\n# Usage:\nprint(is_anagram('listen', 'silent'))  # Output: True\n"
+      },
+      {
+        "title": "Check Palindrome",
+        "description": "Checks if a string is a palindrome.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "string",
+          "palindrome",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]\n\n# Usage:\nprint(is_palindrome('A man a plan a canal Panama'))  # Output: True\n"
+      },
+      {
+        "title": "Convert Snake Case to Camel Case",
+        "description": "Converts a snake_case string to camelCase.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "snake-case",
+          "camel-case",
+          "convert",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def snake_to_camel(s):\n    parts = s.split('_')\n    return parts[0] + ''.join(word.capitalize() for word in parts[1:])\n\n# Usage:\nprint(snake_to_camel('hello_world'))  # Output: 'helloWorld'\n"
+      },
+      {
+        "title": "Convert String to ASCII",
+        "description": "Converts a string into its ASCII representation.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "ascii",
+          "convert",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def string_to_ascii(s):\n    return [ord(char) for char in s]\n\n# Usage:\nprint(string_to_ascii('hello'))  # Output: [104, 101, 108, 108, 111]\n"
+      },
+      {
+        "title": "Count Character Frequency",
+        "description": "Counts the frequency of each character in a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "character-frequency",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "from collections import Counter\n\ndef char_frequency(s):\n    return dict(Counter(s))\n\n# Usage:\nprint(char_frequency('hello'))  # Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}\n"
+      },
+      {
+        "title": "Count Vowels",
+        "description": "Counts the number of vowels in a string.",
+        "author": "SteliosGee",
+        "tags": [
+          "python",
+          "string",
+          "vowels",
+          "count",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def count_vowels(s):\n    vowels = 'aeiou'\n    return len([char for char in s.lower() if char in vowels])\n\n# Usage:\nprint(count_vowels('hello'))  # Output: 2\n"
+      },
+      {
+        "title": "Count Words",
+        "description": "Counts the number of words in a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "word-count",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def count_words(s):\n    return len(s.split())\n\n# Usage:\nprint(count_words('The quick brown fox'))  # Output: 4\n"
+      },
+      {
+        "title": "Find All Substrings",
+        "description": "Finds all substrings of a given string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "substring",
+          "find",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def find_substrings(s):\n    substrings = []\n    for i in range(len(s)):\n        for j in range(i + 1, len(s) + 1):\n            substrings.append(s[i:j])\n    return substrings\n\n# Usage:\nprint(find_substrings('abc'))  # Output: ['a', 'ab', 'abc', 'b', 'bc', 'c']\n"
+      },
+      {
+        "title": "Find Longest Word",
+        "description": "Finds the longest word in a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "longest-word",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def find_longest_word(s):\n    words = s.split()\n    return max(words, key=len) if words else ''\n\n# Usage:\nprint(find_longest_word('The quick brown fox'))  # Output: 'quick'\n"
+      },
+      {
+        "title": "Find Unique Characters",
+        "description": "Finds all unique characters in a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "unique",
+          "characters",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def find_unique_chars(s):\n    return ''.join(sorted(set(s)))\n\n# Usage:\nprint(find_unique_chars('banana'))  # Output: 'abn'\n"
+      },
+      {
+        "title": "Remove Duplicate Characters",
+        "description": "Removes duplicate characters from a string while maintaining the order.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "duplicates",
+          "remove",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def remove_duplicate_chars(s):\n    seen = set()\n    return ''.join(char for char in s if not (char in seen or seen.add(char)))\n\n# Usage:\nprint(remove_duplicate_chars('programming'))  # Output: 'progamin'\n"
+      },
+      {
+        "title": "Remove Punctuation",
+        "description": "Removes punctuation from a string.",
+        "author": "SteliosGee",
+        "tags": [
+          "python",
+          "string",
+          "punctuation",
+          "remove",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import string\n\ndef remove_punctuation(s):\n    return s.translate(str.maketrans('', '', string.punctuation))\n\n# Usage:\nprint(remove_punctuation('Hello, World!'))  # Output: 'Hello World'\n"
+      },
+      {
+        "title": "Remove Specific Characters",
+        "description": "Removes specific characters from a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "remove",
+          "characters",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def remove_chars(s, chars):\n    return ''.join(c for c in s if c not in chars)\n\n# Usage:\nprint(remove_chars('hello world', 'eo'))  # Output: 'hll wrld'\n"
+      },
+      {
+        "title": "Remove Whitespace",
+        "description": "Removes all whitespace from a string.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "whitespace",
+          "remove",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def remove_whitespace(s):\n    return ''.join(s.split())\n\n# Usage:\nprint(remove_whitespace('hello world'))  # Output: 'helloworld'\n"
+      },
+      {
+        "title": "Reverse String",
+        "description": "Reverses the characters in a string.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "string",
+          "reverse",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def reverse_string(s):\n    return s[::-1]\n\n# Usage:\nprint(reverse_string('hello'))  # Output: 'olleh'\n"
+      },
+      {
+        "title": "Split Camel Case",
+        "description": "Splits a camel case string into separate words.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "camel-case",
+          "split",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import re\n\ndef split_camel_case(s):\n    return ' '.join(re.findall(r'[A-Z][a-z]*|[a-z]+', s))\n\n# Usage:\nprint(split_camel_case('camelCaseString'))  # Output: 'camel Case String'\n"
+      },
+      {
+        "title": "Truncate String",
+        "description": "Truncates a string to a specified length and adds an ellipsis.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "string",
+          "truncate",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def truncate_string(s, length):\n    return s[:length] + '...' if len(s) > length else s\n\n# Usage:\nprint(truncate_string('This is a long string', 10))  # Output: 'This is a ...'\n"
+      }
+    ]
+  },
+  {
+    "language": "python",
+    "categoryName": "Utilities",
+    "snippets": [
+      {
+        "title": "Convert Bytes to Human-Readable Format",
+        "description": "Converts a size in bytes to a human-readable format.",
+        "author": "axorax",
+        "tags": [
+          "python",
+          "bytes",
+          "format",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "def bytes_to_human_readable(num):\n    for unit in ['B', 'KB', 'MB', 'GB', 'TB', 'PB']:\n        if num < 1024:\n            return f\"{num:.2f} {unit}\"\n        num /= 1024\n\n# Usage:\nprint(bytes_to_human_readable(123456789))  # Output: '117.74 MB'\n"
+      },
+      {
+        "title": "Generate Random String",
+        "description": "Generates a random alphanumeric string.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "random",
+          "string",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import random\nimport string\n\ndef random_string(length):\n    letters_and_digits = string.ascii_letters + string.digits\n    return ''.join(random.choice(letters_and_digits) for _ in range(length))\n\n# Usage:\nprint(random_string(10))  # Output: Random 10-character string\n"
+      },
+      {
+        "title": "Measure Execution Time",
+        "description": "Measures the execution time of a code block.",
+        "author": "dostonnabotov",
+        "tags": [
+          "python",
+          "time",
+          "execution",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "import time\n\ndef measure_time(func, *args):\n    start = time.time()\n    result = func(*args)\n    end = time.time()\n    print(f'Execution time: {end - start:.6f} seconds')\n    return result\n\n# Usage:\ndef slow_function():\n    time.sleep(2)\n\nmeasure_time(slow_function)\n"
       }
     ]
   },
@@ -1635,18 +2273,46 @@
       {
         "title": "Hello, World!",
         "description": "Prints Hello, World! to the terminal.",
-        "code": [
-          "fn main() { // Defines the main running function",
-          "    println!(\"Hello, World!\"); // Prints Hello, World! to the terminal.",
-          "}"
-        ],
+        "author": "James-Beans",
         "tags": [
           "rust",
           "printing",
           "hello-world",
           "utility"
         ],
-        "author": "James-Beans"
+        "contributors": [],
+        "code": "fn main() { // Defines the main running function\n    println!(\"Hello, World!\"); // Prints Hello, World! to the terminal.\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "rust",
+    "categoryName": "File Handling",
+    "snippets": [
+      {
+        "title": "Find Files",
+        "description": "Finds all files of the specified extension within a given directory.",
+        "author": "Mathys-Gasnier",
+        "tags": [
+          "rust",
+          "file",
+          "search"
+        ],
+        "contributors": [],
+        "code": "fn find_files(directory: &str, file_type: &str) -> std::io::Result<Vec<std::path::PathBuf>> {\n    let mut result = vec![];\n\n    for entry in std::fs::read_dir(directory)? {\n        let dir = entry?;\n        let path = dir.path();\n        if dir.file_type().is_ok_and(|t| !t.is_file()) &&\n            path.extension().is_some_and(|ext| ext != file_type) {\n            continue;\n        }\n        result.push(path)\n    }\n\n    Ok(result)\n}\n\n// Usage:\nlet files = find_files(\"/path/to/your/directory\", \".pdf\")\n"
+      },
+      {
+        "title": "Read File Lines",
+        "description": "Reads all lines from a file and returns them as a vector of strings.",
+        "author": "Mathys-Gasnier",
+        "tags": [
+          "rust",
+          "file",
+          "read",
+          "utility"
+        ],
+        "contributors": [],
+        "code": "fn read_lines(file_name: &str) -> std::io::Result<Vec<String>>\n    Ok(\n        std::fs::read_to_string(file_name)?\n            .lines()\n            .map(String::from)\n            .collect()\n    )\n}\n\n// Usage:\nlet lines = read_lines(\"path/to/file.txt\").expect(\"Failed to read lines from file\")\n"
       }
     ]
   },
@@ -1657,236 +2323,15 @@
       {
         "title": "Capitalize String",
         "description": "Makes the first letter of a string uppercase.",
-        "code": [
-          "fn capitalized(str: &str) -> String {",
-          "    let mut chars = str.chars();",
-          "    match chars.next() {",
-          "        None => String::new(),",
-          "        Some(f) => f.to_uppercase().chain(chars).collect(),",
-          "    }",
-          "}",
-          "",
-          "// Usage:",
-          "assert_eq!(capitalized(\"lower_case\"), \"Lower_case\")"
-        ],
+        "author": "Mathys-Gasnier",
         "tags": [
           "rust",
           "string",
           "capitalize",
           "utility"
         ],
-        "author": "Mathys-Gasnier"
-      }
-    ]
-  },
-  {
-    "language": "rust",
-    "categoryName": "File Handling",
-    "snippets": [
-      {
-        "title": "Read File Lines",
-        "description": "Reads all lines from a file and returns them as a vector of strings.",
-        "code": [
-          "fn read_lines(file_name: &str) -> std::io::Result<Vec<String>>",
-          "    Ok(",
-          "        std::fs::read_to_string(file_name)?",
-          "            .lines()",
-          "            .map(String::from)",
-          "            .collect()",
-          "    )",
-          "}",
-          "",
-          "// Usage:",
-          "let lines = read_lines(\"path/to/file.txt\").expect(\"Failed to read lines from file\")"
-        ],
-        "tags": [
-          "rust",
-          "file",
-          "read",
-          "utility"
-        ],
-        "author": "Mathys-Gasnier"
-      },
-      {
-        "title": "Find Files",
-        "description": "Finds all files of the specified extension within a given directory.",
-        "code": [
-          "fn find_files(directory: &str, file_type: &str) -> std::io::Result<Vec<std::path::PathBuf>> {",
-          "    let mut result = vec![];",
-          "",
-          "    for entry in std::fs::read_dir(directory)? {",
-          "        let dir = entry?;",
-          "        let path = dir.path();",
-          "        if dir.file_type().is_ok_and(|t| !t.is_file()) &&",
-          "            path.extension().is_some_and(|ext| ext != file_type) {",
-          "            continue;",
-          "        }",
-          "        result.push(path)",
-          "    }",
-          "",
-          "    Ok(result)",
-          "}",
-          "",
-          "// Usage:",
-          "let files = find_files(\"/path/to/your/directory\", \".pdf\")"
-        ],
-        "tags": [
-          "rust",
-          "file",
-          "search"
-        ],
-        "author": "Mathys-Gasnier"
-      }
-    ]
-  },
-  {
-    "language": "scss",
-    "categoryName": "Typography",
-    "snippets": [
-      {
-        "title": "Line Clamp Mixin",
-        "description": "A Sass mixin to clamp text to a specific number of lines.",
-        "code": [
-          "@mixin line-clamp($number) {",
-          "  display: -webkit-box;",
-          "  -webkit-box-orient: vertical;",
-          "  -webkit-line-clamp: $number;",
-          "  overflow: hidden;",
-          "}"
-        ],
-        "tags": [
-          "sass",
-          "mixin",
-          "typography",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Text Overflow Ellipsis",
-        "description": "Ensures long text is truncated with an ellipsis.",
-        "code": [
-          "@mixin text-ellipsis {",
-          "  overflow: hidden;",
-          "  white-space: nowrap;",
-          "  text-overflow: ellipsis;",
-          "}"
-        ],
-        "tags": [
-          "sass",
-          "mixin",
-          "text",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Font Import Helper",
-        "description": "Simplifies importing custom fonts in Sass.",
-        "code": [
-          "@mixin import-font($family, $weight: 400, $style: normal) {",
-          "  @font-face {",
-          "    font-family: #{$family};",
-          "    font-weight: #{$weight};",
-          "    font-style: #{$style};",
-          "    src: url('/fonts/#{$family}-#{$weight}.woff2') format('woff2'),",
-          "         url('/fonts/#{$family}-#{$weight}.woff') format('woff');",
-          "  }",
-          "}"
-        ],
-        "tags": [
-          "sass",
-          "mixin",
-          "fonts",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Text Gradient",
-        "description": "Adds a gradient color effect to text.",
-        "code": [
-          "@mixin text-gradient($from, $to) {",
-          "  background: linear-gradient(to right, $from, $to);",
-          "  -webkit-background-clip: text;",
-          "  -webkit-text-fill-color: transparent;",
-          "}"
-        ],
-        "tags": [
-          "sass",
-          "mixin",
-          "gradient",
-          "text",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "scss",
-    "categoryName": "Layouts",
-    "snippets": [
-      {
-        "title": "Grid Container",
-        "description": "Creates a responsive grid container with customizable column counts.",
-        "code": [
-          "@mixin grid-container($columns: 12, $gap: 1rem) {",
-          "  display: grid;",
-          "  grid-template-columns: repeat($columns, 1fr);",
-          "  gap: $gap;",
-          "}"
-        ],
-        "tags": [
-          "scss",
-          "grid",
-          "layout",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Flex Center",
-        "description": "A mixin to center content using flexbox.",
-        "code": [
-          "@mixin flex-center {",
-          "  display: flex;",
-          "  justify-content: center;",
-          "  align-items: center;",
-          "}"
-        ],
-        "tags": [
-          "scss",
-          "flex",
-          "center",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Aspect Ratio",
-        "description": "Ensures that elements maintain a specific aspect ratio.",
-        "code": [
-          "@mixin aspect-ratio($width, $height) {",
-          "  position: relative;",
-          "  width: 100%;",
-          "  padding-top: ($height / $width) * 100%;",
-          "  > * {",
-          "    position: absolute;",
-          "    top: 0;",
-          "    left: 0;",
-          "    width: 100%;",
-          "    height: 100%;",
-          "  }",
-          "}"
-        ],
-        "tags": [
-          "scss",
-          "aspect-ratio",
-          "layout",
-          "css"
-        ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "fn capitalized(str: &str) -> String {\n    let mut chars = str.chars();\n    match chars.next() {\n        None => String::new(),\n        Some(f) => f.to_uppercase().chain(chars).collect(),\n    }\n}\n\n// Usage:\nassert_eq!(capitalized(\"lower_case\"), \"Lower_case\")\n"
       }
     ]
   },
@@ -1897,140 +2342,60 @@
       {
         "title": "Fade In Animation",
         "description": "Animates the fade-in effect.",
-        "code": [
-          "@keyframes fade-in {",
-          "  from {",
-          "    opacity: 0;",
-          "  }",
-          "  to {",
-          "    opacity: 1;",
-          "  }",
-          "}",
-          "",
-          "@mixin fade-in($duration: 1s, $easing: ease-in-out) {",
-          "  animation: fade-in $duration $easing;",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "scss",
           "animation",
           "fade",
           "css"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n@mixin fade-in($duration: 1s, $easing: ease-in-out) {\n  animation: fade-in $duration $easing;\n}\n"
       },
       {
         "title": "Slide In From Left",
         "description": "Animates content sliding in from the left.",
-        "code": [
-          "@keyframes slide-in-left {",
-          "  from {",
-          "    transform: translateX(-100%);",
-          "  }",
-          "  to {",
-          "    transform: translateX(0);",
-          "  }",
-          "}",
-          "",
-          "@mixin slide-in-left($duration: 0.5s, $easing: ease-out) {",
-          "  animation: slide-in-left $duration $easing;",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "scss",
           "animation",
           "slide",
           "css"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "@keyframes slide-in-left {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}\n\n@mixin slide-in-left($duration: 0.5s, $easing: ease-out) {\n  animation: slide-in-left $duration $easing;\n}\n"
       }
     ]
   },
   {
     "language": "scss",
-    "categoryName": "Utilities",
-    "snippets": [
-      {
-        "title": "Responsive Breakpoints",
-        "description": "Generates media queries for responsive design.",
-        "code": [
-          "@mixin breakpoint($breakpoint) {",
-          "  @if $breakpoint == sm {",
-          "    @media (max-width: 576px) { @content; }",
-          "  } @else if $breakpoint == md {",
-          "    @media (max-width: 768px) { @content; }",
-          "  } @else if $breakpoint == lg {",
-          "    @media (max-width: 992px) { @content; }",
-          "  } @else if $breakpoint == xl {",
-          "    @media (max-width: 1200px) { @content; }",
-          "  }",
-          "}"
-        ],
-        "tags": [
-          "scss",
-          "responsive",
-          "media-queries",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      },
-      {
-        "title": "Clearfix",
-        "description": "Provides a clearfix utility for floating elements.",
-        "code": [
-          "@mixin clearfix {",
-          "  &::after {",
-          "    content: '';",
-          "    display: block;",
-          "    clear: both;",
-          "  }",
-          "}"
-        ],
-        "tags": [
-          "scss",
-          "clearfix",
-          "utility",
-          "css"
-        ],
-        "author": "dostonnabotov"
-      }
-    ]
-  },
-  {
-    "language": "scss",
-    "categoryName": "Borders & Shadows",
+    "categoryName": "Borders Shadows",
     "snippets": [
       {
         "title": "Border Radius Helper",
         "description": "Applies a customizable border-radius.",
-        "code": [
-          "@mixin border-radius($radius: 4px) {",
-          "  border-radius: $radius;",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "scss",
           "border",
           "radius",
           "css"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "@mixin border-radius($radius: 4px) {\n  border-radius: $radius;\n}\n"
       },
       {
         "title": "Box Shadow Helper",
         "description": "Generates a box shadow with customizable values.",
-        "code": [
-          "@mixin box-shadow($x: 0px, $y: 4px, $blur: 10px, $spread: 0px, $color: rgba(0, 0, 0, 0.1)) {",
-          "  box-shadow: $x $y $blur $spread $color;",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "scss",
           "box-shadow",
           "css",
           "effects"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "@mixin box-shadow($x: 0px, $y: 4px, $blur: 10px, $spread: 0px, $color: rgba(0, 0, 0, 0.1)) {\n  box-shadow: $x $y $blur $spread $color;\n}\n"
       }
     ]
   },
@@ -2041,27 +2406,151 @@
       {
         "title": "Primary Button",
         "description": "Generates a styled primary button.",
-        "code": [
-          "@mixin primary-button($bg: #007bff, $color: #fff) {",
-          "  background-color: $bg;",
-          "  color: $color;",
-          "  padding: 0.5rem 1rem;",
-          "  border: none;",
-          "  border-radius: 4px;",
-          "  cursor: pointer;",
-          "",
-          "  &:hover {",
-          "    background-color: darken($bg, 10%);",
-          "  }",
-          "}"
-        ],
+        "author": "dostonnabotov",
         "tags": [
           "scss",
           "button",
           "primary",
           "css"
         ],
-        "author": "dostonnabotov"
+        "contributors": [],
+        "code": "@mixin primary-button($bg: #007bff, $color: #fff) {\n  background-color: $bg;\n  color: $color;\n  padding: 0.5rem 1rem;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n\n  &:hover {\n    background-color: darken($bg, 10%);\n  }\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "scss",
+    "categoryName": "Layouts",
+    "snippets": [
+      {
+        "title": "Aspect Ratio",
+        "description": "Ensures that elements maintain a specific aspect ratio.",
+        "author": "dostonnabotov",
+        "tags": [
+          "scss",
+          "aspect-ratio",
+          "layout",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin aspect-ratio($width, $height) {\n  position: relative;\n  width: 100%;\n  padding-top: ($height / $width) * 100%;\n  > * {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n}\n"
+      },
+      {
+        "title": "Flex Center",
+        "description": "A mixin to center content using flexbox.",
+        "author": "dostonnabotov",
+        "tags": [
+          "scss",
+          "flex",
+          "center",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n"
+      },
+      {
+        "title": "Grid Container",
+        "description": "Creates a responsive grid container with customizable column counts.",
+        "author": "dostonnabotov",
+        "tags": [
+          "scss",
+          "grid",
+          "layout",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin grid-container($columns: 12, $gap: 1rem) {\n  display: grid;\n  grid-template-columns: repeat($columns, 1fr);\n  gap: $gap;\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "scss",
+    "categoryName": "Typography",
+    "snippets": [
+      {
+        "title": "Font Import Helper",
+        "description": "Simplifies importing custom fonts in Sass.",
+        "author": "dostonnabotov",
+        "tags": [
+          "sass",
+          "mixin",
+          "fonts",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin import-font($family, $weight: 400, $style: normal) {\n  @font-face {\n    font-family: #{$family};\n    font-weight: #{$weight};\n    font-style: #{$style};\n    src: url('/fonts/#{$family}-#{$weight}.woff2') format('woff2'),\n         url('/fonts/#{$family}-#{$weight}.woff') format('woff');\n  }\n}\n"
+      },
+      {
+        "title": "Line Clamp Mixin",
+        "description": "A Sass mixin to clamp text to a specific number of lines.",
+        "author": "dostonnabotov",
+        "tags": [
+          "sass",
+          "mixin",
+          "typography",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin line-clamp($number) {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: $number;\n  overflow: hidden;\n}\n"
+      },
+      {
+        "title": "Text Gradient",
+        "description": "Adds a gradient color effect to text.",
+        "author": "dostonnabotov",
+        "tags": [
+          "sass",
+          "mixin",
+          "gradient",
+          "text",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin text-gradient($from, $to) {\n  background: linear-gradient(to right, $from, $to);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n"
+      },
+      {
+        "title": "Text Overflow Ellipsis",
+        "description": "Ensures long text is truncated with an ellipsis.",
+        "author": "dostonnabotov",
+        "tags": [
+          "sass",
+          "mixin",
+          "text",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin text-ellipsis {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n"
+      }
+    ]
+  },
+  {
+    "language": "scss",
+    "categoryName": "Utilities",
+    "snippets": [
+      {
+        "title": "Clearfix",
+        "description": "Provides a clearfix utility for floating elements.",
+        "author": "dostonnabotov",
+        "tags": [
+          "scss",
+          "clearfix",
+          "utility",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin clearfix {\n  &::after {\n    content: '';\n    display: block;\n    clear: both;\n  }\n}\n"
+      },
+      {
+        "title": "Responsive Breakpoints",
+        "description": "Generates media queries for responsive design.",
+        "author": "dostonnabotov",
+        "tags": [
+          "scss",
+          "responsive",
+          "media-queries",
+          "css"
+        ],
+        "contributors": [],
+        "code": "@mixin breakpoint($breakpoint) {\n  @if $breakpoint == sm {\n    @media (max-width: 576px) { @content; }\n  } @else if $breakpoint == md {\n    @media (max-width: 768px) { @content; }\n  } @else if $breakpoint == lg {\n    @media (max-width: 992px) { @content; }\n  } @else if $breakpoint == xl {\n    @media (max-width: 1200px) { @content; }\n  }\n}\n"
       }
     ]
   }
