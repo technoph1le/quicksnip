@@ -39,7 +39,7 @@
       },
       {
         "title": "Split String",
-        "description": "Splits a string by a delimiter",
+        "description": "Splits a string by a delimiter.",
         "code": [
           "#include <string>",
           "#include <vector>",
@@ -58,6 +58,30 @@
         ],
         "tags": ["cpp", "string", "split", "utility"],
         "author": "saminjay"
+      },
+      {
+        "title": "Palindrome Check",
+        "description": "Checks if a given string is a palindrome (reads the same forwards and backwards).",
+        "code": [
+          "#include <string>",
+          "",
+          "// Function to check if a given string is a palindrome",
+          "bool isPalindrome(const std::string& str) {",
+          "    int left = 0;",
+          "    int right = str.length() - 1;",
+          "    ",
+          "    // Compare characters from both ends",
+          "    while (left < right) {",
+          "        if (str[left] != str[right]) // If characters don't match, it's not a palindrome",
+          "            return false;",
+          "        left++;",
+          "        right--;",
+          "    }",
+          "    return true; // If all characters match, it's a palindrome",
+          "}"
+        ],
+        "tags": ["cpp", "string", "palindrome", "utility"],
+        "author": "Arpit-Joshi"
       }
     ]
   }
