@@ -1,109 +1,55 @@
-import React, { useRef, useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { useLanguages } from "../hooks/useLanguages";
-import { useKeyboardNavigation } from "../hooks/useKeyboardNavigation";
-import { LanguageType } from "../types";
-
-// Inspired by https://blog.logrocket.com/creating-custom-select-dropdown-css/
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
 
 const LanguageSelector = () => {
   const { language, setLanguage } = useAppContext();
   const { fetchedLanguages, loading, error } = useLanguages();
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const handleSelect = (selected: LanguageType) => {
-    setLanguage(selected);
-    setIsOpen(false);
-  };
-
-  const { focusedIndex, handleKeyDown, resetFocus, focusFirst } =
-    useKeyboardNavigation({
-      items: fetchedLanguages,
-      isOpen,
-      onSelect: handleSelect,
-      onClose: () => setIsOpen(false),
-    });
-
-  const handleBlur = () => {
-    setTimeout(() => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(document.activeElement)
-      ) {
-        setIsOpen(false);
-      }
-    }, 0);
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => {
-      if (!prev) setTimeout(focusFirst, 0);
-      return !prev;
-    });
-  };
-
-  useEffect(() => {
-    if (!isOpen) resetFocus();
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (isOpen && focusedIndex >= 0) {
-      const element = document.querySelector(
-        `.selector__item:nth-child(${focusedIndex + 1})`
-      ) as HTMLElement;
-      element?.focus();
-    }
-  }, [isOpen, focusedIndex]);
 
   if (loading) return <p>Loading languages...</p>;
   if (error) return <p>Error fetching languages: {error}</p>;
 
   return (
-    <div
-      className={`selector ${isOpen ? "selector--open" : ""}`}
-      ref={dropdownRef}
-      onBlur={handleBlur}
-    >
-      <button
-        className="selector__button"
-        aria-label="select button"
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        onClick={toggleDropdown}
+    <div className="relative">
+      <Select
+        onValueChange={(value) => {
+          const selectedLanguage = fetchedLanguages.find((lang) => lang.lang === value);
+          if (selectedLanguage) {
+            setLanguage(selectedLanguage);
+          }
+        }}
       >
-        <div className="selector__value">
-          <img src={language.icon} alt="" />
-          <span>{language.lang || "Select a language"}</span>
-        </div>
-        <span className="selector__arrow" />
-      </button>
-      {isOpen && (
-        <ul
-          className="selector__dropdown"
-          role="listbox"
-          onKeyDown={handleKeyDown}
-          tabIndex={-1}
-        >
-          {fetchedLanguages.map((lang, index) => (
-            <li
-              key={lang.lang}
-              role="option"
-              tabIndex={-1}
-              onClick={() => handleSelect(lang)}
-              className={`selector__item ${
-                language.lang === lang.lang ? "selected" : ""
-              } ${focusedIndex === index ? "focused" : ""}`}
-              aria-selected={language.lang === lang.lang}
-            >
-              <label>
-                <img src={lang.icon} alt="" />
-                <span>{lang.lang}</span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      )}
+        <SelectTrigger className="selector__button w-full h-[52px] flex items-center justify-between gap-2">
+          <div className="selector__value flex items-center gap-2">
+            {language.icon && <img src={language.icon} alt="" className="w-5 h-5" />}
+            <span>{language.lang || "Select a language"}</span>
+          </div>
+        </SelectTrigger>
+        <SelectContent className="bg-[var(--clr-bg-secondary)] border-[var(--clr-border-primary)]">
+          <SelectGroup>
+            {fetchedLanguages.map((lang) => (
+              <SelectItem
+                key={lang.lang}
+                value={lang.lang}
+                className={`selector__item data-[state=checked]:bg-[var(--clr-accent)] ${
+                  lang.lang === language.lang ? "bg-[var(--clr-accent)]" : ""
+                }`}
+              >
+                <label className="flex items-center">
+                  <img src={lang.icon} alt="" />
+                  <span>{lang.lang}</span>
+                </label>
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
     </div>
   );
 };
