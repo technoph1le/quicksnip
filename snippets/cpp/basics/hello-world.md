@@ -2,7 +2,7 @@
 Title: Hello, World!
 Description: Prints Hello, World! to the terminal.
 Author: James-Beans
-Tags: cpp,printing,hello-world,utility
+Tags: cpp,hello-world
 ---
 
 ```cpp

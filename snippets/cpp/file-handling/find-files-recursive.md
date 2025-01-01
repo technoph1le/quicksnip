@@ -1,0 +1,53 @@
+---
+Title: Find files
+Description: Find all the files in a directory and subdirectories using a predicate function.
+Author: majvax
+Tags: cpp,array,filesystem,file_search,recursive_search
+---
+
+```cpp
+#include <filesystem>
+#include <vector>
+#include <string>
+
+template <typename P>
+std::vector<std::filesystem::path> find_files_recursive(const std::string& path, P&& predicate) {
+    std::vector<std::filesystem::path> files;
+    std::error_code ec;
+
+    if (!std::filesystem::exists(path, ec) || ec)
+        return files;
+    if (!std::filesystem::is_directory(path, ec) || ec)
+        return files;
+
+    auto it = std::filesystem::recursive_directory_iterator(path, ec);
+    if (ec)
+        return files;
+
+    for (const auto& entry : it)
+        if (!std::filesystem::is_directory(entry) && predicate(entry.path()))
+            files.push_back(entry.path());
+
+    return files;
+}
+
+
+// usage: 
+// Find all files with size greater than 10MB
+auto files = find_files_recursive("Path", [](const auto& p) {
+    return std::filesystem::file_size(p) > 10 * 1024 * 1024;
+});
+
+// Find all files with ".pdf" as extension
+auto files = find_files_recursive("Path", [](const auto& p) {
+    return p.extension() == ".pdf";
+});
+
+// Find all files writed after The New Year
+auto jan_1_2025 = std::filesystem::file_time_type::clock::from_sys(
+    std::chrono::sys_days{std::chrono::year{2025}/std::chrono::month{1}/std::chrono::day{1}}
+);
+auto files = find_files_recursive("Path", [jan_1_2025](const auto& p) {
+    return std::filesystem::last_write_time(p) > jan_1_2025;
+}),
+```
