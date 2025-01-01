@@ -1,0 +1,152 @@
+[
+    {
+      "categoryName": "Basics",
+      "snippets": [
+        {
+          "title": "Hello, World!",
+          "description": "Prints Hello, World! to the terminal.",
+          "code": [
+            "public class Program {", 
+            "  public static void Main(string[] args) {",
+            "    System.Console.WriteLine(\"Hello, World!\");",
+            "  }",
+            "}"
+          ],
+          "tags": ["c#", "printing", "hello-world", "utility"],
+          "author": "chaitanya-jvnm"
+        }
+      ]
+    },
+    {
+      "categoryName": "String Manipulation",
+      "snippets": [
+        {
+          "title": "Capitalize String",
+          "description": "Makes the first letter of a string uppercase.",
+          "code": [
+            "public static string Capitalize(string str) {",
+            "    return str.Substring(0, 1).ToUpper() + str.Substring(1);",
+            "}"
+          ],
+          "tags": ["c#", "string", "manipulation", "capitalize"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "Reverse String",
+          "description": "Reverses the characters in a string.",
+          "code": [
+            "public static string ReverseString(string str) {",
+            "    char[] charArray = str.ToCharArray();",
+            "    Array.Reverse(charArray);",
+            "    return new string(charArray);",
+            "}"
+          ],
+          "tags": ["c#", "string", "reverse", "utility"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "Split String",
+          "description": "Splits a string by a delimiter.",
+          "code": [
+            "public static string[] SplitString(string str, string delimiter) {",
+            "    return str.Split(delimiter);",
+            "}"
+          ],
+          "tags": ["c#", "string", "split", "utility"],
+          "author": "chaitanya-jvnm"
+        }
+      ]
+    },
+    {
+      "categoryName": "GUID Manipulation",
+      "snippets": [
+        {
+          "title": "Generate GUID",
+          "description": "Generates a new GUID.",
+          "code": [
+            "public static string GenerateGuid() {",
+            "    return Guid.NewGuid().ToString();",
+            "}"
+          ],
+          "tags": ["c#", "guid", "generate", "utility"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "Check GUID",
+          "description": "Checks if a string is a valid GUID.",
+          "code": [
+            "public static bool IsGuid(string str) {",
+            "    return Guid.TryParse(str, out _);",
+            "}"
+          ],
+          "tags": ["c#", "guid", "check", "utility"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "GUID to Byte Array",
+          "description": "Converts a GUID to a byte array.",
+          "code": [
+            "public static byte[] GuidToByteArray(string guid) {",
+            "    return new Guid(guid).ToByteArray();",
+            "}"
+          ],
+          "tags": ["c#", "guid", "byte-array", "utility"],
+          "author": "chaitanya-jvnm"
+        }
+      ]
+    },
+    {
+      "categoryName": "JWT Manipulation",
+      "snippets": [
+        {
+          "title": "Generate JWT",
+          "description": "Generates a new JWT.",
+          "code": [
+            "public static string GenerateJwt(string secret, string issuer, string audience, int expirationMinutes) {",
+            "    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));",
+            "    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);",
+            "    var token = new JwtSecurityToken(issuer, audience, null, expires: DateTime.UtcNow.AddMinutes(expirationMinutes), signingCredentials: credentials);",
+            "    return new JwtSecurityTokenHandler().WriteToken(token);",
+            "}"
+          ],
+          "tags": ["c#", "jwt", "generate", "utility"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "Decode JWT",
+          "description": "Decodes a JWT.",
+          "code": [
+            "public static string DecodeJwt(string token) {",
+            "    return new JwtSecurityTokenHandler().ReadJwtToken(token).ToString();",
+            "}"
+          ],
+          "tags": ["c#", "jwt", "decode", "utility"],
+          "author": "chaitanya-jvnm"
+        },
+        {
+          "title": "Validate JWT",
+          "description": "Validates a JWT.",
+          "code": [
+            "public static bool ValidateJwt(string token, string secret) {",
+            "    var tokenHandler = new JwtSecurityTokenHandler();",
+            "    var validationParameters = new TokenValidationParameters {",
+            "        ValidateIssuerSigningKey = true,",
+            "        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),",
+            "        ValidateIssuer = false,",
+            "        ValidateAudience = false",
+            "    };",
+            "    try {",
+            "        tokenHandler.ValidateToken(token, validationParameters, out _);",
+            "        return true;",
+            "    }",
+            "    catch {",
+            "        return false;",
+            "    }",
+            "}"
+          ],
+          "tags": ["c#", "jwt", "validate", "utility"],
+          "author": "chaitanya-jvnm"
+        }
+      ]
+    }
+  ]
