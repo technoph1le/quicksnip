@@ -16,6 +16,20 @@
                 "code": "const flattenArray = (arr) => arr.flat(Infinity);\n\n// Usage:\nconst nestedArray = [1, [2, [3, [4]]]];\nconsole.log(flattenArray(nestedArray)); // Output: [1, 2, 3, 4]\n"
             },
             {
+                "title": "Partition Array",
+                "description": "Splits an array into two arrays based on a callback function.",
+                "author": "Swaraj-Singh-30",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "partition",
+                    "reduce",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "const partition = (arr, callback) =>\n  arr.reduce(\n    ([pass, fail], elem) => (callback(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]]),\n    [[], []]\n  );\n\n// Usage:\nconst numbers = [1, 2, 3, 4, 5, 6];\nconst isEven = (n) => n % 2 === 0;\nconsole.log(partition(numbers, isEven)); // Output: [[2, 4, 6], [1, 3, 5]]\n"
+            },
+            {
                 "title": "Remove Duplicates",
                 "description": "Removes duplicate values from an array.",
                 "author": "dostonnabotov",
@@ -27,6 +41,19 @@
                 ],
                 "contributors": [],
                 "code": "const removeDuplicates = (arr) => [...new Set(arr)];\n\n// Usage:\nconst numbers = [1, 2, 2, 3, 4, 4, 5];\nconsole.log(removeDuplicates(numbers)); // Output: [1, 2, 3, 4, 5]\n"
+            },
+            {
+                "title": "Remove Falsy Values",
+                "description": "Removes falsy values like null, undefined, and false from an array.",
+                "author": "mubasshir",
+                "tags": [
+                    "javascript",
+                    "array",
+                    "falsy",
+                    "filter"
+                ],
+                "contributors": [],
+                "code": "const removeFalsy = (arr) => arr.filter(Boolean);\n\n// Usage:\nconst array = [0, 1, false, 2, \"\", 3, null];\nconsole.log(removeFalsy(array)); // Output: [1, 2, 3]\n"
             },
             {
                 "title": "Shuffle Array",

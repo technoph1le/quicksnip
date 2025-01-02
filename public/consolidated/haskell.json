@@ -1,0 +1,303 @@
+[
+    {
+        "categoryName": "Array Manipulation",
+        "snippets": [
+            {
+                "title": "Binary Search",
+                "description": "Searches for an element in a sorted array using binary search.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "array",
+                    "binary-search",
+                    "search"
+                ],
+                "contributors": [],
+                "code": "binarySearch :: Ord a => a -> [a] -> Maybe Int\nbinarySearch _ [] = Nothing\nbinarySearch target xs = go 0 (length xs - 1)\n  where\n    go low high\n        | low > high = Nothing\n        | midElem < target = go (mid + 1) high\n        | midElem > target = go low (mid - 1)\n        | otherwise = Just mid\n      where\n        mid = (low + high) `div` 2\n        midElem = xs !! mid\n\nmain :: IO ()\nmain = do\n    let array = [1, 2, 3, 4, 5]\n    print $ binarySearch 3 array -- Output: Just 2\n    print $ binarySearch 6 array -- Output: Nothing\n"
+            },
+            {
+                "title": "Chunk Array",
+                "description": "Splits an array into chunks of a specified size.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "array",
+                    "chunk",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "chunkArray :: Int -> [a] -> [[a]]\nchunkArray _ [] = []\nchunkArray n xs = take n xs : chunkArray n (drop n xs)\n\nmain :: IO ()\nmain = do\n    let array = [1, 2, 3, 4, 5, 6]\n    print $ chunkArray 2 array -- Output: [[1, 2], [3, 4], [5, 6]]\n"
+            },
+            {
+                "title": "Flatten Array",
+                "description": "Flattens a multi-dimensional array.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "array",
+                    "flatten",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "flatten :: [[a]] -> [a]\nflatten = concat\n\nmain :: IO ()\nmain = do\n    let array = [[1, 2], [2], [3], [4]]\n    print $ flatten array -- Output: [1, 2, 2, 3, 4]\n"
+            },
+            {
+                "title": "Matrix Transpose",
+                "description": "Transposes a 2D matrix.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "array",
+                    "matrix",
+                    "transpose"
+                ],
+                "contributors": [],
+                "code": "transposeMatrix :: [[a]] -> [[a]]\ntransposeMatrix [] = []\ntransposeMatrix ([]:_) = []\ntransposeMatrix xs = map head xs : transposeMatrix (map tail xs)\n\nmain :: IO ()\nmain = do\n    let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n    print $ transposeMatrix matrix -- Output: [[1,4,7],[2,5,8],[3,6,9]]\n"
+            },
+            {
+                "title": "Remove duplicates",
+                "description": "Removes duplicate values from an array.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "array",
+                    "deduplicate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import Data.List (nub)\n\nremoveDuplicates :: Eq a => [a] -> [a]\nremoveDuplicates = nub\n\n-- Usage\nmain :: IO ()\nmain = do\n    let array = [1, 2, 2, 3, 4, 4, 5]\n    print $ removeDuplicates array -- Output: [1, 2, 3, 4, 5]\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "putStrLn \"Hello, World!\"\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "File Handling",
+        "snippets": [
+            {
+                "title": "Append to File",
+                "description": "Appends text to an existing file.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "file",
+                    "append",
+                    "utilty"
+                ],
+                "contributors": [],
+                "code": "import System.IO\n\nappendToFile :: FilePath -> String -> IO ()\nappendToFile = appendFile \n\nmain :: IO ()\nmain = do\n    let file = \"example.txt\"\n    let text = \"This will be appended to the file.\\n\"\n    appendToFile file text\n"
+            },
+            {
+                "title": "Check if File Exists",
+                "description": "Checks if a file exists at a given path.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "file",
+                    "exists"
+                ],
+                "contributors": [],
+                "code": "import System.Directory (doesFileExist)\n\ncheckFileExists :: FilePath -> IO Bool\ncheckFileExists = doesFileExist\n\nmain :: IO ()\nmain = do\n    let file = \"example.txt\"\n    exists <- checkFileExists file\n    if exists then putStrLn \"File exists.\" else putStrLn \"File does not exist.\"\n"
+            },
+            {
+                "title": "Find Files in Directory by Type",
+                "description": "Finds all files in a directory with a specific extension.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "file",
+                    "search",
+                    "extension",
+                    "filesystem"
+                ],
+                "contributors": [],
+                "code": "import System.Directory (listDirectory)\nimport System.FilePath (takeExtension)\n\nfindFilesByExtension :: FilePath -> String -> IO [FilePath]\nfindFilesByExtension dir ext = do\n    files <- listDirectory dir\n    return $ filter (\\f -> takeExtension f == ext) files\n\nmain :: IO ()\nmain = do\n    let directory = \".\"\n    let ext = \".txt\"\n    files <- findFilesByExtension directory ext\n    mapM_ putStrLn files -- Output: list of txt files on the current directory\n"
+            },
+            {
+                "title": "Read File in Chunks",
+                "description": "Reads a file in chunks grouped by lines.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "file",
+                    "read",
+                    "chunks",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import System.IO (openFile, IOMode(ReadMode), hGetContents)\nimport Data.List (unfoldr)\n\nreadFileInChunks :: FilePath -> Int -> IO [[String]]\nreadFileInChunks filePath chunkSize = do\n    handle <- openFile filePath ReadMode\n    contents <- hGetContents handle\n    let linesList = lines contents\n    return $ go linesList\n  where\n    go [] = []\n    go xs = take chunkSize xs : go (drop chunkSize xs)\n\nmain :: IO ()\nmain = do\n    let file = \"example.txt\"\n    let chunkSize = 3 -- Number of lines per chunk\n    chunks <- readFileInChunks file chunkSize\n    mapM_ (putStrLn . unlines) chunks\n\n"
+            },
+            {
+                "title": "Write to File",
+                "description": "Writes text to a file, overwriting any existing content.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "file",
+                    "write"
+                ],
+                "contributors": [],
+                "code": "import System.IO (writeFile)\n\nwriteToFile :: FilePath -> String -> IO ()\nwriteToFile = writeFile\n\nmain :: IO ()\nmain = do\n    let file = \"example.txt\"\n    let content = \"This is new content.\"\n    writeToFile file content\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Monads",
+        "snippets": [
+            {
+                "title": "Either Monad for Error Handling",
+                "description": "Using the Either monad to handle errors in a computation.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "monads",
+                    "either",
+                    "error handling"
+                ],
+                "contributors": [],
+                "code": "safeDiv :: Int -> Int -> Either String Int\nsafeDiv _ 0 = Left \"Division by zero error\"\nsafeDiv x y = Right (x `div` y)\n\nmain :: IO ()\nmain = do\n    let result = do\n            a <- safeDiv 10 2\n            b <- safeDiv a 0  -- This will trigger an error\n            return b\n    print result  -- Output: Left \"Division by zero error\"\n"
+            },
+            {
+                "title": "Maybe Monad",
+                "description": "Using the Maybe monad to handle computations that might fail.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "monads",
+                    "maybe"
+                ],
+                "contributors": [],
+                "code": "safeDiv :: Int -> Int -> Maybe Int\nsafeDiv _ 0 = Nothing\nsafeDiv x y = Just (x `div` y)\n\nmain :: IO ()\nmain = do\n    let result = do\n            a <- safeDiv 10 2\n            b <- safeDiv a 2\n            return b\n    print result  -- Output: Just 2\n"
+            },
+            {
+                "title": "State Monad",
+                "description": "Managing mutable state using the State monad.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "monads",
+                    "state",
+                    "state-management"
+                ],
+                "contributors": [],
+                "code": "import Control.Monad.State\n\nincrement :: State Int Int\nincrement = do\n    count <- get\n    put (count + 1)\n    return count\n\nmain :: IO ()\nmain = do\n    let (res1, intermediateState) = runState increment 0\n    print res1      -- Output: 0\n    let (result, finalState) = runState increment intermediateState\n    print result    -- Output: 1\n    print finalState  -- Output: 2\n\n"
+            },
+            {
+                "title": "Writer Monad",
+                "description": "Using the Writer monad to accumulate logs or other outputs alongside a computation.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "monads",
+                    "writer",
+                    "logs"
+                ],
+                "contributors": [],
+                "code": "import Control.Monad.Writer\n\naddAndLog :: Int -> Int -> Writer [String] Int\naddAndLog x y = do\n    tell [\"Adding \" ++ show x ++ \" and \" ++ show y]\n    return (x + y)\n\nmain :: IO ()\nmain = do\n    let (result, logs) = runWriter $ do\n            res1 <- addAndLog 3 5\n            addAndLog res1 1\n    print result  -- Output: 9\n    print logs  -- Output: [\"Adding 3 and 5\", \"Adding 8 and 1\"]\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Transform Camel Case to Snake Case",
+                "description": "Converts a Camel Case string to Snake case.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "convert",
+                    "camel-case",
+                    "snake-case",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import Data.Char (isUpper, toLower)\n\ncamelToSnake :: String -> String\ncamelToSnake [] = []\ncamelToSnake (x:xs)\n    | isUpper x = '_' : toLower x : camelToSnake xs\n    | otherwise = x : camelToSnake xs\n\nmain :: IO ()\nmain = do\n    let camelCase = \"camelCaseToSnakeCase\"\n    print $ camelToSnake camelCase -- Output: \"camel_case_to_snake_case\"\n"
+            },
+            {
+                "title": "Capitalize Words",
+                "description": "Capitalizes the first letter of each word in a string.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "capitalize",
+                    "words"
+                ],
+                "contributors": [],
+                "code": "import Data.Char (toUpper)\n\ncapitalizeWords :: String -> String\ncapitalizeWords = unwords . map capitalize . words\n  where\n    capitalize []     = []\n    capitalize (x:xs) = toUpper x : xs\n\nmain :: IO ()\nmain = do\n    let sentence = \"haskell is awesome\"\n    print $ capitalizeWords sentence -- Output: \"Haskell Is Awesome\"\n"
+            },
+            {
+                "title": "Count Word Occurrences in String",
+                "description": "Counts the occurrences of each word in a given string.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "occurrences",
+                    "word-count"
+                ],
+                "contributors": [],
+                "code": "import Data.List (group, sort)\n\ncountWordOccurrences :: String -> [(String, Int)]\ncountWordOccurrences = map (\\(w:ws) -> (w, length (w:ws))) . group . sort . words\n\nmain :: IO ()\nmain = do\n    let text = \"haskell is awesome and haskell is fun\"\n    print $ countWordOccurrences text -- Output: [(\"and\",1),(\"awesome\",1),(\"fun\",1),(\"haskell\",2),(\"is\",2)]\n"
+            },
+            {
+                "title": "Remove Punctuation",
+                "description": "Removes all punctuation from a given string.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "punctuation",
+                    "remove"
+                ],
+                "contributors": [],
+                "code": "import Data.Char (isPunctuation)\n\nremovePunctuation :: String -> String\nremovePunctuation = filter (not . isPunctuation)\n\nmain :: IO ()\nmain = do\n    let text = \"Hello, Haskell! How's it going?\"\n    print $ removePunctuation text -- Output: \"Hello Haskell Hows it going\"\n"
+            },
+            {
+                "title": "Transform from Snake Case to Camel Case",
+                "description": "Converts a Snake Case string to Camel Case.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "convert",
+                    "snake-case",
+                    "camel-case",
+                    "utilty"
+                ],
+                "contributors": [],
+                "code": "import Data.Char (toUpper)\n\nsnakeToCamel :: String -> String\nsnakeToCamel [] = []\nsnakeToCamel ('_':x:xs) = toUpper x : snakeToCamel xs\nsnakeToCamel (x:xs) = x : snakeToCamel xs\n\nmain :: IO ()\nmain = do\n    let snakeCase = \"snake_case_to_camel_case\"\n    print $ snakeToCamel snakeCase -- Output: \"snakeCaseToCamelCase\"\n"
+            },
+            {
+                "title": "Truncate Strings",
+                "description": "Truncates a string to a specified length, optionally adding an ellipsis.",
+                "author": "ACR1209",
+                "tags": [
+                    "haskell",
+                    "string",
+                    "truncate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "truncateString :: Int -> String -> String\ntruncateString maxLength str\n    | length str <= maxLength = str\n    | otherwise = take (maxLength - 3) str ++ \"...\"\n\nmain :: IO ()\nmain = do\n    let longString = \"Haskell is a powerful functional programming language.\"\n    print $ truncateString 20 longString -- Output: \"Haskell is a powe...\"\n    print $ truncateString 54 longString -- Output: \"Haskell is a powerful functional programming language.\"\n"
+            }
+        ]
+    }
+]

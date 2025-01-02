@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 import { useAppContext } from "@contexts/AppContext";
@@ -31,31 +32,55 @@ const SnippetList = () => {
 
   return (
     <>
-      <ul role="list" className="snippets">
-        {fetchedSnippets.map((snippet, idx) => (
-          <li key={idx}>
-            <button
-              className="snippet | flow"
-              data-flow-space="sm"
-              onClick={() => handleOpenModal(snippet)}
+      <motion.ul role="list" className="snippets">
+        <AnimatePresence mode="popLayout">
+          {fetchedSnippets.map((snippet, idx) => (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: idx * 0.05,
+                  duration: 0.2,
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: -20,
+                transition: {
+                  delay: (fetchedSnippets.length - 1 - idx) * 0.01,
+                  duration: 0.09,
+                },
+              }}
             >
-              <div className="snippet__preview">
-                <img src={language.icon} alt={language.lang} />
-              </div>
+              <motion.button
+                className="snippet | flow"
+                data-flow-space="sm"
+                onClick={() => handleOpenModal(snippet)}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="snippet__preview">
+                  <img src={language.icon} alt={language.lang} />
+                </div>
+                <h3 className="snippet__title">{snippet.title}</h3>
+              </motion.button>
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </motion.ul>
 
-              <h3 className="snippet__title">{snippet.title}</h3>
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      {isModalOpen && snippet && (
-        <SnippetModal
-          snippet={snippet}
-          handleCloseModal={handleCloseModal}
-          language={language.lang}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {isModalOpen && snippet && (
+          <SnippetModal
+            snippet={snippet}
+            handleCloseModal={handleCloseModal}
+            language={language.lang}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };

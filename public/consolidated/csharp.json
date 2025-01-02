@@ -1,0 +1,144 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "printing",
+                    "hello-world",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "public class Program {\n  public static void Main(string[] args) {\n    System.Console.WriteLine(\"Hello, World!\");\n  }\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Guid Utilities",
+        "snippets": [
+            {
+                "title": "Generate GUID",
+                "description": "Generates a new GUID",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "guid",
+                    "generate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "public static string GenerateGuid() {\n  return Guid.NewGuid().ToString();\n}\n"
+            },
+            {
+                "title": "Validate GUID",
+                "description": "Checks if a string is a valid GUID.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "guid",
+                    "validate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "public static bool IsGuid(string str) {\n  return Guid.TryParse(str, out _);\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Jwt Utilities",
+        "snippets": [
+            {
+                "title": "Decode JWT",
+                "description": "Decodes a JWT.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "jwt",
+                    "decode",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "/// <summary>\n/// Decodes the JWT\n/// <summary>\npublic static string DecodeJwt(string token) {\n  return new JwtSecurityTokenHandler().ReadJwtToken(token).ToString();\n}\n\n//Example\nstring token = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\";\n\nstring decodedJwt = DecodeJwt(token);\n\nConsole.WriteLine(decodedJwt); //Prints {\"alg\":\"HS256\",\"typ\":\"JWT\"}.{\"sub\":\"1234567890\",\"name\":\"John Doe\",\"iat\":1516239022}\n"
+            },
+            {
+                "title": "Generate JWT",
+                "description": "Generates a new JWT.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "jwt",
+                    "generate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "public static string GenerateJwt(string secret, string issuer, string audience, int expirationMinutes) {\n  var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));\n  var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);\n  var token = new JwtSecurityToken(issuer, audience, null, expires: DateTime.UtcNow.AddMinutes(expirationMinutes), signingCredentials: credentials);\n  return new JwtSecurityTokenHandler().WriteToken(token);\n}\n"
+            },
+            {
+                "title": "Validate JWT",
+                "description": "Validates a JWT.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "jwt",
+                    "validate",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "public static bool ValidateJwt(string token, string secret) {\n  var tokenHandler = new JwtSecurityTokenHandler();\n  var validationParameters = new TokenValidationParameters {\n    ValidateIssuerSigningKey = true,\n    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),\n    ValidateIssuer = false,\n    ValidateAudience = false\n  };\n  try {\n    tokenHandler.ValidateToken(token, validationParameters, out _);\n    return true;\n  }\n  catch {\n    return false\n  }\n}\n\n//Example\nstring JWT = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\";\n\nstring correctSecret = \"your-256-bit-secret\";\nstring wrongSecret = \"this-is-not-the-right-secret\";\n\nConsole.WriteLine(ValidateJwt(JWT, correctSecret)) // returns True\nConsole.WriteLine(ValidateJwt(JWT, wrongSecret)) // returns False\n\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "List Utilities",
+        "snippets": [
+            {
+                "title": "Swap two items at determined indexes",
+                "description": "Swaps two items at determined indexes",
+                "author": "omegaleo",
+                "tags": [
+                    "csharp",
+                    "c#",
+                    "list",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "/// <summary>\n/// Swaps the position of 2 elements inside of a List\n/// </summary>\n/// <returns>List with swapped elements</returns>\npublic static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)\n{\n    (list[indexA], list[indexB]) = (list[indexB], list[indexA]);\n    return list;\n}\n\nvar list = new List<string>() {\"Test\", \"Test2\"};\n\nConsole.WriteLine(list[0]); // Outputs: Test\nConsole.WriteLine(list[1]); // Outputs: Test2\n\nlist = list.Swap(0, 1).ToList();\n\nConsole.WriteLine(list[0]); // Outputs: Test2\nConsole.WriteLine(list[1]); // Outputs: Test\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Utilities",
+        "snippets": [
+            {
+                "title": "Capitalize first letter",
+                "description": "Makes the first letter of a string uppercase.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "c#",
+                    "string",
+                    "capitalize",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "/// <summary>\n/// Capitalize the first character of the string\n/// <summary>\npublic static string Capitalize(this string str) {\n  return str.Substring(0, 1).ToUpper() + str.Substring(1);\n}\n\n//Example\nstring example = \"hello\";\nstring captializedExample = example.Capitalize();\nConsole.WriteLine(captializedExample); // prints \"Hello\"\n"
+            },
+            {
+                "title": "Truncate a String",
+                "description": "Cut off a string once it reaches a determined amount of characters and add '...' to the end of the string",
+                "author": "omegaleo",
+                "tags": [
+                    "csharp",
+                    "c#",
+                    "list",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "/// <summary>\n/// Cut off a string once it reaches a <paramref name=\"maxChars\"/> amount of characters and add '...' to the end of the string\n/// </summary>\npublic static string Truncate(this string value, int maxChars)\n{\n    return value.Length <= maxChars ? value : value.Substring(0, maxChars) + \"...\";\n}\n\nvar str = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tristique rhoncus bibendum. Vivamus laoreet tortor vel neque lacinia, nec rhoncus ligula pellentesque. Nullam eu ornare nibh. Donec tincidunt viverra nulla.\";\n\nConsole.WriteLine(str); // Outputs the full string\nConsole.WriteLine(str.Truncate(5)); // Outputs Lorem...\n"
+            }
+        ]
+    }
+]

@@ -8,8 +8,16 @@
         "icon": "/icons/cpp.svg"
     },
     {
+        "lang": "CSHARP",
+        "icon": "/icons/csharp.svg"
+    },
+    {
         "lang": "CSS",
         "icon": "/icons/css.svg"
+    },
+    {
+        "lang": "HASKELL",
+        "icon": "/icons/haskell.svg"
     },
     {
         "lang": "HTML",

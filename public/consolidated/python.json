@@ -614,6 +614,32 @@
                 ],
                 "contributors": [],
                 "code": "import sqlite3\n\ndef insert_into_table(db_path, table_name, data):\n    with sqlite3.connect(db_path) as conn:\n        columns = ', '.join(data.keys())\n        placeholders = ', '.join(['?'] * len(data))\n        sql = f\"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})\"\n        conn.execute(sql, tuple(data.values()))\n        conn.commit()\n\n# Usage:\ndb_path = 'example.db'\ntable_name = 'users'\ndata = {\n    'name': 'John Doe',\n    'email': 'john@example.com',\n    'age': 30\n}\ninsert_into_table(db_path, table_name, data)\n"
+            },
+            {
+                "title": "Query Data from Sqlite Table",
+                "description": "Fetches data from a specified SQLite table, with options for selecting specific columns and applying a WHERE clause.",
+                "author": "pl44t",
+                "tags": [
+                    "python",
+                    "sqlite",
+                    "database",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import sqlite3\n\ndef query_table(db_path, table_name, columns='*', where_clause=None):\n    with sqlite3.connect(db_path) as conn:\n        cursor = conn.cursor()\n        sql = f\"SELECT {columns} FROM {table_name}\"\n        if where_clause:\n            sql += f\" WHERE {where_clause}\"\n        cursor.execute(sql)\n        return cursor.fetchall()\n\n# Usage:\ndb_path = 'example.db'\ntable_name = 'users'\ncolumns = 'id, name, email'\nwhere_clause = 'age > 25'\nresult = query_table(db_path, table_name, columns, where_clause)\nfor row in result:\n    print(row)\n\n"
+            },
+            {
+                "title": "Update Records in Sqlite Table",
+                "description": "Updates records in a specified SQLite table, allowing dynamic column updates and an optional WHERE clause.",
+                "author": "pl44t",
+                "tags": [
+                    "python",
+                    "sqlite",
+                    "database",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "import sqlite3\n\ndef update_table(db_path, table_name, updates, where_clause=None):\n    with sqlite3.connect(db_path) as conn:\n        set_clause = ', '.join([f\"{col} = ?\" for col in updates.keys()])\n        sql = f\"UPDATE {table_name} SET {set_clause}\"\n        if where_clause:\n            sql += f\" WHERE {where_clause}\"\n        conn.execute(sql, tuple(updates.values()))\n        conn.commit()\n\n# Usage:\ndb_path = 'example.db'\ntable_name = 'users'\nupdates = {'name': 'Jane Doe', 'age': 28}\nwhere_clause = \"id = 1\"\nupdate_table(db_path, table_name, updates, where_clause)\n\n"
             }
         ]
     },

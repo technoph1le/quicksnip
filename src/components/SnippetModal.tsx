@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -29,15 +30,28 @@ const SnippetModal: React.FC<Props> = ({
   }
 
   return ReactDOM.createPortal(
-    <div
+    <motion.div
+      key="modal-overlay"
       className="modal-overlay"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           handleCloseModal();
         }
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
     >
-      <div className="modal | flow" data-flow-space="lg">
+      <motion.div
+        key="modal-content"
+        className="modal | flow"
+        data-flow-space="lg"
+        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.8, opacity: 0, y: 20 }}
+        transition={{ type: "spring", duration: 0.5 }}
+      >
         <div className="modal__header">
           <h2 className="section-title">{snippet.title}</h2>
           <Button isIcon={true} onClick={handleCloseModal}>
@@ -67,8 +81,8 @@ const SnippetModal: React.FC<Props> = ({
             </li>
           ))}
         </ul>
-      </div>
-    </div>,
+      </motion.div>
+    </motion.div>,
     modalRoot
   );
 };

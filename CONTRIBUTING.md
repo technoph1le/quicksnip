@@ -43,7 +43,7 @@ To add a new code snippet:
 
     - Use the following format to structure your snippet:
 
-```md
+````md
 ---
 title: Name of the snippet
 description: A short explanation of what the snippet does
@@ -51,42 +51,46 @@ tags: tag1, tag2, tag3
 author: your-github-username
 ---
 
+```lang
 // Your code here
 ```
+````
 
 Here’s an example for JavaScript:
 
-```
+````md
 ---
 title: Format Date
 description: Formats a date in 'YYYY-MM-DD' format.
 author: dostonnabotov
-tags: javascript,date,format,utility
+tags: javascript,date,format
 ---
 
+```js
 const formatDate = (date) => date.toISOString().split('T')[0];
 
 // Usage:
 console.log(formatDate(new Date())); // Output: '2024-12-10'
 ```
+````
 
 5. **Use syntax highlighting:**
     - Enclose your code with triple backticks (```).
     - Specify the language after the first set of backticks for syntax highlighting.
 
-![snippet code example in markdown file](https://github.com/user-attachments/assets/be650cfe-fd17-49e7-ae82-e1c88e30d4c9)
-
 6. **Test your snippet:**
    - Ensure your code runs as expected.
 
-Expected structure:
+Expected file structure:
 
-```txt
-snippets
+```md
+/snippets
   |- language
-    |- category
+    |- category-name
       |- your-snippet-here.md
 ```
+
+> Please do **NOT** add or edit anything in `/public` folder. It will be used for consolidating snippets.
 
 ### Editing a Existing Snippet
 
@@ -96,7 +100,7 @@ If you’d like to refine or improve an existing snippet:
 
     - Include your GitHub username under the `contributors` field in the metadata section.
 
-```md
+````md
 ---
 title: Name of the snippet
 description: A short explanation of what the snippet does
@@ -105,8 +109,10 @@ author: original-author
 contributors: your-github-username
 ---
 
+```
 Updated code here
 ```
+````
 
 2. **Credit all contributors:**
 
@@ -118,9 +124,9 @@ contributors: contributor1, contributor2, your-github-username
 
 3. **Document changes:**
 
-Clearly indicate what you updated and why in your pull request description.
+    - Clearly indicate what you updated and why in your pull request description.
 
-We want to make sure that original author and contributor(s) are credited for their work.
+> We want to make sure that original author and contributor(s) are credited for their work.
 
 
 ### Adding a New Category
@@ -141,10 +147,10 @@ Example structure:
 
 ```md
 /snippets
-  |_ python
-       |_ file-handling
-       |_ list-manipulation
-       |_ ....
+  |- python
+    |- file-handling
+    |- list-manipulation
+    |- ....
 ```
 
 ### Adding a New Language

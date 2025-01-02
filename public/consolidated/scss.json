@@ -96,6 +96,21 @@
                 "code": "@mixin aspect-ratio($width, $height) {\n  position: relative;\n  width: 100%;\n  padding-top: ($height / $width) * 100%;\n  > * {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n}\n"
             },
             {
+                "title": "Dark Theme",
+                "description": "SCSS mixin to change styles for dark themes.",
+                "author": "gihanrangana",
+                "tags": [
+                    "scss",
+                    "css",
+                    "mixin",
+                    "snippet",
+                    "dark-theme",
+                    "layout"
+                ],
+                "contributors": [],
+                "code": "@mixin isDark($type: 'module') {\n  $root: &;\n\n  @if $type == 'module' {\n    :global {\n      @at-root body[theme='dark'] #{$root} {\n        @content;\n      }\n    }\n  } @else {\n    &[theme='dark'] {\n      @content;\n    }\n  }\n}\n\n// Usage:\n.container{\n\tbackground: #f0f0f0;\n\t@include isDark {\n\t\tbackground: #222;\n\t}\n}\n"
+            },
+            {
                 "title": "Flex Center",
                 "description": "A mixin to center content using flexbox.",
                 "author": "dostonnabotov",

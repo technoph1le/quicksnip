@@ -18,6 +18,41 @@
         ]
     },
     {
+        "categoryName": "Data Structure Conversion",
+        "snippets": [
+            {
+                "title": "Vector to Queue",
+                "description": "Convert vector into queue quickly",
+                "author": "mrityunjay2003",
+                "tags": [
+                    "cpp",
+                    "data structures",
+                    "queue",
+                    "vector"
+                ],
+                "contributors": [],
+                "code": "#include<queue>\n#include<vector>\n#include<deque>\n\nstd::queue<int> vectorToQueue(const std::vector<int>& v) {\n    return std::queue<int>(std::deque<int>(v.begin(), v.end()));\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Math And Numbers",
+        "snippets": [
+            {
+                "title": "Check Prime Number",
+                "description": "Check if an integer is a prime number",
+                "author": "MihneaMoso",
+                "tags": [
+                    "cpp",
+                    "number",
+                    "prime"
+                ],
+                "contributors": [],
+                "code": "bool is_prime(int n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n// Usage\n#include <iostream>\n\nint main() {\n    std::cout << is_prime(29) << std::endl; // Output: 1\n    return 0;\n}\n"
+            }
+        ]
+    },
+    {
         "categoryName": "String Manipulation",
         "snippets": [
             {
