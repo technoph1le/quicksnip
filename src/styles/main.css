@@ -331,15 +331,22 @@ abbr {
   border-radius: var(--br-md);
   cursor: pointer;
 
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .selector__value {
   display: flex;
   gap: 0.5em;
   align-items: center;
+  width: calc(100% - 30px);
+}
+
+.selector__value > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .selector__value img {
@@ -451,7 +458,7 @@ abbr {
 }
 
 .header__highlighter-style-selector {
-  width: 250px;
+  width: 280px;
 }
 
 .primary-nav {
