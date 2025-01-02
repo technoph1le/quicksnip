@@ -420,6 +420,58 @@
                 "code": "const times = (func, n) => {\n  Array.from(Array(n)).forEach(() => {\n    func();\n  });\n};\n\n// Usage:\nconst randomFunction = () => console.log('Function called!');\ntimes(randomFunction, 3); // Logs 'Function called!' three times\n"
             },
             {
+                "title": "DELETE request",
+                "description": "Simple request a DELETE api endpoint with a body",
+                "author": "kruimol",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "fetch",
+                    "delete"
+                ],
+                "contributors": [],
+                "code": "// then\nfetch(\"/api/delete\" /* api endpoint */, {\n  method: \"DELETE\",\n})\n  .then((response) => response.text())\n  .then((response) => {\n    console.log(response);\n  })\n  .catch((error) => console.error(\"Error:\", error));\n"
+            },
+            {
+                "title": "GET request",
+                "description": "Simple request a GET api endpoint",
+                "author": "kruimol",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "fetch",
+                    "get"
+                ],
+                "contributors": [],
+                "code": "// then\nfetch(\"/api/get\" /* api endpoint */)\n  .then((response) => {\n    console.log(response);\n  })\n  .catch((error) => console.error(\"Error:\", error));\n"
+            },
+            {
+                "title": "POST request",
+                "description": "Simple request a POST api endpoint with a body",
+                "author": "kruimol",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "fetch",
+                    "post"
+                ],
+                "contributors": [],
+                "code": "// then\nfetch(\"/api/post\" /* api endpoint */, {\n  method: \"POST\",\n  headers: {\n    \"Content-Type\": \"application/json\",\n  },\n  body: JSON.stringify({ a: 1, b: \"Textual content\" })\n})\n  .then((response) => response.json())\n  .then((response) => {\n    console.log(response);\n  })\n  .catch((error) => console.error(\"Error:\", error));\n"
+            },
+            {
+                "title": "PUT request",
+                "description": "Simple request a PUT api endpoint with a body",
+                "author": "kruimol",
+                "tags": [
+                    "javascript",
+                    "function",
+                    "fetch",
+                    "put"
+                ],
+                "contributors": [],
+                "code": "// then\nfetch(\"/api/PUT\" /* api endpoint */, {\n  method: \"PUT\",\n  headers: {\n    \"Content-Type\": \"application/json\",\n  },\n  body: JSON.stringify({ a: 1, b: \"Textual content\" })\n})\n  .then((response) => response.json())\n  .then((response) => {\n    console.log(response);\n  })\n  .catch((error) => console.error(\"Error:\", error));\n"
+            },
+            {
                 "title": "Sleep Function",
                 "description": "Waits for a specified amount of milliseconds before resolving.",
                 "author": "0xHouss",
