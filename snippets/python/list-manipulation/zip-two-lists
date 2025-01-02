@@ -1,0 +1,16 @@
+---
+title: Zip two lists
+description: Combines the corresponding elements of lists into a new list
+author: TejaReddyAlla
+tags: python,list,zip,utility
+---
+
+```py
+def zip_lists(lst1, lst2):
+    return list(zip(lst1, lst2))
+
+# Usage:
+lst1 = [1, 2, 3]
+lst2 = ['a', 'b', 'c']
+print(zip_lists(lst1, lst2))  # Output: [(1, 'a'), (2, 'b'), (3, 'c')]
+```
