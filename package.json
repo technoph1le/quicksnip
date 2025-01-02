@@ -10,7 +10,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "snippets:check": "node ./utils/checkSnippetFormatting.js",
+    "snippets:consolidate": "node ./utils/consolidateSnippets.js"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",

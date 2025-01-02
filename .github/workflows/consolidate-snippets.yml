@@ -35,5 +35,5 @@ jobs:
           git config --global user.email "action@github.com"
           git add public/consolidated/*
           git add public/icons/*
-          git commit -m "Update consolidated snippets"
+          git diff-index --quiet HEAD || git commit -m "Update consolidated snippets"
           git push
