@@ -19,7 +19,7 @@ import {
 
 // tokens
 const defaultLanguage: LanguageType = {
-  lang: "JavaScript",
+  lang: "JAVASCRIPT",
   icon: "/icons/javascript.svg",
 };
 
