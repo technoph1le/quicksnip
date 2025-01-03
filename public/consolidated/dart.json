@@ -1,0 +1,60 @@
+[
+    {
+        "categoryName": "Basic",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "CreeperFarm",
+                "tags": [
+                    "printing",
+                    "hello-world"
+                ],
+                "contributors": [],
+                "code": "print(\"Hello, World!\"); // Prints Hello, World! to the console\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Flutter",
+        "snippets": [
+            {
+                "title": "Button ElevatedButton",
+                "description": "Display a button with a border and elevation set automatically",
+                "author": "CreeperFarm",
+                "tags": [
+                    "button",
+                    "flutter",
+                    "widget"
+                ],
+                "contributors": [],
+                "code": "ElevatedButton(\n  onPressed: () {\n    // Do something when the button is pressed\n  },\n  child: Text('Click me!'),// Display the text Click me!\n) \n\n// If you want a button with an icon\nElevatedButton.icon(\n  onPressed: () {\n    // Do something when the button is pressed\n  },\n  icon: Icon(Icons.add), // Show the add icon\n  label: Text('Add'), // Display the text Add\n)\n"
+            },
+            {
+                "title": "Button InkWell",
+                "description": "Display a button who is clickable in his whole area where his child is displayed",
+                "author": "CreeperFarm",
+                "tags": [
+                    "button",
+                    "flutter",
+                    "widget"
+                ],
+                "contributors": [],
+                "code": "InkWell(\n  onTap: () {\n    // Do something when the button is pressed\n  },\n  child: Container( // Create a container to hold any widget\n    padding: EdgeInsets.all(12.0),\n    child: Text('Click me!'), // Display the text Click me!\n  ),\n)\n"
+            },
+            {
+                "title": "Custom Icon",
+                "description": "Display a custom icon from an .svg file, with the file inside the assets folder. The following code must be added to a components folder then icons folder inside the lib folder. This code should be inside a file called custom_icon.dart . You must have the package flutter_svg in your pubspec.yaml file.",
+                "author": "CreeperFarm",
+                "tags": [
+                    "flutter",
+                    "widget",
+                    "icon",
+                    "svg"
+                ],
+                "contributors": [],
+                "code": "import 'package:flutter/material.dart';\nimport 'package:flutter_svg/flutter_svg.dart';\n\nclass CustomIcon extends StatelessWidget {\n  Color iconColor;\n  final String iconName;\n  final double? height;\n\n  CustomIcon({required this.iconColor, required this.iconName, this.height, super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return SvgPicture.asset(\n      'assets/icons/$iconName.svg', // The path to the .svg file\n      colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn), // Change the icon's color\n      height: height?.toDouble(), // If the height is null, it will be be set as the svg's default height\n    );\n  }\n}\n"
+            }
+        ]
+    }
+]
