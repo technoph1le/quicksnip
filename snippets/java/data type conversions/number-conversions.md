@@ -1,6 +1,6 @@
 ---
 title: Number Conversions
-description: Converts from one numeric dat type to other
+description: Converts from one numeric data type to other
 author: SarvariHarshitha
 tags: Integer, Long, Double, Character
 ---
