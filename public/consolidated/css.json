@@ -38,6 +38,19 @@
                 ],
                 "contributors": [],
                 "code": ".button {\n font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,;\n background: #0a85ff;\n color: #fff;\n padding: 8px 12px;\n border: none;\n margin: 4px;\n border-radius: 10px;\n cursor: pointer;\n box-shadow: inset 0 1px 1px #fff2, 0px 2px 3px -2px rgba(0, 0, 0, 0.3) !important; /*This is really performance heavy*/\n font-size: 14px;\n display: flex;\n align-items: center;\n justify-content: center;\n text-decoration: none;\n transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n.button:hover {\n background: #0974ee;\n color: #fff\n}\n"
+            },
+            {
+                "title": "Switch Button",
+                "description": "A switch button with a beautiful style and effect.",
+                "author": "Haider-Mukhtar",
+                "tags": [
+                    "button",
+                    "switch",
+                    "toggle",
+                    "slider"
+                ],
+                "contributors": [],
+                "code": "/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  inset: 0;\n  background: #d4acfb;\n  border-radius: 50px;\n  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  border-radius: 50px;\n  box-shadow: 0 0px 20px rgba(0,0,0,0.4);\n  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.switch input:checked + .slider {\n  background: #b84fce;\n}\n\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #b84fce;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateX(1.6em);\n  width: 2em;\n  height: 2em;\n  bottom: 0;\n}\n\n/* HTML */\n<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>\n"
             }
         ]
     },
