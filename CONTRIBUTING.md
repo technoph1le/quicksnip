@@ -79,7 +79,19 @@ console.log(formatDate(new Date())); // Output: '2024-12-10'
     - Specify the language after the first set of backticks for syntax highlighting.
 
 6. **Test your snippet:**
-   - Ensure your code runs as expected.
+   - Ensure your code runs as expected. \
+        To test that your snippets are formatted correctly use the `snippets:check` script:
+        ```
+        $ npm run snippets:check
+        ```
+        It will return nothing if they are well formatted, otherwise it will tell you what the error is.
+
+        ---
+        To preview the snippets, you need to consolidate them, use the `snippets:consolidate` script:
+        ```
+        $ npm run snippets:consolidate
+        ```
+        It will update the snippets in the `/public` folder, making them available to the frontend.
 
 Expected file structure:
 

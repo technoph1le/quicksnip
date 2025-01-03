@@ -13,7 +13,7 @@ const CategoryList = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  if (error) return <div>Error occured: {error}</div>;
+  if (error) return <div>Error occurred: {error}</div>;
 
   return (
     <ul role="list" className="categories">

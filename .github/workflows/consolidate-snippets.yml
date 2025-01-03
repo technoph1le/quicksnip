@@ -34,5 +34,6 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add public/consolidated/*
-          git commit -m "Update consolidated snippets"
+          git add public/icons/*
+          git diff-index --quiet HEAD || git commit -m "Update consolidated snippets"
           git push

@@ -102,6 +102,19 @@
         "categoryName": "Error Handling",
         "snippets": [
             {
+                "title": "Create Custom Exception Type",
+                "description": "Create a Custom Exception Type that can be called with raise.",
+                "author": "mrcool7387",
+                "tags": [
+                    "python",
+                    "error-creation",
+                    "organisation",
+                    "utility"
+                ],
+                "contributors": [],
+                "code": "class ExceptionName(BaseException):\n    def __init__(message: str):\n        super().__init__(message)\n\n# Usage\na: int = 1\n\nif a > 0:\n  raise ExceptionName('Error Message')\n"
+            },
+            {
                 "title": "Handle File Not Found Error",
                 "description": "Attempts to open a file and handles the case where the file does not exist.",
                 "author": "axorax",

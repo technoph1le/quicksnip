@@ -17,7 +17,7 @@ const CopyToClipboard = ({ text, ...props }: Props) => {
         setIsCopied(true);
         setTimeout(() => setIsCopied(false), 2000);
       })
-      .catch((err) => alert("Error occured: " + err));
+      .catch((err) => alert("Error occurred: " + err));
   };
 
   return (

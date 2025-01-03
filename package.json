@@ -10,7 +10,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cspell": "cspell --config cspell.json \"**/*.{ts,tsx,js,jsx,json,html}\"",
+    "snippets:check": "node ./utils/checkSnippetFormatting.js",
+    "snippets:consolidate": "node ./utils/consolidateSnippets.js"
   },
   "dependencies": {
     "framer-motion": "^11.15.0",
@@ -29,6 +32,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "cspell": "^8.17.1",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.7.0",
