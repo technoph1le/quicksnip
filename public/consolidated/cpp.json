@@ -70,6 +70,17 @@
         "categoryName": "String Manipulation",
         "snippets": [
             {
+                "title": "Count Occurrences",
+                "description": "Counts occurrences of a substring, uses modern C++ 20",
+                "author": "beast177",
+                "tags": [
+                    "cpp",
+                    "string"
+                ],
+                "contributors": [],
+                "code": "#include <iostream>\n#include <string>\n#include <string_view>\n\nstatic size_t countOccurrences(std::string_view text, std::string_view substr) {\n        size_t count = 0;\n        size_t pos = 0;\n        while ((pos = text.find(substr, pos)) != std::string_view::npos) {\n            ++count;\n            pos += substr.length();\n        }\n        return count;\n}\n\n// use case --\n\nint main(){\n    // Count and replace\n    std::string text = \"Hello, world\";\n\n    auto count = countOccurrences(text, \"l\");\n    std::cout << std::format(\"Count of 'l': {}\\n\", count); // output -> Count of 'l' : 3\n}\n"
+            },
+            {
                 "title": "Reverse String",
                 "description": "Reverses the characters in a string.",
                 "author": "Vaibhav-kesarwani",
