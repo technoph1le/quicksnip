@@ -32,6 +32,10 @@
         "icon": "/icons/javascript.svg"
     },
     {
+        "lang": "NODEJS",
+        "icon": "/icons/nodejs.svg"
+    },
+    {
         "lang": "PYTHON",
         "icon": "/icons/python.svg"
     },

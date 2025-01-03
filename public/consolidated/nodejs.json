@@ -1,0 +1,18 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints \"Hello, World!\" to the console.",
+                "author": "kruimol",
+                "tags": [
+                    "nodejs",
+                    "hello-world"
+                ],
+                "contributors": [],
+                "code": "console.log(\"Hello, World!\"); // Prints Hello, World! to the console\n"
+            }
+        ]
+    }
+]
