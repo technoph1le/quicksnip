@@ -2,7 +2,7 @@
 title: Button InkWell
 description: Display a button who is clickable in his whole area where his child is displayed
 author: CreeperFarm
-tags: button,flutter,widget
+tags: button,widget
 ---
 
 ```dart

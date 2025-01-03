@@ -2,7 +2,7 @@
 title: Custom Icon
 description: Display a custom icon from an .svg file, with the file inside the assets folder. The following code must be added to a components folder then icons folder inside the lib folder. This code should be inside a file called custom_icon.dart . You must have the package flutter_svg in your pubspec.yaml file.
 author: CreeperFarm
-tags: flutter,widget,icon,svg
+tags: widget,icon,svg
 ---
 
 ```dart
@@ -25,4 +25,11 @@ class CustomIcon extends StatelessWidget {
     );
   }
 }
+
+// Usage:
+CustomIcon(
+  iconColor: Colors.red, // Set the icon's color
+  iconName: 'icon_name', // Set the icon's name
+  height: 24, // Set the icon's height
+)
 ```

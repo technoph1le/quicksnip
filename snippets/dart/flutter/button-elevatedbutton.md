@@ -1,8 +1,8 @@
 ---
 title: Button ElevatedButton
-description: Display a button with a border and elevation set automatically
+description: Display a button with a border and elevation set automatically.
 author: CreeperFarm
-tags: button,flutter,widget
+tags: button,widget
 ---
 
 ```dart
