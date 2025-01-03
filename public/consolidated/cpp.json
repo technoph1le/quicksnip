@@ -49,6 +49,20 @@
                 ],
                 "contributors": [],
                 "code": "bool is_prime(int n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n// Usage\n#include <iostream>\n\nint main() {\n    std::cout << is_prime(29) << std::endl; // Output: 1\n    return 0;\n}\n"
+            },
+            {
+                "title": "Even-Odd Check",
+                "description": "This code demonstrates the fastest way to check if a number is even or odd using bitwise operations. It's more efficient than using the modulor operator (%) since bitwise operations are performed at the CPU level.",
+                "author": "Beast177 ",
+                "tags": [
+                    "cpp",
+                    "number",
+                    "even",
+                    "odd",
+                    "bitwise"
+                ],
+                "contributors": [],
+                "code": "\nbool isEven(int num) {\n    return !(num & 1);\n}\n\n// usage -- [odd-even]\n\n#include <iostream>\n\nint main(){\n\n    int num1 = 2;\n    int num2 = 3;\n\n    std::cout << num1 << \" is \" << (isEven(num1) ? \"Even\" : \"Odd\") << \"\\n\"; // output - [Even] \n    std::cout << num2 << \" is \" << (isEven(num2) ? \"Even\" : \"Odd\") << \"\\n\"; // output - [Odd]\n}\n\n"
             }
         ]
     },
