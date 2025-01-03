@@ -1,0 +1,3 @@
+# Vision for QuickSnip
+
+Will be updating soon...

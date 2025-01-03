@@ -4,7 +4,7 @@ import { AppState, LanguageType, SnippetType } from "@types";
 
 // tokens
 const defaultLanguage: LanguageType = {
-  lang: "JavaScript",
+  lang: "JAVASCRIPT",
   icon: "/icons/javascript.svg",
 };
 
