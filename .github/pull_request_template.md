@@ -1,6 +1,8 @@
+<!-- **ANY PULL REQUEST NOT FOLLOWING GUIDELINES OR NOT INCLUDING A DESCRIPTION WILL BE CLOSED !** -->
+
 # Description
 
-<!-- Please include a summary of your changes. -->
+<!-- Include a summary of your changes. -->
 
 ## Type of Change
 

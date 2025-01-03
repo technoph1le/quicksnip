@@ -1,0 +1,78 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "James-Beans",
+                "tags": [
+                    "printing",
+                    "hello-world"
+                ],
+                "contributors": [],
+                "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Data Structure Conversion",
+        "snippets": [
+            {
+                "title": "Vector to Queue",
+                "description": "Convert vector into queue quickly",
+                "author": "mrityunjay2003",
+                "tags": [
+                    "data structures",
+                    "queue",
+                    "vector"
+                ],
+                "contributors": [],
+                "code": "#include<queue>\n#include<vector>\n#include<deque>\n\nstd::queue<int> vectorToQueue(const std::vector<int>& v) {\n    return std::queue<int>(std::deque<int>(v.begin(), v.end()));\n}\n\nstd::vector<int> vec = { 1, 2, 3, 4, 5 };\nvectorToQueue(&vec); // Returns: std::queue<int> { 1, 2, 3, 4, 5 }\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Math And Numbers",
+        "snippets": [
+            {
+                "title": "Check Prime Number",
+                "description": "Check if an integer is a prime number",
+                "author": "MihneaMoso",
+                "tags": [
+                    "number",
+                    "prime"
+                ],
+                "contributors": [],
+                "code": "bool is_prime(int n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n// Usage:\nis_prime(29); // Returns: true\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "String Manipulation",
+        "snippets": [
+            {
+                "title": "Reverse String",
+                "description": "Reverses the characters in a string.",
+                "author": "Vaibhav-kesarwani",
+                "tags": [
+                    "array",
+                    "reverse"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <algorithm>\n\nstd::string reverseString(const std::string& input) {\n    std::string reversed = input;\n    std::reverse(reversed.begin(), reversed.end());\n    return reversed;\n}\n\nreverseString(\"quicksnip\"); // Returns: \"pinskciuq\"\n"
+            },
+            {
+                "title": "Split String",
+                "description": "Splits a string by a delimiter",
+                "author": "saminjay",
+                "tags": [
+                    "string",
+                    "split"
+                ],
+                "contributors": [],
+                "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n\n// Usage:\nsplit_string(\"quick_-snip\", \"_-\"); // Returns: std::vector<std::string> { \"quick\", \"snip\" }\n"
+            }
+        ]
+    }
+]

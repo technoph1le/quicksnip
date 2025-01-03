@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { LanguageType } from "../types";
+
+import { LanguageType } from "@types";
 
 interface UseKeyboardNavigationProps {
   items: LanguageType[];

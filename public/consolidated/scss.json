@@ -1,0 +1,215 @@
+[
+    {
+        "categoryName": "Animations",
+        "snippets": [
+            {
+                "title": "Fade In Animation",
+                "description": "Animates the fade-in effect.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "animation",
+                    "fade",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n@mixin fade-in($duration: 1s, $easing: ease-in-out) {\n  animation: fade-in $duration $easing;\n}\n"
+            },
+            {
+                "title": "Slide In From Left",
+                "description": "Animates content sliding in from the left.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "animation",
+                    "slide",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@keyframes slide-in-left {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}\n\n@mixin slide-in-left($duration: 0.5s, $easing: ease-out) {\n  animation: slide-in-left $duration $easing;\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Borders Shadows",
+        "snippets": [
+            {
+                "title": "Border Radius Helper",
+                "description": "Applies a customizable border-radius.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "border",
+                    "radius",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin border-radius($radius: 4px) {\n  border-radius: $radius;\n}\n"
+            },
+            {
+                "title": "Box Shadow Helper",
+                "description": "Generates a box shadow with customizable values.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "box-shadow",
+                    "css",
+                    "effects"
+                ],
+                "contributors": [],
+                "code": "@mixin box-shadow($x: 0px, $y: 4px, $blur: 10px, $spread: 0px, $color: rgba(0, 0, 0, 0.1)) {\n  box-shadow: $x $y $blur $spread $color;\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Components",
+        "snippets": [
+            {
+                "title": "Primary Button",
+                "description": "Generates a styled primary button.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "button",
+                    "primary",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin primary-button($bg: #007bff, $color: #fff) {\n  background-color: $bg;\n  color: $color;\n  padding: 0.5rem 1rem;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n\n  &:hover {\n    background-color: darken($bg, 10%);\n  }\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Layouts",
+        "snippets": [
+            {
+                "title": "Aspect Ratio",
+                "description": "Ensures that elements maintain a specific aspect ratio.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "aspect-ratio",
+                    "layout",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin aspect-ratio($width, $height) {\n  position: relative;\n  width: 100%;\n  padding-top: ($height / $width) * 100%;\n  > * {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n}\n"
+            },
+            {
+                "title": "Dark Theme",
+                "description": "SCSS mixin to change styles for dark themes.",
+                "author": "gihanrangana",
+                "tags": [
+                    "css",
+                    "mixin",
+                    "snippet",
+                    "dark-theme",
+                    "layout"
+                ],
+                "contributors": [],
+                "code": "@mixin isDark($type: 'module') {\n  $root: &;\n\n  @if $type == 'module' {\n    :global {\n      @at-root body[theme='dark'] #{$root} {\n        @content;\n      }\n    }\n  } @else {\n    &[theme='dark'] {\n      @content;\n    }\n  }\n}\n\n// Usage:\n.container{\n\tbackground: #f0f0f0;\n\t@include isDark {\n\t\tbackground: #222;\n\t}\n}\n"
+            },
+            {
+                "title": "Flex Center",
+                "description": "A mixin to center content using flexbox.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "flex",
+                    "center",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n"
+            },
+            {
+                "title": "Grid Container",
+                "description": "Creates a responsive grid container with customizable column counts.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "grid",
+                    "layout",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin grid-container($columns: 12, $gap: 1rem) {\n  display: grid;\n  grid-template-columns: repeat($columns, 1fr);\n  gap: $gap;\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Typography",
+        "snippets": [
+            {
+                "title": "Font Import Helper",
+                "description": "Simplifies importing custom fonts in Sass.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "mixin",
+                    "fonts",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin import-font($family, $weight: 400, $style: normal) {\n  @font-face {\n    font-family: #{$family};\n    font-weight: #{$weight};\n    font-style: #{$style};\n    src: url('/fonts/#{$family}-#{$weight}.woff2') format('woff2'),\n         url('/fonts/#{$family}-#{$weight}.woff') format('woff');\n  }\n}\n"
+            },
+            {
+                "title": "Line Clamp Mixin",
+                "description": "A Sass mixin to clamp text to a specific number of lines.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "mixin",
+                    "typography",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin line-clamp($number) {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: $number;\n  overflow: hidden;\n}\n"
+            },
+            {
+                "title": "Text Gradient",
+                "description": "Adds a gradient color effect to text.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "mixin",
+                    "gradient",
+                    "text",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin text-gradient($from, $to) {\n  background: linear-gradient(to right, $from, $to);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n"
+            },
+            {
+                "title": "Text Overflow Ellipsis",
+                "description": "Ensures long text is truncated with an ellipsis.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "mixin",
+                    "text",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin text-ellipsis {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Utilities",
+        "snippets": [
+            {
+                "title": "Clearfix",
+                "description": "Provides a clearfix utility for floating elements.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "clearfix",
+                    "utility",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin clearfix {\n  &::after {\n    content: '';\n    display: block;\n    clear: both;\n  }\n}\n"
+            },
+            {
+                "title": "Responsive Breakpoints",
+                "description": "Generates media queries for responsive design.",
+                "author": "dostonnabotov",
+                "tags": [
+                    "responsive",
+                    "media-queries",
+                    "css"
+                ],
+                "contributors": [],
+                "code": "@mixin breakpoint($breakpoint) {\n  @if $breakpoint == sm {\n    @media (max-width: 576px) { @content; }\n  } @else if $breakpoint == md {\n    @media (max-width: 768px) { @content; }\n  } @else if $breakpoint == lg {\n    @media (max-width: 992px) { @content; }\n  } @else if $breakpoint == xl {\n    @media (max-width: 1200px) { @content; }\n  }\n}\n"
+            }
+        ]
+    }
+]

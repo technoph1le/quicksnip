@@ -1,5 +1,5 @@
-import LanguageSelector from "../components/LanguageSelector";
-import CategoryList from "../components/CategoryList";
+import CategoryList from "@components/CategoryList";
+import LanguageSelector from "@components/LanguageSelector";
 
 const Sidebar = () => {
   return (

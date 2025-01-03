@@ -1,0 +1,34 @@
+[
+    {
+        "categoryName": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "0xHouss",
+                "tags": [
+                    "printing",
+                    "hello-world"
+                ],
+                "contributors": [],
+                "code": "#include <stdio.h> // Includes the input/output library\n\nint main() { // Defines the main function\n  printf(\"Hello, World!\\n\") // Outputs Hello, World! and a newline\n\n  return 0; // indicate the program executed successfully\n}\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Mathematical Functions",
+        "snippets": [
+            {
+                "title": "Factorial Function",
+                "description": "Calculates the factorial of a number.",
+                "author": "0xHouss",
+                "tags": [
+                    "math",
+                    "factorial"
+                ],
+                "contributors": [],
+                "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n\n// Usage:\nfactorial(4); // Returns: 24\n"
+            }
+        ]
+    }
+]

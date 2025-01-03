@@ -1,16 +1,18 @@
-import React, { useRef, useEffect } from "react";
-import { useAppContext } from "../contexts/AppContext";
-import { useLanguages } from "../hooks/useLanguages";
-import { useKeyboardNavigation } from "../hooks/useKeyboardNavigation";
-import { LanguageType } from "../types";
+import { useRef, useEffect, useState } from "react";
+
+import { useAppContext } from "@contexts/AppContext";
+import { useKeyboardNavigation } from "@hooks/useKeyboardNavigation";
+import { useLanguages } from "@hooks/useLanguages";
+import { LanguageType } from "@types";
 
 // Inspired by https://blog.logrocket.com/creating-custom-select-dropdown-css/
 
 const LanguageSelector = () => {
   const { language, setLanguage } = useAppContext();
   const { fetchedLanguages, loading, error } = useLanguages();
+
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (selected: LanguageType) => {
     setLanguage(selected);
@@ -44,7 +46,10 @@ const LanguageSelector = () => {
   };
 
   useEffect(() => {
-    if (!isOpen) resetFocus();
+    if (!isOpen) {
+      resetFocus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

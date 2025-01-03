@@ -1,7 +1,13 @@
+import { FC } from "react";
+
 const DEFAULT_ICON_COLOR = "var(--clr-icon-primary)";
 const ACCENT_ICON_COLOR = "var(--clr-accent)";
 
-export const LogoIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (
+interface IconProps {
+  fillColor?: string;
+}
+
+export const LogoIcon: FC<IconProps> = ({ fillColor = ACCENT_ICON_COLOR }) => (
   <svg
     width="43"
     height="30"
@@ -31,7 +37,9 @@ export const LogoIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (
   </svg>
 );
 
-export const SearchIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
+export const SearchIcon: FC<IconProps> = ({
+  fillColor = DEFAULT_ICON_COLOR,
+}) => (
   <svg
     width="24"
     height="24"
@@ -50,7 +58,9 @@ export const SearchIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
   </svg>
 );
 
-export const GitHubIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
+export const GitHubIcon: FC<IconProps> = ({
+  fillColor = DEFAULT_ICON_COLOR,
+}) => (
   <svg
     width="24"
     height="24"
@@ -71,7 +81,9 @@ export const GitHubIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
   </svg>
 );
 
-export const SwitchIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
+export const SwitchIcon: FC<IconProps> = ({
+  fillColor = DEFAULT_ICON_COLOR,
+}) => (
   <svg
     width="22"
     height="22"
@@ -89,7 +101,9 @@ export const SwitchIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
   </svg>
 );
 
-export const ExpandIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
+export const ExpandIcon: FC<IconProps> = ({
+  fillColor = DEFAULT_ICON_COLOR,
+}) => (
   <svg
     width="16"
     height="17"
@@ -107,7 +121,9 @@ export const ExpandIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
   </svg>
 );
 
-export const CloseIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
+export const CloseIcon: FC<IconProps> = ({
+  fillColor = DEFAULT_ICON_COLOR,
+}) => (
   <svg
     width="31"
     height="30"
@@ -122,7 +138,7 @@ export const CloseIcon = ({ fillColor = DEFAULT_ICON_COLOR }) => (
   </svg>
 );
 
-export const CopyIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (
+export const CopyIcon: FC<IconProps> = ({ fillColor = ACCENT_ICON_COLOR }) => (
   <svg
     width="20"
     height="20"
@@ -141,7 +157,9 @@ export const CopyIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (
   </svg>
 );
 
-export const LeftAngleArrowIcon = ({ fillColor = ACCENT_ICON_COLOR }) => (
+export const LeftAngleArrowIcon: FC<IconProps> = ({
+  fillColor = ACCENT_ICON_COLOR,
+}) => (
   <svg
     width="72"
     height="72"

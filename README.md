@@ -2,9 +2,11 @@
 
 An open-source project that categorizes handy code snippets across various programming languages. Built with love and powered by an awesome community. 🚀
 
-<a href="https://youtu.be/BhRi7fJzPgk?si=z1sVXU7uRS0bkSEt" target="_blank" style="text-decoration: none;">
-  <img src="https://img.shields.io/static/v1?label=&message=Watch%20on%20YouTube&labelColor=FFFFFF&color=FF0000&style=for-the-badge&logo=youtube&logoColor=FF0000" alt="Watch on YouTube" style="margin-right: 20px">
+<div>
+<a href="https://youtu.be/BhRi7fJzPgk?si=z1sVXU7uRS0bkSEt" target="_blank">
+  <img src="https://img.shields.io/static/v1?label=&message=Watch%20on%20YouTube&labelColor=FFFFFF&color=FF0000&style=for-the-badge&logo=youtube&logoColor=FF0000" alt="Watch on YouTube">
 </a>
+<div>
 
 <br>
 
@@ -16,41 +18,88 @@ Want to help make QuickSnip even better? You can contribute by:
 
 - **Improving the Code**: Fix bugs, suggest new features, or optimize the project.
 - **Adding New Snippets**: Share your favorite snippets to grow the database.
-  Be sure to check out the [CONTRIBUTING.md](/CONTRIBUTING.md) file for detailed guidelines.
+
+Be sure to check out the [CONTRIBUTING.md](/CONTRIBUTING.md) file for detailed guidelines.
 
 ### Improving the code
 
 Got a feature idea or bug fix? Here's how you can contribute:
 
-- [Open an issue](https://github.com/dostonnabotov/sass-template/issues) to share your ideas or report a bug.
-- [Send a pull request](https://github.com/dostonnabotov/sass-template/pulls) with your changes.
+- [Open an issue](https://github.com/dostonnabotov/quicksnip/issues) to share your ideas or report a bug.
+- [Send a pull request](https://github.com/dostonnabotov/quicksnip/pulls) with your changes.
 
 ### Adding a Snippet
 
-The snippets database is located in the `/public/data` folder.
+The snippets database is located in the `/snippets` folder.
 
-If you’d like to add a snippet for an **existing language** and **category**, use the following format:
+1. Find the relevant language folder.
 
-```json
-{
-  "title": "Name of the snippet",
-  "description": "A short explanation of what the snippet does",
-  "code": [
-    "your code goes here", 
-    "  this is a newline with a space"
-  ],
-  "tags": ["tag1", "tag2", "tag3"],
-  "author": "your_github_username"
-}
+2. Locate the appropriate category folder for your snippet.
+
+3. Create a markdown file and add your snippet using the following format:
+
+````md
+---
+title: Name of the snippet
+description: A short explanation of what the snippet does
+tags: tag1, tag2, tag3
+author: your-github-username
+---
+
+```lang
+// Your code here
+```
+````
+
+Here's an example for JavaScript:
+
+````md
+---
+title: Format Date
+description: Formats a date in 'YYYY-MM-DD' format.
+author: dostonnabotov
+tags: javascript,date,format
+---
+
+```js
+const formatDate = (date) => date.toISOString().split('T')[0];
+
+// Usage:
+console.log(formatDate(new Date())); // Output: '2024-12-10'
+```
+````
+
+Expected file structure:
+
+```md
+/snippets
+  |- language
+    |- category-name
+      |- your-snippet-here.md
 ```
 
-For details about adding new categories or programming languages, check out the [CONTRIBUTING.md](/CONTRIBUTING.md) file.
+> Please do **NOT** add or edit anything in `/public` folder. It will be used for consolidating snippets.
+
+To test that your snippets are formatted correctly use the `snippets:check` script:
+```
+$ npm run snippets:check
+```
+It will return nothing if they are well formatted, otherwise it will tell you what the error is.
+
+---
+To preview the snippets, you need to consolidate them, use the `snippets:consolidate` script:
+```
+$ npm run snippets:consolidate
+```
+It will update the snippets in the `/public` folder, making them available to the frontend.
+
+For more details about adding new categories or programming languages, check out the [CONTRIBUTING.md](/CONTRIBUTING.md) file.
 
 ## Guidelines for Contributions
 
 To keep things smooth and consistent, please:
 
-- Use proper JSON formatting.
+- Follow the formatting rules described above.
 - Include all mandatory fields in the snippet.
 - Test your snippet to ensure it works as expected.
 

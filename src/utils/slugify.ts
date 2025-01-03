@@ -1,4 +1,5 @@
-const slugify = (string: string, separator = "-") => {
+/* eslint-disable no-useless-escape */
+export const slugify = (string: string, separator = "-") => {
   return string
     .toString() // Cast to string (optional)
     .toLowerCase() // Convert the string to lowercase letters
@@ -9,5 +10,3 @@ const slugify = (string: string, separator = "-") => {
     .replace(/\-\-+/g, separator) // Replace multiple - with single {separator}
     .replace(/\-$/g, ""); // Remove trailing -
 };
-
-export default slugify;

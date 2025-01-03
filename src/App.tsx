@@ -1,11 +1,9 @@
-import { useAppContext } from "./contexts/AppContext";
-
-import Header from "./layouts/Header";
-import Banner from "./layouts/Banner";
-import Sidebar from "./layouts/Sidebar";
-import Footer from "./layouts/Footer";
-
-import SnippetList from "./components/SnippetList";
+import SnippetList from "@components/SnippetList";
+import { useAppContext } from "@contexts/AppContext";
+import Banner from "@layouts/Banner";
+import Footer from "@layouts/Footer";
+import Header from "@layouts/Header";
+import Sidebar from "@layouts/Sidebar";
 
 const App = () => {
   const { category } = useAppContext();

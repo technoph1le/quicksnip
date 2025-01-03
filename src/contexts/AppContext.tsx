@@ -1,9 +1,10 @@
-import { createContext, useContext, useState } from "react";
-import { AppState, LanguageType, SnippetType } from "../types";
+import { createContext, FC, useContext, useState } from "react";
+
+import { AppState, LanguageType, SnippetType } from "@types";
 
 // tokens
 const defaultLanguage: LanguageType = {
-  lang: "JavaScript",
+  lang: "JAVASCRIPT",
   icon: "/icons/javascript.svg",
 };
 
@@ -19,9 +20,7 @@ const defaultState: AppState = {
 
 const AppContext = createContext<AppState>(defaultState);
 
-export const useAppContext = () => useContext(AppContext);
-
-export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
+export const AppProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [language, setLanguage] = useState<LanguageType>(defaultLanguage);
@@ -43,3 +42,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     </AppContext.Provider>
   );
 };
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAppContext = () => useContext(AppContext);

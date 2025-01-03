@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useEscapeKey = (onEscapeEvent: () => void) => {
+export const useEscapeKey = (onEscapeEvent: () => void) => {
   useEffect(() => {
     const handleEscape = (event: { key: string }) => {
       if (event.key === "Escape") onEscapeEvent();
@@ -12,5 +12,3 @@ const useEscapeKey = (onEscapeEvent: () => void) => {
     };
   }, [onEscapeEvent]);
 };
-
-export default useEscapeKey;
