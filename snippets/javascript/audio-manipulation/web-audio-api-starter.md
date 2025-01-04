@@ -2,7 +2,7 @@
 title: Web Audio API Starter Example
 description: Simple example for playing a tone with the Web Audio API
 author: 1982FenceHopper
-tags: audio,web
+tags: audio, web
 ---
 
 ```js
@@ -41,5 +41,5 @@ function startAudio() {
   oscNode.start();
 }
 
-startAudio();
+startAudio(); // Output: A tone should be audible.
 ```
