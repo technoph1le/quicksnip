@@ -62,6 +62,22 @@
         ]
     },
     {
+        "categoryName": "Audio Manipulation",
+        "snippets": [
+            {
+                "title": "Web Audio API Starter",
+                "description": "Simple example for playing a tone with the Web Audio API",
+                "author": "1982FenceHopper",
+                "tags": [
+                    "audio",
+                    "web"
+                ],
+                "contributors": [],
+                "code": "/*\n *   \"It's recommended to create one AudioContext and reuse it instead of initializing a new one each time,\n *   and it's OK to use a single AudioContext for several different audio sources and pipeline concurrently.\"\n *\n *   https://developer.mozilla.org/en-US/docs/Web/API/AudioContext\n */\nclass AudioSingleton {\n  static ctx;\n\n  static getInstance() {\n    if (!ctx) {\n      ctx = new AudioContext();\n    }\n    return ctx;\n  }\n}\n\n// Usage:\nfunction startAudio() {\n  let ctx = AudioSingleton.getInstance();\n\n  oscNode = ctx.createOscillator();\n  gainNode = ctx.createGain();\n\n  gainNode.gain.value = 0.01;   // It can get really loud, so this helps :)\n\n  oscNode.type = \"square\";\n  oscNode.frequency.setValueAtTime(440, ctx.currentTime);\n\n  oscNode.connect(gainNode);\n  gainNode.connect(ctx.destination);\n\n  oscNode.start();\n}\n\nstartAudio(); // Output: A tone should be audible.\n"
+            }
+        ]
+    },
+    {
         "categoryName": "Basics",
         "snippets": [
             {
@@ -90,6 +106,44 @@
                 ],
                 "contributors": [],
                 "code": "function rgbToHex(r, g, b) {\n  const toHex = (n) => {\n    const hex = n.toString(16);\n    return hex.length === 1 ? '0' + hex : hex;\n  };\n  \n  return '#' + toHex(r) + toHex(g) + toHex(b);\n}\n\n// Usage:\nconsole.log(rgbToHex(255, 128, 0)); // Output: \"#ff8000\"\nconsole.log(rgbToHex(0, 255, 0)); // Output: \"#00ff00\"\n"
+            }
+        ]
+    },
+    {
+        "categoryName": "Cookies",
+        "snippets": [
+            {
+                "title": "Delete Cookie",
+                "description": "Delete a browser cookie",
+                "author": "1982FenceHopper",
+                "tags": [
+                    "cookie",
+                    "document"
+                ],
+                "contributors": [],
+                "code": "const deleteCookie = (name) => {\n    try {\n        document.cookie = `${encodeURIComponent(name)}=MARKED;max-age=0;path=/`;\n    } catch (e) {\n        console.error(e);\n    }\n};\n\n// Usage:\nlet name = \"foo\";\n\ndeleteCookie(name);\nconsole.log(document.cookie) // Expected: Cookie foo should not be a part of the output.\n"
+            },
+            {
+                "title": "Get Cookie",
+                "description": "Get a browser cookie",
+                "author": "1982FenceHopper",
+                "tags": [
+                    "cookie",
+                    "document"
+                ],
+                "contributors": [],
+                "code": "const getCookie = (name) => {\n    return document.cookie.split(\";\").find((cookie) => cookie.trim().split(\"=\")[0] == name)\n};\n\n// Usage:\nlet name = \"foo\";\n\nconsole.log(getCookie(name)); // Output: foo=bar\n"
+            },
+            {
+                "title": "Set Cookie",
+                "description": "Set a browser cookie",
+                "author": "1982FenceHopper",
+                "tags": [
+                    "cookie",
+                    "document"
+                ],
+                "contributors": [],
+                "code": "const setCookie = (name, value, max_age = 3600, expires = undefined) => {\n\ttry {\n  \tdocument.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)};max-age=${max_age};path=/;${expires ? `expires=${encodeURIComponent(expires)}` : \"\"}`;\n  } catch (e) {\n    console.error(e);\n  }\n};\n\n// Usage:\nlet name = \"foo\";\nlet value = \"bar\";\n\nsetCookie(name, value);\nconsole.log(document.cookie) // Expected: foo=bar should be a part of the output.\n"
             }
         ]
     },

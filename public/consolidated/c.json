@@ -38,7 +38,7 @@
                     "numbers"
                 ],
                 "contributors": [],
-                "code": "#include<stdio.h>\nvoid swap(int* num1,int* num2){\n    *num1 = *num1 + *num2;\n    *num2 = *num1 - *num2;\n    *num1 = *num1 - *num2;\n}\n\n// Usage:\nint a = 3,b = 4;\nswap(&a,&b); // simply use printf after this to print swapped values\n"
+                "code": "#include<stdio.h>\nvoid swap(int* num1,int* num2){\n    *num1 = *num1 + *num2;\n    *num2 = *num1 - *num2;\n    *num1 = *num1 - *num2;\n}\n\n// Usage:\nint a = 3,b = 4;\nswap(&a,&b); // swaps the values of the a and b variables\n"
             }
         ]
     }
