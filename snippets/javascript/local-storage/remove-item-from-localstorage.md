@@ -1,7 +1,7 @@
 ---
 title: Remove Item from localStorage  
 description: Removes a specific item from localStorage.  
-author: axorax  
+author: dkyan33  
 tags: localStorage, storage  
 ---
 
