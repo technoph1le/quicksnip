@@ -1,5 +1,5 @@
 ---
-title: Remove Specific Characters
+title: Remove Characters
 description: Removes specific characters from a string.
 author: axorax
 tags: string,remove,characters
