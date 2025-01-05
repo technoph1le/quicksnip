@@ -406,6 +406,17 @@
                 "code": "def bytes_to_human_readable(num):\n    for unit in ['B', 'KB', 'MB', 'GB', 'TB', 'PB']:\n        if num < 1024:\n            return f\"{num:.2f} {unit}\"\n        num /= 1024\n\n# Usage:\nbytes_to_human_readable(123456789) # Returns: '117.74 MB'\n"
             },
             {
+                "title": "Fibonacci Series",
+                "description": "Iterative approach to generate first N Fibonacci numbers in Python.",
+                "author": "Karanjot786",
+                "tags": [
+                    "fibonacci",
+                    "math"
+                ],
+                "contributors": [],
+                "code": "def fibonacci(n):\n    a, b = 0, 1\n    print(a, end=\" \")\n    if n > 1:\n        print(b, end=\" \")\n    for _ in range(2, n):\n        c = a + b\n        print(c, end=\" \")\n        a, b = b, c\n    print()\n\n# Usage:\nfibonacci(5)  # Output: 0 1 1 2 3\n"
+            },
+            {
                 "title": "Find LCM (Least Common Multiple)",
                 "description": "Calculates the least common multiple (LCM) of two numbers.",
                 "author": "axorax",

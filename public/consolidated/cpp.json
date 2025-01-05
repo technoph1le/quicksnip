@@ -62,6 +62,17 @@
                 ],
                 "contributors": [],
                 "code": "bool is_prime(int n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n// Usage:\nis_prime(29); // Returns: true\n"
+            },
+            {
+                "title": "Fibonacci Series",
+                "description": "Iterative approach to generate first N Fibonacci numbers in C++.",
+                "author": "Karanjot786",
+                "tags": [
+                    "fibonacci",
+                    "math"
+                ],
+                "contributors": [],
+                "code": "#include <iostream>\n\nvoid fibonacci(int n) {\n    int a = 0, b = 1;\n    std::cout << a << \" \";\n    if(n > 1) {\n        std::cout << b << \" \";\n    }\n    for(int i = 2; i < n; i++) {\n        int c = a + b;\n        std::cout << c << \" \";\n        a = b;\n        b = c;\n    }\n    std::cout << std::endl;\n}\n\n// Usage:\nint main() {\n    fibonacci(5); // Output: 0 1 1 2 3\n    return 0;\n}\n"
             }
         ]
     },

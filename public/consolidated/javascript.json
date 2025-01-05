@@ -368,6 +368,17 @@
         "categoryName": "Mathematical Functions",
         "snippets": [
             {
+                "title": "Fibonacci Series",
+                "description": "Iterative approach to generate first N Fibonacci numbers in JavaScript.",
+                "author": "Karanjot786",
+                "tags": [
+                    "fibonacci",
+                    "math"
+                ],
+                "contributors": [],
+                "code": "function fibonacci(n) {\n  let a = 0, b = 1;\n  let result = a + ' ';\n  if (n > 1) {\n    result += b + ' ';\n  }\n\n  for (let i = 2; i < n; i++) {\n    let c = a + b;\n    result += c + ' ';\n    a = b;\n    b = c;\n  }\n  console.log(result.trim());\n}\n\n// Usage:\nfibonacci(5); // Output: 0 1 1 2 3\n"
+            },
+            {
                 "title": "Greatest Common Divisor",
                 "description": "Calculates the largest positive integer that divides each of the integers without leaving a remainder. Useful for calculating aspect ratios.",
                 "author": "JanluOfficial",

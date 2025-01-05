@@ -30,6 +30,17 @@
                 "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n\n// Usage:\nfactorial(4); // Returns: 24\n"
             },
             {
+                "title": "Fibonacci Series",
+                "description": "Iterative approach to generate first N Fibonacci numbers in C.",
+                "author": "Karanjot786",
+                "tags": [
+                    "fibonacci",
+                    "math"
+                ],
+                "contributors": [],
+                "code": "#include <stdio.h>\n\nvoid fibonacci(int n) {\n    int a = 0, b = 1, c, i;\n    printf(\"%d \", a);\n    if(n > 1) {\n        printf(\"%d \", b);\n    }\n    for(i = 2; i < n; i++) {\n        c = a + b;\n        printf(\"%d \", c);\n        a = b;\n        b = c;\n    }\n    printf(\"\\n\");\n}\n\n// Usage:\nint main() {\n    fibonacci(5); // Output: 0 1 1 2 3\n    return 0;\n}\n"
+            },
+            {
                 "title": "Swap numbers",
                 "description": "Swaps two numbers without using third variable",
                 "author": "Emosans",

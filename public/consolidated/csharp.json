@@ -86,6 +86,22 @@
         ]
     },
     {
+        "categoryName": "Math And Numbers",
+        "snippets": [
+            {
+                "title": "Fibonacci Series",
+                "description": "Iterative approach to generate first N Fibonacci numbers in C#.",
+                "author": "Karanjot786",
+                "tags": [
+                    "fibonacci",
+                    "math"
+                ],
+                "contributors": [],
+                "code": "using System;\n\npublic class FibonacciSeries {\n    public static void fibonacci(int n) {\n        int a = 0, b = 1;\n        Console.Write(a + \" \");\n        if(n > 1) {\n            Console.Write(b + \" \");\n        }\n\n        for(int i = 2; i < n; i++) {\n            int c = a + b;\n            Console.Write(c + \" \");\n            a = b;\n            b = c;\n        }\n        Console.WriteLine();\n    }\n\n    // Usage:\n    public static void Main() {\n        fibonacci(5); // Output: 0 1 1 2 3\n    }\n}\n"
+            }
+        ]
+    },
+    {
         "categoryName": "String Utilities",
         "snippets": [
             {
