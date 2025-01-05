@@ -29,11 +29,19 @@ jobs:
         run: |
           node utils/consolidateSnippets.js  # Run the script located in the utils/ folder
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add public/consolidated/*
-          git add public/icons/*
-          git diff-index --quiet HEAD || git commit -m "Update consolidated snippets"
-          git push
+          - name: Commit and push changes
+          run: |
+            # Configure git
+            git config --global user.name "GitHub Action"
+            git config --global user.email "action@github.com"
+            
+            # If there are changes in public/consolidated or public/icons,
+            # commit and push them. Otherwise, skip.
+            if ! git diff-index --quiet HEAD -- public/consolidated public/icons; then
+              echo "Changes detected. Committing and pushing."
+              git add public/consolidated/* public/icons/*
+              git commit -m "Update consolidated snippets"
+              git push
+            else
+              echo "No changes to commit. Skipping."
+            fi
