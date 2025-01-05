@@ -33,7 +33,7 @@
         ]
     },
     {
-        "categoryName": "Debuging",
+        "categoryName": "Debugging",
         "snippets": [
             {
                 "title": "Vector Print",
