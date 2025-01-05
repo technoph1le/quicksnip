@@ -1,5 +1,5 @@
 ---
-title: Truncate String
+title: Truncate
 description: Truncates a string to a specified length and a toggleable truncation notation.
 author: axorax
 contributors: MinerMinerMods
