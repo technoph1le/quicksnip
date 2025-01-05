@@ -535,16 +535,17 @@
                 "code": "def snake_to_camel(s):\n    parts = s.split('_')\n    return parts[0] + ''.join(word.capitalize() for word in parts[1:])\n\n# Usage:\nsnake_to_camel('hello_world') # Returns: 'helloWorld'\n"
             },
             {
-                "title": "Convert String to ASCII",
-                "description": "Converts a string into its ASCII representation.",
+                "title": "Convert String to Unicode",
+                "description": "Converts a string into its Unicode representation.",
                 "author": "axorax",
                 "tags": [
                     "string",
                     "ascii",
+                    "unicode",
                     "convert"
                 ],
                 "contributors": [],
-                "code": "def string_to_ascii(s):\n    return [ord(char) for char in s]\n\n# Usage:\nstring_to_ascii('hello') # Returns: [104, 101, 108, 108, 111]\n"
+                "code": "def string_to_unicode(s):\n    return [ord(char) for char in s]\n\n# Usage:\nstring_to_unicode('hello') # Returns: [104, 101, 108, 108, 111]\n"
             },
             {
                 "title": "Count Character Frequency",
@@ -627,6 +628,18 @@
                 "code": "import random\nimport string\n\ndef random_string(length):\n    letters_and_digits = string.ascii_letters + string.digits\n    return ''.join(random.choice(letters_and_digits) for _ in range(length))\n\n# Usage:\nrandom_string(10) # Results: Random 10-character string\n"
             },
             {
+                "title": "Remove Characters",
+                "description": "Removes specific characters from a string.",
+                "author": "axorax",
+                "tags": [
+                    "string",
+                    "remove",
+                    "characters"
+                ],
+                "contributors": [],
+                "code": "def remove_chars(s, chars):\n    return ''.join(c for c in s if c not in chars)\n\n# Usage:\nremove_chars('hello world', 'eo') # Returns: 'hll wrld'\n"
+            },
+            {
                 "title": "Remove Duplicate Characters",
                 "description": "Removes duplicate characters from a string while maintaining the order.",
                 "author": "axorax",
@@ -651,18 +664,6 @@
                 "code": "import string\n\ndef remove_punctuation(s):\n    return s.translate(str.maketrans('', '', string.punctuation))\n\n# Usage:\nremove_punctuation('Hello, World!') # Returns: 'Hello World'\n"
             },
             {
-                "title": "Remove Specific Characters",
-                "description": "Removes specific characters from a string.",
-                "author": "axorax",
-                "tags": [
-                    "string",
-                    "remove",
-                    "characters"
-                ],
-                "contributors": [],
-                "code": "def remove_chars(s, chars):\n    return ''.join(c for c in s if c not in chars)\n\n# Usage:\nremove_chars('hello world', 'eo') # Returns: 'hll wrld'\n"
-            },
-            {
                 "title": "Remove Whitespace",
                 "description": "Removes all whitespace from a string.",
                 "author": "axorax",
@@ -683,7 +684,7 @@
                     "reverse"
                 ],
                 "contributors": [],
-                "code": "def reverse_string(s):\n    return s[::-1]\n\n# Usage:\nreverse_string('hello') # Returns: 'olleh'\n"
+                "code": "def reverse_string(s:str) -> str:\n    return s[::-1]\n\n# Usage:\nreverse_string('hello') # Returns: 'olleh'\n"
             },
             {
                 "title": "Split Camel Case",
@@ -698,15 +699,17 @@
                 "code": "import re\n\ndef split_camel_case(s):\n    return ' '.join(re.findall(r'[A-Z][a-z]*|[a-z]+', s))\n\n# Usage:\nsplit_camel_case('camelCaseString') # Returns: 'camel Case String'\n"
             },
             {
-                "title": "Truncate String",
-                "description": "Truncates a string to a specified length and adds an ellipsis.",
+                "title": "Truncate",
+                "description": "Truncates a string to a specified length and a toggleable truncation notation.",
                 "author": "axorax",
                 "tags": [
                     "string",
                     "truncate"
                 ],
-                "contributors": [],
-                "code": "def truncate_string(s, length):\n    return s[:length] + '...' if len(s) > length else s\n\n# Usage:\ntruncate_string('This is a long string', 10) # Returns: 'This is a ...'\n"
+                "contributors": [
+                    "MinerMinerMods"
+                ],
+                "code": "def truncate(s:str, length:int, suffix:bool = True) -> str :\n    return (s[:length] + (\"...\" if suffix else \"\")) if len(s) > length else s\n\n# Usage:\ntruncate('This is a long string', 10) # Returns: 'This is a ...'\ntruncate('This is a long string', 10, False) # Returns: 'This is a '\n"
             }
         ]
     }
