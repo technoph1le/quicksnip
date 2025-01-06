@@ -9,6 +9,16 @@ interface UseKeyboardNavigationProps {
   onClose: () => void;
 }
 
+const keyboardEventKeys = {
+  arrowDown: "ArrowDown",
+  arrowUp: "ArrowUp",
+  enter: "Enter",
+  escape: "Escape",
+} as const;
+
+type KeyboardEventKeys =
+  (typeof keyboardEventKeys)[keyof typeof keyboardEventKeys];
+
 export const useKeyboardNavigation = ({
   items,
   isOpen,
@@ -20,25 +30,27 @@ export const useKeyboardNavigation = ({
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!isOpen) return;
 
-    switch (event.key) {
-      case "ArrowDown":
-        event.preventDefault();
-        setFocusedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
-        break;
-      case "ArrowUp":
-        event.preventDefault();
-        setFocusedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
-        break;
-      case "Enter":
-        event.preventDefault();
-        if (focusedIndex >= 0) {
-          onSelect(items[focusedIndex]);
-        }
-        break;
-      case "Escape":
-        event.preventDefault();
-        onClose();
-        break;
+    const key = event.key as KeyboardEventKeys;
+
+    if (Object.values(keyboardEventKeys).includes(key)) {
+      event.preventDefault();
+
+      switch (key) {
+        case "ArrowDown":
+          setFocusedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
+          break;
+        case "ArrowUp":
+          setFocusedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
+          break;
+        case "Enter":
+          if (focusedIndex >= 0) {
+            onSelect(items[focusedIndex]);
+          }
+          break;
+        case "Escape":
+          onClose();
+          break;
+      }
     }
   };
 

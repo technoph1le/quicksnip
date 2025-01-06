@@ -23,10 +23,15 @@ Be sure to check out the [CONTRIBUTING.md](/CONTRIBUTING.md) file for detailed g
 
 ### Improving the code
 
-Got a feature idea or bug fix? Here's how you can contribute:
+- **Reporting bugs**
 
-- [Open an issue](https://github.com/dostonnabotov/quicksnip/issues) to share your ideas or report a bug.
-- [Send a pull request](https://github.com/dostonnabotov/quicksnip/pulls) with your changes.
+    - If you spot a bug in the codebase or issues with the documentation, please open up a [GitHub issue](https://github.com/dostonnabotov/quicksnip/issues) detailing the problem before creating a PR. 
+    - Once confirmed with maintainers, you can then create a PR.
+
+- **Proposing new features**
+
+    - If you are interested in proposing new features, please open up a new [GitHub discussion](https://github.com/dostonnabotov/quicksnip/discussions) with details for the proposed feature.
+    - Please do **not** create a PR for a new feature without first discussing it with the maintainers. If you create a PR for a new feature without discussing it first, then your PR will be closed.
 
 ### Adding a Snippet
 
@@ -99,11 +104,13 @@ For more details about adding new categories or programming languages, check out
 
 To keep things smooth and consistent, please:
 
-- Follow the formatting rules described above.
-- Include all mandatory fields in the snippet.
-- Test your snippet to ensure it works as expected.
+- [x] Follow the style and contribution guidelines of this project.
+- [x] Include all mandatory fields in the snippet.
+- [x] Test your snippet to ensure it works as expected.
 
-Following these guidelines helps me (and everyone else) review and merge your contributions faster.
+Following these guidelines helps us (and everyone else) review and merge your contributions faster.
+
+**If you fail to meet the guidelines, your PR will most likely get rejected.** 
 
 ## License
 

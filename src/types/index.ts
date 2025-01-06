@@ -1,10 +1,14 @@
 export type LanguageType = {
-  lang: string;
+  name: string;
   icon: string;
+  subIndexes: {
+    name: string;
+    icon: string;
+  }[];
 };
 
 export type CategoryType = {
-  categoryName: string;
+  name: string;
   snippets: SnippetType[];
 };
 

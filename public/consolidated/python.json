@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello, World!",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "categoryName": "Datetime Utilities",
+        "name": "Datetime Utilities",
         "snippets": [
             {
                 "title": "Calculate Date Difference in Milliseconds",
@@ -99,7 +99,7 @@
         ]
     },
     {
-        "categoryName": "Error Handling",
+        "name": "Error Handling",
         "snippets": [
             {
                 "title": "Create Custom Exception Type",
@@ -128,7 +128,7 @@
         ]
     },
     {
-        "categoryName": "File Handling",
+        "name": "File Handling",
         "snippets": [
             {
                 "title": "Find Files",
@@ -180,7 +180,7 @@
         ]
     },
     {
-        "categoryName": "Json Manipulation",
+        "name": "Json Manipulation",
         "snippets": [
             {
                 "title": "Filter JSON Data",
@@ -257,7 +257,7 @@
         ]
     },
     {
-        "categoryName": "List Manipulation",
+        "name": "List Manipulation",
         "snippets": [
             {
                 "title": "Find Duplicates in a List",
@@ -342,7 +342,7 @@
         ]
     },
     {
-        "categoryName": "Math And Numbers",
+        "name": "Math And Numbers",
         "snippets": [
             {
                 "title": "Calculate Compound Interest",
@@ -435,7 +435,7 @@
         ]
     },
     {
-        "categoryName": "Sqlite Database",
+        "name": "Sqlite Database",
         "snippets": [
             {
                 "title": "Create SQLite Database Table",
@@ -485,7 +485,7 @@
         ]
     },
     {
-        "categoryName": "String Manipulation",
+        "name": "String Manipulation",
         "snippets": [
             {
                 "title": "Capitalize Words",

@@ -16,7 +16,7 @@
     "snippets:consolidate": "node ./utils/consolidateSnippets.js"
   },
   "dependencies": {
-    "framer-motion": "^11.15.0",
+    "motion": "^11.15.0",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

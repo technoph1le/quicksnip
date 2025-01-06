@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Array Manipulation",
+        "name": "Array Manipulation",
         "snippets": [
             {
                 "title": "Partition Array",
@@ -62,7 +62,7 @@
         ]
     },
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello, World!",
@@ -78,7 +78,23 @@
         ]
     },
     {
-        "categoryName": "Date And Time",
+        "name": "Color Manipulation",
+        "snippets": [
+            {
+                "title": "RGB to Hex Color",
+                "description": "Converts RGB color values to hexadecimal color code.",
+                "author": "jjcantu",
+                "tags": [
+                    "color",
+                    "conversion"
+                ],
+                "contributors": [],
+                "code": "function rgbToHex(r, g, b) {\n  const toHex = (n) => {\n    const hex = n.toString(16);\n    return hex.length === 1 ? '0' + hex : hex;\n  };\n  \n  return '#' + toHex(r) + toHex(g) + toHex(b);\n}\n\n// Usage:\nconsole.log(rgbToHex(255, 128, 0)); // Output: \"#ff8000\"\nconsole.log(rgbToHex(0, 255, 0)); // Output: \"#00ff00\"\n"
+            }
+        ]
+    },
+    {
+        "name": "Date And Time",
         "snippets": [
             {
                 "title": "Check Leap Year",
@@ -175,7 +191,7 @@
         ]
     },
     {
-        "categoryName": "Dom Manipulation",
+        "name": "Dom Manipulation",
         "snippets": [
             {
                 "title": "Change Element Style",
@@ -202,7 +218,7 @@
         ]
     },
     {
-        "categoryName": "Function Utilities",
+        "name": "Function Utilities",
         "snippets": [
             {
                 "title": "Compose Functions",
@@ -311,7 +327,7 @@
         ]
     },
     {
-        "categoryName": "Local Storage",
+        "name": "Local Storage",
         "snippets": [
             {
                 "title": "Add Item to localStorage",
@@ -349,7 +365,23 @@
         ]
     },
     {
-        "categoryName": "Number Formatting",
+        "name": "Mathematical Functions",
+        "snippets": [
+            {
+                "title": "Greatest Common Divisor",
+                "description": "Calculates the largest positive integer that divides each of the integers without leaving a remainder. Useful for calculating aspect ratios.",
+                "author": "JanluOfficial",
+                "tags": [
+                    "math",
+                    "division"
+                ],
+                "contributors": [],
+                "code": "function gcd(a, b) {\n    while (b !== 0) {\n        let temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n\n// Usage:\ngcd(1920, 1080); // Returns:    120\ngcd(1920, 1200); // Returns:    240\ngcd(5,12);       // Returns:      1\n"
+            }
+        ]
+    },
+    {
+        "name": "Number Formatting",
         "snippets": [
             {
                 "title": "Convert Number to Currency",
@@ -383,6 +415,17 @@
                 ],
                 "contributors": [],
                 "code": "const toScientificNotation = (num) => {\n  if (isNaN(num)) {\n    throw new Error('Input must be a number');\n  }\n  if (num === 0) {\n    return '0e+0';\n  }\n  const exponent = Math.floor(Math.log10(Math.abs(num)));\n  const mantissa = num / Math.pow(10, exponent);\n  return `${mantissa.toFixed(2)}e${exponent >= 0 ? '+' : ''}${exponent}`;\n};\n\n// Usage:\ntoScientificNotation(12345); // Returns: '1.23e+4'\ntoScientificNotation(0.0005678); // Returns: '5.68e-4'\ntoScientificNotation(1000); // Returns: '1.00e+3'\ntoScientificNotation(0); // Returns: '0e+0'\ntoScientificNotation(-54321); // Returns: '-5.43e+4'\n"
+            },
+            {
+                "title": "Format File Size",
+                "description": "Converts bytes into human-readable file size format.",
+                "author": "jjcantu",
+                "tags": [
+                    "format",
+                    "size"
+                ],
+                "contributors": [],
+                "code": "function formatFileSize(bytes) {\n  if (bytes === 0) return '0 Bytes';\n  \n  const k = 1024;\n  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];\n  const i = Math.floor(Math.log(bytes) / Math.log(k));\n  \n  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];\n}\n\n// Usage:\nconsole.log(formatFileSize(1234)); // Output: \"1.21 KB\"\nconsole.log(formatFileSize(1234567)); // Output: \"1.18 MB\"\n"
             },
             {
                 "title": "Format Number with Commas",
@@ -420,7 +463,7 @@
         ]
     },
     {
-        "categoryName": "Object Manipulation",
+        "name": "Object Manipulation",
         "snippets": [
             {
                 "title": "Check if Object is Empty",
@@ -469,6 +512,17 @@
                 ],
                 "contributors": [],
                 "code": "function countProperties(obj) {\n  return Object.keys(obj).length;\n}\n\n// Usage:\nconst obj = { a: 1, b: 2, c: 3 };\ncountProperties(obj); // Returns: 3\n"
+            },
+            {
+                "title": "Deep Clone Object",
+                "description": "Creates a deep copy of an object or array without reference.",
+                "author": "jjcantu",
+                "tags": [
+                    "object",
+                    "clone"
+                ],
+                "contributors": [],
+                "code": "function deepClone(obj) {\n  if (obj === null || typeof obj !== 'object') return obj;\n  \n  const clone = Array.isArray(obj) ? [] : {};\n  \n  for (let key in obj) {\n    if (Object.prototype.hasOwnProperty.call(obj, key)) {\n      clone[key] = deepClone(obj[key]);\n    }\n  }\n  \n  return clone;\n}\n\n// Usage:\nconst original = { a: 1, b: { c: 2 }, d: [1, 2, 3] };\nconst cloned = deepClone(original);\nconsole.log(cloned); // Output: 'original' but cloned\n"
             },
             {
                 "title": "Filter Object",
@@ -574,7 +628,7 @@
         ]
     },
     {
-        "categoryName": "String Manipulation",
+        "name": "String Manipulation",
         "snippets": [
             {
                 "title": "Capitalize String",
@@ -708,6 +762,18 @@
                 ],
                 "contributors": [],
                 "code": "function getInitials(name) {\n  return name.split(' ').map(part => part.charAt(0).toUpperCase()).join('');\n}\n\n// Usage:\ngetInitials('John Doe'); // Returns: 'JD'\n"
+            },
+            {
+                "title": "Generate UUID",
+                "description": "Generates a UUID (v4) string.",
+                "author": "jjcantu",
+                "tags": [
+                    "uuid",
+                    "generate",
+                    "string"
+                ],
+                "contributors": [],
+                "code": "function generateUUID() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {\n    const r = Math.random() * 16 | 0;\n    const v = c === 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n\n// Usage:\nconsole.log(generateUUID()); // Output: \"a1b2c3d4-e5f6-4g7h-8i9j-k0l1m2n3o4p5\"\n"
             },
             {
                 "title": "Mask Sensitive Information",

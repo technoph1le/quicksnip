@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello, World!",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "categoryName": "Guid Utilities",
+        "name": "Guid Utilities",
         "snippets": [
             {
                 "title": "Generate GUID",
@@ -43,7 +43,7 @@
         ]
     },
     {
-        "categoryName": "Jwt Utilities",
+        "name": "Jwt Utilities",
         "snippets": [
             {
                 "title": "Decode JWT",
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "categoryName": "List Utilities",
+        "name": "List Utilities",
         "snippets": [
             {
                 "title": "Swap items at index",
@@ -86,7 +86,7 @@
         ]
     },
     {
-        "categoryName": "String Utilities",
+        "name": "String Utilities",
         "snippets": [
             {
                 "title": "Capitalize first letter",

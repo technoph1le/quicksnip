@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello-World",

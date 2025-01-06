@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Basic Layouts",
+        "name": "Basic Layouts",
         "snippets": [
             {
                 "title": "Grid Layout with Navigation",

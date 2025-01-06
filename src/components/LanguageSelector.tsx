@@ -79,7 +79,7 @@ const LanguageSelector = () => {
       >
         <div className="selector__value">
           <img src={language.icon} alt="" />
-          <span>{language.lang || "Select a language"}</span>
+          <span>{language.name || "Select a language"}</span>
         </div>
         <span className="selector__arrow" />
       </button>
@@ -92,18 +92,18 @@ const LanguageSelector = () => {
         >
           {fetchedLanguages.map((lang, index) => (
             <li
-              key={lang.lang}
+              key={lang.name}
               role="option"
               tabIndex={-1}
               onClick={() => handleSelect(lang)}
               className={`selector__item ${
-                language.lang === lang.lang ? "selected" : ""
+                language.name === lang.name ? "selected" : ""
               } ${focusedIndex === index ? "focused" : ""}`}
-              aria-selected={language.lang === lang.lang}
+              aria-selected={language.name === lang.name}
             >
               <label>
                 <img src={lang.icon} alt="" />
-                <span>{lang.lang}</span>
+                <span>{lang.name}</span>
               </label>
             </li>
           ))}

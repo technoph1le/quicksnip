@@ -11,10 +11,15 @@ You can contribute in two main ways:
 
 ## Improving the code
 
-If you have a feature request or want to fix a bug, feel free to:
+### How to report bugs
 
-- [Open an Issue](https://github.com/dostonnabotov/quicksnip/issues) to let us know what’s up.
-- [Send a Pull Request](https://github.com/dostonnabotov/quicksnip/pulls) with your changes.
+If you spot a bug in the codebase or issues with the documentation, please open up a [GitHub issue](https://github.com/dostonnabotov/quicksnip/issues) detailing the problem before creating a PR. Once confirmed with maintainers, you can then create a PR.
+
+### How to propose new features
+
+If you are interested in proposing new features, please open up a new [GitHub discussion](https://github.com/dostonnabotov/quicksnip/discussions) with details for the proposed feature.
+
+Please do not create a PR for a new feature without first discussing it with the maintainers. If you create a PR for a new feature without discussing it first, then your PR will be closed.
 
 ---
 
@@ -22,13 +27,25 @@ If you have a feature request or want to fix a bug, feel free to:
 
 ### Snippet Tags
 
-Tags must describe the snippet with simple word. \
-For example a snippet that capitalize a word would have `string` and `capitalize` as tags. \
-**! Do not add the language you are using as a tag, nor some generic keyword like `utility` !**
+- Tags must describe the snippet with simple word.
+
+Here's an example:
+
+```md
+---
+title: Convert Number to Currency
+description: Converts a number to a currency format with a specific locale.
+author: axorax
+tags: number,currency
+---
+```
+
+**Do not use generic keywords or the language itself as a tag `utility` or `javascript`!**
 
 ### Snippet Format
 
 **All** snippets should follow the following structure:
+
 - A `code` segment, containing a function with the actual snippet functionnality
 - An `example` segement, containing one or more examples of use
 
@@ -41,17 +58,17 @@ function example(x) {
 // Usage:
 example(5) // Returns: 10
 ```
-If your function doesn't return anything just show how to use it. \
-If the result of your function is too complicated to be expressed in a single comment, your snippet is probably too complex to begin with.
+
+If your function doesn't return anything just show how to use it. If the result of your function is too complicated to be expressed in a single comment, your snippet is probably too complex to begin with.
 
 ### Snippet boundaries
 
-To **check if your snippet will not get refused** ask yourself those questions:
+To ensure your snippet isn’t refused, consider these questions:
 - **Does the standard library of my language provide an easy way of doing this ?**
 - **Does that snippet have a real, and practical use case ?**
 - **Could it be split into separate parts to be better understood ?**
 
-If one of question is true, then your snippet will most likely get refused !
+If any answer is yes, then your snippet will most likely get rejected.
 
 ---
 
@@ -230,6 +247,6 @@ If you want to introduce a new programming language, here's how to do it:
 
 Whether you’re fixing a tiny typo, writing a new snippet, or dreaming up big features, every bit counts! 🛠️
 
-If you have any questions or need help, feel free to open an issue or tag me.
+If you have any questions or need help, feel free to open a new [GitHub discussion](https://github.com/dostonnabotov/quicksnip/discussions).
 
 Happy coding! 💻✨

@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello, World!",
@@ -16,7 +16,7 @@
         ]
     },
     {
-        "categoryName": "Mathematical Functions",
+        "name": "Mathematical Functions",
         "snippets": [
             {
                 "title": "Factorial Function",
@@ -28,6 +28,17 @@
                 ],
                 "contributors": [],
                 "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n\n// Usage:\nfactorial(4); // Returns: 24\n"
+            },
+            {
+                "title": "Swap numbers",
+                "description": "Swaps two numbers without using third variable",
+                "author": "Emosans",
+                "tags": [
+                    "swap",
+                    "numbers"
+                ],
+                "contributors": [],
+                "code": "#include<stdio.h>\nvoid swap(int* num1,int* num2){\n    *num1 = *num1 + *num2;\n    *num2 = *num1 - *num2;\n    *num1 = *num1 - *num2;\n}\n\n// Usage:\nint a = 3,b = 4;\nswap(&a,&b); // swaps the values of the a and b variables\n"
             }
         ]
     }

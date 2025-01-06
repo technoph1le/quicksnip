@@ -27,17 +27,15 @@ function raise(issue, snippet = '') {
     return null;
 }
 
-const crlfRegex = /\r\n/gm;
 const propertyRegex = /^\s+([a-zA-Z]+):\s*(.+)/;
-const headerEndCodeStartRegex = /^\s*---\s*```.*\n/;
+const headerEndCodeStartRegex = /^\s*---\s*```.*\r?\n/;
 const codeRegex = /^(.+)```/s
-function parseSnippet(snippetPath, name, text) {
-    if(crlfRegex.exec(text) !== null) return raise('Found CRLF line endings instead of LF line endings', snippetPath);
+function parseSnippet(path, name, text) {
     let cursor = 0;
 
     const fromCursor = () => text.substring(cursor);
 
-    if(!fromCursor().trim().startsWith('---')) return raise('Missing header start delimiter \'---\'', snippetPath);
+    if(!fromCursor().trim().startsWith('---')) return raise('Missing header start delimiter \'---\'', path);
     cursor += 3;
 
     const properties = {};
@@ -47,19 +45,19 @@ function parseSnippet(snippetPath, name, text) {
         properties[match[1].toLowerCase()] = match[2];
     }
 
-    if(!('title' in properties)) return raise(`Missing 'title' property`, snippetPath);
-    if(!('description' in properties)) return raise(`Missing 'description' property`, snippetPath);
-    if(!('author' in properties)) return raise(`Missing 'author' property`, snippetPath);
-    if(!('tags' in properties)) return raise(`Missing 'tags' property`, snippetPath);
+    if(!('title' in properties)) return raise(`Missing 'title' property`, path);
+    if(!('description' in properties)) return raise(`Missing 'description' property`, path);
+    if(!('author' in properties)) return raise(`Missing 'author' property`, path);
+    if(!('tags' in properties)) return raise(`Missing 'tags' property`, path);
 
-    if(slugify(properties.title) !== name) return raise(`slugifyed 'title' property doesn't match snippet file name`, snippetPath);
+    if(slugify(properties.title) !== name) return raise(`slugifyed 'title' property doesn't match snippet file name`, path);
 
     match = headerEndCodeStartRegex.exec(fromCursor());
-    if(match === null) return raise('Missing header end \'---\' or code start \'```\'', snippetPath);
+    if(match === null) return raise('Missing header end \'---\' or code start \'```\'', path);
     cursor += match[0].length;
 
     match = codeRegex.exec(fromCursor());
-    if(match === null) return raise('Missing code block end \'```\'', snippetPath);
+    if(match === null) return raise('Missing code block end \'```\'', path);
     const code = match[1];
 
     return {
@@ -68,47 +66,67 @@ function parseSnippet(snippetPath, name, text) {
         author: properties.author,
         tags: properties.tags.split(',').map((tag) => tag.trim()).filter((tag) => tag),
         contributors: 'contributors' in properties ? properties.contributors.split(',').map((contributor) => contributor.trim()).filter((contributor) => contributor) : [],
-        code: code,
+        code: code.replace(/\r\n/g, '\n'),
+    }
+}
+
+function parseCategory(path, name) {
+    const snippets = [];
+
+    for(const snippet of readdirSync(path)) {
+        const snippetPath = join(path, snippet);
+        const snippetContent = readFileSync(snippetPath).toString();
+        const snippetFileName = snippet.slice(0, -3);
+
+        const snippetData = parseSnippet(snippetPath, snippetFileName, snippetContent);
+        if(!snippetData) continue;
+        snippets.push(snippetData);
+    }
+
+    return {
+        name: reverseSlugify(name),
+        snippets,
+    };
+}
+
+function parseLanguage(path, name, subLanguageOf = null) {
+    const iconPath = join(path, 'icon.svg');
+
+    if(!existsSync(iconPath)) return raise(`icon for '${subLanguageOf ? `${subLanguageOf}/` : '' }${name}' is missing`);
+
+    const categories = [];
+    const subLanguages = [];
+
+    for(const category of readdirSync(path)) {
+        if(category === 'icon.svg') continue;
+        const categoryPath = join(path, category);
+
+        if(category.startsWith('[') && category.endsWith(']')) {
+            if(subLanguageOf !== null) {
+                return raise('Cannot have more than two level of language nesting');
+            }
+            subLanguages.push(parseLanguage(categoryPath, category.slice(1, -1), name));
+        }else {
+            categories.push(parseCategory(categoryPath, category));
+        }
+    }
+
+    return {
+        name: reverseSlugify(name),
+        icon: iconPath,
+        categories, subLanguages,
     }
 }
 
 const snippetPath = "snippets/";
 export function parseAllSnippets() {
-    const snippets = {};
+    const languages = [];
 
     for(const language of readdirSync(snippetPath)) {
         const languagePath = join(snippetPath, language);
-    
-        const languageIconPath = join(languagePath, 'icon.svg');
-    
-        if(!existsSync(languageIconPath)) {
-            raise(`icon for '${language}' is missing`);
-            continue;
-        }
-        
-        const categories = [];
-        for(const category of readdirSync(languagePath)) {
-            if(category === 'icon.svg') continue;
-            const categoryPath = join(languagePath, category);
-    
-            const categorySnippets = [];
-            for(const snippet of readdirSync(categoryPath)) {
-                const snippetPath = join(categoryPath, snippet);
-                const snippetContent = readFileSync(snippetPath).toString();
-                const snippetFileName = snippet.slice(0, -3);
-    
-                const snippetData = parseSnippet(snippetPath, snippetFileName, snippetContent);
-                if(!snippetData) continue;
-                categorySnippets.push(snippetData);
-            }
-            categories.push({
-                categoryName: reverseSlugify(category),
-                snippets: categorySnippets,
-            });
-        }
 
-        snippets[language] = categories;
+        languages.push(parseLanguage(languagePath, language));
     }
 
-    return [ errored, snippets ];
+    return [ errored, languages ];
 }

@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Array Manipulation",
+        "name": "Array Manipulation",
         "snippets": [
             {
                 "title": "Binary Search",
@@ -41,7 +41,7 @@
         ]
     },
     {
-        "categoryName": "Basics",
+        "name": "Basics",
         "snippets": [
             {
                 "title": "Hello, World!",
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "categoryName": "File Handling",
+        "name": "File Handling",
         "snippets": [
             {
                 "title": "Find Files in Directory by Type",
@@ -89,7 +89,7 @@
         ]
     },
     {
-        "categoryName": "Monads",
+        "name": "Monads",
         "snippets": [
             {
                 "title": "Either Monad for Error Handling",
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "categoryName": "String Manipulation",
+        "name": "String Manipulation",
         "snippets": [
             {
                 "title": "CamelCase to snake_case",

@@ -1,50 +1,72 @@
 [
     {
-        "lang": "C",
-        "icon": "/icons/c.svg"
+        "name": "C",
+        "icon": "/icons/c.svg",
+        "subLanguages": []
     },
     {
-        "lang": "CPP",
-        "icon": "/icons/cpp.svg"
+        "name": "CPP",
+        "icon": "/icons/cpp.svg",
+        "subLanguages": []
     },
     {
-        "lang": "CSHARP",
-        "icon": "/icons/csharp.svg"
+        "name": "CSHARP",
+        "icon": "/icons/csharp.svg",
+        "subLanguages": []
     },
     {
-        "lang": "CSS",
-        "icon": "/icons/css.svg"
+        "name": "CSS",
+        "icon": "/icons/css.svg",
+        "subLanguages": []
     },
     {
-        "lang": "HASKELL",
-        "icon": "/icons/haskell.svg"
+        "name": "HASKELL",
+        "icon": "/icons/haskell.svg",
+        "subLanguages": []
     },
     {
-        "lang": "HTML",
-        "icon": "/icons/html.svg"
+        "name": "HTML",
+        "icon": "/icons/html.svg",
+        "subLanguages": []
     },
     {
-        "lang": "JAVA",
-        "icon": "/icons/java.svg"
+        "name": "JAVA",
+        "icon": "/icons/java.svg",
+        "subLanguages": []
     },
     {
-        "lang": "JAVASCRIPT",
-        "icon": "/icons/javascript.svg"
+        "name": "JAVASCRIPT",
+        "icon": "/icons/javascript.svg",
+        "subLanguages": []
     },
     {
-        "lang": "PYTHON",
-        "icon": "/icons/python.svg"
+        "name": "PYTHON",
+        "icon": "/icons/python.svg",
+        "subLanguages": []
     },
     {
-        "lang": "RUST",
-        "icon": "/icons/rust.svg"
+        "name": "REGEX",
+        "icon": "/icons/regex.svg",
+        "subLanguages": []
     },
     {
-        "lang": "SCSS",
-        "icon": "/icons/scss.svg"
+        "name": "RUBY",
+        "icon": "/icons/ruby.svg",
+        "subLanguages": []
     },
     {
-        "lang": "TYPESCRIPT",
-        "icon": "/icons/typescript.svg"
+        "name": "RUST",
+        "icon": "/icons/rust.svg",
+        "subLanguages": []
+    },
+    {
+        "name": "SCSS",
+        "icon": "/icons/scss.svg",
+        "subLanguages": []
+    },
+    {
+        "name": "TYPESCRIPT",
+        "icon": "/icons/typescript.svg",
+        "subLanguages": []
     }
 ]

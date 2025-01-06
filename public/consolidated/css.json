@@ -1,6 +1,6 @@
 [
     {
-        "categoryName": "Buttons",
+        "name": "Buttons",
         "snippets": [
             {
                 "title": "3D Button Effect",
@@ -55,7 +55,7 @@
         ]
     },
     {
-        "categoryName": "Effects",
+        "name": "Effects",
         "snippets": [
             {
                 "title": "Blur Background",
@@ -96,7 +96,7 @@
         ]
     },
     {
-        "categoryName": "Layouts",
+        "name": "Layouts",
         "snippets": [
             {
                 "title": "CSS Reset",
@@ -159,7 +159,7 @@
         ]
     },
     {
-        "categoryName": "Typography",
+        "name": "Typography",
         "snippets": [
             {
                 "title": "Letter Spacing",
