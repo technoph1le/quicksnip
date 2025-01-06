@@ -1,5 +1,68 @@
 [
     {
+        "name": "Animations",
+        "snippets": [
+            {
+                "title": "Blink Animation",
+                "description": "Adds an infinite blinking animation to an element",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "blink",
+                    "infinite"
+                ],
+                "contributors": [],
+                "code": ".blink {\n    animation: blink 1s linear infinite;\n}\n\n@keyframes blink{\n    0%{\n        opacity: 0;\n    }\n    50%{\n        opacity: 1;\n    }\n    100%{\n        opacity: 0;\n    }\n}\n"
+            },
+            {
+                "title": "Pulse Animation",
+                "description": "Adds a smooth pulsing animation with opacity and scale effects",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "pulse",
+                    "pulse-scale"
+                ],
+                "contributors": [],
+                "code": ".pulse {\n    animation: pulse 2s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 0.5;\n    transform: scale(1);\n  }\n  50% {\n    opacity: 1;\n    transform: scale(1.05);\n  }\n  100% {\n    opacity: 0.5;\n    transform: scale(1);\n  }\n}\n"
+            },
+            {
+                "title": "Shake Animation",
+                "description": "Adds a shake animation ( commonly used to mark invalid fields )",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "shake",
+                    "shake-horizontal"
+                ],
+                "contributors": [],
+                "code": ".shake {\n    animation: shake .5s ease-in-out;\n}\n\n@keyframes shake {\n  0%, 100% {\n    transform: translateX(0);\n  }\n  25% {\n    transform: translateX(-10px);\n  }\n  50% {\n    transform: translateX(10px);\n  }\n  75% {\n    transform: translateX(-10px);\n  }\n}\n"
+            },
+            {
+                "title": "Slide-in Animation",
+                "description": "Adds a slide-in from the right side of the screen",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "slide-in",
+                    "slide-right"
+                ],
+                "contributors": [],
+                "code": ".slide-in {\n    animation: slide-in 1s ease-in-out;\n}\n\n@keyframes slide-in {\n    from {\n        scale: 300% 1;\n        translate: 150vw 0;\n    }\n\n    to {\n        scale: 100% 1;\n        translate: 0 0;\n    }\n}\n"
+            },
+            {
+                "title": "Typewriter Animation",
+                "description": "Adds a typewriter animation + blinking cursor",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "blinking",
+                    "typewriter"
+                ],
+                "contributors": [],
+                "code": "    <div class=\"typewriter\">\n      <div>\n          <p>Typerwriter Animation</p>\n      </div>\n    </div>\n```\n\n```css\n    .typewriter{\n        display: flex;\n        justify-content: center;\n    }\n\n    .typewriter p {\n        overflow: hidden;\n        font-size: 1.5rem;\n        font-family: monospace;\n        border-right: 1px solid;\n        margin-inline: auto;\n        white-space: nowrap;\n        /* The cursor will inherit the text's color by default */\n        /* border-color: red */                \n        /* Steps: number of chars (better to set directly in js)*/\n        animation: typing 3s steps(21) forwards,\n        blink 1s step-end infinite;\n    }\n\n    @keyframes typing{\n        from{\n            width: 0%\n        }\n        to{\n            width: 100%\n        }\n    }\n\n    @keyframes blink{\n        50%{\n            border-color: transparent;\n        }\n    }\n"
+            }
+        ]
+    },
+    {
         "name": "Buttons",
         "snippets": [
             {
