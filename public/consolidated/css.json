@@ -1,5 +1,68 @@
 [
     {
+        "name": "Animations",
+        "snippets": [
+            {
+                "title": "Blink Animation",
+                "description": "Adds an infinite blinking animation to an element",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "blink",
+                    "infinite"
+                ],
+                "contributors": [],
+                "code": ".blink {\n    animation: blink 1s linear infinite;\n}\n\n@keyframes blink{\n    0%{\n        opacity: 0;\n    }\n    50%{\n        opacity: 1;\n    }\n    100%{\n        opacity: 0;\n    }\n}\n"
+            },
+            {
+                "title": "Pulse Animation",
+                "description": "Adds a smooth pulsing animation with opacity and scale effects",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "pulse",
+                    "pulse-scale"
+                ],
+                "contributors": [],
+                "code": ".pulse {\n    animation: pulse 2s ease-in-out infinite;\n}\n\n@keyframes pulse {\n  0% {\n    opacity: 0.5;\n    transform: scale(1);\n  }\n  50% {\n    opacity: 1;\n    transform: scale(1.05);\n  }\n  100% {\n    opacity: 0.5;\n    transform: scale(1);\n  }\n}\n"
+            },
+            {
+                "title": "Shake Animation",
+                "description": "Adds a shake animation ( commonly used to mark invalid fields )",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "shake",
+                    "shake-horizontal"
+                ],
+                "contributors": [],
+                "code": ".shake {\n    animation: shake .5s ease-in-out;\n}\n\n@keyframes shake {\n  0%, 100% {\n    transform: translateX(0);\n  }\n  25% {\n    transform: translateX(-10px);\n  }\n  50% {\n    transform: translateX(10px);\n  }\n  75% {\n    transform: translateX(-10px);\n  }\n}\n"
+            },
+            {
+                "title": "Slide-in Animation",
+                "description": "Adds a slide-in from the right side of the screen",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "animation",
+                    "slide-in",
+                    "slide-right"
+                ],
+                "contributors": [],
+                "code": ".slide-in {\n    animation: slide-in 1s ease-in-out;\n}\n\n@keyframes slide-in {\n    from {\n        scale: 300% 1;\n        translate: 150vw 0;\n    }\n\n    to {\n        scale: 100% 1;\n        translate: 0 0;\n    }\n}\n"
+            },
+            {
+                "title": "Typewriter Animation",
+                "description": "Adds a typewriter animation + blinking cursor",
+                "author": "AlsoKnownAs-Ax",
+                "tags": [
+                    "blinking",
+                    "typewriter"
+                ],
+                "contributors": [],
+                "code": "    <div class=\"typewriter\">\n      <div>\n          <p>Typerwriter Animation</p>\n      </div>\n    </div>\n```\n\n```css\n    .typewriter{\n        display: flex;\n        justify-content: center;\n    }\n\n    .typewriter p {\n        overflow: hidden;\n        font-size: 1.5rem;\n        font-family: monospace;\n        border-right: 1px solid;\n        margin-inline: auto;\n        white-space: nowrap;\n        /* The cursor will inherit the text's color by default */\n        /* border-color: red */                \n        /* Steps: number of chars (better to set directly in js)*/\n        animation: typing 3s steps(21) forwards,\n        blink 1s step-end infinite;\n    }\n\n    @keyframes typing{\n        from{\n            width: 0%\n        }\n        to{\n            width: 100%\n        }\n    }\n\n    @keyframes blink{\n        50%{\n            border-color: transparent;\n        }\n    }\n"
+            }
+        ]
+    },
+    {
         "name": "Buttons",
         "snippets": [
             {
@@ -38,6 +101,19 @@
                 ],
                 "contributors": [],
                 "code": ".button {\n font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,;\n background: #0a85ff;\n color: #fff;\n padding: 8px 12px;\n border: none;\n margin: 4px;\n border-radius: 10px;\n cursor: pointer;\n box-shadow: inset 0 1px 1px #fff2, 0px 2px 3px -2px rgba(0, 0, 0, 0.3) !important; /*This is really performance heavy*/\n font-size: 14px;\n display: flex;\n align-items: center;\n justify-content: center;\n text-decoration: none;\n transition: all 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n.button:hover {\n background: #0974ee;\n color: #fff\n}\n"
+            },
+            {
+                "title": "Switch Button",
+                "description": "A switch button with a beautiful style and effect.",
+                "author": "Haider-Mukhtar",
+                "tags": [
+                    "button",
+                    "switch",
+                    "toggle",
+                    "slider"
+                ],
+                "contributors": [],
+                "code": "/* The switch - the box around the slider */\n.switch {\n  font-size: 17px;\n  position: relative;\n  display: inline-block;\n  width: 3.5em;\n  height: 2em;\n}\n\n/* Hide default HTML checkbox */\n.switch input {\n  opacity: 0;\n  width: 0;\n  height: 0;\n}\n\n/* The slider */\n.slider {\n  position: absolute;\n  cursor: pointer;\n  inset: 0;\n  background: #d4acfb;\n  border-radius: 50px;\n  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);\n}\n\n.slider:before {\n  position: absolute;\n  content: \"\";\n  height: 1.4em;\n  width: 1.4em;\n  left: 0.3em;\n  bottom: 0.3em;\n  background-color: white;\n  border-radius: 50px;\n  box-shadow: 0 0px 20px rgba(0,0,0,0.4);\n  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);\n}\n\n.switch input:checked + .slider {\n  background: #b84fce;\n}\n\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #b84fce;\n}\n\n.switch input:checked + .slider:before {\n  transform: translateX(1.6em);\n  width: 2em;\n  height: 2em;\n  bottom: 0;\n}\n\n/* HTML */\n<label class=\"switch\">\n  <input type=\"checkbox\">\n  <span class=\"slider\"></span>\n</label>\n"
             }
         ]
     },
@@ -142,6 +218,18 @@
                 ],
                 "contributors": [],
                 "code": "body {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n}\n\nfooter {\n  margin-top: auto;\n}\n"
+            },
+            {
+                "title": "Sticky Navbar",
+                "description": "Ensure the navbar always shows and remains at the top of the page on scroll.",
+                "author": "Haider Mukhtar",
+                "tags": [
+                    "layout",
+                    "navbar",
+                    "sticky"
+                ],
+                "contributors": [],
+                "code": ".navbar{\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n"
             }
         ]
     },

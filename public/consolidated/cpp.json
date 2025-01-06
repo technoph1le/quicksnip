@@ -33,8 +33,24 @@
         ]
     },
     {
-        "categoryName": "Debuging",
         "name": "Debugging",
+        "snippets": [
+            {
+                "title": "Vector Print",
+                "description": "Overloads the << operator to print the contents of a vector just like in python.",
+                "author": "Mohamed-faaris",
+                "tags": [
+                    "printing",
+                    "debuging",
+                    "vector"
+                ],
+                "contributors": [],
+                "code": "#include <iostream> \n#include <vector>   \n\ntemplate <typename T>\nstd::ostream& operator<<(std::ostream& os, const std::vector<T>& vec) {\n    os << \"[\"; \n    for (size_t i = 0; i < vec.size(); ++i) {\n        os << vec[i]; // Print each vector element\n        if (i != vec.size() - 1) {\n            os << \", \"; // Add separator\n        }\n    }\n    os << \"]\"; \n    return os; // Return the stream\n}\n\n// Usage:\nstd::vector<int> numbers = {1, 2, 3, 4, 5};\nstd::cout << numbers << std::endl; // Outputs: [1, 2, 3, 4, 5]\n\n"
+            }
+        ]
+    },
+    {
+        "name": "Debuging",
         "snippets": [
             {
                 "title": "Vector Print",
