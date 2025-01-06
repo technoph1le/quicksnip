@@ -1,7 +1,7 @@
 ---
 title: Binary Search 
 description: Searches for an element in a sorted array using the Binary Search algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: search,binarysearch,array,algorithm
 ---
 

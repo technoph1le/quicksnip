@@ -1,7 +1,7 @@
 ---
 title: Merge Sort 
 description: Sorts an array of integers using the Merge Sort algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: sorting,mergesort,array,algorithm
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Insertion Sort 
 description: Sorts an array of integers using the Insertion Sort algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: sorting,insertionsort,array,algorithm
 ---
 

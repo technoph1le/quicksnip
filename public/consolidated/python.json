@@ -435,6 +435,107 @@
         ]
     },
     {
+        "name": "Search",
+        "snippets": [
+            {
+                "title": "Binary Search ",
+                "description": "Searches for an element in a sorted list using the Binary Search algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "search",
+                    "binarysearch",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def binarySearch(arr, low, high, x):\n    while low <= high:\n        mid = (low + high) // 2\n\n        # Check if x is present at mid\n        if arr[mid] == x:\n            return mid\n\n        # If x is smaller, search the left half\n        if arr[mid] > x:\n            high = mid - 1\n        else:  # If x is larger, search the right half\n            low = mid + 1\n    return -1  # Element not found\n\n# Usage:\narr = [2, 3, 4, 10, 40]\nx = 10\nresult = binarySearch(arr, 0, len(arr) - 1, x)\n# result = 3 (index of the element 10)\n\n"
+            },
+            {
+                "title": "Linear Search ",
+                "description": "Searches for an element in a list using the Linear Search algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "search",
+                    "linearsearch",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def linearSearch(arr, x):\n    for i in range(len(arr)):\n        if arr[i] == x:\n            return i  # Element found at index i\n    return -1  # Element not found\n\n# Usage:\narr = [10, 20, 30, 40, 50]\nx = 30\nresult = linearSearch(arr, x)\n# result = 2 (index of the element 30)\n\n"
+            }
+        ]
+    },
+    {
+        "name": "Sorting",
+        "snippets": [
+            {
+                "title": "Bubble Sort",
+                "description": "Sorts a list of integers using the Bubble Sort algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "sorting",
+                    "bubblesort",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def bubbleSort(arr):\n    n = len(arr)\n    for i in range(n - 1):\n        for j in range(n - i - 1):\n            if arr[j] > arr[j + 1]:\n                # Swap arr[j] and arr[j + 1]\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n\n# Usage:\narr = [64, 34, 25, 12, 22, 11, 90]\nbubbleSort(arr)\n# Now arr is sorted: [11, 12, 22, 25, 34, 64, 90]\n"
+            },
+            {
+                "title": "Insertion Sort",
+                "description": "Sorts a list of integers using the Insertion Sort algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "sorting",
+                    "insertionsort",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def insertionSort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n\n        # Move elements of arr[0..i-1] that are greater than key\n        # to one position ahead of their current position\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n\n# Usage:\narr = [12, 11, 13, 5, 6]\ninsertionSort(arr)\n# Now arr is sorted: [5, 6, 11, 12, 13]\n\n"
+            },
+            {
+                "title": "Merge Sort ",
+                "description": "Sorts a list of integers using the Merge Sort algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "sorting",
+                    "mergesort",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def merge(arr, l, m, r):\n    n1 = m - l + 1\n    n2 = r - m\n\n    # Temporary arrays\n    L = arr[l:l + n1]\n    R = arr[m + 1:m + 1 + n2]\n\n    i = j = k = 0\n\n    # Merge the temporary arrays back into arr[l..r]\n    while i < n1 and j < n2:\n        if L[i] <= R[j]:\n            arr[k + l] = L[i]\n            i += 1\n        else:\n            arr[k + l] = R[j]\n            j += 1\n        k += 1\n\n    # Copy remaining elements of L[], if any\n    while i < n1:\n        arr[k + l] = L[i]\n        i += 1\n        k += 1\n\n    # Copy remaining elements of R[], if any\n    while j < n2:\n        arr[k + l] = R[j]\n        j += 1\n        k += 1\n\ndef mergeSort(arr, l, r):\n    if l < r:\n        m = (l + r) // 2\n\n        # Sort first and second halves\n        mergeSort(arr, l, m)\n        mergeSort(arr, m + 1, r)\n\n        merge(arr, l, m, r)\n\n# Usage:\narr = [38, 27, 43, 3, 9, 82, 10]\nmergeSort(arr, 0, len(arr) - 1)\n# Now arr is sorted: [3, 9, 10, 27, 38, 43, 82]\n\n"
+            },
+            {
+                "title": "Quick Sort ",
+                "description": "Sorts a list of integers using the Quick Sort algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "sorting",
+                    "quicksort",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def partition(arr, low, high):\n    pivot = arr[high]  # Pivot element\n    i = low - 1\n\n    for j in range(low, high):\n        if arr[j] < pivot:\n            i += 1\n            # Swap arr[i] and arr[j]\n            arr[i], arr[j] = arr[j], arr[i]\n\n    # Swap arr[i + 1] and arr[high] (pivot)\n    arr[i + 1], arr[high] = arr[high], arr[i + 1]\n    return i + 1\n\ndef quickSort(arr, low, high):\n    if low < high:\n        pi = partition(arr, low, high)\n\n        # Recursively sort elements before and after partition\n        quickSort(arr, low, pi - 1)\n        quickSort(arr, pi + 1, high)\n\n# Usage:\narr = [10, 7, 8, 9, 1, 5]\nquickSort(arr, 0, len(arr) - 1)\n# Now arr is sorted: [1, 5, 7, 8, 9, 10]\n\n"
+            },
+            {
+                "title": "Selection Sort ",
+                "description": "Sorts a list of integers using the Selection Sort algorithm.",
+                "author": "utkarshkonwar",
+                "tags": [
+                    "sorting",
+                    "selectionsort",
+                    "array",
+                    "algorithm"
+                ],
+                "contributors": [],
+                "code": "def selectionSort(arr):\n    for i in range(len(arr) - 1):\n        minIdx = i\n\n        # Find the minimum element in the unsorted part of the list\n        for j in range(i + 1, len(arr)):\n            if arr[j] < arr[minIdx]:\n                minIdx = j\n\n        # Swap the found minimum element with the first element of the unsorted part\n        arr[i], arr[minIdx] = arr[minIdx], arr[i]\n\n# Usage:\narr = [64, 25, 12, 22, 11]\nselectionSort(arr)\n# Now arr is sorted: [11, 12, 22, 25, 64]\n\n"
+            }
+        ]
+    },
+    {
         "name": "Sqlite Database",
         "snippets": [
             {

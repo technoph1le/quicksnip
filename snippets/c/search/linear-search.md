@@ -1,7 +1,7 @@
 ---
 title: Linear Search 
 description: Searches for an element in an array using the Linear Search algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: search,linearsearch,array,algorithm
 ---
 

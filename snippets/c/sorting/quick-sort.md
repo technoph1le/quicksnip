@@ -1,7 +1,7 @@
 ---
 title: Quick Sort 
 description: Sorts an array of integers using the Quick Sort algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: sorting,quicksort,array,algorithm
 ---
 

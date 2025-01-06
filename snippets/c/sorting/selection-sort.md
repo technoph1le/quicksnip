@@ -1,7 +1,7 @@
 ---
 title: Selection Sort 
 description: Sorts an array of integers using the Selection Sort algorithm.
-author: 0xHouss
+author: utkarshkonwar
 tags: sorting,selectionsort,array,algorithm
 ---
 

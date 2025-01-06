@@ -48,7 +48,7 @@
             {
                 "title": "Binary Search ",
                 "description": "Searches for an element in a sorted array using the Binary Search algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "search",
                     "binarysearch",
@@ -61,7 +61,7 @@
             {
                 "title": "Linear Search ",
                 "description": "Searches for an element in an array using the Linear Search algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "search",
                     "linearsearch",
@@ -79,7 +79,7 @@
             {
                 "title": "Bubble Sort ",
                 "description": "Sorts an array of integers using the Bubble Sort algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "sorting",
                     "bubblesort",
@@ -92,7 +92,7 @@
             {
                 "title": "Insertion Sort ",
                 "description": "Sorts an array of integers using the Insertion Sort algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "sorting",
                     "insertionsort",
@@ -105,7 +105,7 @@
             {
                 "title": "Merge Sort ",
                 "description": "Sorts an array of integers using the Merge Sort algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "sorting",
                     "mergesort",
@@ -118,7 +118,7 @@
             {
                 "title": "Quick Sort ",
                 "description": "Sorts an array of integers using the Quick Sort algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "sorting",
                     "quicksort",
@@ -131,7 +131,7 @@
             {
                 "title": "Selection Sort ",
                 "description": "Sorts an array of integers using the Selection Sort algorithm.",
-                "author": "0xHouss",
+                "author": "utkarshkonwar",
                 "tags": [
                     "sorting",
                     "selectionsort",
