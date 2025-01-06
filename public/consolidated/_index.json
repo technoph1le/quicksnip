@@ -1,5 +1,10 @@
 [
     {
+        "name": "BASH",
+        "icon": "/icons/bash.svg",
+        "subLanguages": []
+    },
+    {
         "name": "C",
         "icon": "/icons/c.svg",
         "subLanguages": []
