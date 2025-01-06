@@ -218,6 +218,18 @@
                 ],
                 "contributors": [],
                 "code": "body {\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n}\n\nfooter {\n  margin-top: auto;\n}\n"
+            },
+            {
+                "title": "Sticky Navbar",
+                "description": "Ensure the navbar always shows and remains at the top of the page on scroll.",
+                "author": "Haider Mukhtar",
+                "tags": [
+                    "layout",
+                    "navbar",
+                    "sticky"
+                ],
+                "contributors": [],
+                "code": ".navbar{\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n}\n"
             }
         ]
     },
