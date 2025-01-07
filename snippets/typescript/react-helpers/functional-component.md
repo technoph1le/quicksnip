@@ -1,5 +1,5 @@
 ---
-title: Fuctional Component
+title: Functional Component
 description: Functional component for React JS with props.
 author: gihanrangana
 tags: typescript,fuctional-component,react-props,reactjs
