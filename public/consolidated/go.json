@@ -1,0 +1,51 @@
+[
+    {
+        "name": "HTTP",
+        "snippets": [
+            {
+                "title": "server",
+                "description": "runs an HTTP server with routing",
+                "author": "AmeerMoustafa",
+                "tags": [
+                    "http",
+                    "server",
+                    "router",
+                    "web"
+                ],
+                "contributors": [],
+                "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n)\n\nvar Router = http.NewServeMux()\n\nvar server = http.Server{\n\tAddr:    \":8080\",\n\tHandler: Router,\n}\n\n// Handler function example\nfunc example(w http.ResponseWriter, r *http.Request) {\n\tfmt.Fprintln(w, \"Hello HTTP server\")\n}\n\nfunc main() {\n\t// Route definitions\n\tRouter.HandleFunc(\"GET /\", example)\n\tserver.ListenAndServe()\n}\n"
+            }
+        ]
+    },
+    {
+        "name": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "A simple function that outputs \"Hello, World!\"",
+                "author": "AmeerMoustafa",
+                "tags": [
+                    "basics",
+                    "formatting"
+                ],
+                "contributors": [],
+                "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\n    fmt.Println(\"Hello, World!\")\n}\n"
+            }
+        ]
+    },
+    {
+        "name": "File handling",
+        "snippets": [
+            {
+                "title": "Read and write helpers",
+                "description": "Simple and reusable functions to help with file reading and writing",
+                "author": "AmeerMoustafa",
+                "tags": [
+                    "file handling"
+                ],
+                "contributors": [],
+                "code": "// A reusable function to read data from a file\nfunc readFile(filePath string) (data []byte, err error) {\n\tdata, err = os.ReadFile(filePath)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"failed to read file %s: %w\", filePath, err)\n\t}\n\n\treturn data, nil\n}\n\n// A reusable function to write data to a file\nfunc writeFile(data string, filePath string) error {\n\n\terr := os.WriteFile(filePath, []byte(data), 0644)\n\tif err != nil {\n\t\treturn fmt.Errorf(\"Failed to write to file %s: %w\", filePath, err)\n\t}\n\treturn nil\n}\n"
+            }
+        ]
+    }
+]

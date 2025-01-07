@@ -20,6 +20,11 @@
         "subLanguages": []
     },
     {
+        "name": "GO",
+        "icon": "/icons/go.svg",
+        "subLanguages": []
+    },
+    {
         "name": "HASKELL",
         "icon": "/icons/haskell.svg",
         "subLanguages": []
