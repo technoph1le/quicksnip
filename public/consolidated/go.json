@@ -45,6 +45,17 @@
                 ],
                 "contributors": [],
                 "code": "// A reusable function to read data from a file\nfunc readFile(filePath string) (data []byte, err error) {\n\tdata, err = os.ReadFile(filePath)\n\tif err != nil {\n\t\treturn nil, fmt.Errorf(\"failed to read file %s: %w\", filePath, err)\n\t}\n\n\treturn data, nil\n}\n\n// A reusable function to write data to a file\nfunc writeFile(data string, filePath string) error {\n\n\terr := os.WriteFile(filePath, []byte(data), 0644)\n\tif err != nil {\n\t\treturn fmt.Errorf(\"Failed to write to file %s: %w\", filePath, err)\n\t}\n\treturn nil\n}\n"
+            },
+            {
+                "title": "Write data to a CVS file",
+                "description": "An example of writing data to a cvs file",
+                "author": "AmeerMoustafa",
+                "tags": [
+                    "file handling",
+                    "cvs"
+                ],
+                "contributors": [],
+                "code": "package main\n\nimport (\n    \"os\"\n    \"log\"\n    \"encoding/csv\"\n)\n\nvar data = [][]string{{\"Line1\", \"Hello Readers of\"}, {\"Line2\", \"quicksnip.dev\"}}\n\nfunc main() {\n    file, err := os.Create(\"result.csv\")\n    checkError(\"Cannot create file\", err)\n    defer file.Close()\n\n    writer := csv.NewWriter(file)\n    defer writer.Flush()\n\n    for _, value := range data {\n        err := writer.Write(value)\n        checkError(\"Cannot write to file\", err)\n    }\n}\n\nfunc checkError(message string, err error) {\n    if err != nil {\n        log.Fatal(message, err)\n    }\n}\n"
             }
         ]
     }
