@@ -50,23 +50,6 @@
         ]
     },
     {
-        "name": "Debuging",
-        "snippets": [
-            {
-                "title": "Vector Print",
-                "description": "Overloads the << operator to print the contents of a vector just like in python.",
-                "author": "Mohamed-faaris",
-                "tags": [
-                    "printing",
-                    "debuging",
-                    "vector"
-                ],
-                "contributors": [],
-                "code": "#include <iostream> \n#include <vector>   \n\ntemplate <typename T>\nstd::ostream& operator<<(std::ostream& os, const std::vector<T>& vec) {\n    os << \"[\"; \n    for (size_t i = 0; i < vec.size(); ++i) {\n        os << vec[i]; // Print each vector element\n        if (i != vec.size() - 1) {\n            os << \", \"; // Add separator\n        }\n    }\n    os << \"]\"; \n    return os; // Return the stream\n}\n\n// Usage:\nstd::vector<int> numbers = {1, 2, 3, 4, 5};\nstd::cout << numbers << std::endl; // Outputs: [1, 2, 3, 4, 5]\n\n"
-            }
-        ]
-    },
-    {
         "name": "Math And Numbers",
         "snippets": [
             {
@@ -106,6 +89,34 @@
                 ],
                 "contributors": [],
                 "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n\n// Usage:\nsplit_string(\"quick_-snip\", \"_-\"); // Returns: std::vector<std::string> { \"quick\", \"snip\" }\n"
+            }
+        ]
+    },
+    {
+        "name": "Vector Manipulation",
+        "snippets": [
+            {
+                "title": "Remove duplicates",
+                "description": "Removes duplicates from an vector of ints",
+                "author": "AnkushRoy-code",
+                "tags": [
+                    "vector",
+                    "remove",
+                    "duplicate"
+                ],
+                "contributors": [],
+                "code": "#include <algorithm>\n#include <vector>\n\nvoid removeDublicates(std::vector<int> &input)\n{\n    std::sort(input.begin(), input.end());                // sort the vector\n    auto last = std::unique(input.begin(), input.end());  // remove duplicates\n    input.erase(last, input.end());  // resize vector and delete the undefined elements\n}\n"
+            },
+            {
+                "title": "Remove n Occurrences",
+                "description": "Removes duplicates from an vector of ints",
+                "author": "AnkushRoy-code",
+                "tags": [
+                    "vector",
+                    "remove"
+                ],
+                "contributors": [],
+                "code": "#include <algorithm>\n#include <unordered_map>\n#include <vector>\n\nvoid removeOccurrences(std::vector<int>& vec, int n) {\n    std::unordered_map<int, int> frequency; // count frequencies\n    for (int num : vec) {\n        frequency[num]++;\n    }\n\n    vec.erase( // remove elements with n number of occurrences\n        std::remove_if(vec.begin(), vec.end(), [&](int x) {\n            return frequency[x] == n;\n        }),\n        vec.end()\n    );\n}\n"
             }
         ]
     }
