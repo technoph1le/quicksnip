@@ -15,5 +15,23 @@
                 "code": "type Exclusive<T, U = T> = T | U extends Record<string, unknown>\n  ?\n      | ({ [P in Exclude<keyof T, keyof U>]?: never } & U)\n      | ({ [P in Exclude<keyof U, keyof T>]?: never } & T)\n  : T | U;\n\n\n// Usage:\ntype A = { name: string; email?: string; provider?: string };\ntype B = { name: string; phone?: string; country?: string };\n\ntype EitherOr = Exclusive<A, B>;\n\nconst w: EitherOr = { name: \"John\", email: \"j@d.c\" }; // ✅\nconst x: EitherOr = { name: \"John\", phone: \"+123 456\" }; // ✅\nconst y: EitherOr = { name: \"John\", email: \"\", phone: \"\" }; // ⛔️\nconst z: EitherOr = { name: \"John\", phne: \"\", provider: \"\" }; // ⛔️\n"
             }
         ]
+    },
+    {
+        "name": "React Helpers",
+        "snippets": [
+            {
+                "title": "Functional Component",
+                "description": "Functional component for React JS with props.",
+                "author": "gihanrangana",
+                "tags": [
+                    "typescript",
+                    "fuctional-component",
+                    "react-props",
+                    "reactjs"
+                ],
+                "contributors": [],
+                "code": "import React from 'react';\n\ninterface ComponentNameProps {\n    // Define specific props here\n}\n\nconst ComponentName: React.FC<ComponentNameProps> = (props) => {\n    return (\n        <div>\n            {/* Add component content here */}\n        </div>\n    );\n};\n\nexport default ComponentName;\n"
+            }
+        ]
     }
 ]
