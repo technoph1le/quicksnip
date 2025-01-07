@@ -23,4 +23,11 @@ void removeOccurrences(std::vector<int>& vec, int n) {
         vec.end()
     );
 }
+
+// Usage:
+std::vector<int> vec = {4, 2, 4, 8, 5, 6, 8, 8, 4, 3 };
+
+int n = 3; // Remove elements that occur exactly 3 times
+removeOccurrences(vec, n); // returns {2, 5, 6, 3}
+
 ```
