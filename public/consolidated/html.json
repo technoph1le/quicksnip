@@ -31,5 +31,38 @@
                 "code": "<!DOCTYPE html>\n<html style=\"margin: 0\">\n  <head>\n    <style type=\"text/css\">\n      body {\n        margin: 0;\n        display: flex;\n        flex-direction: column;\n        min-height: 100svh; /* Smallest viewport height */\n        min-height: 100vh;  /* Standard viewport height */\n        min-height: 100dvh; /* Dynamic viewport height */\n        min-height: 100lvh; /* Largest viewport height */\n        background-color: red;\n      }\n\n      .header {\n        position: sticky;\n        top: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n\n      .body {\n        flex-grow: 1;\n        background-color: whitesmoke;\n      }\n\n      .footer {\n        position: sticky;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n    </style>\n  <head>\n  <body>\n    <div class=\"header\">header</div>\n    <div class=\"body\">body/content</div>\n    <div class=\"footer\">footer</div>\n  </body>\n</html>\n"
             }
         ]
+    },
+    {
+        "name": "Form And Inputs",
+        "snippets": [
+            {
+                "title": "Basic Form With Nested Label",
+                "description": "Basic form using nested label.",
+                "author": "alanb4rt",
+                "tags": [
+                    "form",
+                    "input",
+                    "html",
+                    "css",
+                    "flex"
+                ],
+                "contributors": [],
+                "code": "<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        section {\n            max-width: 400px; /* Change as you want */\n            margin-inline: auto;\n        }\n\n        h2 {\n            text-align: center;\n        }\n\n        label {\n            display: flex;\n            flex-direction: column;\n            gap: 0.5rem;\n            margin-bottom: 1rem;\n\n            & input {\n                padding: 0.5rem;\n            }\n        }\n\n        button {\n            margin-top: 1rem;\n            padding: 0.25rem 1rem;\n        }\n    </style>\n</head>\n<body>\n    <section>\n        <h2>Form</h2>\n        <form action=\"https://example.com/submit\" method=\"get\">\n            <label>First name\n                <input type=\"text\" name=\"firstname\">\n            </label>\n            <label>Last name\n                <input type=\"text\" name=\"lastname\">\n            </label>\n            <label>Email\n                <input type=\"email\" name=\"email\">\n            </label>\n            <label>Telephone\n                <input type=\"tel\" name=\"phone\">\n            </label>\n            <label>Message\n                <textarea name=\"message\" rows=\"4\"></textarea>\n            </label>\n            <button type=\"submit\">Send</button>\n        </form>\n    </section>\n</body>\n</html>\n"
+            },
+            {
+                "title": "Basic Form",
+                "description": "Basic form with fields for name, email, phone number, and a message.",
+                "author": "alanb4rt",
+                "tags": [
+                    "form",
+                    "input",
+                    "html",
+                    "css",
+                    "flex"
+                ],
+                "contributors": [],
+                "code": "<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        section {\n            max-width: 400px; /* Change as you want */\n            margin-inline: auto;\n        }\n\n        h2 {\n            text-align: center;\n        }\n\n        .ctn-input {\n            display: flex;\n            flex-direction: column;\n            gap: 0.5rem;\n            margin-bottom: 1rem;\n\n            & input {\n                padding: 0.5rem;\n            }\n        }\n\n        button {\n            margin-top: 1rem;\n            padding: 0.25rem 1rem;\n        }\n    </style>\n</head>\n<body>\n    <section>\n        <h2>Form</h2>\n        <form action=\"https://example.com/submit\" method=\"get\">\n            <div class=\"ctn-input\">\n                <label for=\"firstname\">First name</label>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\">\n            </div>\n            <div class=\"ctn-input\">\n                <label for=\"lastname\">Last name</label>\n                <input type=\"text\" id=\"lastname\" name=\"lastname\">\n            </div>\n            <div class=\"ctn-input\">\n                <label for=\"email\">Email</label>\n                <input type=\"email\" id=\"email\" name=\"email\">\n            </div>\n            <div class=\"ctn-input\">\n                <label for=\"phone\">Telephone</label>\n                <input type=\"tel\" id=\"phone\" name=\"phone\">\n            </div>\n            <div class=\"ctn-input\">\n                <label for=\"message\">Message</label>\n                <textarea name=\"message\" id=\"message\" rows=\"4\"></textarea>\n            </div>\n            <button type=\"submit\">Send</button>\n        </form>\n    </section>\n</body>\n</html>\n"
+            }
+        ]
     }
 ]
