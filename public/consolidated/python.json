@@ -358,6 +358,19 @@
                 "code": "def compound_interest(principal, rate, time, n=1):\n    return principal * (1 + rate / n) ** (n * time)\n\n# Usage:\ncompound_interest(1000, 0.05, 5) # Returns: 1276.2815625000003\ncompound_interest(1000, 0.05, 5, 12) # Returns: 1283.68\n"
             },
             {
+                "title": "Calculate Factiorial of a number",
+                "description": "Calculates factorial of a given number using recursive function",
+                "author": "Samrat",
+                "tags": [
+                    "python",
+                    "math",
+                    "factorial",
+                    "recursive-function"
+                ],
+                "contributors": [],
+                "code": "def factorial(n):\n    if n == 0 or n == 1: return 1\n    else: return n * factorial(n-1)\n\n# Usage:\nprint(factorial(5)) # Returns 24\nprint(factorial(10)) # Returns 3628800\n"
+            },
+            {
                 "title": "Check Perfect Square",
                 "description": "Checks if a number is a perfect square.",
                 "author": "axorax",

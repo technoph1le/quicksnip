@@ -33,5 +33,65 @@
                 "code": "// This is the main class of the Java program\npublic class Main {\n    // The main method is the entry point of the program\n    public static void main(String args[]) {\n        // This statement prints \"Hello, World!\" to the console\n        System.out.println(\"Hello, World!\");\n    }\n}\n\n"
             }
         ]
+    },
+    {
+        "name": "Date Time",
+        "snippets": [
+            {
+                "title": "Date time formatting american",
+                "description": "Formats a timestamp to a human-readable date-time string in the format \"MM/dd/yyyy hh:mm:ss a\"",
+                "author": "Mcbencrafter",
+                "tags": [
+                    "date",
+                    "time",
+                    "date-time",
+                    "formatting",
+                    "american"
+                ],
+                "contributors": [],
+                "code": "import java.time.Instant;\nimport java.time.ZoneId;\nimport java.time.format.DateTimeFormatter;\nimport java.util.concurrent.TimeUnit;\n\n// using the system default time zone\npublic static String formatDateTimeAmerican(long time, TimeUnit timeUnit) {\n    return formatDateTimeAmerican(time, timeUnit, ZoneId.systemDefault());\n}\n\npublic static String formatDateTimeAmerican(long time, TimeUnit timeUnit, ZoneId timeZone) {\n    return DateTimeFormatter.ofPattern(\"MM/dd/yyyy hh:mm:ss a\")\n            .withZone(\n                timeZone != null ? timeZone : ZoneId.systemDefault()\n            )\n            .format(Instant.ofEpochSecond(\n                timeUnit.toSeconds(time)\n            ));\n}\n\n// Usage:\nSystem.out.println(formatDateTimeAmerican(1735689599, TimeUnit.SECONDS)); // \"12/31/2024 | 11:59:59 PM\" for GMT+0000\nSystem.out.println(formatDateTimeAmerican(1735689599, TimeUnit.SECONDS, ZoneId.of(\"GMT+0000\"))); // \"12/31/2024 | 11:59:59 PM\"\n"
+            },
+            {
+                "title": "Date time formatting european",
+                "description": "Formats a timestamp to a human-readable date-time string in the format \"dd.MM.yyyy HH:mm:ss\"",
+                "author": "Mcbencrafter",
+                "tags": [
+                    "date",
+                    "time",
+                    "date-time",
+                    "formatting",
+                    "european"
+                ],
+                "contributors": [],
+                "code": "import java.time.Instant;\nimport java.time.ZoneId;\nimport java.time.format.DateTimeFormatter;\nimport java.util.concurrent.TimeUnit;\n\n// using the system default time zone\npublic static String formatDateTimeEuropean(long time, TimeUnit timeUnit) {\n    return formatDateTimeEuropean(time, timeUnit, ZoneId.systemDefault());\n}\n\npublic static String formatDateTimeEuropean(long time, TimeUnit timeUnit, ZoneId timeZone) {\n    return DateTimeFormatter.ofPattern(\"dd.MM.yyyy HH:mm:ss\")\n            .withZone(\n                timeZone != null ? timeZone : ZoneId.systemDefault()\n            )\n            .format(Instant.ofEpochSecond(\n                    timeUnit.toSeconds(time)\n            ));\n}\n\n// Usage:\nSystem.out.println(formatDateTimeEuropean(1735689599, TimeUnit.SECONDS)); // \"31.12.2024 | 23:59:59\" for GMT+0000\nSystem.out.println(formatDateTimeEuropean(1735689599, TimeUnit.SECONDS, ZoneId.of(\"GMT+0000\"))); // \"31.12.2024 | 23:59:59\"\n"
+            },
+            {
+                "title": "Duration formatting hours minutes seconds",
+                "description": "Converts a given time duration to a human-readable string in the format \"hh:mm(:ss)\"",
+                "author": "Mcbencrafter",
+                "tags": [
+                    "time",
+                    "formatting",
+                    "hours",
+                    "minutes",
+                    "seconds"
+                ],
+                "contributors": [],
+                "code": "import java.util.concurrent.TimeUnit;\n    \npublic static String formatDurationToHoursMinutesAndSeconds(int time, TimeUnit timeUnit, boolean showSeconds) {\n    long totalSeconds = timeUnit.toSeconds(time);\n\n    if (totalSeconds < 0)\n        throw new IllegalArgumentException(\"Duration must be a non-negative value.\");\n\n    // These variables can be directly used in the return statement,\n    // but are kept as separate variables here for better readability.\n    long hours = totalSeconds / 3600;\n    long minutes = (totalSeconds % 3600) / 60;\n    long seconds = totalSeconds % 60;\n\n    if (showSeconds) {\n        return String.format(\"%02d:%02d:%02d\", hours, minutes, seconds);\n    } else {\n        return String.format(\"%02d:%02d\", hours, minutes);\n    }\n}\n\n// Usage:\nSystem.out.println(formatDurationToHoursMinutesAndSeconds(3810, TimeUnit.SECONDS, true)); // \"01:03:30\"\nSystem.out.println(formatDurationToHoursMinutesAndSeconds(3810, TimeUnit.SECONDS, false)); // \"01:03\"\n"
+            },
+            {
+                "title": "Duration formatting minutes seconds",
+                "description": "Converts a given time duration to a human-readable string in the format \"mm:ss\"",
+                "author": "Mcbencrafter",
+                "tags": [
+                    "time",
+                    "formatting",
+                    "minutes",
+                    "seconds"
+                ],
+                "contributors": [],
+                "code": "import java.util.concurrent.TimeUnit;\n\npublic static String formatDurationToMinutesAndSeconds(int time, TimeUnit timeUnit) {\n    long totalSeconds = timeUnit.toSeconds(time);\n\n    if (totalSeconds < 0)\n        throw new IllegalArgumentException(\"Duration must be a non-negative value.\");\n\n    // These variables can be directly used in the return statement,\n    // but are kept here as separate variables for better readability.\n    long minutes = totalSeconds / 60;\n    long seconds = totalSeconds % 60;\n\n    return String.format(\"%02d:%02d\", minutes, seconds);\n}\n\n// Usage:\nSystem.out.println(formatDurationToMinutesAndSeconds(120, TimeUnit.SECONDS)); // \"02:00\"\nSystem.out.println(formatDurationToMinutesAndSeconds(75, TimeUnit.SECONDS)); // \"01:15\"\n"
+            }
+        ]
     }
 ]
