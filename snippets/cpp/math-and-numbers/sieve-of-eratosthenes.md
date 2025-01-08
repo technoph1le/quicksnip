@@ -26,6 +26,5 @@ consteval auto computeSieve() {
 }
 
 // Usage:
-computeSieve();
 if (isPrime[29]) std::cout << "29 is a prime number!" << std::endl;
 ```
