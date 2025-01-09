@@ -2,7 +2,7 @@
 title: Calculate Factiorial of a number
 description: Calculates factorial of a given number using recursive function
 author: SamratBarai
-tags: python,math,factorial,recursive-function
+tags: math,factorial,recursive-function
 ---
 
 ```py
