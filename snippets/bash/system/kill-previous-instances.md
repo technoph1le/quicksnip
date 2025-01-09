@@ -1,5 +1,5 @@
 ---
-title: Kill Previous Instance
+title: Kill Previous Instances
 description: Kill all previous instances of a script
 author: saminjay
 tags: kill,process,background
