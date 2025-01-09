@@ -349,7 +349,6 @@
                 "description": "Calculates compound interest for a given principal amount, rate, and time period.",
                 "author": "axorax",
                 "tags": [
-                    "python",
                     "math",
                     "compound interest",
                     "finance"
@@ -362,7 +361,6 @@
                 "description": "Calculates factorial of a given number using recursive function",
                 "author": "Samrat",
                 "tags": [
-                    "python",
                     "math",
                     "factorial",
                     "recursive-function"
