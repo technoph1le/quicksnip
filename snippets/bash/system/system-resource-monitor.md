@@ -15,8 +15,8 @@ system_resources () {
 
 system_resources "$@"
 
-// Usage:
-chmod a+x system-resource-monitor.sh // First make it executable for all the users
+# Usage:
+chmod a+x system-resource-monitor.sh # First make it executable for all the users
 
-./system-resource-monitor.sh  // It will print the following system resources (CPU, RAM, disk, and active users)
+./system-resource-monitor.sh  # It will print the following system resources (CPU, RAM, disk, and active users)
 ```
