@@ -1,8 +1,8 @@
 ---
-title: Zip Arrays
-description: Combines two arrays by pairing corresponding elements from each array.
+title: Union Arrays
+description: Combines two arrays into one with unique elements.
 author: JanluOfficial
-tags: array,map
+tags: array, set
 ---
 
 ```js

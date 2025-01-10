@@ -1,8 +1,8 @@
 ---
-title: Zip Arrays
-description: Combines two arrays by pairing corresponding elements from each array.
+title: Combine Arrays
+description: Concatenates two arrays into one.
 author: JanluOfficial
-tags: array,map
+tags: array,concat
 ---
 
 ```js
