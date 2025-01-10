@@ -10,9 +10,9 @@ function getRandomHslColor() {
     const h = Math.floor(Math.random() * 360);
     const s = Math.floor(Math.random() * 101);
     const l = Math.floor(Math.random() * 101);
-    return [h, s, l];
+    return { h, s, l };
 }
 
 // Usage:
-getRandomHslColor(); // Returns: (h, s, l) (random)
+getRandomHslColor(); // Returns: { h: 357, s: 53, l: 49 } (random)
 ```

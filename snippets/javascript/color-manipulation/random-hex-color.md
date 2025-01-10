@@ -11,5 +11,5 @@ function getRandomHexColor() {
 }
 
 // Usage:
-getRandomHexColor(); // Returns: "#RRGGBB" (random)
+getRandomHexColor(); // Returns: "#f904d7" (random)
 ```
