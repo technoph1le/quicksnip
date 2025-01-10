@@ -1,5 +1,5 @@
 ---
-title: Remove a CSS Class to an element
+title: Remove a CSS Class from an element
 description: Remove a CSS class to a HTML element.
 author: JanluOfficial
 tags: css,style
