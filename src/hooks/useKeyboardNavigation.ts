@@ -40,14 +40,12 @@ export const useKeyboardNavigation = ({
     if (Object.values(keyboardEventKeys).includes(key)) {
       event.preventDefault();
 
-      switch (key) {
-        case "ArrowDown":
-          setFocusedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
-          break;
-        case "ArrowUp":
-          setFocusedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
-          break;
-        case "ArrowRight":
+      const actions: Record<KeyboardEventKeys, () => void> = {
+        ArrowDown: () =>
+          setFocusedIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0)),
+        ArrowUp: () =>
+          setFocusedIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1)),
+        ArrowRight: () => {
           if (focusedIndex >= 0) {
             const selectedItem = items.filter(
               (item) =>
@@ -59,8 +57,8 @@ export const useKeyboardNavigation = ({
               toggleDropdown(selectedItem);
             }
           }
-          break;
-        case "Enter":
+        },
+        Enter: () => {
           if (focusedIndex >= 0) {
             onSelect(
               items.filter(
@@ -70,11 +68,11 @@ export const useKeyboardNavigation = ({
               )[focusedIndex]
             );
           }
-          break;
-        case "Escape":
-          onClose();
-          break;
-      }
+        },
+        Escape: onClose,
+      };
+
+      actions[key]();
     }
   };
 

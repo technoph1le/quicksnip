@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 
+const handleEscape = (event: { key: string }, onEscapeEvent: () => void) => {
+  if (event.key === "Escape") onEscapeEvent();
+};
+
 export const useEscapeKey = (onEscapeEvent: () => void) => {
   useEffect(() => {
-    const handleEscape = (event: { key: string }) => {
-      if (event.key === "Escape") onEscapeEvent();
-    };
-    window.addEventListener("keydown", handleEscape);
+    const handleEscapeEvent = (event: { key: string }) => handleEscape(event, onEscapeEvent);
+    window.addEventListener("keydown", handleEscapeEvent);
 
     return () => {
-      window.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("keydown", handleEscapeEvent);
     };
   }, [onEscapeEvent]);
 };

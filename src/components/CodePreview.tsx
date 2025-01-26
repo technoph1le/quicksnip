@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   oneDark,
@@ -13,25 +13,27 @@ type Props = {
 };
 
 const CodePreview = ({ language = "markdown", code }: Props) => {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">(
+    (document.documentElement.getAttribute("data-theme") as "dark" | "light") ||
+      "dark"
+  );
 
-  useEffect(() => {
-    const handleThemeChange = () => {
-      const newTheme = document.documentElement.getAttribute("data-theme") as
-        | "dark"
-        | "light";
-      setTheme(newTheme || "dark");
-    };
-
-    handleThemeChange();
-    const observer = new MutationObserver(handleThemeChange);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
+  const handleThemeChange = (mutations: MutationRecord[]) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === "data-theme") {
+        const newTheme = document.documentElement.getAttribute(
+          "data-theme"
+        ) as "dark" | "light";
+        setTheme(newTheme || "dark");
+      }
     });
+  };
 
-    return () => observer.disconnect();
-  }, []);
+  const observer = new MutationObserver(handleThemeChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
 
   return (
     <div className="code-preview">

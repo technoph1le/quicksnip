@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useMemo } from "react";
 
 import { useAppContext } from "@contexts/AppContext";
 import { useCategories } from "@hooks/useCategories";
@@ -7,9 +7,7 @@ const CategoryList = () => {
   const { category, setCategory } = useAppContext();
   const { fetchedCategories, loading, error } = useCategories();
 
-  useEffect(() => {
-    setCategory(fetchedCategories[0]);
-  }, [setCategory, fetchedCategories]);
+  const memoizedCategories = useMemo(() => fetchedCategories, [fetchedCategories]);
 
   if (loading) return <div>Loading...</div>;
 
@@ -17,7 +15,7 @@ const CategoryList = () => {
 
   return (
     <ul role="list" className="categories">
-      {fetchedCategories.map((name, idx) => (
+      {memoizedCategories.map((name, idx) => (
         <li key={idx} className="category">
           <button
             className={`category__btn ${
