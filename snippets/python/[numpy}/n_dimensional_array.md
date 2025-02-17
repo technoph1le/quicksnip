@@ -8,13 +8,11 @@ tags: numpy, arrays, python, n-dimensional
 ```py
 import numpy as np
 
-n = int(input("Enter the number of dimensions: "))
-n_dim_array = np.array([1])
-n_dim_array = n_dim_array.reshape(*([1] * n))
+def create_n_dimensional_array(n, fill_value=1):
+    """Creates an N-dimensional NumPy array filled with a given value."""
+    return np.full([1] * n, fill_value)
 
-print(f"Created an {n}-dimensional array.")
-print(f"Number of dimensions: {n_dim_array.ndim}")
-
-# Usage:
-# -> Run the script and enter the number of dimensions.
-# -> It will create an N-dimensional array and display its number of dimensions.
+# Example usage:
+# arr = create_n_dimensional_array(3)
+# print(arr.ndim)  # Output: 3
+```
