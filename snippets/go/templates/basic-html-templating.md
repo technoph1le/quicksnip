@@ -1,6 +1,6 @@
 ---
 title: Basic HTML Templating
-description: Modifies html elements using go struct object 
+description: Modifies html elements using go struct object.
 author: abdiToldSo
 tags: html, web-server, templates
 ---

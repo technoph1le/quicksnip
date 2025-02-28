@@ -1,6 +1,6 @@
 ---
 title: Error Handling
-description: Calls a function that returns an error and prints it
+description: Calls a function that returns an error and prints it.
 author: abdiToldSo
 tags: error-handling
 ---

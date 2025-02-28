@@ -1,6 +1,6 @@
 ---
 title: Hello, World!
-description: Prints Hello, World! to the terminal.
+description: Prints "Hello world!" to the terminal.
 author: abdiToldSo
 tags: printing, hello-world, fmt
 ---
