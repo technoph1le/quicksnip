@@ -7,8 +7,8 @@ tags: builder,config,X11,Linux
 
 ```c
 // You can make a new nob-h project using one of these commands:
-// npm create nobuild@latest
-// yarn create nobuild@latest
+// npx create-nobuild@latest
+// yarn create nobuild
 // pnpm create nobuild@latest
 
 // This would be the nob.c config file.
