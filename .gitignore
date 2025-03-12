@@ -13,6 +13,8 @@ dist-ssr
 coverage
 *.local
 *.tsbuildinfo
+.next
+next-env.d.ts
 
 # Editor directories and files
 .vscode/*
