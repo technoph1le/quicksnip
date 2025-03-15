@@ -12,5 +12,8 @@ def create_n_dimensional_array(n, fill_value=1):
     """Creates an N-dimensional NumPy array filled with a given value."""
     return np.full([1] * n, fill_value)
 
-
+# Usage example
+if __name__ == '__main__':
+    array = create_n_dimensional_array(n=3, fill_value=10)
+    print(array)
 ```
