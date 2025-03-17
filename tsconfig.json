@@ -1,15 +1,31 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "esModuleInterop": true,
     "jsx": "preserve",
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
+=======
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+>>>>>>> 84f0698 (Removed vite & recreated with nextjs)
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+<<<<<<< HEAD
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
@@ -28,4 +44,12 @@
       "path": "./tsconfig.app.json"
     }
   ]
+=======
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+>>>>>>> 84f0698 (Removed vite & recreated with nextjs)
 }

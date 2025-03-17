@@ -1,4 +1,13 @@
 import type { Metadata } from "next";
+<<<<<<< HEAD
+=======
+import { Source_Sans_3 } from "next/font/google";
+import "@/styles/globals.css";
+
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+});
+>>>>>>> 84f0698 (Removed vite & recreated with nextjs)
 
 export const metadata: Metadata = {
   title: "QuickSnip",
@@ -8,6 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+<<<<<<< HEAD
 }: {
   children: React.ReactNode;
 }) {
@@ -77,6 +87,14 @@ export default function RootLayout({
         </div>
         <div id="modal-root"></div>
       </body>
+=======
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${sourceSans3.className}`}>{children}</body>
+>>>>>>> 84f0698 (Removed vite & recreated with nextjs)
     </html>
   );
 }
