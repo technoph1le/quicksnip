@@ -1,8 +1,9 @@
-import { GitHubIcon, LeftAngleArrowIcon } from "./Icons";
+import Link from "next/link";
+import { GitHubIcon } from "./Icons";
 import LinkButton from "./LinkButton";
 import Logo from "./Logo";
 // import SearchInput from "./SearchInput";
-// import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 // import useGitHubStars from "@hooks/useGitHubStars";
 
 const Header = () => {
@@ -13,7 +14,8 @@ const Header = () => {
       <Logo />
       <nav className="primary-nav">
         {/* <SearchInput /> */}
-        {/* <ThemeToggle /> */}
+        <Link href="/docs">Docs</Link>
+        <ThemeToggle />
         <LinkButton
           className="github-stars-btn"
           href="https://github.com/technoph1le/quicksnip/blob/main/CONTRIBUTING.md"
