@@ -1,0 +1,15 @@
+name: "Bug Report"
+description: "File a bug report to fix issues in the codebase"
+title: "[Bug] - "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "# Bug report"
+  - type: textarea
+    id: description
+    attributes:
+      label: "What bug did you find in the codebase?"
+      description: "Please explain the issue in as much detail as possible. Provide screenshots as necessary"
+    validations:
+      required: true

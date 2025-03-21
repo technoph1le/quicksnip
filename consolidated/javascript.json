@@ -1,0 +1,34 @@
+{
+  "languageName": "JavaScript",
+  "languageIcon": "/icons/javascript.svg",
+  "categories": [
+    {
+      "categoryName": "Array Manipulation",
+      "snippets": [
+        {
+          "title": "Remove Duplicates",
+          "description": "Removes duplicate values from an array.",
+          "author": "technoph1le",
+          "tags": ["array", "deduplicate"],
+          "contributors": [],
+          "code": "const removeDuplicates = (arr) => [...new Set(arr)];\n\n// Usage:\nconst numbers = [1, 2, 2, 3, 4, 4, 5];\nremoveDuplicates(numbers); // Returns: [1, 2, 3, 4, 5]\n",
+          "extension": "js"
+        }
+      ]
+    },
+    {
+      "categoryName": "Basics",
+      "snippets": [
+        {
+          "title": "Hello, World!",
+          "description": "Prints Hello, World! to the terminal.",
+          "author": "James-Beans",
+          "tags": ["printing", "hello-world"],
+          "contributors": [],
+          "code": "console.log(\"Hello, World!\"); // Prints Hello, World! to the console\n",
+          "extension": "js"
+        }
+      ]
+    }
+  ]
+}

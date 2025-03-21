@@ -1,0 +1,8 @@
+{
+  "JavaScript": {
+    "subLanguages": ["React"]
+  },
+  "Python": {
+    "subLanguages": ["FastAPI", "Tkinter"]
+  }
+}

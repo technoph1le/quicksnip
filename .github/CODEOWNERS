@@ -1,0 +1,31 @@
+# ---------- Our awesome maintainers ----------
+
+# Global maintainers
+* @Mathys-Gasnier
+
+# Code maintainers
+/src/ @psychlone77 @saminjay @Mathys-Gasnier
+
+# Snippets maintainers
+/snippets @majvax @Mathys-Gasnier
+/snippets/javascript @psychlone77 @saminjay
+/snippets/python @psychlone77 @saminjay
+/snippets/cpp @saminjay
+
+
+# ---------- What is a maintainer ----------
+
+# Maintainers will be notified when there is a pull request 
+# with a change in the folder/file assigned to them. They will 
+# have to approve the pull request before it can be merged.
+
+
+# ---------- How to be a maintainer ----------
+
+# To maintain trust and collaboration with reviewers, first, 
+# we will need to prove that you can contribute to the project well. 
+# As you contribute more, the more responsibility you will have.
+
+# We will assign maintainers for specific languages as well.
+# As we notice more contribution from your side, we will let you know 
+# and assign you a language.
