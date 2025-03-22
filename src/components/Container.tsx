@@ -1,17 +1,9 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Banner from "./Banner";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
-import { useAppContext } from "@contexts/AppContext";
-import Banner from "@layouts/Banner";
-import Footer from "@layouts/Footer";
-import Header from "@layouts/Header";
-import Sidebar from "@layouts/Sidebar";
-
-interface ContainerProps {}
-
-const Container: FC<ContainerProps> = () => {
-  const { category } = useAppContext();
-
+const Container = () => {
   return (
     <div className="container flow">
       <Header />
@@ -19,10 +11,7 @@ const Container: FC<ContainerProps> = () => {
       <main className="main">
         <Sidebar />
         <section className="flow">
-          <h2 className="section-title">
-            {category ? category : "Select a category"}
-          </h2>
-          <Outlet />
+          <h2 className="section-title">Select a category</h2>
         </section>
       </main>
       <Footer />

@@ -1,9 +1,0 @@
-node_modules
-dist
-coverage
-snippets
-public
-.vite
-coverage
-package-lock.json
-.md
