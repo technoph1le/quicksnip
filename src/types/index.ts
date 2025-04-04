@@ -7,8 +7,14 @@ export type LanguageType = {
   }[];
 };
 
+export type CategoriesType = {
+  languageName: string;
+  languageIcon: string;
+  categories: CategoryType[];
+};
+
 export type CategoryType = {
-  name: string;
+  categoryName: string;
   snippets: SnippetType[];
 };
 
@@ -33,11 +39,14 @@ export type RawSnippetType = {
 };
 
 export type AppState = {
-  language: LanguageType;
-  subLanguage: LanguageType["name"];
-  category: string;
-  snippet: SnippetType | null;
-  setSnippet: React.Dispatch<React.SetStateAction<SnippetType | null>>;
+  selectedLanguage: LanguageType;
+  setSelectedLanguage: React.Dispatch<React.SetStateAction<SnippetType | null>>;
+  selectedCategory: CategoryType;
+  setSelectedCategory: React.Dispatch<
+    React.SetStateAction<CategoryType | null>
+  >;
+  selectedSnippet: SnippetType | null;
+  setSelectedSnippet: React.Dispatch<React.SetStateAction<SnippetType | null>>;
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 };
