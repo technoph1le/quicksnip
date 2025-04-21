@@ -8,8 +8,8 @@
 
 <!-- What kind of change does this pull request introduce? (Check all that apply) -->
 
-- [ ] ✨ New snippet
-- [ ] 🛠 Improvement to an existing snippet
+- [ ] ✨ New or updating snippet(s)
+- [ ] 🛠 Code improvement
 - [ ] 🐞 Bug fix
 - [ ] 📖 Documentation update
 - [ ] 🔧 Other (please describe):

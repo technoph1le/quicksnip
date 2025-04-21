@@ -3,25 +3,25 @@
  */
 
 import { useRef, useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { useAppContext } from "@contexts/AppContext";
-import { useKeyboardNavigation } from "@hooks/useKeyboardNavigation";
-import { useLanguages } from "@hooks/useLanguages";
-import { LanguageType } from "@types";
-import { configureUserSelection } from "@utils/configureUserSelection";
-import {
-  getLanguageDisplayLogo,
-  getLanguageDisplayName,
-} from "@utils/languageUtils";
-import { slugify } from "@utils/slugify";
+import { useAppContext } from "@/contexts/AppContext";
+import { useKeyboardNavigation } from "@/hooks/useKeyboardNavigation";
+import { useLanguages } from "@/hooks/useLanguages";
+import { LanguageType } from "@/types";
+// import { configureUserSelection } from "@utils/configureUserSelection";
+// import {
+//   getLanguageDisplayLogo,
+//   getLanguageDisplayName,
+// } from "@utils/languageUtils";
+import { slugify } from "@/utils/slugify";
 
-import SubLanguageSelector from "./SubLanguageSelector";
+// import SubLanguageSelector from "./SubLanguageSelector";
+import { useRouter } from "next/router";
 
 const LanguageSelector = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  const { language, subLanguage, setSearchText } = useAppContext();
+  const { selectedLanguage, selectedCategory, setSearchText } = useAppContext();
   const { fetchedLanguages, loading, error } = useLanguages();
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,9 +30,9 @@ const LanguageSelector = () => {
 
   const keyboardItems = useMemo(() => {
     return fetchedLanguages.flatMap((lang) =>
-      openedLanguages.map((ol) => ol.name).includes(lang.name)
+      openedLanguages.map((ol) => ol.name).includes(lang.languageName)
         ? [
-            { languageName: lang.name },
+            { languageName: lang.languageName },
             ...lang.subLanguages.map((sl) => ({
               languageName: lang.name,
               subLanguageName: sl.name,
@@ -54,7 +54,9 @@ const LanguageSelector = () => {
 
   const handleToggleSubLanguage = (name: LanguageType["name"]) => {
     const isAlreadyOpened = openedLanguages.some((lang) => lang.name === name);
-    const openedLang = fetchedLanguages.find((lang) => lang.name === name);
+    const openedLang = fetchedLanguages.find(
+      (lang) => lang.languageName === name
+    );
     if (openedLang === undefined || openedLang.subLanguages.length === 0) {
       return;
     }
@@ -83,9 +85,7 @@ const LanguageSelector = () => {
     });
 
     setSearchText("");
-    navigate(
-      `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
-    );
+    router.push(`/${slugify(newLanguage.name)}/${slugify(newCategory)}`);
     setIsOpen(false);
     setOpenedLanguages([]);
   };
@@ -110,9 +110,7 @@ const LanguageSelector = () => {
     });
 
     setSearchText("");
-    navigate(
-      `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
-    );
+    router.push(`/${slugify(newLanguage.name)}/${slugify(newCategory)}`);
     afterSelect();
   };
 

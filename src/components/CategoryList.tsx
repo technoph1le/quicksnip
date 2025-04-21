@@ -1,33 +1,36 @@
-import { FC } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+"use client";
 
-import { useAppContext } from "@contexts/AppContext";
-import { useCategories } from "@hooks/useCategories";
-import { defaultCategoryName } from "@utils/consts";
-import { slugify } from "@utils/slugify";
+import { FC } from "react";
+import { useRouter } from "next/navigation";
+import { useAppContext } from "@/contexts/AppContext";
+import { useCategories } from "@/hooks/useCategories";
+import { defaultCategoryName } from "@/utils/consts";
+import { slugify } from "@/utils/slugify";
 
 interface CategoryListItemProps {
   name: string;
 }
 
 const CategoryListItem: FC<CategoryListItemProps> = ({ name }) => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const router = useRouter();
 
-  const { language, subLanguage, category } = useAppContext();
+  const { selectedLanguage, selectedCategory } = useAppContext();
 
   const handleSelect = () => {
-    navigate({
-      pathname: `/${slugify(language.name)}/${slugify(subLanguage)}/${slugify(name)}`,
-      search: searchParams.toString(),
-    });
+    router.push(
+      `/${slugify(selectedLanguage.name)}/${slugify(
+        selectedCategory.categoryName
+      )}`
+    );
   };
 
   return (
     <li className="category">
       <button
         className={`category__btn ${
-          slugify(name) === slugify(category) ? "category__btn--active" : ""
+          slugify(name) === slugify(selectedCategory.categoryName)
+            ? "category__btn--active"
+            : ""
         }`}
         onClick={handleSelect}
       >
@@ -37,20 +40,15 @@ const CategoryListItem: FC<CategoryListItemProps> = ({ name }) => {
   );
 };
 
-const CategoryList = () => {
+const CategoryList: FC = () => {
   const { fetchedCategories, loading, error } = useCategories();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error occurred: {error}</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error occurred: {error}</div>;
 
   return (
     <ul role="list" className="categories">
-      <CategoryListItem name={defaultCategoryName} />
+      <CategoryListItem name={defaultCategoryName.categoryName} />
       {fetchedCategories.map((name, idx) => (
         <CategoryListItem key={idx} name={name} />
       ))}

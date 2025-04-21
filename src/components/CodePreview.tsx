@@ -5,10 +5,10 @@ import {
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import { slugify } from "@utils/slugify";
+import { slugify } from "@/utils/slugify";
 
-import CopyToClipboard from "./CopyToClipboard";
-import CopyURLButton from "./CopyURLButton";
+// import CopyToClipboard from "./CopyToClipboard";
+// import CopyURLButton from "./CopyURLButton";
 
 type Props = {
   extension: string;
@@ -42,8 +42,8 @@ const CodePreview = ({ extension = "markdown", languageName, code }: Props) => {
       <div className="code-preview__header">
         <p>{slugify(languageName)}</p>
         <div className="code-preview__buttons">
-          <CopyToClipboard text={code} />
-          <CopyURLButton />
+          {/* <CopyToClipboard text={code} />
+          <CopyURLButton /> */}
         </div>
       </div>
       <div className="code-preview__body">

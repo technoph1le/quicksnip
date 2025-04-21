@@ -1,23 +1,28 @@
+"use client";
+
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "next/navigation";
 
-import { useAppContext } from "@contexts/AppContext";
-import { useSnippets } from "@hooks/useSnippets";
-import { SnippetType } from "@types";
-import { QueryParams } from "@utils/enums";
-import {
-  getLanguageDisplayLogo,
-  getLanguageDisplayName,
-} from "@utils/languageUtils";
-import { slugify } from "@utils/slugify";
+import { useAppContext } from "@/contexts/AppContext";
+import { useSnippets } from "@/hooks/useSnippets";
+import { SnippetType } from "@/types";
+import { QueryParams } from "@/utils/enums";
+import { slugify } from "@/utils/slugify";
+import { useRouter } from "next/navigation";
 
 import SnippetModal from "./SnippetModal";
 
 const SnippetList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const { fetchedSnippets, loading } = useSnippets();
-  const { language, subLanguage, snippet, setSnippet } = useAppContext();
+  const {
+    selectedLanguage,
+    selectedCategory,
+    selectedSnippet,
+    setSelectedSnippet,
+  } = useAppContext();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -25,16 +30,22 @@ const SnippetList = () => {
 
   const handleOpenModal = (selected: SnippetType) => () => {
     setIsModalOpen(true);
-    setSnippet(selected);
-    searchParams.set(QueryParams.SNIPPET, slugify(selected.title));
-    setSearchParams(searchParams);
+    setSelectedSnippet(selected);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(QueryParams.SNIPPET, slugify(selected.title));
+
+    router.push(`?${params.toString()}`);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSnippet(null);
-    searchParams.delete(QueryParams.SNIPPET);
-    setSearchParams(searchParams);
+    setSelectedSnippet(null);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete(QueryParams.SNIPPET);
+
+    router.push(`?${params.toString()}`);
   };
 
   /**
@@ -42,26 +53,26 @@ const SnippetList = () => {
    */
   useEffect(() => {
     const snippetSlug = searchParams.get(QueryParams.SNIPPET);
-    if (!snippetSlug) {
-      return;
-    }
+    if (!snippetSlug || !fetchedSnippets?.length) return;
 
-    const selectedSnippet = (fetchedSnippets ?? []).find(
-      (item) => slugify(item.title) === snippetSlug
+    const matchedSnippet = (fetchedSnippets as SnippetType[]).find(
+      (snippet) => slugify(snippet.title) === snippetSlug
     );
-    if (selectedSnippet) {
-      handleOpenModal(selectedSnippet)();
+
+    if (matchedSnippet) {
+      handleOpenModal(matchedSnippet)();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchedSnippets, searchParams]);
 
-  if (loading) return null;
+  if (loading || !fetchedSnippets) return null;
 
   return (
     <>
       <motion.ul
         role="list"
-        className={`snippets ${fetchedSnippets && fetchedSnippets.length === 0 ? "data-empty" : ""}`}
+        className={`snippets ${
+          fetchedSnippets && fetchedSnippets.length === 0 ? "data-empty" : ""
+        }`}
       >
         <AnimatePresence mode="popLayout">
           {fetchedSnippets && fetchedSnippets.length === 0 && (
@@ -78,59 +89,61 @@ const SnippetList = () => {
             </div>
           )}
 
-          {fetchedSnippets.map((snippet, idx) => {
-            const uniqueId = `${language.name}-${snippet.title}-${idx}`;
-            return (
-              <motion.li
-                key={uniqueId}
-                layoutId={uniqueId}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: shouldReduceMotion ? 0 : 0.2,
-                  },
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -20,
-                  transition: {
-                    duration: shouldReduceMotion ? 0 : 0.09,
-                  },
-                }}
-                transition={{
-                  ease: [0, 0.75, 0.25, 1],
-                  duration: shouldReduceMotion ? 0 : 0.25,
-                }}
-              >
-                <motion.button
-                  className="snippet | flow"
-                  data-flow-space="sm"
-                  onClick={handleOpenModal(snippet)}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
+          {fetchedSnippets &&
+            fetchedSnippets.map((snippet) => {
+              if (!snippet) return null; // safety fallback
+              const uniqueId = `${selectedLanguage.name}-${snippet.title}`;
+              return (
+                <motion.li
+                  key={uniqueId}
+                  layoutId={uniqueId}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: shouldReduceMotion ? 0 : 0.2,
+                    },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                    transition: {
+                      duration: shouldReduceMotion ? 0 : 0.09,
+                    },
+                  }}
+                  transition={{
+                    ease: [0, 0.75, 0.25, 1],
+                    duration: shouldReduceMotion ? 0 : 0.25,
+                  }}
                 >
-                  <div className="snippet__preview">
-                    <img
-                      src={getLanguageDisplayLogo(language.name, subLanguage)}
-                      alt={getLanguageDisplayName(language.name, subLanguage)}
-                    />
-                  </div>
-                  <h3 className="snippet__title">{snippet.title}</h3>
-                </motion.button>
-              </motion.li>
-            );
-          })}
+                  <motion.button
+                    className="snippet | flow"
+                    data-flow-space="sm"
+                    onClick={handleOpenModal(snippet)}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="snippet__preview">
+                      <img
+                        src={selectedLanguage.icon}
+                        alt={selectedLanguage.name}
+                      />
+                    </div>
+                    <h3 className="snippet__title">{snippet.title}</h3>
+                  </motion.button>
+                </motion.li>
+              );
+            })}
         </AnimatePresence>
       </motion.ul>
 
       <AnimatePresence mode="wait">
-        {isModalOpen && snippet && (
+        {isModalOpen && selectedSnippet && (
           <SnippetModal
-            snippet={snippet}
+            snippet={selectedSnippet}
             handleCloseModal={handleCloseModal}
-            extension={snippet.extension}
+            extension={selectedSnippet.extension}
           />
         )}
       </AnimatePresence>

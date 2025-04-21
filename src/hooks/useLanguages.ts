@@ -1,11 +1,24 @@
-import { LanguageType } from "@types";
-
 import { useFetch } from "./useFetch";
 
-export const useLanguages = () => {
-  const { data, loading, error } = useFetch<LanguageType[]>(
-    "/consolidated/_index.json"
-  );
+type LanguageInfo = {
+  languageName: string;
+  languageIcon: string;
+};
 
-  return { fetchedLanguages: data || [], loading, error };
+export const useLanguages = () => {
+  const { data, loading, error } = useFetch<any[]>("/api/snippets");
+
+  // Extract unique languages from the fetched snippets
+  const fetchedLanguages: LanguageInfo[] = data
+    ? Array.from(
+        new Map(
+          data.map(({ languageName, languageIcon }) => [
+            languageName,
+            { languageName, languageIcon },
+          ])
+        ).values()
+      )
+    : [];
+
+  return { fetchedLanguages, loading, error };
 };

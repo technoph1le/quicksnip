@@ -2,9 +2,9 @@ import { motion, useReducedMotion } from "motion/react";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { useAppContext } from "@contexts/AppContext";
-import { useEscapeKey } from "@hooks/useEscapeKey";
-import { SnippetType } from "@types";
+import { useAppContext } from "@/contexts/AppContext";
+import { useEscapeKey } from "@/hooks/useEscapeKey";
+import { SnippetType } from "@/types";
 
 import Button from "./Button";
 import CodePreview from "./CodePreview";
@@ -23,7 +23,7 @@ const SnippetModal: React.FC<Props> = ({
 }) => {
   const modalRoot = document.getElementById("modal-root");
 
-  const { language, subLanguage } = useAppContext();
+  const { selectedLanguage } = useAppContext();
   const shouldReduceMotion = useReducedMotion();
 
   useEscapeKey(handleCloseModal);
@@ -63,11 +63,8 @@ const SnippetModal: React.FC<Props> = ({
           </Button>
         </div>
         <div className="modal__body | flow">
-          {/* TODO: update the language name and remove all-sub-languages */}
           <CodePreview
-            languageName={
-              subLanguage === "all-sub-languages" ? language.name : subLanguage
-            }
+            languageName={selectedLanguage.name}
             extension={extension}
             code={snippet.code}
           />

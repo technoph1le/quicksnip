@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-import { useAppContext } from "@contexts/AppContext";
-import { LanguageType } from "@types";
-import { configureUserSelection } from "@utils/configureUserSelection";
-import { defaultSlugifiedSubLanguageName } from "@utils/consts";
-import { slugify } from "@utils/slugify";
+import { useAppContext } from "@/contexts/AppContext";
+import { LanguageType } from "@/types";
+// import { configureUserSelection } from "@utils/configureUserSelection";
+import { defaultSlugifiedSubLanguageName } from "@/utils/consts";
+import { slugify } from "@/utils/slugify";
 
 type SubLanguageSelectorProps = {
   opened: boolean;
@@ -23,7 +23,7 @@ const SubLanguageSelector = ({
 }: SubLanguageSelectorProps) => {
   const navigate = useNavigate();
 
-  const { language, subLanguage, setSearchText } = useAppContext();
+  const { selectedLanguage, selectedCategory, setSearchText } = useAppContext();
 
   const handleSubLanguageSelect =
     (selected: LanguageType["subLanguages"][number]) => async () => {
@@ -38,7 +38,9 @@ const SubLanguageSelector = ({
 
       setSearchText("");
       navigate(
-        `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
+        `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(
+          newCategory
+        )}`
       );
       afterSelect();
     };
@@ -84,9 +86,9 @@ const SubLanguageSelector = ({
           role="option"
           tabIndex={opened ? 0 : -1}
           aria-disabled={!opened}
-          className={`selector__item sublanguage__item ${opened ? "" : "hidden"} ${
-            slugify(subLanguage) === slugify(sl.name) ? "selected" : ""
-          }`}
+          className={`selector__item sublanguage__item ${
+            opened ? "" : "hidden"
+          } ${slugify(subLanguage) === slugify(sl.name) ? "selected" : ""}`}
           aria-selected={slugify(subLanguage) === slugify(sl.name)}
           onClick={handleSubLanguageSelect(sl)}
         >
