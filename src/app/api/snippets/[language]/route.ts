@@ -5,9 +5,9 @@ import { slugify } from "@/utils/slugify";
 
 export async function GET(
   req: Request,
-  { params }: { params: { language: string } }
+  context: { params: { language: string } }
 ) {
-  const { language } = params;
+  const { language } = context.params;
   const filePath = path.join(
     process.cwd(),
     "consolidated",

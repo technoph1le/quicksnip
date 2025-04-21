@@ -2,6 +2,7 @@
 
 import { createContext, FC, useContext, useState } from "react";
 import { AppState, CategoryType, LanguageType, SnippetType } from "@/types";
+import { defaultCategoryName, defaultLanguage } from "@/utils/consts";
 
 const AppContext = createContext<AppState | null>(null);
 
@@ -9,10 +10,10 @@ export const AppProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageType | null>(
-    null
+    defaultLanguage
   );
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(
-    null
+    defaultCategoryName
   );
   const [selectedSnippet, setSelectedSnippet] = useState<SnippetType | null>(
     null

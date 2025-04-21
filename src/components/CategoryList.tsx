@@ -48,7 +48,7 @@ const CategoryList: FC = () => {
 
   return (
     <ul role="list" className="categories">
-      <CategoryListItem name={defaultCategoryName} />
+      <CategoryListItem name={defaultCategoryName.categoryName} />
       {fetchedCategories.map((name, idx) => (
         <CategoryListItem key={idx} name={name} />
       ))}

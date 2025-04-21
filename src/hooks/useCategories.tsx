@@ -9,7 +9,7 @@ export const useCategories = () => {
   const { selectedLanguage } = useAppContext();
 
   const { data, loading, error } = useFetch<CategoriesType>(
-    `/api/snippets/${selectedLanguage}`
+    `/api/snippets/${selectedLanguage.name}`
   );
 
   const fetchedCategories = useMemo(() => {

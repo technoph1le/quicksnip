@@ -19,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AppProvider>
-      <html lang="en">
-        <body className={`${sourceSans3.className}`}>{children}</body>
-      </html>
-    </AppProvider>
+    <html lang="en">
+      <body className={`${sourceSans3.className}`}>
+        <AppProvider>{children}</AppProvider>
+      </body>
+    </html>
   );
 }

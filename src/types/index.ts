@@ -1,7 +1,7 @@
 export type LanguageType = {
   name: string;
   icon: string;
-  subLanguages: {
+  subLanguages?: {
     name: string;
     icon: string;
   }[];
@@ -15,7 +15,7 @@ export type CategoriesType = {
 
 export type CategoryType = {
   categoryName: string;
-  snippets: SnippetType[];
+  snippets?: SnippetType[];
 };
 
 export type SnippetType = {
