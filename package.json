@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start:server": "node server/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -19,6 +20,9 @@
   },
   "dependencies": {
     "@types/node": "^22.10.5",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
     "motion": "^11.15.0",
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
