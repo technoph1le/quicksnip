@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx index.ts",
     "build": "tsc && tsc-alias",
-    "start": "tsc &&  node -r tsconfig-paths/register dist/index.js",
+    "start": "tsc && tsc-alias && node -r tsconfig-paths/register dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
