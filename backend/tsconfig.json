@@ -18,7 +18,9 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@*": ["./*"]
+      "@*": ["./*"],
+      "@utils/*": ["utils/*"],
+      "@types/*": ["types/*"]
     }
   },
   "exclude": ["node_modules"]
