@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Miscellaneous",
+        "snippets": [
+            {
+                "title": "Hexadecimal Color",
+                "description": "Matches hex color codes",
+                "author": "majvax",
+                "tags": [
+                    "color",
+                    "hexadecimal"
+                ],
+                "contributors": [],
+                "code": "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$\n\n\n-> Usage:\n#FFF1 ✗\n#FFF ✓\n#FFF000 ✓\n",
+                "extension": "regex"
+            },
+            {
+                "title": "IPv4",
+                "description": "Matches IPv4 address",
+                "author": "majvax",
+                "tags": [
+                    "ipv4",
+                    "networking"
+                ],
+                "contributors": [],
+                "code": "^((25[0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})\\.){3}(25[0-5]|2[0-4]\\d|1\\d{2}|\\d{1,2})$\n\n\n-> Usage:\n123.300.0.101 ✗\n127.0.0.1 ✓\n192.168.0.1 ✓\n",
+                "extension": "regex"
+            },
+            {
+                "title": "Unintentional Duplication",
+                "description": "Matches duplicated word in a text.",
+                "author": "majvax",
+                "tags": [
+                    "duplication"
+                ],
+                "contributors": [],
+                "code": "\\b(\\w+)\\s+\\1\\b\n\n\n-> Usage:\nI need to finish this task ✗\nI need to to finish this task ✓\n",
+                "extension": "regex"
+            },
+            {
+                "title": "Whitespace Trimmer",
+                "description": "Matches leading and/or trailing whitespace.",
+                "author": "majvax",
+                "tags": [
+                    "trim"
+                ],
+                "contributors": [],
+                "code": "^\\s+|\\s+$\n\n\n-> Usage:\n(don't account for the quotation marks, it just to visualize whitespace)\n\"Hello World\" ✗\n\" Hello World\" ✓\n\"Hello World \" ✓\n\" Hello World \" ✓\n",
+                "extension": "regex"
+            }
+        ]
+    },
+    {
+        "name": "Validation pattern",
+        "snippets": [
+            {
+                "title": "Email Address",
+                "description": "Match any email address",
+                "author": "majvax",
+                "tags": [
+                    "email"
+                ],
+                "contributors": [],
+                "code": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n\n-> Usage:\nexample.name@domain.com.ru ✓\nname.surname@gmail.com ✓\n",
+                "extension": "regex"
+            },
+            {
+                "title": "Strong Password",
+                "description": "Match password with at least 12 characters, one uppercased letter, one number, and one special character.",
+                "author": "majvax",
+                "tags": [
+                    "password"
+                ],
+                "contributors": [],
+                "code": "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{12,}$\n\n-> Usage:\nlongpassword ✗\nlongpassw0rd ✗\nlongp@ssw0rd ✗\nLongp@ssw0rd ✓\n",
+                "extension": "regex"
+            }
+        ]
+    }
+]

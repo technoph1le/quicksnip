@@ -1,0 +1,5 @@
+# TODO: Bring back tests
+# npm run test-ci
+npm run cspell
+npm run lint
+npm run build

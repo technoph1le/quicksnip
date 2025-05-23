@@ -1,0 +1,123 @@
+[
+    {
+        "name": "Basics",
+        "snippets": [
+            {
+                "title": "Hello, World!",
+                "description": "Prints Hello, World! to the terminal.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "printing",
+                    "hello-world"
+                ],
+                "contributors": [],
+                "code": "public class Program {\n  public static void Main(string[] args) {\n    System.Console.WriteLine(\"Hello, World!\");\n  }\n}\n",
+                "extension": "csharp"
+            }
+        ]
+    },
+    {
+        "name": "Guid Utilities",
+        "snippets": [
+            {
+                "title": "Generate GUID",
+                "description": "Generates a new GUID",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "guid",
+                    "generate"
+                ],
+                "contributors": [],
+                "code": "public static string GenerateGuid() {\n  return Guid.NewGuid().ToString();\n}\n\n// Usage:\nGenerateGuid(); // Returns: 1c4c38d8-64e4-431b-884a-c6eec2ab02cd (Uuid is random)\n",
+                "extension": "csharp"
+            },
+            {
+                "title": "Validate GUID",
+                "description": "Checks if a string is a valid GUID.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "guid",
+                    "validate"
+                ],
+                "contributors": [],
+                "code": "public static bool IsGuid(string str) {\n  return Guid.TryParse(str, out _);\n}\n\n// Usage:\nIsGuid(\"1c4c38d8-64e4-431b-884a-c6eec2ab02cd\"); // Returns: true\nIsGuid(\"quicksnip\"); // Returns: false\n",
+                "extension": "csharp"
+            }
+        ]
+    },
+    {
+        "name": "Jwt Utilities",
+        "snippets": [
+            {
+                "title": "Decode JWT",
+                "description": "Decodes a JWT.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "jwt",
+                    "decode"
+                ],
+                "contributors": [],
+                "code": "public static string DecodeJwt(string token) {\n  return new JwtSecurityTokenHandler().ReadJwtToken(token).ToString();\n}\n\n// Usage:\nstring token = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\";\nDecodeJwt(token); // Returns: \"{\\\"alg\\\":\\\"HS256\\\",\\\"typ\\\":\\\"JWT\\\"}.{\\\"sub\\\":\\\"1234567890\\\",\\\"name\\\":\\\"John Doe\\\",\\\"iat\\\":1516239022}\"\n",
+                "extension": "csharp"
+            },
+            {
+                "title": "Validate JWT",
+                "description": "Validates a JWT.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "jwt",
+                    "validate"
+                ],
+                "contributors": [],
+                "code": "public static bool ValidateJwt(string token, string secret) {\n  var tokenHandler = new JwtSecurityTokenHandler();\n  var validationParameters = new TokenValidationParameters {\n    ValidateIssuerSigningKey = true,\n    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),\n    ValidateIssuer = false,\n    ValidateAudience = false\n  };\n  try {\n    tokenHandler.ValidateToken(token, validationParameters, out _);\n    return true;\n  }\n  catch {\n    return false\n  }\n}\n\n// Usage:\nstring JWT = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\";\nstring correctSecret = \"your-256-bit-secret\";\nstring wrongSecret = \"this-is-not-the-right-secret\";\n\nValidateJwt(JWT, correctSecret); // Returns: true\nValidateJwt(JWT, wrongSecret); // Returns: false\n",
+                "extension": "csharp"
+            }
+        ]
+    },
+    {
+        "name": "List Utilities",
+        "snippets": [
+            {
+                "title": "Swap items at index",
+                "description": "Swaps two items at determined indexes",
+                "author": "omegaleo",
+                "tags": [
+                    "list",
+                    "swapping"
+                ],
+                "contributors": [],
+                "code": "public static IList<T> Swap<T>(this IList<T> list, int indexA, int indexB)\n{\n    (list[indexA], list[indexB]) = (list[indexB], list[indexA]);\n    return list;\n}\n\nvar list = new List<string>() {\"Test\", \"Test2\"};\n\nlist.Swap(0, 1); // Swaps \"Test\" and \"Test2\" in place\n",
+                "extension": "csharp"
+            }
+        ]
+    },
+    {
+        "name": "String Utilities",
+        "snippets": [
+            {
+                "title": "Capitalize first letter",
+                "description": "Makes the first letter of a string uppercase.",
+                "author": "chaitanya-jvnm",
+                "tags": [
+                    "string",
+                    "capitalize"
+                ],
+                "contributors": [],
+                "code": "public static string Capitalize(this string str) {\n  return str.Substring(0, 1).ToUpper() + str.Substring(1);\n}\n\n// Usage:\n\"quicksnip\".Capitalize(); // Returns: \"Quicksnip\"\n",
+                "extension": "csharp"
+            },
+            {
+                "title": "Truncate String",
+                "description": "Cut off a string once it reaches a determined amount of characters and add '...' to the end of the string",
+                "author": "omegaleo",
+                "tags": [
+                    "string",
+                    "truncate"
+                ],
+                "contributors": [],
+                "code": "public static string Truncate(this string value, int maxChars)\n{\n    return value.Length <= maxChars ? value : value.Substring(0, maxChars) + \"...\";\n}\n\n// Usage:\n\"Quicksnip\".Truncate(5); // Returns: \"Quick...\"\n",
+                "extension": "csharp"
+            }
+        ]
+    }
+]
