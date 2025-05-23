@@ -1,4 +1,4 @@
-import { AppState, CategoryType, LanguageType } from "../../frontend/src/types";
+import { AppState, CategoryType, LanguageType } from "@types";
 
 import { slugify } from "./slugify";
 

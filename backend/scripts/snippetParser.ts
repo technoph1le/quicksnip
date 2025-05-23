@@ -1,11 +1,11 @@
 import { existsSync, readdirSync, readFileSync } from "fs";
-import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 
-import { RawSnippetType, SnippetType } from "../../frontend/src/types/index";
-import { isCorrectType } from "../utils/objectUtils";
-import { raise } from "../utils/raise";
-import { reverseSlugify, slugify } from "../utils/slugify";
+import { RawSnippetType, SnippetType } from "@types";
+import { isCorrectType } from "@utils/objectUtils";
+import { raise } from "@utils/raise";
+import { reverseSlugify, slugify } from "@utils/slugify";
 
 interface ParseLanguageResponse {
   name: string;
@@ -45,7 +45,7 @@ function parseSnippet(
 
   cursor += 3;
 
-  const properties: { [key: string]: any } = {};
+  const properties: { [key: string]: string } = {};
 
   let match: string[] | null;
   while ((match = propertyRegex.exec(fromCursor())) !== null) {

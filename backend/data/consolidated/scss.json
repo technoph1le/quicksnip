@@ -1,258 +1,185 @@
 [
-    {
-        "name": "Animations",
-        "snippets": [
-            {
-                "title": "Fade In Animation",
-                "description": "Animates the fade-in effect.",
-                "author": "technoph1le",
-                "tags": [
-                    "animation",
-                    "fade",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n@mixin fade-in($duration: 1s, $easing: ease-in-out) {\n  animation: fade-in $duration $easing;\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Slide In From Left",
-                "description": "Animates content sliding in from the left.",
-                "author": "technoph1le",
-                "tags": [
-                    "animation",
-                    "slide",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@keyframes slide-in-left {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}\n\n@mixin slide-in-left($duration: 0.5s, $easing: ease-out) {\n  animation: slide-in-left $duration $easing;\n}\n",
-                "extension": "scss"
-            }
-        ]
-    },
-    {
-        "name": "Borders Shadows",
-        "snippets": [
-            {
-                "title": "Border Radius Helper",
-                "description": "Applies a customizable border-radius.",
-                "author": "technoph1le",
-                "tags": [
-                    "border",
-                    "radius",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin border-radius($radius: 4px) {\n  border-radius: $radius;\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Box Shadow Helper",
-                "description": "Generates a box shadow with customizable values.",
-                "author": "technoph1le",
-                "tags": [
-                    "box-shadow",
-                    "css",
-                    "effects"
-                ],
-                "contributors": [],
-                "code": "@mixin box-shadow($x: 0px, $y: 4px, $blur: 10px, $spread: 0px, $color: rgba(0, 0, 0, 0.1)) {\n  box-shadow: $x $y $blur $spread $color;\n}\n",
-                "extension": "scss"
-            }
-        ]
-    },
-    {
-        "name": "Components",
-        "snippets": [
-            {
-                "title": "Primary Button",
-                "description": "Generates a styled primary button.",
-                "author": "technoph1le",
-                "tags": [
-                    "button",
-                    "primary",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin primary-button($bg: #007bff, $color: #fff) {\n  background-color: $bg;\n  color: $color;\n  padding: 0.5rem 1rem;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n\n  &:hover {\n    background-color: darken($bg, 10%);\n  }\n}\n",
-                "extension": "scss"
-            }
-        ]
-    },
-    {
-        "name": "Layouts",
-        "snippets": [
-            {
-                "title": "Aspect Ratio",
-                "description": "Ensures that elements maintain a specific aspect ratio.",
-                "author": "technoph1le",
-                "tags": [
-                    "aspect-ratio",
-                    "layout",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin aspect-ratio($width, $height) {\n  position: relative;\n  width: 100%;\n  padding-top: ($height / $width) * 100%;\n  > * {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Dark Theme",
-                "description": "SCSS mixin to change styles for dark themes.",
-                "author": "gihanrangana",
-                "tags": [
-                    "css",
-                    "mixin",
-                    "snippet",
-                    "dark-theme",
-                    "layout"
-                ],
-                "contributors": [],
-                "code": "@mixin isDark($type: 'module') {\n  $root: &;\n\n  @if $type == 'module' {\n    :global {\n      @at-root body[theme='dark'] #{$root} {\n        @content;\n      }\n    }\n  } @else {\n    &[theme='dark'] {\n      @content;\n    }\n  }\n}\n\n// Usage:\n.container{\n\tbackground: #f0f0f0;\n\t@include isDark {\n\t\tbackground: #222;\n\t}\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Flex Center",
-                "description": "A mixin to center content using flexbox.",
-                "author": "technoph1le",
-                "tags": [
-                    "flex",
-                    "center",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Grid Container",
-                "description": "Creates a responsive grid container with customizable column counts.",
-                "author": "technoph1le",
-                "tags": [
-                    "grid",
-                    "layout",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin grid-container($columns: 12, $gap: 1rem) {\n  display: grid;\n  grid-template-columns: repeat($columns, 1fr);\n  gap: $gap;\n}\n",
-                "extension": "scss"
-            }
-        ]
-    },
-    {
-        "name": "Typography",
-        "snippets": [
-            {
-                "title": "Font Import Helper",
-                "description": "Simplifies importing custom fonts in Sass.",
-                "author": "technoph1le",
-                "tags": [
-                    "mixin",
-                    "fonts",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin import-font($family, $weight: 400, $style: normal) {\n  @font-face {\n    font-family: #{$family};\n    font-weight: #{$weight};\n    font-style: #{$style};\n    src: url('/fonts/#{$family}-#{$weight}.woff2') format('woff2'),\n         url('/fonts/#{$family}-#{$weight}.woff') format('woff');\n  }\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Line Clamp Mixin",
-                "description": "A Sass mixin to clamp text to a specific number of lines.",
-                "author": "technoph1le",
-                "tags": [
-                    "mixin",
-                    "typography",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin line-clamp($number) {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: $number;\n  overflow: hidden;\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "PX to REM Helper",
-                "description": "This function will convert px values to rem values.",
-                "author": "gihanrangana",
-                "tags": [
-                    "function",
-                    "pixel",
-                    "rem",
-                    "px-to-rem"
-                ],
-                "contributors": [],
-                "code": "@function px-to-rem($px, $base: 16px) {\n  @return ($px / $base) * 1rem;\n}\n\n// Usage:\ndiv {\n  font-size: px-to-rem(12px); // Output: 0.75rem\n  padding: px-to-rem(16px);   // Output: 1rem\n  margin: px-to-rem(32px) // Output 2rem\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Text Gradient",
-                "description": "Adds a gradient color effect to text.",
-                "author": "technoph1le",
-                "tags": [
-                    "mixin",
-                    "gradient",
-                    "text",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin text-gradient($from, $to) {\n  background: linear-gradient(to right, $from, $to);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Text Overflow Ellipsis",
-                "description": "Ensures long text is truncated with an ellipsis.",
-                "author": "technoph1le",
-                "tags": [
-                    "mixin",
-                    "text",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin text-ellipsis {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n",
-                "extension": "scss"
-            }
-        ]
-    },
-    {
-        "name": "Utilities",
-        "snippets": [
-            {
-                "title": "Clearfix",
-                "description": "Provides a clearfix utility for floating elements.",
-                "author": "technoph1le",
-                "tags": [
-                    "clearfix",
-                    "utility",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin clearfix {\n  &::after {\n    content: '';\n    display: block;\n    clear: both;\n  }\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Responsive Breakpoints",
-                "description": "Generates media queries for responsive design.",
-                "author": "technoph1le",
-                "tags": [
-                    "responsive",
-                    "media-queries",
-                    "css"
-                ],
-                "contributors": [],
-                "code": "@mixin breakpoint($breakpoint) {\n  @if $breakpoint == sm {\n    @media (max-width: 576px) { @content; }\n  } @else if $breakpoint == md {\n    @media (max-width: 768px) { @content; }\n  } @else if $breakpoint == lg {\n    @media (max-width: 992px) { @content; }\n  } @else if $breakpoint == xl {\n    @media (max-width: 1200px) { @content; }\n  }\n}\n",
-                "extension": "scss"
-            },
-            {
-                "title": "Spacing",
-                "description": "This SCSS snippet dynamically generates utility classes for managing spacing in a consistent and efficient manner. The classes are built using a loop, ensuring scalability and flexibility. use .mt-* for margin-top, and .pb-* for padding bottom",
-                "author": "dinesh-here",
-                "tags": [
-                    "clearfix",
-                    "utility",
-                    "css",
-                    "spacing"
-                ],
-                "contributors": [],
-                "code": "$step: 5;\n$start_limit: 0;\n$end_limit: 50;\n\n  @while $start_limit <= $end_limit {\n    .mt-#{$start_limit} {\n        margin-top: $start_limit + px;\n    }\n    .mb-#{$start_limit} {\n        margin-bottom: $start_limit + px;\n    }\n\n    .ml-#{$start_limit} {\n        margin-left: $start_limit + px;\n    }\n\n    .mr-#{$start_limit} {\n        margin-right: $start_limit + px;\n    }\n\n    .pt-#{$start_limit} {\n        padding-top: $start_limit + px;\n    }\n    .pb-#{$start_limit} {\n        padding-bottom: $start_limit + px;\n    }\n\n    .pl-#{$start_limit} {\n        padding-left: $start_limit + px;\n    }\n\n    .pr-#{$start_limit} {\n        padding-right: $start_limit + px;\n    }\n    .mx-#{$start_limit} {\n        margin-left: $start_limit + px;\n        margin-right: $start_limit + px;\n    }\n\n    .px-#{$start_limit} {\n        padding-left: $start_limit + px;\n        padding-right: $start_limit + px;\n    }\n\n    .my-#{$start_limit} {\n        margin-top: $start_limit + px;\n        margin-bottom: $start_limit + px;\n    }\n\n    .py-#{$start_limit} {\n        padding-top: $start_limit + px;\n        padding-bottom: $start_limit + px;\n    }\n\n\n    $start_limit: $start_limit + $step;\n}\n\n",
-                "extension": "scss"
-            }
-        ]
-    }
+  {
+    "name": "Animations",
+    "snippets": [
+      {
+        "title": "Fade In Animation",
+        "description": "Animates the fade-in effect.",
+        "author": "technoph1le",
+        "tags": ["animation", "fade", "css"],
+        "contributors": [],
+        "code": "@keyframes fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n@mixin fade-in($duration: 1s, $easing: ease-in-out) {\n  animation: fade-in $duration $easing;\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Slide In From Left",
+        "description": "Animates content sliding in from the left.",
+        "author": "technoph1le",
+        "tags": ["animation", "slide", "css"],
+        "contributors": [],
+        "code": "@keyframes slide-in-left {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}\n\n@mixin slide-in-left($duration: 0.5s, $easing: ease-out) {\n  animation: slide-in-left $duration $easing;\n}\n",
+        "extension": "scss"
+      }
+    ]
+  },
+  {
+    "name": "Borders Shadows",
+    "snippets": [
+      {
+        "title": "Border Radius Helper",
+        "description": "Applies a customizable border-radius.",
+        "author": "technoph1le",
+        "tags": ["border", "radius", "css"],
+        "contributors": [],
+        "code": "@mixin border-radius($radius: 4px) {\n  border-radius: $radius;\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Box Shadow Helper",
+        "description": "Generates a box shadow with customizable values.",
+        "author": "technoph1le",
+        "tags": ["box-shadow", "css", "effects"],
+        "contributors": [],
+        "code": "@mixin box-shadow($x: 0px, $y: 4px, $blur: 10px, $spread: 0px, $color: rgba(0, 0, 0, 0.1)) {\n  box-shadow: $x $y $blur $spread $color;\n}\n",
+        "extension": "scss"
+      }
+    ]
+  },
+  {
+    "name": "Components",
+    "snippets": [
+      {
+        "title": "Primary Button",
+        "description": "Generates a styled primary button.",
+        "author": "technoph1le",
+        "tags": ["button", "primary", "css"],
+        "contributors": [],
+        "code": "@mixin primary-button($bg: #007bff, $color: #fff) {\n  background-color: $bg;\n  color: $color;\n  padding: 0.5rem 1rem;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n\n  &:hover {\n    background-color: darken($bg, 10%);\n  }\n}\n",
+        "extension": "scss"
+      }
+    ]
+  },
+  {
+    "name": "Layouts",
+    "snippets": [
+      {
+        "title": "Aspect Ratio",
+        "description": "Ensures that elements maintain a specific aspect ratio.",
+        "author": "technoph1le",
+        "tags": ["aspect-ratio", "layout", "css"],
+        "contributors": [],
+        "code": "@mixin aspect-ratio($width, $height) {\n  position: relative;\n  width: 100%;\n  padding-top: ($height / $width) * 100%;\n  > * {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n  }\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Dark Theme",
+        "description": "SCSS mixin to change styles for dark themes.",
+        "author": "gihanrangana",
+        "tags": ["css", "mixin", "snippet", "dark-theme", "layout"],
+        "contributors": [],
+        "code": "@mixin isDark($type: 'module') {\n  $root: &;\n\n  @if $type == 'module' {\n    :global {\n      @at-root body[theme='dark'] #{$root} {\n        @content;\n      }\n    }\n  } @else {\n    &[theme='dark'] {\n      @content;\n    }\n  }\n}\n\n// Usage:\n.container{\n\tbackground: #f0f0f0;\n\t@include isDark {\n\t\tbackground: #222;\n\t}\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Flex Center",
+        "description": "A mixin to center content using flexbox.",
+        "author": "technoph1le",
+        "tags": ["flex", "center", "css"],
+        "contributors": [],
+        "code": "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Grid Container",
+        "description": "Creates a responsive grid container with customizable column counts.",
+        "author": "technoph1le",
+        "tags": ["grid", "layout", "css"],
+        "contributors": [],
+        "code": "@mixin grid-container($columns: 12, $gap: 1rem) {\n  display: grid;\n  grid-template-columns: repeat($columns, 1fr);\n  gap: $gap;\n}\n",
+        "extension": "scss"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "snippets": [
+      {
+        "title": "Font Import Helper",
+        "description": "Simplifies importing custom fonts in Sass.",
+        "author": "technoph1le",
+        "tags": ["mixin", "fonts", "css"],
+        "contributors": [],
+        "code": "@mixin import-font($family, $weight: 400, $style: normal) {\n  @font-face {\n    font-family: #{$family};\n    font-weight: #{$weight};\n    font-style: #{$style};\n    src: url('/fonts/#{$family}-#{$weight}.woff2') format('woff2'),\n         url('/fonts/#{$family}-#{$weight}.woff') format('woff');\n  }\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Line Clamp Mixin",
+        "description": "A Sass mixin to clamp text to a specific number of lines.",
+        "author": "technoph1le",
+        "tags": ["mixin", "typography", "css"],
+        "contributors": [],
+        "code": "@mixin line-clamp($number) {\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: $number;\n  overflow: hidden;\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "PX to REM Helper",
+        "description": "This function will convert px values to rem values.",
+        "author": "gihanrangana",
+        "tags": ["function", "pixel", "rem", "px-to-rem"],
+        "contributors": [],
+        "code": "@function px-to-rem($px, $base: 16px) {\n  @return ($px / $base) * 1rem;\n}\n\n// Usage:\ndiv {\n  font-size: px-to-rem(12px); // Output: 0.75rem\n  padding: px-to-rem(16px);   // Output: 1rem\n  margin: px-to-rem(32px) // Output 2rem\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Text Gradient",
+        "description": "Adds a gradient color effect to text.",
+        "author": "technoph1le",
+        "tags": ["mixin", "gradient", "text", "css"],
+        "contributors": [],
+        "code": "@mixin text-gradient($from, $to) {\n  background: linear-gradient(to right, $from, $to);\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Text Overflow Ellipsis",
+        "description": "Ensures long text is truncated with an ellipsis.",
+        "author": "technoph1le",
+        "tags": ["mixin", "text", "css"],
+        "contributors": [],
+        "code": "@mixin text-ellipsis {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n}\n",
+        "extension": "scss"
+      }
+    ]
+  },
+  {
+    "name": "Utilities",
+    "snippets": [
+      {
+        "title": "Clearfix",
+        "description": "Provides a clearfix utility for floating elements.",
+        "author": "technoph1le",
+        "tags": ["clearfix", "utility", "css"],
+        "contributors": [],
+        "code": "@mixin clearfix {\n  &::after {\n    content: '';\n    display: block;\n    clear: both;\n  }\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Responsive Breakpoints",
+        "description": "Generates media queries for responsive design.",
+        "author": "technoph1le",
+        "tags": ["responsive", "media-queries", "css"],
+        "contributors": [],
+        "code": "@mixin breakpoint($breakpoint) {\n  @if $breakpoint == sm {\n    @media (max-width: 576px) { @content; }\n  } @else if $breakpoint == md {\n    @media (max-width: 768px) { @content; }\n  } @else if $breakpoint == lg {\n    @media (max-width: 992px) { @content; }\n  } @else if $breakpoint == xl {\n    @media (max-width: 1200px) { @content; }\n  }\n}\n",
+        "extension": "scss"
+      },
+      {
+        "title": "Spacing",
+        "description": "This SCSS snippet dynamically generates utility classes for managing spacing in a consistent and efficient manner. The classes are built using a loop, ensuring scalability and flexibility. use .mt-* for margin-top, and .pb-* for padding bottom",
+        "author": "dinesh-here",
+        "tags": ["clearfix", "utility", "css", "spacing"],
+        "contributors": [],
+        "code": "$step: 5;\n$start_limit: 0;\n$end_limit: 50;\n\n  @while $start_limit <= $end_limit {\n    .mt-#{$start_limit} {\n        margin-top: $start_limit + px;\n    }\n    .mb-#{$start_limit} {\n        margin-bottom: $start_limit + px;\n    }\n\n    .ml-#{$start_limit} {\n        margin-left: $start_limit + px;\n    }\n\n    .mr-#{$start_limit} {\n        margin-right: $start_limit + px;\n    }\n\n    .pt-#{$start_limit} {\n        padding-top: $start_limit + px;\n    }\n    .pb-#{$start_limit} {\n        padding-bottom: $start_limit + px;\n    }\n\n    .pl-#{$start_limit} {\n        padding-left: $start_limit + px;\n    }\n\n    .pr-#{$start_limit} {\n        padding-right: $start_limit + px;\n    }\n    .mx-#{$start_limit} {\n        margin-left: $start_limit + px;\n        margin-right: $start_limit + px;\n    }\n\n    .px-#{$start_limit} {\n        padding-left: $start_limit + px;\n        padding-right: $start_limit + px;\n    }\n\n    .my-#{$start_limit} {\n        margin-top: $start_limit + px;\n        margin-bottom: $start_limit + px;\n    }\n\n    .py-#{$start_limit} {\n        padding-top: $start_limit + px;\n        padding-bottom: $start_limit + px;\n    }\n\n\n    $start_limit: $start_limit + $step;\n}\n\n",
+        "extension": "scss"
+      }
+    ]
+  }
 ]

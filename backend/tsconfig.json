@@ -15,7 +15,11 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["./*"]
+    }
   },
   "exclude": ["node_modules"]
 }

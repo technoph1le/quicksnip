@@ -2,10 +2,11 @@ import { copyFileSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import { exit } from "process";
 
+import { API_BASE } from "@index";
+import { LanguageType } from "@types";
+import { slugify } from "@utils/slugify";
+
 import { parseAllSnippets } from "./snippetParser";
-import { LanguageType } from "../../frontend/src/types/index";
-import { slugify } from "../utils/slugify";
-import { API_BASE } from "../index";
 
 const dataPath = "data/consolidated/";
 const indexPath = join(dataPath, "_index.json");

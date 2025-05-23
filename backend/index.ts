@@ -1,9 +1,12 @@
-import express from "express";
-import cors from "cors";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { slugify } from "./utils/slugify";
+
+import cors from "cors";
+import express from "express";
+
+import { slugify } from "@utils/slugify";
+import { FileType } from "@types";
 
 export const API_BASE = process.env.API_BASE || "http://localhost:5000";
 
@@ -23,17 +26,19 @@ const readJSON = (filePath: string) => {
     const data = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(data);
   } catch (err) {
-    console.error("Failed to read", filePath);
+    console.error("Failed to read", filePath, err);
     return null;
   }
 };
 
 // Get all languages
-app.get("/languages", (req, res) => {
+app.get("/languages", (_req, res) => {
   const file = path.join(dataDir, "consolidated/_index.json");
   const json = readJSON(file);
-  if (!json) return res.status(500).json({ error: "Languages not found" });
+
+  if (!json) res.status(500).json({ error: "Languages not found" });
   res.json(json);
+  return;
 });
 
 // Get all categories for a given language
@@ -41,10 +46,10 @@ app.get("/categories/:language", (req, res) => {
   const { language } = req.params;
   const file = path.join(dataDir, `consolidated/${slugify(language)}.json`);
   const json = readJSON(file);
-  if (!json) return res.status(404).json({ error: "Language file not found" });
 
-  const categories = json.map((c) => c.name);
-  res.json(categories);
+  if (!json) res.status(404).json({ error: "Language file not found" });
+  res.json(json);
+  return;
 });
 
 // Get snippets for a language (and optional category)
@@ -53,18 +58,20 @@ app.get("/snippets/:language/:category", (req, res) => {
 
   const file = path.join(dataDir, `consolidated/${language}.json`);
   const json = readJSON(file);
-  if (!json) return res.status(404).json({ error: "Language file not found" });
+  if (!json) res.status(404).json({ error: "Language file not found" });
 
   if (category === "all") {
-    const allSnippets = json.flatMap((c) => c.snippets);
-    return res.json(allSnippets);
+    const allSnippets = json.flatMap((c: FileType) => c.snippets);
+    res.json(allSnippets);
   }
 
-  const categoryData = json.find((c) => slugify(c.name) === slugify(category));
-  if (!categoryData)
-    return res.status(404).json({ error: "Category not found" });
+  const categoryData = json.find(
+    (c: FileType) => slugify(c.name) === slugify(category)
+  );
+  if (!categoryData) res.status(404).json({ error: "Category not found" });
 
   res.json(categoryData.snippets);
+  return;
 });
 
 // Get icons from backend
