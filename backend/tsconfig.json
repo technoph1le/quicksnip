@@ -13,7 +13,7 @@
     "allowSyntheticDefaultImports": true,
 
     "moduleResolution": "node",
-    "outDir": "./dist",
+    "outDir": "dist",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
