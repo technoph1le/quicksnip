@@ -12,6 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
 
+    "noEmit": false,
+
     "moduleResolution": "node",
     "outDir": "dist",
     "esModuleInterop": true,
