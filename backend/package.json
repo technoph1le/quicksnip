@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx index.ts",
     "build": "tsc -b",
-    "start": "node -r tsconfig-paths/register dist/index.js",
+    "start": "tsc && node -r tsconfig-paths/register dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
