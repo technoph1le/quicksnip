@@ -5,8 +5,8 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import express from "express";
 
-import { slugify } from "@utils/slugify";
 import { FileType } from "@types";
+import { slugify } from "@utils/slugify";
 
 export const API_BASE = process.env.API_BASE || "http://localhost:5000";
 

@@ -16,11 +16,9 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@*": ["./*"],
-      "@utils/*": ["utils/*"],
-      "@types/*": ["types/*"]
+      "@*": ["src/*"]
     }
   },
   "exclude": ["node_modules"]

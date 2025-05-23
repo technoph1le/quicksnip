@@ -10,8 +10,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "snippets:check": "tsx ./scripts/checkSnippetFormatting.ts",
-    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts"
+    "snippets:check": "tsx ./src/scripts/checkSnippetFormatting.ts",
+    "snippets:consolidate": "tsx  ./src/scripts/consolidateSnippets.ts"
   },
   "keywords": [],
   "author": "",
