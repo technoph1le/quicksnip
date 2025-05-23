@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx index.ts",
     "build": "tsup src/index.ts --out-dir dist --format esm",
-    "start": "npm run build && node -r dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
