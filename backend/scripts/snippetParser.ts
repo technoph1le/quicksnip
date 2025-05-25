@@ -178,7 +178,7 @@ function parseLanguage(
 }
 
 export function parseAllSnippets() {
-  const snippetPath = join(__dirname, "../../../snippets");
+  const snippetPath = join(__dirname, "../../snippets");
 
   const languages: ParseLanguageResponse[] = [];
   for (const language of readdirSync(snippetPath)) {

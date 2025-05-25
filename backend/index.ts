@@ -5,8 +5,8 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import express from "express";
 
-import { FileType } from "@types";
-import { slugify } from "@utils/slugify";
+import { FileType } from "types";
+import { slugify } from "utils/slugify";
 
 export const API_BASE = process.env.API_BASE || "http://localhost:5000";
 
@@ -36,7 +36,10 @@ app.get("/languages", (_req, res) => {
   const file = path.join(dataDir, "consolidated/_index.json");
   const json = readJSON(file);
 
-  if (!json) res.status(500).json({ error: "Languages not found" });
+  if (!json) {
+    res.status(500).json({ error: "Languages not found" });
+    return;
+  }
   res.json(json);
   return;
 });
@@ -47,8 +50,13 @@ app.get("/categories/:language", (req, res) => {
   const file = path.join(dataDir, `consolidated/${slugify(language)}.json`);
   const json = readJSON(file);
 
-  if (!json) res.status(404).json({ error: "Language file not found" });
-  res.json(json);
+  if (!json) {
+    res.status(404).json({ error: "Language file not found" });
+    return;
+  }
+
+  const categoryNames = json.map((category: { name: string }) => category.name);
+  res.json(categoryNames);
   return;
 });
 
@@ -58,17 +66,24 @@ app.get("/snippets/:language/:category", (req, res) => {
 
   const file = path.join(dataDir, `consolidated/${language}.json`);
   const json = readJSON(file);
-  if (!json) res.status(404).json({ error: "Language file not found" });
+  if (!json) {
+    res.status(404).json({ error: "Language file not found" });
+    return;
+  }
 
   if (category === "all") {
     const allSnippets = json.flatMap((c: FileType) => c.snippets);
     res.json(allSnippets);
+    return;
   }
 
   const categoryData = json.find(
     (c: FileType) => slugify(c.name) === slugify(category)
   );
-  if (!categoryData) res.status(404).json({ error: "Category not found" });
+  if (!categoryData) {
+    res.status(404).json({ error: "Category not found" });
+    return;
+  }
 
   res.json(categoryData.snippets);
   return;
