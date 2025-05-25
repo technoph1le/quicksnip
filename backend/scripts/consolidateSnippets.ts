@@ -2,10 +2,10 @@ import { copyFileSync, mkdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import { exit } from "process";
 
-import { API_BASE } from "@index";
 import { LanguageType } from "@types";
 import { slugify } from "@utils/slugify";
 
+import { API_BASE } from "../index";
 import { parseAllSnippets } from "./snippetParser";
 
 const dataPath = "data/consolidated/";

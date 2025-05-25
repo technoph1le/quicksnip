@@ -3,12 +3,15 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 
 import { FileType } from "types";
 import { slugify } from "utils/slugify";
 
-export const API_BASE = process.env.API_BASE || "http://localhost:5000";
+dotenv.config();
+
+export const API_BASE = process.env.API_BASE;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

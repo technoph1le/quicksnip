@@ -1,349 +1,252 @@
 [
-    {
-        "name": "Basics",
-        "snippets": [
-            {
-                "title": "Hello, World!",
-                "description": "Prints Hello, World! to the terminal.",
-                "author": "0xHouss",
-                "tags": [
-                    "printing",
-                    "hello-world"
-                ],
-                "contributors": [],
-                "code": "#include <stdio.h> // Includes the input/output library\n\nint main() { // Defines the main function\n  printf(\"Hello, World!\\n\") // Outputs Hello, World! and a newline\n\n  return 0; // indicate the program executed successfully\n}\n",
-                "extension": "c"
-            }
-        ]
-    },
-    {
-        "name": "Bit Manipulation",
-        "snippets": [
-            {
-                "title": "Check Power of Two",
-                "description": "Checks if a given number is a power of two using bitwise operations.",
-                "author": "ashukr07",
-                "tags": [
-                    "bit-manipulation",
-                    "power-of-two"
-                ],
-                "contributors": [],
-                "code": "#include <stdbool.h> // Include the standard boolean library\n\nbool is_power_of_two(int n) {\n    return n > 0 && (n & (n - 1)) == 0; // Bitwise check for power of two\n}\n\n// Usage:\nis_power_of_two(16); // Returns: true\nis_power_of_two(18); // Returns: false\n",
-                "extension": "c"
-            },
-            {
-                "title": "Clear ith bit",
-                "description": "Clear the ith bit of a number and returns the resulting number",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "clear"
-                ],
-                "contributors": [],
-                "code": "int clear_ith_bit(int n, int i) {\n    return n & ~(1 << i);\n}\n\n\n// Usage:\nclear_ith_bit(10, 1); // Returns: 8\nclear_ith_bit(10, 3); // Returns: 2\n",
-                "extension": "c"
-            },
-            {
-                "title": "Count Set Bits",
-                "description": "Counts the number of set bits in an int",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "count"
-                ],
-                "contributors": [],
-                "code": "int count_set_bits(int n) {\n    int count = 0;\n    while (n) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\n\n// Usage:\ncount_set_bits(5);   // Returns: 2\ncount_set_bits(255); // Returns: 8\ncount_set_bits(8);   // Returns: 1\n",
-                "extension": "c"
-            },
-            {
-                "title": "Get ith bit",
-                "description": "Get the i-th bit of a number",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "get"
-                ],
-                "contributors": [],
-                "code": "int get_ith_bit(int n, int i) {\n    return (n >> i) & 1;\n}\n\n\n// Usage:\nget_ith_bit(10, 0); // Returns: 0\nget_ith_bit(10, 1); // Returns: 1\nget_ith_bit(10, 2); // Returns: 0\nget_ith_bit(10, 3); // Returns: 1\n",
-                "extension": "c"
-            },
-            {
-                "title": "Is Odd",
-                "description": "Check if a number is odd",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "is-odd"
-                ],
-                "contributors": [],
-                "code": "bool is_odd(int n) {\n    return n & 1;\n}\n\n\n// Usage:\nis_odd(10); // Returns: false\nis_odd(11); // Returns: true\n",
-                "extension": "c"
-            },
-            {
-                "title": "Reverse Bits",
-                "description": "Reverses the bits of a given unsigned integer.",
-                "author": "ashukr07",
-                "tags": [
-                    "bit-manipulation",
-                    "reverse-bits"
-                ],
-                "contributors": [],
-                "code": "unsigned int reverse_bits(unsigned int n) {\n    unsigned int result = 0;\n    for (int i = 0; i < 32; ++i) {\n        result <<= 1;        // Shift result left by 1\n        result |= n & 1;     // Add the least significant bit of n to result\n        n >>= 1;            // Shift n right by 1\n    }\n    return result;\n}\n\n// Usage:\nreverse_bits(43261596); // Returns: 964176192 (Binary: 00000010100101000001111010011100 -> 00111001011110000010100101000000)\n",
-                "extension": "c"
-            },
-            {
-                "title": "Set ith bit",
-                "description": "Set the i-th bit of a number and returns the resulting number",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "set"
-                ],
-                "contributors": [],
-                "code": "int set_ith_bit(int n, int i) {\n    return n | (1 << i);\n}\n\n\n// Usage:\nset_ith_bit(10, 0); // Returns: 11\nset_ith_bit(10, 2); // Returns: 14\nset_ith_bit(1, 8);  // Returns: 257\nset_ith_bit(1, 3);  // Returns: 9\n",
-                "extension": "c"
-            },
-            {
-                "title": "Swap Numbers",
-                "description": "Swap two numbers without a temporary variable",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "swap"
-                ],
-                "contributors": [],
-                "code": "void swap(int *a, int *b) {\n    *a ^= *b;\n    *b ^= *a;\n    *a ^= *b;\n}\n\n\n// Usage:\nint x = 5, y = 10;\nswap(&x, &y);\nprintf(\"x = %d, y = %d\\n\", x, y); // x = 10, y = 5\n",
-                "extension": "c"
-            },
-            {
-                "title": "Toggle ith bit",
-                "description": "Toggle the i-th bit of a number and returns the resulting number",
-                "author": "aelshinawy",
-                "tags": [
-                    "bit-manipulation",
-                    "number",
-                    "toggle"
-                ],
-                "contributors": [],
-                "code": "int toggle_ith_bit(int n, int i) {\n    return n ^ (1 << i);\n}\n\n\n// Usage:\ntoggle_ith_bit(10, 0); // Returns: 11\ntoggle_ith_bit(10, 1); // Returns: 8\ntoggle_ith_bit(8, 1);  // Returns: 10\n",
-                "extension": "c"
-            },
-            {
-                "title": "XOR of Range",
-                "description": "Finds XOR of all numbers from 1 to n using properties of XOR.",
-                "author": "ashukr07",
-                "tags": [
-                    "bit-manipulation",
-                    "xor"
-                ],
-                "contributors": [],
-                "code": "int xor_upto_n(int n) {\n    if (n % 4 == 0) return n;\n    if (n % 4 == 1) return 1;\n    if (n % 4 == 2) return n + 1;\n    return 0;\n}\n\n// Usage:\nxor_upto_n(5); // Returns: 1 (1 ^ 2 ^ 3 ^ 4 ^ 5 = 1)\n",
-                "extension": "c"
-            }
-        ]
-    },
-    {
-        "name": "Mathematical Functions",
-        "snippets": [
-            {
-                "title": "Check Perfect Number",
-                "description": "Checks if a number is a perfect number. A perfect number is a positive integer that is equal to the sum of its proper divisors (excluding itself).",
-                "author": "ashukr07",
-                "tags": [
-                    "math",
-                    "perfect-number"
-                ],
-                "contributors": [],
-                "code": "#include <stdbool.h>\n\n// Function to check if a number is a perfect number\nbool is_perfect(int n) {\n    if (n <= 1) return false;\n\n    int sum = 1; // 1 is a divisor for all n > 1\n    for (int i = 2; i * i <= n; ++i) {\n        if (n % i == 0) {\n            sum += i;\n            if (i != n / i) sum += n / i;\n        }\n    }\n    return sum == n;\n}\n\n// Usage\nis_perfect(28); // Returns: true\nis_perfect(12); // Returns: false\n",
-                "extension": "c"
-            },
-            {
-                "title": "Compound Interest",
-                "description": "Calculates the compound interest for a given principal, rate, time, and number of times interest applied per time period.",
-                "author": "ashukr07",
-                "tags": [
-                    "math",
-                    "finance"
-                ],
-                "contributors": [],
-                "code": "#include <math.h>\n\n// Function to calculate compound interest\ndouble compound_interest(double principal, double rate, double time, int n) {\n    return principal * pow(1 + rate / n, n * time);\n}\n\n// Usage:\ndouble principal = 1000.0;  // Initial amount\ndouble rate = 0.05;         // Annual interest rate (5%)\ndouble time = 2;            // Time in years\nint n = 4;                  // Compounded quarterly\n\ncompound_interest(principal, rate, time, n); // Returns: 1104.081632653061\n",
-                "extension": "c"
-            },
-            {
-                "title": "Factorial Function",
-                "description": "Calculates the factorial of a number.",
-                "author": "0xHouss",
-                "tags": [
-                    "math",
-                    "factorial"
-                ],
-                "contributors": [],
-                "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n\n// Usage:\nfactorial(4); // Returns: 24\n",
-                "extension": "c"
-            },
-            {
-                "title": "Fibonacci Number",
-                "description": "Calculates the nth Fibonacci number using recursion.",
-                "author": "ashukr07",
-                "tags": [
-                    "math",
-                    "fibonacci",
-                    "recursion"
-                ],
-                "contributors": [],
-                "code": "// Function to calculate the nth Fibonacci number\nint fibonacci(int n) {\n    if (n <= 1) return n;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\n// Usage:\nfibonacci(6); // Returns: 8\n",
-                "extension": "c"
-            },
-            {
-                "title": "Linear Mapping",
-                "description": "remaps a value from one range to another",
-                "author": "JasimAlrawie",
-                "tags": [
-                    "math",
-                    "number-theory",
-                    "algebra"
-                ],
-                "contributors": [],
-                "code": "float linearMapping(float value, float minIn, float maxIn, float minOut, float maxOut) {\n    return (value - minIn) * (maxOut - minOut)/(maxIn - minIn) + minOut;\n}\n\n\n// Usage:\nlinearMapping(value, 0, 1, 0, 255);    // remaps the value from (0,1) to (0,255)\nlinearMapping(value, 0, PI*2, 0, 360); // remaps the value from rad to deg\nlinearMapping(value, -1, 1, 1, 8);     // remaps the value from (-1,1) to (1,8)\n",
-                "extension": "c"
-            },
-            {
-                "title": "Sum of Digits",
-                "description": "Calculates the sum of the digits of an integer.",
-                "author": "ashukr07",
-                "tags": [
-                    "math",
-                    "digits"
-                ],
-                "contributors": [],
-                "code": "// Function to calculate the sum of the digits of an integer\nint sum_of_digits(int n) {\n    int sum = 0;\n    while (n != 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    return sum;\n}\n\n// Usage:\nsum_of_digits(123); // Returns: 6\n",
-                "extension": "c"
-            },
-            {
-                "title": "Swap numbers",
-                "description": "Swaps two numbers without using third variable",
-                "author": "Emosans",
-                "tags": [
-                    "swap",
-                    "numbers"
-                ],
-                "contributors": [],
-                "code": "#include<stdio.h>\nvoid swap(int* num1,int* num2){\n    *num1 = *num1 + *num2;\n    *num2 = *num1 - *num2;\n    *num1 = *num1 - *num2;\n}\n\n// Usage:\nint a = 3,b = 4;\nswap(&a,&b); // swaps the values of the a and b variables\n",
-                "extension": "c"
-            }
-        ]
-    },
-    {
-        "name": "Search",
-        "snippets": [
-            {
-                "title": "Binary Search ",
-                "description": "Searches for an element in a sorted array using the Binary Search algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "search",
-                    "binarysearch",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "int binarySearch(int arr[], int low, int high, int x) {\n  while (low <= high) {\n    int mid = low + (high - low) / 2;\n\n    // Check if x is present at mid\n    if (arr[mid] == x) {\n      return mid;\n    }\n\n    // If x is smaller, search the left half\n    if (arr[mid] > x) {\n      high = mid - 1;\n    } else { // If x is larger, search the right half\n      low = mid + 1;\n    }\n  }\n  return -1; // Element not found\n}\n\n// Usage:\nint arr[] = {2, 3, 4, 10, 40};\nint n = sizeof(arr) / sizeof(arr[0]);\nint x = 10;\nint result = binarySearch(arr, 0, n - 1, x);\n// result = 3 (index of the element 10)\n\n\n",
-                "extension": "c"
-            },
-            {
-                "title": "Linear Search ",
-                "description": "Searches for an element in an array using the Linear Search algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "search",
-                    "linearsearch",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "int linearSearch(int arr[], int n, int x) {\n  for (int i = 0; i < n; i++) {\n    if (arr[i] == x) {\n      return i; // Element found at index i\n    }\n  }\n  return -1; // Element not found\n}\n\n// Usage:\nint arr[] = {10, 20, 30, 40, 50};\nint n = sizeof(arr) / sizeof(arr[0]);\nint x = 30;\nint result = linearSearch(arr, n, x);\n// result = 2 (index of the element 30)\n\n",
-                "extension": "c"
-            }
-        ]
-    },
-    {
-        "name": "Sorting",
-        "snippets": [
-            {
-                "title": "Bubble Sort ",
-                "description": "Sorts an array of integers using the Bubble Sort algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "sorting",
-                    "bubblesort",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "void bubbleSort(int arr[], int n) {\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n      if (arr[j] > arr[j + 1]) {\n        // Swap arr[j] and arr[j + 1]\n        int temp = arr[j];\n        arr[j] = arr[j + 1];\n        arr[j + 1] = temp;\n      }\n    }\n  }\n}\n\n// Usage:\nint arr[] = {64, 34, 25, 12, 22, 11, 90};\nint n = sizeof(arr) / sizeof(arr[0]);\nbubbleSort(arr, n);\n// Now arr[] is sorted: {11, 12, 22, 25, 34, 64, 90}\n",
-                "extension": "c"
-            },
-            {
-                "title": "Insertion Sort ",
-                "description": "Sorts an array of integers using the Insertion Sort algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "sorting",
-                    "insertionsort",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "void insertionSort(int arr[], int n) {\n  for (int i = 1; i < n; i++) {\n    int key = arr[i];\n    int j = i - 1;\n\n    // Move elements of arr[0..i-1] that are greater than key\n    // to one position ahead of their current position\n    while (j >= 0 && arr[j] > key) {\n      arr[j + 1] = arr[j];\n      j--;\n    }\n    arr[j + 1] = key;\n  }\n}\n\n// Usage:\nint arr[] = {12, 11, 13, 5, 6};\nint n = sizeof(arr) / sizeof(arr[0]);\ninsertionSort(arr, n);\n// Now arr[] is sorted: {5, 6, 11, 12, 13}\n\n",
-                "extension": "c"
-            },
-            {
-                "title": "Merge Sort ",
-                "description": "Sorts an array of integers using the Merge Sort algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "sorting",
-                    "mergesort",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "#include <stdio.h>\n\nvoid merge(int arr[], int l, int m, int r) {\n  int n1 = m - l + 1;\n  int n2 = r - m;\n\n  // Temporary arrays\n  int L[n1], R[n2];\n\n  // Copy data to temporary arrays L[] and R[]\n  for (int i = 0; i < n1; i++)\n    L[i] = arr[l + i];\n  for (int j = 0; j < n2; j++)\n    R[j] = arr[m + 1 + j];\n\n  int i = 0, j = 0, k = l;\n\n  // Merge the temporary arrays back into arr[l..r]\n  while (i < n1 && j < n2) {\n    if (L[i] <= R[j]) {\n      arr[k] = L[i];\n      i++;\n    } else {\n      arr[k] = R[j];\n      j++;\n    }\n    k++;\n  }\n\n  // Copy remaining elements of L[], if any\n  while (i < n1) {\n    arr[k] = L[i];\n    i++;\n    k++;\n  }\n\n  // Copy remaining elements of R[], if any\n  while (j < n2) {\n    arr[k] = R[j];\n    j++;\n    k++;\n  }\n}\n\nvoid mergeSort(int arr[], int l, int r) {\n  if (l < r) {\n    int m = l + (r - l) / 2;\n\n    // Sort first and second halves\n    mergeSort(arr, l, m);\n    mergeSort(arr, m + 1, r);\n\n    merge(arr, l, m, r);\n  }\n}\n\n// Usage:\nint arr[] = {38, 27, 43, 3, 9, 82, 10};\nint n = sizeof(arr) / sizeof(arr[0]);\nmergeSort(arr, 0, n - 1);\n// Now arr[] is sorted: {3, 9, 10, 27, 38, 43, 82}\n\n",
-                "extension": "c"
-            },
-            {
-                "title": "Quick Sort ",
-                "description": "Sorts an array of integers using the Quick Sort algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "sorting",
-                    "quicksort",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "int partition(int arr[], int low, int high) {\n  int pivot = arr[high]; // Pivot element\n  int i = low - 1;\n\n  for (int j = low; j < high; j++) {\n    if (arr[j] < pivot) {\n      i++;\n      // Swap arr[i] and arr[j]\n      int temp = arr[i];\n      arr[i] = arr[j];\n      arr[j] = temp;\n    }\n  }\n\n  // Swap arr[i + 1] and arr[high] (pivot)\n  int temp = arr[i + 1];\n  arr[i + 1] = arr[high];\n  arr[high] = temp;\n\n  return i + 1;\n}\n\nvoid quickSort(int arr[], int low, int high) {\n  if (low < high) {\n    int pi = partition(arr, low, high);\n\n    // Recursively sort elements before and after partition\n    quickSort(arr, low, pi - 1);\n    quickSort(arr, pi + 1, high);\n  }\n}\n\n// Usage:\nint arr[] = {10, 7, 8, 9, 1, 5};\nint n = sizeof(arr) / sizeof(arr[0]);\nquickSort(arr, 0, n - 1);\n// Now arr[] is sorted: {1, 5, 7, 8, 9, 10}\n\n",
-                "extension": "c"
-            },
-            {
-                "title": "Selection Sort ",
-                "description": "Sorts an array of integers using the Selection Sort algorithm.",
-                "author": "0xHouss",
-                "tags": [
-                    "sorting",
-                    "selectionsort",
-                    "array",
-                    "algorithm"
-                ],
-                "contributors": [],
-                "code": "void selectionSort(int arr[], int n) {\n  for (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n\n    // Find the minimum element in the unsorted part of the array\n    for (int j = i + 1; j < n; j++) {\n      if (arr[j] < arr[minIdx]) {\n        minIdx = j;\n      }\n    }\n\n    // Swap the found minimum element with the first element of the unsorted part\n    int temp = arr[minIdx];\n    arr[minIdx] = arr[i];\n    arr[i] = temp;\n  }\n}\n\n// Usage:\nint arr[] = {64, 25, 12, 22, 11};\nint n = sizeof(arr) / sizeof(arr[0]);\nselectionSort(arr, n);\n// Now arr[] is sorted: {11, 12, 22, 25, 64}\n\n",
-                "extension": "c"
-            }
-        ]
-    }
+  {
+    "name": "Basics",
+    "snippets": [
+      {
+        "title": "Hello, World!",
+        "description": "Prints Hello, World! to the terminal.",
+        "author": "0xHouss",
+        "tags": ["printing", "hello-world"],
+        "contributors": [],
+        "code": "#include <stdio.h> // Includes the input/output library\n\nint main() { // Defines the main function\n  printf(\"Hello, World!\\n\") // Outputs Hello, World! and a newline\n\n  return 0; // indicate the program executed successfully\n}\n",
+        "extension": "c"
+      }
+    ]
+  },
+  {
+    "name": "Bit Manipulation",
+    "snippets": [
+      {
+        "title": "Check Power of Two",
+        "description": "Checks if a given number is a power of two using bitwise operations.",
+        "author": "ashukr07",
+        "tags": ["bit-manipulation", "power-of-two"],
+        "contributors": [],
+        "code": "#include <stdbool.h> // Include the standard boolean library\n\nbool is_power_of_two(int n) {\n    return n > 0 && (n & (n - 1)) == 0; // Bitwise check for power of two\n}\n\n// Usage:\nis_power_of_two(16); // Returns: true\nis_power_of_two(18); // Returns: false\n",
+        "extension": "c"
+      },
+      {
+        "title": "Clear ith bit",
+        "description": "Clear the ith bit of a number and returns the resulting number",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "clear"],
+        "contributors": [],
+        "code": "int clear_ith_bit(int n, int i) {\n    return n & ~(1 << i);\n}\n\n\n// Usage:\nclear_ith_bit(10, 1); // Returns: 8\nclear_ith_bit(10, 3); // Returns: 2\n",
+        "extension": "c"
+      },
+      {
+        "title": "Count Set Bits",
+        "description": "Counts the number of set bits in an int",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "count"],
+        "contributors": [],
+        "code": "int count_set_bits(int n) {\n    int count = 0;\n    while (n) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\n\n// Usage:\ncount_set_bits(5);   // Returns: 2\ncount_set_bits(255); // Returns: 8\ncount_set_bits(8);   // Returns: 1\n",
+        "extension": "c"
+      },
+      {
+        "title": "Get ith bit",
+        "description": "Get the i-th bit of a number",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "get"],
+        "contributors": [],
+        "code": "int get_ith_bit(int n, int i) {\n    return (n >> i) & 1;\n}\n\n\n// Usage:\nget_ith_bit(10, 0); // Returns: 0\nget_ith_bit(10, 1); // Returns: 1\nget_ith_bit(10, 2); // Returns: 0\nget_ith_bit(10, 3); // Returns: 1\n",
+        "extension": "c"
+      },
+      {
+        "title": "Is Odd",
+        "description": "Check if a number is odd",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "is-odd"],
+        "contributors": [],
+        "code": "bool is_odd(int n) {\n    return n & 1;\n}\n\n\n// Usage:\nis_odd(10); // Returns: false\nis_odd(11); // Returns: true\n",
+        "extension": "c"
+      },
+      {
+        "title": "Reverse Bits",
+        "description": "Reverses the bits of a given unsigned integer.",
+        "author": "ashukr07",
+        "tags": ["bit-manipulation", "reverse-bits"],
+        "contributors": [],
+        "code": "unsigned int reverse_bits(unsigned int n) {\n    unsigned int result = 0;\n    for (int i = 0; i < 32; ++i) {\n        result <<= 1;        // Shift result left by 1\n        result |= n & 1;     // Add the least significant bit of n to result\n        n >>= 1;            // Shift n right by 1\n    }\n    return result;\n}\n\n// Usage:\nreverse_bits(43261596); // Returns: 964176192 (Binary: 00000010100101000001111010011100 -> 00111001011110000010100101000000)\n",
+        "extension": "c"
+      },
+      {
+        "title": "Set ith bit",
+        "description": "Set the i-th bit of a number and returns the resulting number",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "set"],
+        "contributors": [],
+        "code": "int set_ith_bit(int n, int i) {\n    return n | (1 << i);\n}\n\n\n// Usage:\nset_ith_bit(10, 0); // Returns: 11\nset_ith_bit(10, 2); // Returns: 14\nset_ith_bit(1, 8);  // Returns: 257\nset_ith_bit(1, 3);  // Returns: 9\n",
+        "extension": "c"
+      },
+      {
+        "title": "Swap Numbers",
+        "description": "Swap two numbers without a temporary variable",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "swap"],
+        "contributors": [],
+        "code": "void swap(int *a, int *b) {\n    *a ^= *b;\n    *b ^= *a;\n    *a ^= *b;\n}\n\n\n// Usage:\nint x = 5, y = 10;\nswap(&x, &y);\nprintf(\"x = %d, y = %d\\n\", x, y); // x = 10, y = 5\n",
+        "extension": "c"
+      },
+      {
+        "title": "Toggle ith bit",
+        "description": "Toggle the i-th bit of a number and returns the resulting number",
+        "author": "aelshinawy",
+        "tags": ["bit-manipulation", "number", "toggle"],
+        "contributors": [],
+        "code": "int toggle_ith_bit(int n, int i) {\n    return n ^ (1 << i);\n}\n\n\n// Usage:\ntoggle_ith_bit(10, 0); // Returns: 11\ntoggle_ith_bit(10, 1); // Returns: 8\ntoggle_ith_bit(8, 1);  // Returns: 10\n",
+        "extension": "c"
+      },
+      {
+        "title": "XOR of Range",
+        "description": "Finds XOR of all numbers from 1 to n using properties of XOR.",
+        "author": "ashukr07",
+        "tags": ["bit-manipulation", "xor"],
+        "contributors": [],
+        "code": "int xor_upto_n(int n) {\n    if (n % 4 == 0) return n;\n    if (n % 4 == 1) return 1;\n    if (n % 4 == 2) return n + 1;\n    return 0;\n}\n\n// Usage:\nxor_upto_n(5); // Returns: 1 (1 ^ 2 ^ 3 ^ 4 ^ 5 = 1)\n",
+        "extension": "c"
+      }
+    ]
+  },
+  {
+    "name": "Mathematical Functions",
+    "snippets": [
+      {
+        "title": "Check Perfect Number",
+        "description": "Checks if a number is a perfect number. A perfect number is a positive integer that is equal to the sum of its proper divisors (excluding itself).",
+        "author": "ashukr07",
+        "tags": ["math", "perfect-number"],
+        "contributors": [],
+        "code": "#include <stdbool.h>\n\n// Function to check if a number is a perfect number\nbool is_perfect(int n) {\n    if (n <= 1) return false;\n\n    int sum = 1; // 1 is a divisor for all n > 1\n    for (int i = 2; i * i <= n; ++i) {\n        if (n % i == 0) {\n            sum += i;\n            if (i != n / i) sum += n / i;\n        }\n    }\n    return sum == n;\n}\n\n// Usage\nis_perfect(28); // Returns: true\nis_perfect(12); // Returns: false\n",
+        "extension": "c"
+      },
+      {
+        "title": "Compound Interest",
+        "description": "Calculates the compound interest for a given principal, rate, time, and number of times interest applied per time period.",
+        "author": "ashukr07",
+        "tags": ["math", "finance"],
+        "contributors": [],
+        "code": "#include <math.h>\n\n// Function to calculate compound interest\ndouble compound_interest(double principal, double rate, double time, int n) {\n    return principal * pow(1 + rate / n, n * time);\n}\n\n// Usage:\ndouble principal = 1000.0;  // Initial amount\ndouble rate = 0.05;         // Annual interest rate (5%)\ndouble time = 2;            // Time in years\nint n = 4;                  // Compounded quarterly\n\ncompound_interest(principal, rate, time, n); // Returns: 1104.081632653061\n",
+        "extension": "c"
+      },
+      {
+        "title": "Factorial Function",
+        "description": "Calculates the factorial of a number.",
+        "author": "0xHouss",
+        "tags": ["math", "factorial"],
+        "contributors": [],
+        "code": "int factorial(int x) {\n  int y = 1;\n\n  for (int i = 2; i <= x; i++)\n    y *= i;\n\n  return y;\n}\n\n// Usage:\nfactorial(4); // Returns: 24\n",
+        "extension": "c"
+      },
+      {
+        "title": "Fibonacci Number",
+        "description": "Calculates the nth Fibonacci number using recursion.",
+        "author": "ashukr07",
+        "tags": ["math", "fibonacci", "recursion"],
+        "contributors": [],
+        "code": "// Function to calculate the nth Fibonacci number\nint fibonacci(int n) {\n    if (n <= 1) return n;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\n// Usage:\nfibonacci(6); // Returns: 8\n",
+        "extension": "c"
+      },
+      {
+        "title": "Linear Mapping",
+        "description": "remaps a value from one range to another",
+        "author": "JasimAlrawie",
+        "tags": ["math", "number-theory", "algebra"],
+        "contributors": [],
+        "code": "float linearMapping(float value, float minIn, float maxIn, float minOut, float maxOut) {\n    return (value - minIn) * (maxOut - minOut)/(maxIn - minIn) + minOut;\n}\n\n\n// Usage:\nlinearMapping(value, 0, 1, 0, 255);    // remaps the value from (0,1) to (0,255)\nlinearMapping(value, 0, PI*2, 0, 360); // remaps the value from rad to deg\nlinearMapping(value, -1, 1, 1, 8);     // remaps the value from (-1,1) to (1,8)\n",
+        "extension": "c"
+      },
+      {
+        "title": "Sum of Digits",
+        "description": "Calculates the sum of the digits of an integer.",
+        "author": "ashukr07",
+        "tags": ["math", "digits"],
+        "contributors": [],
+        "code": "// Function to calculate the sum of the digits of an integer\nint sum_of_digits(int n) {\n    int sum = 0;\n    while (n != 0) {\n        sum += n % 10;\n        n /= 10;\n    }\n    return sum;\n}\n\n// Usage:\nsum_of_digits(123); // Returns: 6\n",
+        "extension": "c"
+      },
+      {
+        "title": "Swap numbers",
+        "description": "Swaps two numbers without using third variable",
+        "author": "Emosans",
+        "tags": ["swap", "numbers"],
+        "contributors": [],
+        "code": "#include<stdio.h>\nvoid swap(int* num1,int* num2){\n    *num1 = *num1 + *num2;\n    *num2 = *num1 - *num2;\n    *num1 = *num1 - *num2;\n}\n\n// Usage:\nint a = 3,b = 4;\nswap(&a,&b); // swaps the values of the a and b variables\n",
+        "extension": "c"
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "snippets": [
+      {
+        "title": "Binary Search ",
+        "description": "Searches for an element in a sorted array using the Binary Search algorithm.",
+        "author": "0xHouss",
+        "tags": ["search", "binarysearch", "array", "algorithm"],
+        "contributors": [],
+        "code": "int binarySearch(int arr[], int low, int high, int x) {\n  while (low <= high) {\n    int mid = low + (high - low) / 2;\n\n    // Check if x is present at mid\n    if (arr[mid] == x) {\n      return mid;\n    }\n\n    // If x is smaller, search the left half\n    if (arr[mid] > x) {\n      high = mid - 1;\n    } else { // If x is larger, search the right half\n      low = mid + 1;\n    }\n  }\n  return -1; // Element not found\n}\n\n// Usage:\nint arr[] = {2, 3, 4, 10, 40};\nint n = sizeof(arr) / sizeof(arr[0]);\nint x = 10;\nint result = binarySearch(arr, 0, n - 1, x);\n// result = 3 (index of the element 10)\n\n\n",
+        "extension": "c"
+      },
+      {
+        "title": "Linear Search ",
+        "description": "Searches for an element in an array using the Linear Search algorithm.",
+        "author": "0xHouss",
+        "tags": ["search", "linearsearch", "array", "algorithm"],
+        "contributors": [],
+        "code": "int linearSearch(int arr[], int n, int x) {\n  for (int i = 0; i < n; i++) {\n    if (arr[i] == x) {\n      return i; // Element found at index i\n    }\n  }\n  return -1; // Element not found\n}\n\n// Usage:\nint arr[] = {10, 20, 30, 40, 50};\nint n = sizeof(arr) / sizeof(arr[0]);\nint x = 30;\nint result = linearSearch(arr, n, x);\n// result = 2 (index of the element 30)\n\n",
+        "extension": "c"
+      }
+    ]
+  },
+  {
+    "name": "Sorting",
+    "snippets": [
+      {
+        "title": "Bubble Sort ",
+        "description": "Sorts an array of integers using the Bubble Sort algorithm.",
+        "author": "0xHouss",
+        "tags": ["sorting", "bubblesort", "array", "algorithm"],
+        "contributors": [],
+        "code": "void bubbleSort(int arr[], int n) {\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n      if (arr[j] > arr[j + 1]) {\n        // Swap arr[j] and arr[j + 1]\n        int temp = arr[j];\n        arr[j] = arr[j + 1];\n        arr[j + 1] = temp;\n      }\n    }\n  }\n}\n\n// Usage:\nint arr[] = {64, 34, 25, 12, 22, 11, 90};\nint n = sizeof(arr) / sizeof(arr[0]);\nbubbleSort(arr, n);\n// Now arr[] is sorted: {11, 12, 22, 25, 34, 64, 90}\n",
+        "extension": "c"
+      },
+      {
+        "title": "Insertion Sort ",
+        "description": "Sorts an array of integers using the Insertion Sort algorithm.",
+        "author": "0xHouss",
+        "tags": ["sorting", "insertionsort", "array", "algorithm"],
+        "contributors": [],
+        "code": "void insertionSort(int arr[], int n) {\n  for (int i = 1; i < n; i++) {\n    int key = arr[i];\n    int j = i - 1;\n\n    // Move elements of arr[0..i-1] that are greater than key\n    // to one position ahead of their current position\n    while (j >= 0 && arr[j] > key) {\n      arr[j + 1] = arr[j];\n      j--;\n    }\n    arr[j + 1] = key;\n  }\n}\n\n// Usage:\nint arr[] = {12, 11, 13, 5, 6};\nint n = sizeof(arr) / sizeof(arr[0]);\ninsertionSort(arr, n);\n// Now arr[] is sorted: {5, 6, 11, 12, 13}\n\n",
+        "extension": "c"
+      },
+      {
+        "title": "Merge Sort ",
+        "description": "Sorts an array of integers using the Merge Sort algorithm.",
+        "author": "0xHouss",
+        "tags": ["sorting", "mergesort", "array", "algorithm"],
+        "contributors": [],
+        "code": "#include <stdio.h>\n\nvoid merge(int arr[], int l, int m, int r) {\n  int n1 = m - l + 1;\n  int n2 = r - m;\n\n  // Temporary arrays\n  int L[n1], R[n2];\n\n  // Copy data to temporary arrays L[] and R[]\n  for (int i = 0; i < n1; i++)\n    L[i] = arr[l + i];\n  for (int j = 0; j < n2; j++)\n    R[j] = arr[m + 1 + j];\n\n  int i = 0, j = 0, k = l;\n\n  // Merge the temporary arrays back into arr[l..r]\n  while (i < n1 && j < n2) {\n    if (L[i] <= R[j]) {\n      arr[k] = L[i];\n      i++;\n    } else {\n      arr[k] = R[j];\n      j++;\n    }\n    k++;\n  }\n\n  // Copy remaining elements of L[], if any\n  while (i < n1) {\n    arr[k] = L[i];\n    i++;\n    k++;\n  }\n\n  // Copy remaining elements of R[], if any\n  while (j < n2) {\n    arr[k] = R[j];\n    j++;\n    k++;\n  }\n}\n\nvoid mergeSort(int arr[], int l, int r) {\n  if (l < r) {\n    int m = l + (r - l) / 2;\n\n    // Sort first and second halves\n    mergeSort(arr, l, m);\n    mergeSort(arr, m + 1, r);\n\n    merge(arr, l, m, r);\n  }\n}\n\n// Usage:\nint arr[] = {38, 27, 43, 3, 9, 82, 10};\nint n = sizeof(arr) / sizeof(arr[0]);\nmergeSort(arr, 0, n - 1);\n// Now arr[] is sorted: {3, 9, 10, 27, 38, 43, 82}\n\n",
+        "extension": "c"
+      },
+      {
+        "title": "Quick Sort ",
+        "description": "Sorts an array of integers using the Quick Sort algorithm.",
+        "author": "0xHouss",
+        "tags": ["sorting", "quicksort", "array", "algorithm"],
+        "contributors": [],
+        "code": "int partition(int arr[], int low, int high) {\n  int pivot = arr[high]; // Pivot element\n  int i = low - 1;\n\n  for (int j = low; j < high; j++) {\n    if (arr[j] < pivot) {\n      i++;\n      // Swap arr[i] and arr[j]\n      int temp = arr[i];\n      arr[i] = arr[j];\n      arr[j] = temp;\n    }\n  }\n\n  // Swap arr[i + 1] and arr[high] (pivot)\n  int temp = arr[i + 1];\n  arr[i + 1] = arr[high];\n  arr[high] = temp;\n\n  return i + 1;\n}\n\nvoid quickSort(int arr[], int low, int high) {\n  if (low < high) {\n    int pi = partition(arr, low, high);\n\n    // Recursively sort elements before and after partition\n    quickSort(arr, low, pi - 1);\n    quickSort(arr, pi + 1, high);\n  }\n}\n\n// Usage:\nint arr[] = {10, 7, 8, 9, 1, 5};\nint n = sizeof(arr) / sizeof(arr[0]);\nquickSort(arr, 0, n - 1);\n// Now arr[] is sorted: {1, 5, 7, 8, 9, 10}\n\n",
+        "extension": "c"
+      },
+      {
+        "title": "Selection Sort ",
+        "description": "Sorts an array of integers using the Selection Sort algorithm.",
+        "author": "0xHouss",
+        "tags": ["sorting", "selectionsort", "array", "algorithm"],
+        "contributors": [],
+        "code": "void selectionSort(int arr[], int n) {\n  for (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n\n    // Find the minimum element in the unsorted part of the array\n    for (int j = i + 1; j < n; j++) {\n      if (arr[j] < arr[minIdx]) {\n        minIdx = j;\n      }\n    }\n\n    // Swap the found minimum element with the first element of the unsorted part\n    int temp = arr[minIdx];\n    arr[minIdx] = arr[i];\n    arr[i] = temp;\n  }\n}\n\n// Usage:\nint arr[] = {64, 25, 12, 22, 11};\nint n = sizeof(arr) / sizeof(arr[0]);\nselectionSort(arr, n);\n// Now arr[] is sorted: {11, 12, 22, 25, 64}\n\n",
+        "extension": "c"
+      }
+    ]
+  }
 ]
