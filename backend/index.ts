@@ -9,7 +9,8 @@ import express from "express";
 import { FileType } from "types";
 import { slugify } from "utils/slugify";
 
-dotenv.config();
+const env = process.env.NODE_ENV || "local"; // "production" or "local"
+dotenv.config({ path: `.env.${env}` });
 
 export const API_BASE = process.env.API_BASE;
 
