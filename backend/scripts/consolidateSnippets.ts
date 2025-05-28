@@ -7,6 +7,7 @@ import { slugify } from "@utils/slugify";
 
 import { API_BASE } from "../index";
 import { parseAllSnippets } from "./snippetParser";
+import { copyFolderSync } from "./copyStatic";
 
 const dataPath = "data/consolidated/";
 const indexPath = join(dataPath, "_index.json");
@@ -58,3 +59,5 @@ for (const language of languages) {
 }
 
 writeFileSync(indexPath, JSON.stringify(index, null, 4));
+
+copyFolderSync("data", "dist/data");

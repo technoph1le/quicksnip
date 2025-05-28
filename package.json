@@ -4,8 +4,7 @@
   "description": "QuickSnip is an open-source tool designed for developers who want to organize, search, and share code snippets across various programming languages. It provides a centralized platform for managing handy snippets. Built with love and powered by an awesome community. 🚀",
   "main": "index.js",
   "scripts": {
-    "//": "--- Linting & Formatting (optional, run from root) ---",
-    "build": "npm run build:backend && npm run build:frontend",
+    "build": "npm-run-all --parallel build:backend build:frontend",
     "build:backend": "npm run build --prefix backend",
     "build:frontend": "npm run build --prefix frontend",
     "start:backend": "npm start --prefix backend",
@@ -13,10 +12,10 @@
     "dev": "npm-run-all --parallel dev:backend dev:frontend",
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend",
-    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint": "npm-run-all --parallel lint:backend lint:frontend",
     "lint:backend": "npm run lint --prefix backend",
     "lint:frontend": "npm run lint --prefix frontend",
-    "format": "npm run format:backend && npm run format:frontend",
+    "format": "npm-run-all --parallel format:backend format:frontend",
     "format:backend": "npm run format --prefix backend",
     "format:frontend": "npm run format --prefix frontend"
   },

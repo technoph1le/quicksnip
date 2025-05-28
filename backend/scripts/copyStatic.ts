@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-function copyFolderSync(from: string, to: string) {
+export function copyFolderSync(from: string, to: string) {
   fs.mkdirSync(to, { recursive: true });
 
   for (const item of fs.readdirSync(from)) {
@@ -15,5 +15,3 @@ function copyFolderSync(from: string, to: string) {
     }
   }
 }
-
-copyFolderSync("data", "dist/data");
