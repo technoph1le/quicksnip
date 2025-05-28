@@ -7,13 +7,13 @@
     "dev": "npm-run-all snippets:consolidate dev:server",
     "dev:server": "tsx index.ts",
     "build": "npm-run-all --parallel snippets:consolidate build:server",
-    "build:server": "tsup index.ts --out-dir dist --format esm",
+    "build:server": "npx tsup index.ts --out-dir dist --format esm",
     "start": "node dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "snippets:check": "tsx ./scripts/checkSnippetFormatting.ts",
-    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts"
+    "snippets:check": "npx tsx ./scripts/checkSnippetFormatting.ts",
+    "snippets:consolidate": "npx tsx  ./scripts/consolidateSnippets.ts"
   },
   "keywords": [],
   "author": "",
@@ -27,9 +27,7 @@
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
     "process": "^0.11.10",
-    "tsconfig-paths": "^4.2.0",
-    "tsup": "^8.5.0",
-    "tsx": "^4.19.4"
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.4",
@@ -46,6 +44,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.7.0"
   }
