@@ -6,8 +6,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 
-import { FileType } from "types";
-import { slugify } from "utils/slugify";
+import { FileType } from "@types";
+import { slugify } from "@utils/slugify";
 
 const env = process.env.NODE_ENV || "local"; // "production" or "local"
 dotenv.config({ path: `.env.${env}` });

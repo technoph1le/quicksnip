@@ -178,6 +178,7 @@ function parseLanguage(
 }
 
 export function parseAllSnippets() {
+  // TODO: Fix the path because it nows run on production
   const snippetPath = join(__dirname, "../../snippets");
 
   const languages: ParseLanguageResponse[] = [];

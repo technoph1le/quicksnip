@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx index.ts",
+    "dev": "npm run snippets:consolidate && tsx index.ts",
     "build:snippets": "npm run snippets:consolidate && npm run copy:data",
     "build": "tsup index.ts --out-dir dist --format esm && npm run build:snippets",
     "prestart": "npm run build",
