@@ -32,6 +32,9 @@
   },
   "homepage": "https://github.com/technoph1le/quicksnip#readme",
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.19.4"
   }
 }
