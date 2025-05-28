@@ -20,7 +20,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@netlify/functions": "^3.1.8",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
