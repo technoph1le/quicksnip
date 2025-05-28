@@ -7,13 +7,13 @@
     "dev": "npm-run-all snippets:consolidate dev:server",
     "dev:server": "tsx index.ts",
     "build": "npm-run-all --parallel snippets:consolidate build:server",
-    "build:server": "npx tsup index.ts --out-dir dist --format esm",
+    "build:server": "tsup index.ts --out-dir dist --format esm",
     "start": "node dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "snippets:check": "npx tsx ./scripts/checkSnippetFormatting.ts",
-    "snippets:consolidate": "npx tsx  ./scripts/consolidateSnippets.ts"
+    "snippets:check": "tsx ./scripts/checkSnippetFormatting.ts",
+    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts"
   },
   "keywords": [],
   "author": "",
