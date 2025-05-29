@@ -10,7 +10,7 @@ QuickSnip is an open-source tool designed for developers who want to organize, s
 
 <br>
 
-![Website preview](/public/preview.png)
+![Website preview](/preview.png)
 
 ## How to Contribute
 
