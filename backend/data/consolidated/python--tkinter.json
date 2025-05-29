@@ -1,254 +1,188 @@
 [
-    {
-        "name": "Basics",
-        "snippets": [
-            {
-                "title": "Display a Pillow Image",
-                "description": "Use Pillow to show an image in a Tkinter window.",
-                "author": "Legopitstop",
-                "tags": [
-                    "app",
-                    "hello-world",
-                    "object-oriented"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Label\nfrom PIL import Image, ImageDraw, ImageTk\n\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        # PhotoImage must be global or be assigned to a class or it will be garbage collected.\n        self.photo = ImageTk.PhotoImage(self.make_image())\n        lbl = Label(self, image=self.photo)\n        lbl.pack(expand=1)\n\n    def make_image(self):\n        width, height = 200, 200\n        image = Image.new(\"RGB\", (width, height), \"white\")\n\n        # Create a drawing context\n        draw = ImageDraw.Draw(image)\n\n        # Draw a circle\n        radius = 80\n        center = (width // 2, height // 2)\n        draw.ellipse(\n            [\n                (center[0] - radius, center[1] - radius),\n                (center[0] + radius, center[1] + radius),\n            ],\n            fill=\"red\",\n            outline=\"black\",\n            width=3,\n        )\n        return image\n\n\n# Usage:\nroot = App()\nroot.mainloop()\n\n",
-                "extension": "py"
-            },
-            {
-                "title": "Hello, World!",
-                "description": "Creates a basic Tkinter window with a \"Hello, World!\" label.",
-                "author": "Legopitstop",
-                "tags": [
-                    "app",
-                    "hello-world",
-                    "object-oriented"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Label\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        self.lbl = Label(self, text='Hello, World!')\n        self.lbl.pack(expand=1)\n\n# Usage:\nroot = App()\nroot.mainloop()\n",
-                "extension": "py"
-            }
-        ]
-    },
-    {
-        "name": "Entry Validation",
-        "snippets": [
-            {
-                "title": "Allow Alphanumeric",
-                "description": "A validation function to allow alphanumeric characters.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "alphanumeric"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_alphanumeric(value):\n    return value.isalnum() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_alphanumeric)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Decimal",
-                "description": "A validation function to allow only decimal numbers.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "decimals"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_decimal(action, value):\n    if action == \"1\":\n        if value == \"\":\n            return True\n        try:\n            float(value)\n            return True\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_decimal)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Digits with A Max Length",
-                "description": "A validation function to allow only digits with a specified maximum length.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "max",
-                    "length"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_digits_with_max_length(action, value, max_length):\n    if action == \"1\":\n        return value == \"\" or (value.isdigit() and len(value) <= int(max_length))\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_digits_with_max_length)\n# 4 is the max length\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", 4)).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Lowercase",
-                "description": "A validation function to allow only lowercase alphabetic characters.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "lowercase"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_lowercase(value):\n    return value.islower() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_lowercase)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Negative Integers",
-                "description": "A validation function to allow only negative integers.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "negative",
-                    "integers"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_negative_integers(value):\n    return (\n        value in (\"\", \"-\") or value.startswith(\"-\") and value[1:].isdigit()\n        if value\n        else True\n    )\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_negative_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Numbers in Range",
-                "description": "A validation function to allow only numbers within a specified range.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "number",
-                    "range"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_numbers_in_range(action, value, min_value, max_value):\n    if action == \"1\":  \n        try:\n            num = float(value)\n            return float(min_value) <= num <= float(max_value)\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_numbers_in_range)\n# 0 is the minimum value\n# 10 is the maximum value\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", 0, 10)).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Only Alphabets",
-                "description": "A validation function to allow only alphabetic characters.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "alphabets"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_only_alphabets(value):\n    return value.isalpha() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_only_alphabets)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Only Digits",
-                "description": "A validation function to allow only digits.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "digits"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_only_digits(value):\n    return value.isdigit() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_only_digits)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Positive Integers",
-                "description": "A validation function to allow only positive integers.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "positive",
-                    "integers"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_positive_integers(value):\n    return value.isdigit() and (value == \"\" or int(value) > 0)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_positive_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow signed Decimals",
-                "description": "A validation function to allow only signed decimal numbers.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "signed",
-                    "decimals"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_signed_decimals(action, value):\n    if action == \"1\":\n        try:\n            if value in (\"\", \"-\"):\n                return True\n            float(value)\n            return True\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_signed_decimals)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Signed Integers",
-                "description": "A validation function to allow only signed integers.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "signed",
-                    "integers"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_signed_integers(action, value):\n    if action == \"1\":\n        return (\n            value in (\"\", \"-\")\n            or value.isdigit()\n            or (value.startswith(\"-\") and value[1:].isdigit())\n        )\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_signed_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Specific Characters",
-                "description": "A validation function to allow specific characters.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "regex"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_specific_characters(value, allowed_chars):\n    return all(char in allowed_chars for char in value)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_specific_characters)\nallowed_chars = \"0123456789ABCDEFabcdef\"  # Hexadecimal characters\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\", allowed_chars)).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Allow Uppercase",
-                "description": "A validation function to allow uppercase letters.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "uppercase"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef allow_uppercase(value):\n    return value.isupper() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_uppercase)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Custom Regular Expression",
-                "description": "A validation function to match a regular expression pattern.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "regex",
-                    "pattern"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\nimport re\n\n\ndef custom_regular_expression(action, value, pattern):\n    if action == \"1\":\n        return re.fullmatch(pattern, value) is not None\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(custom_regular_expression)\npattern = r\"^\\d{0,4}$\"  # Allow up to 4 digits\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", pattern)).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Restrict Length",
-                "description": "A validation function to limit the length.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "length"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\n\n\ndef restrict_length(value, max_length):\n    return len(value) <= int(max_length)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(restrict_length)\n# 10 is the maximum length allowed\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\", 10)).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            },
-            {
-                "title": "Validate File Path",
-                "description": "A validation function to ensure the file path exists.",
-                "author": "Legopitstop",
-                "tags": [
-                    "validation",
-                    "filepath",
-                    "fp"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Entry\nimport os\n\n\ndef validate_file_path(action, value):\n    if action == \"1\":\n        return value == \"\" or os.path.exists(os.path.expandvars(value))\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(validate_file_path)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
-                "extension": "py"
-            }
-        ]
-    },
-    {
-        "name": "Menus",
-        "snippets": [
-            {
-                "title": "Context Menu",
-                "description": "Opens a menu when you right click a widget.",
-                "author": "Legopitstop",
-                "tags": [
-                    "menu"
-                ],
-                "contributors": [],
-                "code": "from tkinter import Tk, Label, Menu\n\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        lbl = Label(self, text=\"Right-click me!\")\n        lbl.bind(\"<Button-3>\", self.do_popup)\n        lbl.pack(expand=1, ipadx=10, ipady=10)\n\n    def do_popup(self, event):\n        menu = Menu(self, tearoff=0)\n        menu.add_command(label=\"Option 1\", command=lambda: print(\"Option 1\"))\n        menu.add_command(label=\"Option 2\", command=lambda: print(\"Option 2\"))\n        menu.post(event.x_root, event.y_root)\n\n\n# Usage:\nroot = App()\nroot.mainloop()\n",
-                "extension": "py"
-            }
-        ]
-    }
+  {
+    "name": "Basics",
+    "snippets": [
+      {
+        "title": "Display a Pillow Image",
+        "description": "Use Pillow to show an image in a Tkinter window.",
+        "author": "Legopitstop",
+        "tags": ["app", "hello-world", "object-oriented"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Label\nfrom PIL import Image, ImageDraw, ImageTk\n\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        # PhotoImage must be global or be assigned to a class or it will be garbage collected.\n        self.photo = ImageTk.PhotoImage(self.make_image())\n        lbl = Label(self, image=self.photo)\n        lbl.pack(expand=1)\n\n    def make_image(self):\n        width, height = 200, 200\n        image = Image.new(\"RGB\", (width, height), \"white\")\n\n        # Create a drawing context\n        draw = ImageDraw.Draw(image)\n\n        # Draw a circle\n        radius = 80\n        center = (width // 2, height // 2)\n        draw.ellipse(\n            [\n                (center[0] - radius, center[1] - radius),\n                (center[0] + radius, center[1] + radius),\n            ],\n            fill=\"red\",\n            outline=\"black\",\n            width=3,\n        )\n        return image\n\n\n# Usage:\nroot = App()\nroot.mainloop()\n\n",
+        "extension": "py"
+      },
+      {
+        "title": "Hello, World!",
+        "description": "Creates a basic Tkinter window with a \"Hello, World!\" label.",
+        "author": "Legopitstop",
+        "tags": ["app", "hello-world", "object-oriented"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Label\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        self.lbl = Label(self, text='Hello, World!')\n        self.lbl.pack(expand=1)\n\n# Usage:\nroot = App()\nroot.mainloop()\n",
+        "extension": "py"
+      }
+    ]
+  },
+  {
+    "name": "Entry Validation",
+    "snippets": [
+      {
+        "title": "Allow Alphanumeric",
+        "description": "A validation function to allow alphanumeric characters.",
+        "author": "Legopitstop",
+        "tags": ["validation", "alphanumeric"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_alphanumeric(value):\n    return value.isalnum() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_alphanumeric)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Decimal",
+        "description": "A validation function to allow only decimal numbers.",
+        "author": "Legopitstop",
+        "tags": ["validation", "decimals"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_decimal(action, value):\n    if action == \"1\":\n        if value == \"\":\n            return True\n        try:\n            float(value)\n            return True\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_decimal)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Digits with A Max Length",
+        "description": "A validation function to allow only digits with a specified maximum length.",
+        "author": "Legopitstop",
+        "tags": ["validation", "max", "length"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_digits_with_max_length(action, value, max_length):\n    if action == \"1\":\n        return value == \"\" or (value.isdigit() and len(value) <= int(max_length))\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_digits_with_max_length)\n# 4 is the max length\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", 4)).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Lowercase",
+        "description": "A validation function to allow only lowercase alphabetic characters.",
+        "author": "Legopitstop",
+        "tags": ["validation", "lowercase"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_lowercase(value):\n    return value.islower() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_lowercase)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Negative Integers",
+        "description": "A validation function to allow only negative integers.",
+        "author": "Legopitstop",
+        "tags": ["validation", "negative", "integers"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_negative_integers(value):\n    return (\n        value in (\"\", \"-\") or value.startswith(\"-\") and value[1:].isdigit()\n        if value\n        else True\n    )\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_negative_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Numbers in Range",
+        "description": "A validation function to allow only numbers within a specified range.",
+        "author": "Legopitstop",
+        "tags": ["validation", "number", "range"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_numbers_in_range(action, value, min_value, max_value):\n    if action == \"1\":  \n        try:\n            num = float(value)\n            return float(min_value) <= num <= float(max_value)\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_numbers_in_range)\n# 0 is the minimum value\n# 10 is the maximum value\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", 0, 10)).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Only Alphabets",
+        "description": "A validation function to allow only alphabetic characters.",
+        "author": "Legopitstop",
+        "tags": ["validation", "alphabets"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_only_alphabets(value):\n    return value.isalpha() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_only_alphabets)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Only Digits",
+        "description": "A validation function to allow only digits.",
+        "author": "Legopitstop",
+        "tags": ["validation", "digits"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_only_digits(value):\n    return value.isdigit() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_only_digits)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Positive Integers",
+        "description": "A validation function to allow only positive integers.",
+        "author": "Legopitstop",
+        "tags": ["validation", "positive", "integers"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_positive_integers(value):\n    return value.isdigit() and (value == \"\" or int(value) > 0)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_positive_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow signed Decimals",
+        "description": "A validation function to allow only signed decimal numbers.",
+        "author": "Legopitstop",
+        "tags": ["validation", "signed", "decimals"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_signed_decimals(action, value):\n    if action == \"1\":\n        try:\n            if value in (\"\", \"-\"):\n                return True\n            float(value)\n            return True\n        except ValueError:\n            return False\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_signed_decimals)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Signed Integers",
+        "description": "A validation function to allow only signed integers.",
+        "author": "Legopitstop",
+        "tags": ["validation", "signed", "integers"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_signed_integers(action, value):\n    if action == \"1\":\n        return (\n            value in (\"\", \"-\")\n            or value.isdigit()\n            or (value.startswith(\"-\") and value[1:].isdigit())\n        )\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_signed_integers)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Specific Characters",
+        "description": "A validation function to allow specific characters.",
+        "author": "Legopitstop",
+        "tags": ["validation", "regex"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_specific_characters(value, allowed_chars):\n    return all(char in allowed_chars for char in value)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_specific_characters)\nallowed_chars = \"0123456789ABCDEFabcdef\"  # Hexadecimal characters\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\", allowed_chars)).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Allow Uppercase",
+        "description": "A validation function to allow uppercase letters.",
+        "author": "Legopitstop",
+        "tags": ["validation", "uppercase"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef allow_uppercase(value):\n    return value.isupper() or value == \"\"\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(allow_uppercase)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Custom Regular Expression",
+        "description": "A validation function to match a regular expression pattern.",
+        "author": "Legopitstop",
+        "tags": ["validation", "regex", "pattern"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\nimport re\n\n\ndef custom_regular_expression(action, value, pattern):\n    if action == \"1\":\n        return re.fullmatch(pattern, value) is not None\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(custom_regular_expression)\npattern = r\"^\\d{0,4}$\"  # Allow up to 4 digits\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\", pattern)).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Restrict Length",
+        "description": "A validation function to limit the length.",
+        "author": "Legopitstop",
+        "tags": ["validation", "length"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\n\n\ndef restrict_length(value, max_length):\n    return len(value) <= int(max_length)\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(restrict_length)\n# 10 is the maximum length allowed\nEntry(root, validate=\"key\", validatecommand=(reg, \"%P\", 10)).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      },
+      {
+        "title": "Validate File Path",
+        "description": "A validation function to ensure the file path exists.",
+        "author": "Legopitstop",
+        "tags": ["validation", "filepath", "fp"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Entry\nimport os\n\n\ndef validate_file_path(action, value):\n    if action == \"1\":\n        return value == \"\" or os.path.exists(os.path.expandvars(value))\n    return True\n\n\n# Usage:\nroot = Tk()\nroot.geometry(\"200x200\")\n\nreg = root.register(validate_file_path)\nEntry(root, validate=\"key\", validatecommand=(reg, \"%d\", \"%P\")).pack()\n\nroot.mainloop()\n",
+        "extension": "py"
+      }
+    ]
+  },
+  {
+    "name": "Menus",
+    "snippets": [
+      {
+        "title": "Context Menu",
+        "description": "Opens a menu when you right click a widget.",
+        "author": "Legopitstop",
+        "tags": ["menu"],
+        "contributors": [],
+        "code": "from tkinter import Tk, Label, Menu\n\n\nclass App(Tk):\n    def __init__(self):\n        Tk.__init__(self)\n        self.geometry(\"200x200\")\n\n        lbl = Label(self, text=\"Right-click me!\")\n        lbl.bind(\"<Button-3>\", self.do_popup)\n        lbl.pack(expand=1, ipadx=10, ipady=10)\n\n    def do_popup(self, event):\n        menu = Menu(self, tearoff=0)\n        menu.add_command(label=\"Option 1\", command=lambda: print(\"Option 1\"))\n        menu.add_command(label=\"Option 2\", command=lambda: print(\"Option 2\"))\n        menu.post(event.x_root, event.y_root)\n\n\n# Usage:\nroot = App()\nroot.mainloop()\n",
+        "extension": "py"
+      }
+    ]
+  }
 ]

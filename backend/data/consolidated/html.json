@@ -1,37 +1,25 @@
 [
-    {
-        "name": "Basic Layouts",
-        "snippets": [
-            {
-                "title": "Grid Layout with Navigation",
-                "description": "Full-height grid layout with header navigation using nesting syntax.",
-                "author": "GreenMan36",
-                "tags": [
-                    "css",
-                    "layout",
-                    "sticky",
-                    "grid",
-                    "full-height"
-                ],
-                "contributors": [],
-                "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <style>\n      body {\n        margin: 0;\n        min-height: 100vh;\n        display: grid;\n        grid-template-rows: auto 1fr auto;\n        background: red; /* Shouldn't be visible */\n      }\n\n      .header {\n        background: #3b82f6;\n        padding: 1rem;\n        display: flex;\n        & .menu {\n          margin-left: auto;\n        }\n        & .menu ul {\n          margin-left: auto;\n          display: flex;\n          gap: 1rem;\n        }\n      }\n\n      .main {\n        background: #f3f4f6;\n        padding: 1rem;\n      }\n\n      .footer {\n        background: #1f2937;\n        padding: 1rem;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"header\">\n      Header\n      <nav class=\"menu\">\n        <ul>\n          <li><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About</a></li>\n          <li><a href=\"#\">Contact</a></li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"main\">Main Content</div>\n    <div class=\"footer\">Footer</div>\n  </body>\n</html>\n",
-                "extension": "html"
-            },
-            {
-                "title": "Sticky Header-Footer Layout",
-                "description": "Full-height layout with sticky header and footer, using modern viewport units and flexbox.",
-                "author": "GreenMan36",
-                "tags": [
-                    "css",
-                    "layout",
-                    "sticky",
-                    "flexbox",
-                    "viewport"
-                ],
-                "contributors": [],
-                "code": "<!DOCTYPE html>\n<html style=\"margin: 0\">\n  <head>\n    <style type=\"text/css\">\n      body {\n        margin: 0;\n        display: flex;\n        flex-direction: column;\n        min-height: 100svh; /* Smallest viewport height */\n        min-height: 100vh;  /* Standard viewport height */\n        min-height: 100dvh; /* Dynamic viewport height */\n        min-height: 100lvh; /* Largest viewport height */\n        background-color: red;\n      }\n\n      .header {\n        position: sticky;\n        top: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n\n      .body {\n        flex-grow: 1;\n        background-color: whitesmoke;\n      }\n\n      .footer {\n        position: sticky;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n    </style>\n  <head>\n  <body>\n    <div class=\"header\">header</div>\n    <div class=\"body\">body/content</div>\n    <div class=\"footer\">footer</div>\n  </body>\n</html>\n",
-                "extension": "html"
-            }
-        ]
-    }
+  {
+    "name": "Basic Layouts",
+    "snippets": [
+      {
+        "title": "Grid Layout with Navigation",
+        "description": "Full-height grid layout with header navigation using nesting syntax.",
+        "author": "GreenMan36",
+        "tags": ["css", "layout", "sticky", "grid", "full-height"],
+        "contributors": [],
+        "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <style>\n      body {\n        margin: 0;\n        min-height: 100vh;\n        display: grid;\n        grid-template-rows: auto 1fr auto;\n        background: red; /* Shouldn't be visible */\n      }\n\n      .header {\n        background: #3b82f6;\n        padding: 1rem;\n        display: flex;\n        & .menu {\n          margin-left: auto;\n        }\n        & .menu ul {\n          margin-left: auto;\n          display: flex;\n          gap: 1rem;\n        }\n      }\n\n      .main {\n        background: #f3f4f6;\n        padding: 1rem;\n      }\n\n      .footer {\n        background: #1f2937;\n        padding: 1rem;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"header\">\n      Header\n      <nav class=\"menu\">\n        <ul>\n          <li><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About</a></li>\n          <li><a href=\"#\">Contact</a></li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"main\">Main Content</div>\n    <div class=\"footer\">Footer</div>\n  </body>\n</html>\n",
+        "extension": "html"
+      },
+      {
+        "title": "Sticky Header-Footer Layout",
+        "description": "Full-height layout with sticky header and footer, using modern viewport units and flexbox.",
+        "author": "GreenMan36",
+        "tags": ["css", "layout", "sticky", "flexbox", "viewport"],
+        "contributors": [],
+        "code": "<!DOCTYPE html>\n<html style=\"margin: 0\">\n  <head>\n    <style type=\"text/css\">\n      body {\n        margin: 0;\n        display: flex;\n        flex-direction: column;\n        min-height: 100svh; /* Smallest viewport height */\n        min-height: 100vh;  /* Standard viewport height */\n        min-height: 100dvh; /* Dynamic viewport height */\n        min-height: 100lvh; /* Largest viewport height */\n        background-color: red;\n      }\n\n      .header {\n        position: sticky;\n        top: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n\n      .body {\n        flex-grow: 1;\n        background-color: whitesmoke;\n      }\n\n      .footer {\n        position: sticky;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        background-color: blue;\n      }\n    </style>\n  <head>\n  <body>\n    <div class=\"header\">header</div>\n    <div class=\"body\">body/content</div>\n    <div class=\"footer\">footer</div>\n  </body>\n</html>\n",
+        "extension": "html"
+      }
+    ]
+  }
 ]

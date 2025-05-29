@@ -19,7 +19,7 @@
     "format:backend": "npm run format --prefix backend",
     "format:frontend": "npm run format --prefix frontend",
     "cspell:frontend": "npm run cspell --prefix frontend",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/technoph1le/quicksnip#readme",
   "devDependencies": {
+    "husky": "^9.1.7",
     "npm-run-all": "^4.1.5",
     "tsup": "^8.5.0",
     "tsx": "^4.19.4"
