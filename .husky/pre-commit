@@ -1,0 +1,11 @@
+# TODO: Bring back tests
+# npm run test-ci
+# npm run cspell
+npm run cspell:frontend
+npm run format
+npm run lint
+
+# Run production consolidate script before commit
+.husky/scripts/consolidateForProd.sh
+
+npm run build:backend

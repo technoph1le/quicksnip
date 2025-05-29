@@ -17,7 +17,9 @@
     "lint:frontend": "npm run lint --prefix frontend",
     "format": "npm-run-all --parallel format:backend format:frontend",
     "format:backend": "npm run format --prefix backend",
-    "format:frontend": "npm run format --prefix frontend"
+    "format:frontend": "npm run format --prefix frontend",
+    "cspell:frontend": "npm run cspell --prefix frontend",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",

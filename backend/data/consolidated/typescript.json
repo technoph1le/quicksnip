@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Helper Types",
+        "snippets": [
+            {
+                "title": "At Least One Key",
+                "description": "Ensures that at least one property of an object is required.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition"
+                ],
+                "contributors": [],
+                "code": "type AtLeastOne<T> = {\n    [K in keyof T]: Pick<T, K> & Partial<Omit<T, K>>;\n}[keyof T];\n\n\n// Usage:\ntype A = {\n    id?: string;\n    name?: string;\n    isActive?: boolean;\n};\n\ntype AtLeastOneA = AtLeastOne<A>;\n// Requires at least one of 'id', 'name', or 'isActive' to be defined\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Deep Partial Type",
+                "description": "Converts all properties of a type, including nested objects, into optional.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "optional"
+                ],
+                "contributors": [],
+                "code": "type DeepPartial<T> = {\n    [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];\n};\n\n\n// Usage:\ntype A = {\n    name: string;\n    details: {\n        age: number;\n        address: { city: string; zip: string };\n    };\n};\n\ntype PartialA = DeepPartial<A>;\n/*\nType PartialA:\n{\n  name?: string;\n  details?: {\n    age?: number;\n    address?: { city?: string; zip?: string };\n  };\n}\n*/\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Deep Readonly Type",
+                "description": "Converts all properties of a type, including nested objects, into readonly.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "readonly"
+                ],
+                "contributors": [],
+                "code": "type DeepReadonly<T> = {\n    readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];\n};\n\n\n// Usage:\ntype A = {\n    name: string;\n    details: {\n        age: number;\n        address: { city: string; zip: string };\n    };\n};\n\ntype ReadonlyA = DeepReadonly<A>;\n/*\nType ReadonlyA:\n{\n  readonly name: string;\n  readonly details: {\n    readonly age: number;\n    readonly address: { readonly city: string; readonly zip: string };\n  };\n}\n*/\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Deep Required Type",
+                "description": "Converts all properties of a type, including nested objects, into required.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "required"
+                ],
+                "contributors": [],
+                "code": "type DeepRequired<T> = T extends object\n    ? { [K in keyof T]-?: DeepRequired<T[K]> }\n    : T;\n\n\n// Usage:\ntype A = {\n    id?: string;\n    name?: string;\n    details?: {\n        age?: number;\n        address?: { city?: string; zip?: string };\n    };\n};\n\ntype RequiredA = DeepRequired<A>;\n// Result: { id: string; name: string; details: { age: number; address: { city: string; zip: string }; }; }\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Exclusive Types",
+                "description": "Allows to have a type which conforms to either/or.",
+                "author": "px-d",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition"
+                ],
+                "contributors": [],
+                "code": "type Exclusive<T, U = T> = T | U extends Record<string, unknown>\n  ?\n      | ({ [P in Exclude<keyof T, keyof U>]?: never } & U)\n      | ({ [P in Exclude<keyof U, keyof T>]?: never } & T)\n  : T | U;\n\n\n// Usage:\ntype A = { name: string; email?: string; provider?: string };\ntype B = { name: string; phone?: string; country?: string };\n\ntype EitherOr = Exclusive<A, B>;\n\nconst w: EitherOr = { name: \"John\", email: \"j@d.c\" }; // ✅\nconst x: EitherOr = { name: \"John\", phone: \"+123 456\" }; // ✅\nconst y: EitherOr = { name: \"John\", email: \"\", phone: \"\" }; // ⛔️\nconst z: EitherOr = { name: \"John\", phne: \"\", provider: \"\" }; // ⛔️\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Keys of Type",
+                "description": "Extracts keys from an object type that match a specified value type.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition"
+                ],
+                "contributors": [],
+                "code": "type KeysOfType<T, U> = { [K in keyof T]: T[K] extends U ? K : never }[keyof T];\n\n\n// Usage:\ntype A = { name: string; age: number; isActive: boolean, isDeleted: boolean };\ntype StringKeys = KeysOfType<A, string>; // \"name\"\ntype BooleanKeys = KeysOfType<A, boolean>; // \"isActive\" | \"isDeleted\"\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Keys to Optional",
+                "description": "Makes only the specified keys of an object type optional.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "optional"
+                ],
+                "contributors": [],
+                "code": "type OptionalKeys<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;\n\n\n// Usage:\ntype A = {\n    id: string;\n    name: string;\n    age: number;\n};\n\ntype WithOptionalName = OptionalKeys<A, \"name\">;\n// { id: string; age: number; name?: string }\n\ntype WithOptionalNameAndAge = OptionalKeys<A, \"name\" | \"age\">;\n// Result: { id: string; name?: string; age?: number }\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Nullable Keys",
+                "description": "Extracts keys from an object type that allow null or undefined values.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "nullable"
+                ],
+                "contributors": [],
+                "code": "type NullableKeys<T> = {\n    [K in keyof T]: null extends T[K] ? K : undefined extends T[K] ? K : never;\n}[keyof T];\n\n\n// Usage:\ntype A = {\n    id: string;\n    name?: string;\n    description: string | null;\n};\n\ntype Nullable = NullableKeys<A>; // \"name\" | \"description\"\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Omit Keys of Type",
+                "description": "Removes keys of a specified type from an object type.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "omit",
+                    "keys"
+                ],
+                "contributors": [],
+                "code": "type OmitKeysOfType<T, U> = {\n    [K in keyof T as T[K] extends U ? never : K]: T[K];\n};\n\n\n// Usage:\ntype A = {\n    id: string;\n    isActive: boolean;\n    data: number[];\n};\n\ntype WithoutBoolean = OmitKeysOfType<A, boolean>; // { id: string; data: number[] }\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Required Keys",
+                "description": "Extracts required keys from an object.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "required"
+                ],
+                "contributors": [],
+                "code": "type RequiredKeys<T> = {\n    [K in keyof T]-?: {} extends Pick<T, K> ? never : K;\n}[keyof T];\n\n\n// Usage:\ntype A = {\n    id: string;\n    name?: string;\n    isActive: boolean;\n};\n\ntype ReqKeys = RequiredKeys<A>; // \"id\" | \"isActive\"\n",
+                "extension": "ts"
+            },
+            {
+                "title": "Union to Intersection",
+                "description": "Converts a union type into an intersection type.",
+                "author": "aelshinawy",
+                "tags": [
+                    "typescript",
+                    "helper-types",
+                    "typedefinition",
+                    "intersection",
+                    "union"
+                ],
+                "contributors": [],
+                "code": "type UnionToIntersection<U> = (U extends any ? (arg: U) => void : never) extends (arg: infer I) => void\n    ? I\n    : never;\n\n\n// Usage:\ntype A = { id: string };\ntype B = { name: string };\ntype C = { age: number };\n\ntype Intersected = UnionToIntersection<A | B | C>;\n// { id: string } & { name: string } & { age: number }\n",
+                "extension": "ts"
+            }
+        ]
+    }
+]

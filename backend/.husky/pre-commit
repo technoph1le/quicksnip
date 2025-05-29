@@ -1,8 +1,0 @@
-npm run format
-npm run lint
-
-# Run production consolidate script before commit
-./scripts/consolidateForProd.sh
-
-npm run copy:data
-npm run build

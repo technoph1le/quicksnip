@@ -13,8 +13,7 @@
     "format:check": "prettier --check .",
     "copy:data": "tsx ./scripts/copyStatic.ts",
     "snippets:check": "tsx ./scripts/checkSnippetFormatting.ts",
-    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts",
-    "prepare": "husky"
+    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts"
   },
   "keywords": [],
   "author": "",
