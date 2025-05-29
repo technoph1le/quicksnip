@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "npm-run-all snippets:consolidate dev:server",
     "dev:server": "tsx index.ts",
-    "build": "npm-run-all --parallel snippets:consolidate build:server",
-    "build:server": "tsup index.ts --out-dir dist --format esm",
+    "build": "tsup index.ts --out-dir dist --format esm",
     "start": "node dist/index.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "copy:data": "tsx ./scripts/copyStatic.ts",
     "snippets:check": "tsx ./scripts/checkSnippetFormatting.ts",
-    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts"
+    "snippets:consolidate": "tsx  ./scripts/consolidateSnippets.ts",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",

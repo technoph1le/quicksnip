@@ -15,3 +15,5 @@ export function copyFolderSync(from: string, to: string) {
     }
   }
 }
+
+copyFolderSync("data", "dist/data");
