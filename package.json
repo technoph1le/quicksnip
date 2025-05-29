@@ -31,6 +31,9 @@
     "frontend",
     "backend"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "bugs": {
     "url": "https://github.com/technoph1le/quicksnip/issues"
   },
