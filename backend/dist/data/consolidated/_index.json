@@ -1,0 +1,91 @@
+[
+  {
+    "name": "BASH",
+    "icon": "https://api.quicksnip.dev/icons/bash.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "C",
+    "icon": "https://api.quicksnip.dev/icons/c.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "CPP",
+    "icon": "https://api.quicksnip.dev/icons/cpp.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "CSHARP",
+    "icon": "https://api.quicksnip.dev/icons/csharp.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "CSS",
+    "icon": "https://api.quicksnip.dev/icons/css.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "HASKELL",
+    "icon": "https://api.quicksnip.dev/icons/haskell.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "HTML",
+    "icon": "https://api.quicksnip.dev/icons/html.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "JAVA",
+    "icon": "https://api.quicksnip.dev/icons/java.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "JAVASCRIPT",
+    "icon": "https://api.quicksnip.dev/icons/javascript.svg",
+    "subLanguages": [
+      {
+        "name": "REACT",
+        "icon": "https://api.quicksnip.dev/icons/javascript--react.svg"
+      }
+    ]
+  },
+  {
+    "name": "PYTHON",
+    "icon": "https://api.quicksnip.dev/icons/python.svg",
+    "subLanguages": [
+      {
+        "name": "FASTAPI",
+        "icon": "https://api.quicksnip.dev/icons/python--fastapi.svg"
+      },
+      {
+        "name": "TKINTER",
+        "icon": "https://api.quicksnip.dev/icons/python--tkinter.svg"
+      }
+    ]
+  },
+  {
+    "name": "REGEX",
+    "icon": "https://api.quicksnip.dev/icons/regex.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "RUBY",
+    "icon": "https://api.quicksnip.dev/icons/ruby.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "RUST",
+    "icon": "https://api.quicksnip.dev/icons/rust.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "SCSS",
+    "icon": "https://api.quicksnip.dev/icons/scss.svg",
+    "subLanguages": []
+  },
+  {
+    "name": "TYPESCRIPT",
+    "icon": "https://api.quicksnip.dev/icons/typescript.svg",
+    "subLanguages": []
+  }
+]

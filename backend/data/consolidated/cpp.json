@@ -1,0 +1,204 @@
+[
+  {
+    "name": "Basics",
+    "snippets": [
+      {
+        "title": "Hello, World!",
+        "description": "Prints Hello, World! to the terminal.",
+        "author": "James-Beans",
+        "tags": ["printing", "hello-world"],
+        "contributors": [],
+        "code": "#include <iostream> // Includes the input/output stream library\n\nint main() { // Defines the main function\n    std::cout << \"Hello, World!\" << std::endl; // Outputs Hello, World! and a newline\n    return 0; // indicate the program executed successfully\n}\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "Bit Manipulation",
+    "snippets": [
+      {
+        "title": "Find Non-Repeating Number",
+        "description": "Finds the number that appears only once in an array where every other number appears twice.",
+        "author": "ashukr07",
+        "tags": ["bit-manipulation", "xor"],
+        "contributors": [],
+        "code": "#include <vector>\n\nint find_non_repeating(const std::vector<int> nums) {\n    int result = 0;\n    for (const int num : nums) {\n        result ^= num;\n    }\n    return result;\n}\n\n// Usage:\nstd::vector<int> nums = {4, 1, 2, 1, 2};\nfind_non_repeating(nums); // Returns: 4\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "Data Structure Conversion",
+    "snippets": [
+      {
+        "title": "Vector to Queue",
+        "description": "Convert vector into queue quickly",
+        "author": "mrityunjay2003",
+        "tags": ["data structures", "queue", "vector"],
+        "contributors": ["majvax"],
+        "code": "#include<queue>\n#include<vector>\n#include<deque>\n\ntemplate <typename T>\nstd::queue<T> vectorToQueue(const std::vector<T>& v) {\n    return std::queue<T>(std::deque<T>(v.begin(), v.end()));\n}\n\n\n\n// Usage:\nstd::vector<int> vec = { 1, 2, 3, 4, 5 };\nvectorToQueue(vec); // Returns: std::queue<int> { 1, 2, 3, 4, 5 }\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "Debugging",
+    "snippets": [
+      {
+        "title": "Vector Print",
+        "description": "Overloads the << operator to print the contents of a vector just like in python.",
+        "author": "Mohamed-faaris",
+        "tags": ["printing", "debuging", "vector"],
+        "contributors": [],
+        "code": "#include <iostream> \n#include <vector>   \n\ntemplate <typename T>\nstd::ostream& operator<<(std::ostream& os, const std::vector<T>& vec) {\n    os << \"[\"; \n    for (size_t i = 0; i < vec.size(); ++i) {\n        os << vec[i]; // Print each vector element\n        if (i != vec.size() - 1) {\n            os << \", \"; // Add separator\n        }\n    }\n    os << \"]\"; \n    return os; // Return the stream\n}\n\n// Usage:\nstd::vector<int> numbers = {1, 2, 3, 4, 5};\nstd::cout << numbers << std::endl; // Outputs: [1, 2, 3, 4, 5]\n\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "File Handling",
+    "snippets": [
+      {
+        "title": "Find files recursively",
+        "description": "Find all the files in a directory and subdirectories using a predicate function.",
+        "author": "majvax",
+        "tags": ["filesystem", "file_search", "c++17"],
+        "contributors": [],
+        "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\ntemplate <typename P>\nstd::vector<std::filesystem::path> find_files_recursive(const std::string& path, P&& predicate) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::recursive_directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (!std::filesystem::is_directory(entry) && predicate(entry.path()))\n            files.push_back(entry.path());\n\n    return files;\n}\n\n\n\n// Usage:\n\n// Find all files with size greater than 10MB\nauto files = find_files_recursive(\"Path\", [](const auto& p) {\n    return std::filesystem::file_size(p) > 10 * 1024 * 1024;\n});\n\n// Find all files with \".pdf\" as extension\nauto files = find_files_recursive(\"Path\", [](const auto& p) {\n    return p.extension() == \".pdf\";\n});\n\n// Find all files writed after The New Year\n#include <chrono>\n// need std=c++20\nauto jan_1_2025 = std::filesystem::file_time_type::clock::from_sys(\n    std::chrono::sys_days{std::chrono::year{2025}/std::chrono::month{1}/std::chrono::day{1}}\n);\nauto files = find_files_recursive(\"Path\", [jan_1_2025](const auto& p) {\n    return std::filesystem::last_write_time(p) > jan_1_2025;\n}),\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Find files",
+        "description": "Find all the files in a directory using a predicate function.",
+        "author": "majvax",
+        "tags": ["filesystem", "file_search", "c++17"],
+        "contributors": [],
+        "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\ntemplate <typename P>\nstd::vector<std::filesystem::path> find_files(const std::string& path, P&& predicate) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (!std::filesystem::is_directory(entry) && predicate(entry.path()))\n            files.push_back(entry.path());\n\n    return files;\n}\n\n\n\n// Usage:\n\n// Find all files with size greater than 10MB\nauto files = find_files(\"Path\", [](const auto& p) {\n    return std::filesystem::file_size(p) > 10 * 1024 * 1024;\n});\n\n// Find all files with \".pdf\" as extension\nauto files = find_files(\"Path\", [](const auto& p) {\n    return p.extension() == \".pdf\";\n});\n\n// Find all files writed after The New Year\n#include <chrono>\n// need std=c++20\nauto jan_1_2025 = std::filesystem::file_time_type::clock::from_sys(\n    std::chrono::sys_days{std::chrono::year{2025}/std::chrono::month{1}/std::chrono::day{1}}\n);\nauto files = find_files(\"Path\", [jan_1_2025](const auto& p) {\n    return std::filesystem::last_write_time(p) > jan_1_2025;\n}),\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "List Directories",
+        "description": "Lists all the directories in a path.",
+        "author": "majvax",
+        "tags": ["filesystem", "directories", "c++17"],
+        "contributors": [],
+        "code": "#include <filesystem>\n#include <vector>\n#include <string>\n\nstd::vector<std::filesystem::path> list_directories(const std::string& path) {\n    std::vector<std::filesystem::path> files;\n    std::error_code ec;\n\n    if (!std::filesystem::exists(path, ec) || ec)\n        return files;\n    if (!std::filesystem::is_directory(path, ec) || ec)\n        return files;\n\n    auto it = std::filesystem::directory_iterator(path, ec);\n    if (ec)\n        return files;\n\n    for (const auto& entry : it)\n        if (std::filesystem::is_directory(entry))\n            files.push_back(entry.path());\n\n    return files;\n}\n\n\n\n// Usage:\nauto directories = list_directories(\"Path\");\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "Math And Numbers",
+    "snippets": [
+      {
+        "title": "Binary to Unsigned Integer Conversion",
+        "description": "Converts a binary number represented as a string to its decimal equivalent.",
+        "author": "ashukr07",
+        "tags": ["binary", "conversion", "c++20"],
+        "contributors": [],
+        "code": "#include <string>\n#include <bitset>\n#include <stdexcept>\n\ntemplate <std::unsigned_integral T>\nT binary_to_uintegral(const std::string& binary) {\n    if (binary.size() > sizeof(T) * 8)\n        throw std::invalid_argument(\"binary string is too long\");\n    return static_cast<T>(std::bitset<sizeof(T) * 8>(binary).to_ullong());\n}\n\n// Usage:\nstd::string binary(64, '1'); // Binary 8 bytes long with all bits set to 1\nbinary_to_uintegral<unsigned long long>(binary); // Returns: 18446744073709551615\nbinary_to_uintegral<long long>(binary); // Compiles error: signed/unsigned mismatch\nbinary_to_uintegral<unsigned long long>(std::string(65, '1')); // Throws: std::invalid_argument\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Check Prime Number",
+        "description": "Check if an integer is a prime number",
+        "author": "MihneaMoso",
+        "tags": ["number", "prime"],
+        "contributors": [],
+        "code": "bool is_prime(int n) {\n    if (n < 2) return false;\n    if (n == 2 || n == 3) return true;\n    if (n % 2 == 0) return false;\n    for (int i = 3; i * i <= n; i += 2) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}\n\n// Usage:\nis_prime(29); // Returns: true\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "String Manipulation",
+    "snippets": [
+      {
+        "title": "Filter",
+        "description": "Filter a string with a predicate function",
+        "author": "majvax",
+        "tags": ["string", "filtering", "c++23"],
+        "contributors": [],
+        "code": "#include <ranges>\n#include <string>\n\ntemplate <typename P>\nstd::string filter(const std::string& str, P&& predicate) {\n    return str\n        | std::ranges::views::filter(std::forward<P>(predicate))\n        | std::ranges::to<std::string>();\n}\n\n\n\n// Usage:\nstd::string str = \"Hello, World!\";\nstd::string filtered = filter(str, [](char c){ return std::isalpha(c); });\nstd::cout << filtered << std::endl; // HelloWorld\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Palindrome",
+        "description": "Check if a string is a palindrome or not.",
+        "author": "majvax",
+        "tags": ["string", "c++23"],
+        "contributors": [],
+        "code": "#include <string>\n#include <ranges>\n#include <algorithm>\n\nbool is_palindrome(const std::string& str) {\n    std::string sanitized_string = str\n        | std::ranges::views::filter([](char c){ return std::isalnum(c); })\n        | std::ranges::views::transform([](char c){ return std::tolower(c); })\n        | std::ranges::to<std::string>();\n    \n    return std::ranges::equal(sanitized_string, sanitized_string | std::views::reverse);\n}\n\n\n\n// Usage:\nbool pal = is_palindrome(\"A man, a plan, a canal, Panama\"); // true\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Reverse String",
+        "description": "Reverses the characters in a string.",
+        "author": "Vaibhav-kesarwani",
+        "tags": ["array", "reverse", "c++23"],
+        "contributors": [],
+        "code": "#include <string>\n#include <algorithm>\n\nstd::string reverseString(const std::string& input) {\n    std::string reversed = input;\n    std::reverse(reversed.begin(), reversed.end());\n    return reversed;\n}\n\nreverseString(\"quicksnip\"); // Returns: \"pinskciuq\"\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Split String",
+        "description": "Splits a string by a delimiter",
+        "author": "saminjay",
+        "tags": ["string", "split"],
+        "contributors": [],
+        "code": "#include <string>\n#include <vector>\n\nstd::vector<std::string> split_string(std::string str, std::string delim) {\n    std::vector<std::string> splits;\n    int i = 0, j;\n    int inc = delim.length();\n    while (j != std::string::npos) {\n        j = str.find(delim, i);\n        splits.push_back(str.substr(i, j - i));\n        i = j + inc;\n    }\n    return splits;\n}\n\n// Usage:\nsplit_string(\"quick_-snip\", \"_-\"); // Returns: std::vector<std::string> { \"quick\", \"snip\" }\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Transform",
+        "description": "Transform a string with a function",
+        "author": "majvax",
+        "tags": ["string", "transform", "c++23"],
+        "contributors": [],
+        "code": "#include <ranges>\n#include <string>\n\ntemplate <typename F>\nstd::string transform(const std::string& str, F&& transformer) {\n    return str\n        | std::ranges::views::transform(std::forward<F>(transformer))\n        | std::ranges::to<std::string>();\n}\n\n\n\n// Usage:\nstd::string str = \"Hello, World!\";\nstd::string transformed = transform(str, [](char c){ return std::toupper(c); });\nstd::cout << transformed << std::endl; // HELLO, WORLD!\n",
+        "extension": "cpp"
+      }
+    ]
+  },
+  {
+    "name": "Vector Manipulation.md",
+    "snippets": [
+      {
+        "title": "Filter",
+        "description": "Filters a vector using a predicate function.",
+        "author": "majvax",
+        "tags": ["array", "filter", "c++23"],
+        "contributors": [],
+        "code": "#include <ranges>\n#include <vector>\n\ntemplate <typename T, typename P>\nauto filter(const std::vector<T>& vec, P&& predicate) {\n    return vec\n        | std::views::filter(std::forward<P>(predicate))\n        | std::ranges::to<std::vector<T>>();\n}\n\n\n\n// Usage:\nstd::vector<int> vec = {1, 2, 3, 4, 5};\nstd::vector<int> filtered = filter(vec, [](int i){ return i % 2 == 0; });\n// filtered contains 2 and 4\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Remove duplicates",
+        "description": "Removes duplicates from an vector of ints",
+        "author": "AnkushRoy-code",
+        "tags": ["vector", "remove", "duplicate"],
+        "contributors": [],
+        "code": "#include <algorithm>\n#include <vector>\n\nbool removeDuplicates(std::vector<int> &input) noexcept {\n    if (input.empty()) return false;\n    const auto size = input.size();\n    std::sort(input.begin(), input.end());\n\n    auto last = std::unique(input.begin(), input.end()); // remove duplicates\n    input.erase(last, input.end()); // resize vector and delete the undefined elements\n\n    return size != input.size();\n}\n\n\n\n// Usage:\nstd::vector<int> vec = {4, 2, 2, 8, 5, 6, 9, 9, 9, 8, 8, 4};\nremoveDuplicates(vec); // returns {2, 4, 5, 6, 8, 9}\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Remove n Occurences",
+        "description": "Removes duplicates from an vector of ints",
+        "author": "AnkushRoy-code",
+        "tags": ["vector", "remove"],
+        "contributors": [],
+        "code": "#include <algorithm>\n#include <unordered_map>\n#include <vector>\n\nbool removeOccurrences(std::vector<int>& vec, const unsigned int n) noexcept {\n    if (vec.empty() || n == 0) return false;\n\n    const auto size = vec.size();\n    std::unordered_map<int, int> frequency; // count frequencies\n    for (int num : vec) {\n        frequency[num]++;\n    }\n\n    vec.erase( // remove elements with n number of occurrences\n        std::remove_if(vec.begin(), vec.end(), [&frequency, n](const int x) {\n            return frequency[x] == n;\n        }),\n        vec.end()\n    );\n    return size != vec.size();\n}\n\n\n\n// Usage:\nstd::vector<int> vec = {4, 2, 4, 8, 5, 6, 8, 8, 4, 3 };\n\nint n = 3; // Remove elements that occur exactly 3 times\nremoveOccurrences(vec, n); // returns {2, 5, 6, 3}\n",
+        "extension": "cpp"
+      },
+      {
+        "title": "Transform",
+        "description": "Transforms a vector using a function.",
+        "author": "majvax",
+        "tags": ["array", "transform", "c++23"],
+        "contributors": [],
+        "code": "#include <ranges>\n#include <vector>\n\ntemplate <typename T, typename F>\nauto transform(const std::vector<T>& vec, F&& transformer) {\n    using U = std::invoke_result_t<F, T>;\n    return vec\n        | std::views::transform(std::forward<F>(transformer))\n        | std::ranges::to<std::vector<U>>();\n}\n\n\n\n// Usage:\nstd::vector<int> vec = {1, 2, 3, 4, 5};\nstd::vector<int> transformed = transform(vec, [](int i){ return i * 2; });\n// transformed contains 2, 4, 6, 8, 10\n",
+        "extension": "cpp"
+      }
+    ]
+  }
+]
