@@ -27,10 +27,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "workspaces": [
-    "frontend",
-    "backend"
-  ],
   "engines": {
     "node": ">=20"
   },
