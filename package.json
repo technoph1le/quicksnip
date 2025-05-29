@@ -27,6 +27,10 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "bugs": {
     "url": "https://github.com/technoph1le/quicksnip/issues"
   },
