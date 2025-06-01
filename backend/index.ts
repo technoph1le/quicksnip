@@ -51,7 +51,7 @@ app.get("/languages", (_req, res) => {
 // Get all categories for a given language
 app.get("/categories/:language", (req, res) => {
   const { language } = req.params;
-  const file = path.join(dataDir, `consolidated/${slugify(language)}.json`);
+  const file = path.join(dataDir, `consolidated/${language}.json`);
   const json = readJSON(file);
 
   if (!json) {
