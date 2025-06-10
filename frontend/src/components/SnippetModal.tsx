@@ -65,9 +65,7 @@ const SnippetModal: React.FC<Props> = ({
         <div className="modal__body | flow">
           {/* TODO: update the language name and remove all-sub-languages */}
           <CodePreview
-            languageName={
-              subLanguage === "all-sub-languages" ? language.name : subLanguage
-            }
+            languageName={subLanguage === null ? language.name : subLanguage}
             extension={extension}
             code={snippet.code}
           />

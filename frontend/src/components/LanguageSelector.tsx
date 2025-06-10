@@ -83,9 +83,11 @@ const LanguageSelector = () => {
     });
 
     setSearchText("");
-    navigate(
-      `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
-    );
+    const navigatePath =
+      newSubLanguage === null
+        ? `/${slugify(newLanguage.name)}/s/${slugify(newCategory)}`
+        : `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`;
+    navigate(navigatePath);
     setIsOpen(false);
     setOpenedLanguages([]);
   };
@@ -110,9 +112,11 @@ const LanguageSelector = () => {
     });
 
     setSearchText("");
-    navigate(
-      `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
-    );
+    const navigatePath =
+      newSubLanguage === null
+        ? `/${slugify(newLanguage.name)}/${slugify(newCategory)}`
+        : `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`;
+    navigate(navigatePath);
     afterSelect();
   };
 

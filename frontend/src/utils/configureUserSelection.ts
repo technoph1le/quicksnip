@@ -1,76 +1,57 @@
 import { CategoryType, LanguageType } from "@types";
 
-import {
-  API_BASE,
-  defaultCategoryName,
-  defaultLanguage,
-  defaultSlugifiedSubLanguageName,
-} from "./consts";
+import { API_BASE, defaultCategoryName, defaultLanguage } from "./consts";
 import { slugify } from "./slugify";
+
+interface Params {
+  languageName?: string;
+  subLanguageName?: string;
+  categoryName?: string;
+}
 
 export async function configureUserSelection({
   languageName,
   subLanguageName,
   categoryName,
-}: {
-  languageName: string | undefined;
-  subLanguageName?: string | undefined;
-  categoryName?: string | undefined;
-}): Promise<{
+}: Params): Promise<{
   language: LanguageType;
-  subLanguage: LanguageType["name"];
+  subLanguage: LanguageType["name"] | null;
   category: CategoryType;
 }> {
-  const slugifiedLanguageName = languageName
-    ? slugify(languageName)
-    : undefined;
-  const slugifiedSubLanguageName = subLanguageName
-    ? slugify(subLanguageName)
-    : undefined;
-  const slugifiedCategoryName = categoryName
-    ? slugify(categoryName)
-    : undefined;
+  const [langSlug, subLangSlug, catSlug] = [
+    slugify(languageName || ""),
+    slugify(subLanguageName || ""),
+    slugify(categoryName || ""),
+  ];
 
-  const fetchedLanguages: LanguageType[] = await fetch(
-    `${API_BASE}/languages`
-  ).then((res) => res.json());
+  const languages: LanguageType[] = await fetch(`${API_BASE}/languages`).then(
+    (res) => res.json()
+  );
 
   const language =
-    fetchedLanguages.find(
-      (lang) => slugify(lang.name) === slugifiedLanguageName
-    ) ?? defaultLanguage;
+    languages.find((lang) => slugify(lang.name) === langSlug) ||
+    defaultLanguage;
 
-  const subLanguage = language.subLanguages.find(
-    (sl) => slugify(sl.name) === slugifiedSubLanguageName
-  );
-  const matchedSubLanguage =
-    subLanguage === undefined
-      ? defaultSlugifiedSubLanguageName
-      : slugify(subLanguage.name);
+  const subLanguage =
+    language.subLanguages.find((sl) => slugify(sl.name) === subLangSlug)
+      ?.name || null;
 
-  let category: CategoryType | undefined;
+  let category: CategoryType = defaultCategoryName;
+
   try {
-    const fetchedCategoryNames: string[] = await fetch(
+    const categories: string[] = await fetch(
       `${API_BASE}/categories/${slugify(language.name)}`
     ).then((res) => res.json());
 
-    const matchedCategoryName = fetchedCategoryNames.find(
-      (cat) => slugify(cat) === slugifiedCategoryName
-    );
-
-    if (matchedCategoryName) {
-      category = matchedCategoryName;
-    } else {
-      category = defaultCategoryName;
-    }
-  } catch (_error) {
-    // This state should not be reached in the normal flow.
-    category = defaultCategoryName;
+    const matchedCategory = categories.find((cat) => slugify(cat) === catSlug);
+    if (matchedCategory) category = matchedCategory;
+  } catch {
+    console.log("Error with fetching /categories in configureUserSelection.ts");
   }
 
   return {
     language,
-    subLanguage: matchedSubLanguage,
-    category: category ?? defaultCategoryName,
+    subLanguage,
+    category,
   };
 }

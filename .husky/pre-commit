@@ -5,7 +5,7 @@ npm run cspell:frontend
 npm run format
 npm run lint
 
+npm run build:backend
+
 # Run production consolidate script before commit
 .husky/scripts/consolidateForProd.sh
-
-npm run build:backend

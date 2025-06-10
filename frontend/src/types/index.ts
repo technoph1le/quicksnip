@@ -31,8 +31,9 @@ export type RawSnippetType = {
 
 export type AppState = {
   language: LanguageType;
-  subLanguage: LanguageType["name"];
+  subLanguage: string | null;
   category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string | null>>;
   snippet: SnippetType | null;
   setSnippet: React.Dispatch<React.SetStateAction<SnippetType | null>>;
   searchText: string;

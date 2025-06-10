@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "@contexts/AppContext";
 import { LanguageType } from "@types";
 import { configureUserSelection } from "@utils/configureUserSelection";
-import { defaultSlugifiedSubLanguageName } from "@utils/consts";
+import { defaultSubLanguageName } from "@utils/consts";
 import { slugify } from "@utils/slugify";
 
 type SubLanguageSelectorProps = {
@@ -37,9 +37,11 @@ const SubLanguageSelector = ({
       });
 
       setSearchText("");
-      navigate(
-        `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`
-      );
+      const navigatePath =
+        newSubLanguage === null
+          ? `/${slugify(newLanguage.name)}/s/${slugify(newCategory)}`
+          : `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`;
+      navigate(navigatePath);
       afterSelect();
     };
 
@@ -49,13 +51,13 @@ const SubLanguageSelector = ({
         role="option"
         tabIndex={0}
         className={`selector__item ${
-          subLanguage === defaultSlugifiedSubLanguageName &&
+          subLanguage === defaultSubLanguageName &&
           language.name === parentLanguage.name
             ? "selected"
             : ""
         }`}
         aria-selected={
-          subLanguage === defaultSlugifiedSubLanguageName &&
+          subLanguage === defaultSubLanguageName &&
           language.name === parentLanguage.name
         }
         onClick={() => handleParentSelect(parentLanguage)}
@@ -78,24 +80,30 @@ const SubLanguageSelector = ({
         </label>
       </li>
 
-      {parentLanguage.subLanguages.map((sl) => (
-        <li
-          key={sl.name}
-          role="option"
-          tabIndex={opened ? 0 : -1}
-          aria-disabled={!opened}
-          className={`selector__item sublanguage__item ${opened ? "" : "hidden"} ${
-            slugify(subLanguage) === slugify(sl.name) ? "selected" : ""
-          }`}
-          aria-selected={slugify(subLanguage) === slugify(sl.name)}
-          onClick={handleSubLanguageSelect(sl)}
-        >
-          <label>
-            <img src={sl.icon} alt={sl.name} />
-            <span>{sl.name}</span>
-          </label>
-        </li>
-      ))}
+      {parentLanguage.subLanguages.map((sl) => {
+        const isSelected = subLanguage
+          ? slugify(subLanguage) === slugify(sl.name)
+          : false;
+
+        return (
+          <li
+            key={sl.name}
+            role="option"
+            tabIndex={opened ? 0 : -1}
+            aria-disabled={!opened}
+            className={`selector__item sublanguage__item ${opened ? "" : "hidden"} ${
+              isSelected ? "selected" : ""
+            }`}
+            aria-selected={isSelected}
+            onClick={handleSubLanguageSelect(sl)}
+          >
+            <label>
+              <img src={sl.icon} alt={sl.name} />
+              <span>{sl.name}</span>
+            </label>
+          </li>
+        );
+      })}
     </>
   );
 };

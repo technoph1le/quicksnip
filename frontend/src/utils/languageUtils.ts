@@ -1,41 +1,41 @@
-import { LanguageType } from "@types";
-
-import { API_BASE, defaultSlugifiedSubLanguageName } from "./consts";
+import { API_BASE, defaultSubLanguageName } from "./consts";
 import { reverseSlugify, slugify } from "./slugify";
 
 export function getLanguageDisplayName(
-  language: LanguageType["name"],
-  subLanguage: LanguageType["subLanguages"][number]["name"]
+  language: string,
+  subLanguage: string | null
 ) {
-  return slugify(subLanguage) !== defaultSlugifiedSubLanguageName
-    ? reverseSlugify(subLanguage).toLocaleUpperCase()
-    : language;
+  if (subLanguage && subLanguage !== defaultSubLanguageName) {
+    return reverseSlugify(subLanguage).toLocaleUpperCase();
+  } else {
+    return language;
+  }
 }
 
 export function getLanguageDisplayLogo(
-  language: LanguageType["name"],
-  subLanguage: LanguageType["subLanguages"][number]["name"]
+  language: string,
+  subLanguage: string | null
 ) {
   const langSlug = slugify(language);
-  const subLangSlug = slugify(subLanguage);
 
-  return subLangSlug !== defaultSlugifiedSubLanguageName
-    ? `${API_BASE}/icons/${slugify(langSlug)}--${subLangSlug}.svg`
-    : `${API_BASE}/icons/${slugify(langSlug)}.svg`;
+  if (!subLanguage) {
+    return `${API_BASE}/icons/${slugify(langSlug)}.svg`;
+  } else {
+    return `${API_BASE}/icons/${slugify(langSlug)}--${slugify(subLanguage)}.svg`;
+  }
 }
 
 export function getLanguageFileName(
-  language: LanguageType["name"],
-  subLanguage: LanguageType["subLanguages"][number]["name"]
+  language: string,
+  subLanguage: string | null
 ) {
-  const langSlug = slugify(language);
-  const subLangSlug = slugify(subLanguage);
+  if (!subLanguage || subLanguage === "s") {
+    return slugify(language);
+  } else {
+    return `${slugify(language)}--${slugify(subLanguage)}`;
+  }
 
-  return subLangSlug !== defaultSlugifiedSubLanguageName
-    ? `${langSlug}--${subLangSlug}`
-    : `${langSlug}`;
-
-  // return slugify(subLanguage) !== defaultSlugifiedSubLanguageName
+  // return slugify(subLanguage) !== defaultSubLanguageName
   //   ? `/consolidated/${slugify(language)}--${slugify(subLanguage)}.json`
   //   : `/consolidated/${slugify(language)}.json`;
 }

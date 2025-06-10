@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
-import { useAppContext } from "@contexts/AppContext";
+// import { useAppContext } from "@contexts/AppContext";
 import { SnippetType } from "@types";
 import { API_BASE, defaultCategoryName } from "@utils/consts";
 import { QueryParams } from "@utils/enums";
@@ -12,18 +12,22 @@ import { useFetch } from "./useFetch";
 
 export const useSnippets = () => {
   const [searchParams] = useSearchParams();
-  const { language, subLanguage, category } = useAppContext();
+  const {
+    languageName = "",
+    subLanguageName = "",
+    categoryName = "",
+  } = useParams();
 
   const languageSlug = useMemo(
-    () => getLanguageFileName(language.name, subLanguage),
-    [language.name, subLanguage]
+    () => getLanguageFileName(languageName, subLanguageName),
+    [languageName, subLanguageName]
   );
 
   const selectedCategory = useMemo(() => {
-    return slugify(category) === slugify(defaultCategoryName)
+    return slugify(categoryName) === slugify(defaultCategoryName)
       ? "all"
-      : category;
-  }, [category]);
+      : categoryName;
+  }, [categoryName]);
 
   const { data, loading, error } = useFetch<SnippetType[]>(
     `${API_BASE}/snippets/${languageSlug}/${selectedCategory}`

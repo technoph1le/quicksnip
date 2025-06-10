@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { useAppContext } from "@contexts/AppContext";
 import { useCategories } from "@hooks/useCategories";
+import { configureUserSelection } from "@utils/configureUserSelection";
 import { defaultCategoryName } from "@utils/consts";
 import { slugify } from "@utils/slugify";
 
@@ -16,13 +17,24 @@ const CategoryListItem: FC<CategoryListItemProps> = ({ categoryName }) => {
 
   const { language, subLanguage, category } = useAppContext();
 
-  const langSlug = slugify(language.name);
-  const subLangSlug = slugify(subLanguage);
-  const categorySlug = slugify(categoryName);
+  const handleSelect = async () => {
+    const {
+      language: newLanguage,
+      subLanguage: newSubLanguage,
+      category: newCategory,
+    } = await configureUserSelection({
+      languageName: language.name,
+      subLanguageName: subLanguage || undefined,
+      categoryName,
+    });
 
-  const handleSelect = () => {
+    const navigatePath =
+      newSubLanguage === null
+        ? `/${slugify(newLanguage.name)}/s/${slugify(newCategory)}`
+        : `/${slugify(newLanguage.name)}/${slugify(newSubLanguage)}/${slugify(newCategory)}`;
+
     navigate({
-      pathname: `/${langSlug}/${subLangSlug}/${categorySlug}`,
+      pathname: navigatePath,
       search: searchParams.toString(),
     });
   };
@@ -31,7 +43,9 @@ const CategoryListItem: FC<CategoryListItemProps> = ({ categoryName }) => {
     <li className="category">
       <button
         className={`category__btn ${
-          categorySlug === slugify(category) ? "category__btn--active" : ""
+          slugify(categoryName) === slugify(category)
+            ? "category__btn--active"
+            : ""
         }`}
         onClick={handleSelect}
       >

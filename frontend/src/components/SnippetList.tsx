@@ -41,10 +41,6 @@ const SnippetList = () => {
     setSearchParams(searchParams);
   };
 
-  useEffect(() => {
-    console.log("Snippets changed:", fetchedSnippets);
-  }, [fetchedSnippets]);
-
   /**
    * open the relevant modal if the snippet is in the search params
    */

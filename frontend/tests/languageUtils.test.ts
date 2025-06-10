@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { defaultSlugifiedSubLanguageName } from "../src/utils/consts";
+import { defaultSubLanguageName } from "../src/utils/consts";
 import {
   getLanguageDisplayName,
   getLanguageDisplayLogo,
@@ -14,10 +14,7 @@ describe(getLanguageDisplayName.name, () => {
   });
 
   it("should return the language name if subLanguage is the default", () => {
-    const result = getLanguageDisplayName(
-      "JAVASCRIPT",
-      defaultSlugifiedSubLanguageName
-    );
+    const result = getLanguageDisplayName("JAVASCRIPT", defaultSubLanguageName);
     expect(result).toBe("JAVASCRIPT");
   });
 });
@@ -29,10 +26,7 @@ describe(getLanguageDisplayLogo.name, () => {
   });
 
   it("should return the language name only if subLanguage is the default", () => {
-    const result = getLanguageDisplayLogo(
-      "JAVASCRIPT",
-      defaultSlugifiedSubLanguageName
-    );
+    const result = getLanguageDisplayLogo("JAVASCRIPT", defaultSubLanguageName);
     expect(result).toBe("/icons/javascript.svg");
   });
 });
@@ -44,10 +38,7 @@ describe(getLanguageFileName.name, () => {
   });
 
   it("should return the language name only if subLanguage is the default", () => {
-    const result = getLanguageFileName(
-      "JAVASCRIPT",
-      defaultSlugifiedSubLanguageName
-    );
+    const result = getLanguageFileName("JAVASCRIPT", defaultSubLanguageName);
     expect(result).toBe("/consolidated/javascript.json");
   });
 });

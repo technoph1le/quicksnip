@@ -40,7 +40,7 @@ const CodePreview = ({ extension = "markdown", languageName, code }: Props) => {
   return (
     <div className="code-preview">
       <div className="code-preview__header">
-        <p>{slugify(languageName)}</p>
+        <p>{languageName ? slugify(languageName) : ""}</p>
         <div className="code-preview__buttons">
           <CopyToClipboard text={code} />
           <CopyURLButton />
